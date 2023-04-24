@@ -1,12 +1,12 @@
 package com.educator.mapper;
 
 import com.educator.domain.Course;
-import com.educator.domain.dto.CourseDto;
-import org.springframework.stereotype.Service;
+import com.educator.dto.CourseDto;
+import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Component
 public class CourseMapper {
 
     public CourseDto mapToDtoCourse(Course course) {

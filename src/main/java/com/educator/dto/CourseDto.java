@@ -1,4 +1,4 @@
-package com.educator.domain.dto;
+package com.educator.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

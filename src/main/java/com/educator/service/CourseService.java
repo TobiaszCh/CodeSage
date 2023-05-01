@@ -4,21 +4,17 @@ import com.educator.domain.Course;
 import com.educator.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-<<<<<<< Updated upstream
-
-=======
 import java.util.ArrayList;
->>>>>>> Stashed changes
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class CourseService {
 
-    private final CourseRepository courseRepository;
+    final private CourseRepository courseRepository;
 
-    public Course getCourse(Long Id) {
-        return courseRepository.findAllById(Id);
+    public Course getCourse(Long id) {
+        return courseRepository.findAllById(id);
     }
 
     public List<Course> getWithPhrase(String phrase) {

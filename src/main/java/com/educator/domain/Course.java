@@ -9,12 +9,11 @@ import javax.persistence.Id;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Course {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
 
     private String displayName;
 

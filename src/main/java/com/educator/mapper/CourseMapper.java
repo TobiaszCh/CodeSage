@@ -15,6 +15,12 @@ public class CourseMapper {
                 course.getDisplayName());
     }
 
+    public Course mapToCourse(CourseDto courseDto) {
+        return new Course(
+                courseDto.getId(),
+                courseDto.getDisplayName());
+    }
+
     public List<CourseDto> mapToListDtoCourse(List<Course> course) {
         return course.stream().map(this::mapToDtoCourse).collect(Collectors.toList());
     }

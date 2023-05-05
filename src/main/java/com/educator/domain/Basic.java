@@ -1,4 +1,5 @@
 package com.educator.domain;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,14 +10,16 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Course {
+public class Basic {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String displayName;
+    @ManyToOne
+    private Course course;
+
     @OneToMany
-    private List<Basic> basics;
+    private List<Task> tasks;
 
 }

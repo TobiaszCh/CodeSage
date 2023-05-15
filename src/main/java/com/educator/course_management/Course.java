@@ -1,4 +1,5 @@
-package com.educator.domain;
+package com.educator.course_management;
+import com.educator.variable_management.Variable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,6 @@ public class Course {
 
     private String displayName;
     @OneToMany
-    private List<Basic> basics;
+    private List<Variable> variables;
 
 }

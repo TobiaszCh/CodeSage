@@ -1,6 +1,6 @@
-package com.educator.repository;
+package com.educator.course_management;
 
-import com.educator.domain.Course;
+import com.educator.course_management.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

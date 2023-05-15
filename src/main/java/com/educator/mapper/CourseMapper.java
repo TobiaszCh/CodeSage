@@ -12,13 +12,16 @@ public class CourseMapper {
     public CourseDto mapToDtoCourse(Course course) {
         return new CourseDto (
                 course.getId(),
-                course.getDisplayName());
+                course.getDisplayName(),
+                course.getBasics());
     }
 
     public Course mapToCourse(CourseDto courseDto) {
         return new Course(
                 courseDto.getId(),
-                courseDto.getDisplayName());
+                courseDto.getDisplayName(),
+                courseDto.getBasics()
+        );
     }
 
     public List<CourseDto> mapToListDtoCourse(List<Course> course) {

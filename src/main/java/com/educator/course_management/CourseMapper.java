@@ -1,7 +1,5 @@
-package com.educator.mapper;
+package com.educator.course_management;
 
-import com.educator.domain.Course;
-import com.educator.dto.CourseDto;
 import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,14 +11,14 @@ public class CourseMapper {
         return new CourseDto (
                 course.getId(),
                 course.getDisplayName(),
-                course.getBasics());
+                course.getVariables());
     }
 
     public Course mapToCourse(CourseDto courseDto) {
         return new Course(
                 courseDto.getId(),
                 courseDto.getDisplayName(),
-                courseDto.getBasics()
+                courseDto.getVariables()
         );
     }
 

@@ -1,5 +1,7 @@
-package com.educator.domain;
+package com.educator.task_management;
 
+import com.educator.level_management.Level;
+import com.educator.variable_management.Variable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,5 +19,5 @@ public class Task {
     @GeneratedValue
     private Long Id;
     @ManyToOne
-    private Basic basic;
+    private Level level;
 }

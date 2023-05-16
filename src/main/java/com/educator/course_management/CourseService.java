@@ -1,7 +1,7 @@
-package com.educator.service;
+package com.educator.course_management;
 
-import com.educator.domain.Course;
-import com.educator.repository.CourseRepository;
+import com.educator.course_management.Course;
+import com.educator.course_management.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;

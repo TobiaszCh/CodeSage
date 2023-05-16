@@ -1,5 +1,8 @@
-package com.educator.domain;
+package com.educator.variable_management;
 
+import com.educator.course_management.Course;
+import com.educator.level_management.Level;
+import com.educator.task_management.Task;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +13,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Basic {
+public class Variable {
 
     @Id
     @GeneratedValue
@@ -20,6 +23,6 @@ public class Basic {
     private Course course;
 
     @OneToMany
-    private List<Task> tasks;
+    private List<Level> levels;
 
 }

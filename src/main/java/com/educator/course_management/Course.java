@@ -1,5 +1,6 @@
 package com.educator.course_management;
 import com.educator.variable_management.Variable;
+import com.educator.user_management.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,10 @@ public class Course {
     private Long id;
 
     private String displayName;
+
+    @OneToOne
+    private User user;
+
     @OneToMany
     private List<Variable> variables;
 

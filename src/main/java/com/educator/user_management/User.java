@@ -4,11 +4,10 @@ import com.educator.course_management.Course;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Getter
-@Entity
+@Entity(name = "Users")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {

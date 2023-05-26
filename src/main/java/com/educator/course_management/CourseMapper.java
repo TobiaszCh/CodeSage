@@ -11,6 +11,7 @@ public class CourseMapper {
         return new CourseDto (
                 course.getId(),
                 course.getDisplayName(),
+                course.getUser(),
                 course.getVariables());
     }
 
@@ -18,8 +19,9 @@ public class CourseMapper {
         return new Course(
                 courseDto.getId(),
                 courseDto.getDisplayName(),
+                courseDto.getUser(),
                 courseDto.getVariables()
-        );
+                );
     }
 
     public List<CourseDto> mapToListDtoCourse(List<Course> course) {

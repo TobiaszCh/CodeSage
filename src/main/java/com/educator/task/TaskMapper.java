@@ -1,4 +1,4 @@
-package com.educator.task_management;
+package com.educator.task;
 
 public class TaskMapper {
 }

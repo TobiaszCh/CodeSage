@@ -1,4 +1,4 @@
 package com.educator.subject;
 
-public class VariableDto {
+public class SubjectDto {
 }

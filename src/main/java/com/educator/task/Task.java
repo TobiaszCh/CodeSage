@@ -1,7 +1,5 @@
-package com.educator.task_management;
-
-import com.educator.level_management.Level;
-import com.educator.variable_management.Variable;
+package com.educator.task;
+import com.educator.level.Level;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

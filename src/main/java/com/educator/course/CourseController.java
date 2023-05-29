@@ -1,4 +1,4 @@
-package com.educator.course_management;
+package com.educator.course;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,24 +11,21 @@ import java.util.List;
 @RequestMapping("/courses")
 @RequiredArgsConstructor
 public class CourseController {
-
     private final CourseService courseService;
-
-    private final CourseMapper courseMapper;
 
     @GetMapping(value = "/search/{id}")
     public CourseDto getCoursesId(@PathVariable Long id) {
-        return courseMapper.mapToDtoCourse(courseService.getCourse(id));
+        return courseService.getCourse(id);
     }
 
     @GetMapping
     public List<CourseDto> getCoursesAll() {
-        return courseMapper.mapToListDtoCourse(courseService.getAllCourses());
+        return courseService.getAllCourses();
     }
 
     @GetMapping(value = "/phrase/{phrase}")
     public List<CourseDto> getCoursesWithWord(@PathVariable String phrase) {
-        return courseMapper.mapToListDtoCourse(courseService.getWithPhrase(phrase));
+        return courseService.getWithPhrase(phrase);
     }
 
     @DeleteMapping(value = "/delete/{id}")
@@ -38,6 +35,6 @@ public class CourseController {
 
     @PostMapping
     public void createCourse(@RequestBody CourseDto courseDto) {
-        courseService.createCourse(courseMapper.mapToCourse(courseDto));
+        courseService.createCourse(courseDto);
     }
 }

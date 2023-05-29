@@ -1,4 +1,4 @@
 package com.educator.subject;
 
-public class VariableController {
+public class SubjectController {
 }

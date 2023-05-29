@@ -1,4 +1,4 @@
-package com.educator.level_management;
+package com.educator.level;
 
 public class LevelDto {
 }

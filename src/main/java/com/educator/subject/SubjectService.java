@@ -1,4 +1,4 @@
 package com.educator.subject;
 
-public class VariableService {
+public class SubjectService {
 }

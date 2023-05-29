@@ -1,4 +1,4 @@
 package com.educator.subject;
 
-public class VariableMapper {
+public class SubjectMapper {
 }

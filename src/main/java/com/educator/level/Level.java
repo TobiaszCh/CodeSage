@@ -1,11 +1,9 @@
-package com.educator.level_management;
-
-import com.educator.task_management.Task;
-import com.educator.variable_management.Variable;
+package com.educator.level;
+import com.educator.task.Task;
+import com.educator.subject.Subject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,11 +15,8 @@ public class Level {
     @Id
     @GeneratedValue
     private Long id;
-
     @ManyToOne
-    private Variable variable;
-
+    private Subject subject;
     @OneToMany
     private List<Task> tasks;
-
 }

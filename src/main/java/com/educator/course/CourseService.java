@@ -1,7 +1,4 @@
-package com.educator.course_management;
-
-import com.educator.course_management.Course;
-import com.educator.course_management.CourseRepository;
+package com.educator.course;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -10,14 +7,14 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CourseService {
-
     final private CourseRepository courseRepository;
+    private final CourseMapper courseMapper;
 
-    public Course getCourse(Long id) {
-        return courseRepository.findAllById(id);
+    public CourseDto getCourse(Long id) {
+        return courseMapper.mapToDtoCourse(courseRepository.findAllById(id));
     }
 
-    public List<Course> getWithPhrase(String phrase) {
+    public List<CourseDto> getWithPhrase(String phrase) {
         List<Course> courses =  courseRepository.findAll();
         List<Course> listWithPhrases = new ArrayList<>();
         for(Course course: courses) {
@@ -25,18 +22,18 @@ public class CourseService {
                 listWithPhrases.add(course);
             }
         }
-        return listWithPhrases;
+        return courseMapper.mapToListDtoCourse(listWithPhrases);
     }
 
-    public List<Course> getAllCourses() {
-        return courseRepository.findAll();
+    public List<CourseDto> getAllCourses() {
+        return courseMapper.mapToListDtoCourse(courseRepository.findAll());
     }
 
     public void deleteCourse(Long id) {
         courseRepository.deleteById(id);
     }
 
-    public void createCourse(Course course) {
-        courseRepository.save(course);
+    public void createCourse(CourseDto courseDto) {
+        courseRepository.save(courseMapper.mapToCourse(courseDto));
     }
 }

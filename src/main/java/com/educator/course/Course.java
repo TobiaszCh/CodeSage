@@ -1,5 +1,5 @@
-package com.educator.course_management;
-import com.educator.variable_management.Variable;
+package com.educator.course;
+import com.educator.subject.Subject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,13 +11,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Course {
-
     @Id
     @GeneratedValue
     private Long id;
-
     private String displayName;
     @OneToMany
-    private List<Variable> variables;
-
+    private List<Subject> subjects;
 }

@@ -1,3 +1,0 @@
-FROM postgres
-ENV POSTGRES_PASSWORD tobek12x
-VOLUME postgres

@@ -10,15 +10,16 @@ public class CourseMapper {
         return new CourseDto (
                 course.getId(),
                 course.getDisplayName(),
-                course.getSubjects());
+                course.getSubjects(),
+                course.getUser());
     }
 
     public Course mapToCourse(CourseDto courseDto) {
         return new Course(
                 courseDto.getId(),
                 courseDto.getDisplayName(),
-                courseDto.getSubjects()
-        );
+                courseDto.getUser(),
+                courseDto.getSubjects());
     }
 
     public List<CourseDto> mapToListDtoCourse(List<Course> course) {

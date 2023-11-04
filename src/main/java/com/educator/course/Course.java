@@ -16,8 +16,8 @@ public class Course {
     @GeneratedValue
     private Long id;
     private String displayName;
-    @OneToOne
-    private User user;
-    @OneToMany
-    private List<Subject> subjects;
+    //@OneToOne
+    //private User user;
+    //@OneToMany
+    //private List<Subject> subjects;
 }

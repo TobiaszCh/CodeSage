@@ -15,8 +15,9 @@ public class Subject {
     @Id
     @GeneratedValue
     private Long id;
-    @ManyToOne
-    private Course course;
-    @OneToMany
-    private List<Level> levels;
+    private String displayName;
+//    @ManyToOne
+//    private Course course;
+//    @OneToMany
+//    private List<Level> levels;
 }

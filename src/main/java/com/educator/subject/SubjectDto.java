@@ -8,4 +8,6 @@ import lombok.Getter;
 public class SubjectDto {
     private Long id;
     private String displayName;
+
+    private Long courseId;
 }

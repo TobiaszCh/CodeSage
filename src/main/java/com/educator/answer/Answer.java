@@ -1,21 +1,23 @@
-package com.educator.course;
-import com.educator.subject.Subject;
+package com.educator.answer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
-import java.util.List;
+
 
 @Getter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Course {
+public class Answer {
     @Id
     @GeneratedValue
     private Long id;
-    private String displayName;
+/*
+    @ManyToOne
+    private Subject subject;
+    @OneToMany
+    private List<Task> tasks;
 
+ */
 }
-
-

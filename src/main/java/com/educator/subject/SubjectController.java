@@ -21,5 +21,9 @@ public class SubjectController {
     public void deleteCourse(@PathVariable Long id) {
         subjectService.deleteCourse(id);
     }
+    @DeleteMapping
+    public void deleteAllCourse() {
+        subjectService.deleteAllCourse();
+    }
 
 }

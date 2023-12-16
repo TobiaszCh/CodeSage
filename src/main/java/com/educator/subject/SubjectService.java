@@ -21,6 +21,9 @@ public class SubjectService {
 
     public void deleteCourse(Long id) {
         subjectRepository.deleteById(id);
+    }
 
+    public void deleteAllCourse() {
+        subjectRepository.deleteAll();
     }
 }

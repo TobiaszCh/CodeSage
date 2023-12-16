@@ -1,5 +1,6 @@
 package com.educator.course;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import java.util.List;
 @RequestMapping("/courses")
 @RequiredArgsConstructor
 public class CourseController {
+    @Autowired
     private final CourseService courseService;
 
     @GetMapping(value = "/search/{id}")

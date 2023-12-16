@@ -10,6 +10,5 @@ import java.util.List;
 public class CourseDto {
     private Long id;
     private String displayName;
-    //private List<Subject> subjects;
-    //private User user;
+
 }

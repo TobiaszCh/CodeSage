@@ -16,6 +16,6 @@ public class User {
     private String userName;
     private String achievements;
     private String statistics;
-    @OneToOne
-    private Course course;
+    /*@OneToOne
+    private Course course;*/
 }

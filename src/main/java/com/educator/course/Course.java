@@ -1,10 +1,8 @@
 package com.educator.course;
-import com.educator.subject.Subject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Entity

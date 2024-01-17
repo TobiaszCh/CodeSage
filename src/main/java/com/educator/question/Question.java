@@ -14,6 +14,5 @@ public class Question {
     @Id
     @GeneratedValue
     private Long Id;
-/*    @ManyToOne
-    private Level level;*/
+
 }

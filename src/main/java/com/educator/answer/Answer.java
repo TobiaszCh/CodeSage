@@ -13,11 +13,5 @@ public class Answer {
     @Id
     @GeneratedValue
     private Long id;
-/*
-    @ManyToOne
-    private Subject subject;
-    @OneToMany
-    private List<Task> tasks;
 
- */
 }

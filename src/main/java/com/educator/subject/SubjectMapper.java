@@ -3,8 +3,6 @@ package com.educator.subject;
 import com.educator.course.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.util.List;
 import java.util.stream.Collectors;
 @Component
@@ -17,7 +15,7 @@ public class SubjectMapper {
         return new SubjectDto(
                 subject.getId(),
                 subject.getDisplayName(),
-                (subject.getCourse() != null) ? subject.getCourse().getId(): null);
+                (subject.getCourse() != null) ?   subject.getCourse().getId(): null);
     }
 
     public Subject mapToSubject(SubjectDto subjectDto) {

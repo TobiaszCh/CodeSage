@@ -15,7 +15,7 @@ public class SubjectMapper {
         return new SubjectDto(
                 subject.getId(),
                 subject.getDisplayName(),
-                (subject.getCourse() != null) ?   subject.getCourse().getId(): null);
+                (subject.getCourse() != null) ? subject.getCourse().getId(): null);
     }
 
     public Subject mapToSubject(SubjectDto subjectDto) {

@@ -13,6 +13,11 @@ import javax.persistence.Id;
 public class Question {
     @Id
     @GeneratedValue
-    private Long Id;
+    private Long id;
+
+    private String displayNane;
+
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.educator.question;
 
+import com.educator.answer.Answer;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,7 +11,8 @@ public class QuestionMapper {
     public  QuestionDto mapToDtoQuestion(Question question) {
         return new QuestionDto(
                 question.getId(),
-                question.getDisplayNane()
+                question.getDisplayName(),
+                question.getAnswers().stream().map(Answer::getDisplayName).collect(Collectors.toList())
         );
     }
 

@@ -17,12 +17,14 @@ public class AnswerMapper {
     public AnswerDto mapToDtoAnswer(Answer answer) {
         return new AnswerDto(answer.getId(),
                 answer.getDisplayName(),
+                answer.isCorrect(),
                 answer.getQuestion() != null ? answer.getQuestion().getId(): null);
     }
 
     public Answer mapToAnswer (AnswerDto answerDto) {
         return new Answer(answerDto.getId(),
                 answerDto.getDisplayName(),
+                answerDto.isCorrect(),
                 questionRepository.findAllById(answerDto.getQuestionId()));
     }
 

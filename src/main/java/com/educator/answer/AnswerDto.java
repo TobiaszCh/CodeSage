@@ -10,5 +10,7 @@ public class AnswerDto {
 
     private String displayName;
 
+    private boolean isCorrect;
+
     private Long questionId;
 }

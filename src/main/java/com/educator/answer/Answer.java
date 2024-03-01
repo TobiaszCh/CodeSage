@@ -17,6 +17,8 @@ public class Answer {
 
     private String displayName;
 
+    private boolean isCorrect;
+
     @ManyToOne
     private Question question;
 

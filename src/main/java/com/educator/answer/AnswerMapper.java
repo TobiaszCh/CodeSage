@@ -1,10 +1,8 @@
 package com.educator.answer;
 
-import com.educator.question.Question;
 import com.educator.question.QuestionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

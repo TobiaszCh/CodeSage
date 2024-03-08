@@ -1,18 +1,23 @@
 package com.educator.question;
 
 import com.educator.answer.Answer;
+import com.educator.answer.AnswerMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 @Component
+@AllArgsConstructor
 public class QuestionMapper {
+
+    private final AnswerMapper answerMapper;
 
     public  QuestionDto mapToDtoQuestion(Question question) {
         return new QuestionDto(
                 question.getId(),
                 question.getDisplayName(),
-                question.getAnswers().stream().map(Answer::getDisplayName).collect(Collectors.toList())
+                answerMapper.mapToListDtoAnswer(question.getAnswers())
         );
     }
 

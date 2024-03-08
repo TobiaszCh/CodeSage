@@ -1,6 +1,6 @@
 package com.educator.question;
 
-import com.educator.answer.Answer;
+import com.educator.answer.AnswerDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -12,6 +12,6 @@ public class QuestionDto {
 
     private Long id;
     private String displayName;
-    private List<String> answers;
+    private List<AnswerDto> answers;
 
 }

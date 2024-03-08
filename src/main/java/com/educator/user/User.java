@@ -1,5 +1,4 @@
 package com.educator.user;
-import com.educator.course.Course;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

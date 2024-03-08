@@ -1,0 +1,54 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="2" author="Tobiasz">
+        <insert tableName="subject">
+            <column name="id" value= "9"/>
+            <column name="display_name" value="Klasy"/>
+            <column name="course_id" value="1"/>
+        </insert>
+        <insert tableName="subject">
+            <column name="id" value= "10"/>
+            <column name="display_name" value="Klasy abstrakcyjne"/>
+            <column name="course_id" value="1"/>
+        </insert>
+        <insert tableName="subject">
+            <column name="id" value= "11"/>
+            <column name="display_name" value="Interfejsy"/>
+            <column name="course_id" value="1"/>
+        </insert>
+        <insert tableName="subject">
+            <column name="id" value= "12"/>
+            <column name="display_name" value="Enumy"/>
+            <column name="course_id" value="1"/>
+        </insert>
+        <insert tableName="subject">
+            <column name="id" value= "13"/>
+            <column name="display_name" value="Atrybuty/Pola"/>
+            <column name="course_id" value="1"/>
+        </insert>
+        <insert tableName="subject">
+            <column name="id" value= "14"/>
+            <column name="display_name" value="Metody"/>
+            <column name="course_id" value="1"/>
+        </insert>
+        <insert tableName="subject">
+            <column name="id" value= "15"/>
+            <column name="display_name" value="Adnotacje"/>
+            <column name="course_id" value="1"/>
+        </insert>
+        <insert tableName="subject">
+            <column name="id" value= "16"/>
+            <column name="display_name" value="Kolekcje"/>
+            <column name="course_id" value="1"/>
+        </insert>
+        <insert tableName="subject">
+            <column name="id" value= "17"/>
+            <column name="display_name" value="Funkcje"/>
+            <column name="course_id" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

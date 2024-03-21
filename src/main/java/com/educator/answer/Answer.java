@@ -1,7 +1,5 @@
 package com.educator.answer;
 import com.educator.question.Question;
-import liquibase.change.DatabaseChange;
-import liquibase.change.DatabaseChangeProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

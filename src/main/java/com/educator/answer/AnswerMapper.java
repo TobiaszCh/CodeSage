@@ -23,7 +23,7 @@ public class AnswerMapper {
         return new Answer(answerDto.getId(),
                 answerDto.getDisplayName(),
                 answerDto.isCorrect(),
-                questionRepository.findAllById(answerDto.getQuestionId()));
+                questionRepository.getById(answerDto.getQuestionId()));
     }
 
     public List<AnswerDto> mapToListDtoAnswer(List<Answer> answers) {

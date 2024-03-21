@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="6" author="Tobiasz">
+        <update tableName="question">
+            <column name="level_id" valueNumeric="33"/>
+            <where>id = '18'</where>
+        </update>
+        <update tableName="question">
+            <column name="level_id" valueNumeric="33"/>
+            <where>id = '19'</where>
+        </update>
+        <update tableName="question">
+            <column name="level_id" valueNumeric="33"/>
+            <where>id = '20'</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

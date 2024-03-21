@@ -12,6 +12,7 @@ public class QuestionDto {
 
     private Long id;
     private String displayName;
+    private Long levelId;
     private List<AnswerDto> answers;
 
 }

@@ -22,7 +22,7 @@ public class SubjectMapper {
         return new Subject(
                 subjectDto.getId(),
                 subjectDto.getDisplayName(),
-                courseRepository.findAllById(subjectDto.getCourseId()));
+                courseRepository.getById(subjectDto.getCourseId()));
     }
 
     public List<SubjectDto> mapToDtoSubjectList(List<Subject> subjectList) {

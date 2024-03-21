@@ -7,7 +7,9 @@
 
     <include file="database/Course/2024.03.07/insert.xml"/>
     <include file="database/Subject/2024.03.07/insert.xml"/>
+    <include file="database/Level/2024.03.11/insert.xml"/>
     <include file="database/Question/2024.03.07/insert.xml"/>
+    <include file="database/Question/2024.03.11/insert.xml"/>
     <include file="database/Answer/2024.03.07/insert.xml"/>
 
 </databaseChangeLog>

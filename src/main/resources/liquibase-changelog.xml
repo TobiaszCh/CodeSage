@@ -4,14 +4,17 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-
-    <include file="database/Course/2024.03.07/insert.xml"/>
-    <include file="database/Subject/2024.03.07/insert.xml"/>
-    <include file="database/Level/2024.03.11/insert.xml"/>
-    <include file="database/Question/2024.03.07/insert.xml"/>
-    <include file="database/Question/2024.03.11/insert.xml"/>
-    <include file="database/Answer/2024.03.07/insert.xml"/>
-    <include file="database/Question/2024.03.22/insert.xml"/>
-    <include file="database/Answer/2024.03.22/insert.xml"/>
-
+    <include file="database/create/07.04.2024/Course.xml"/>
+    <include file="database/create/07.04.2024/Subject.xml"/>
+    <include file="database/create/08.04.2024/Level.xml"/>
+    <include file="database/create/08.04.2024/Question.xml"/>
+    <include file="database/create/08.04.2024/Answer.xml"/>
+    <include file="database/insert/2024.03.07/Course.xml"/>
+    <include file="database/insert/2024.03.07/Subject.xml"/>
+    <include file="database/insert/2024.03.11/Level.xml"/>
+    <include file="database/insert/2024.03.07/Question.xml"/>
+    <include file="database/update/2024.03.11/Question.xml"/>
+    <include file="database/insert/2024.03.07/Answer.xml"/>
+    <include file="database/insert/2024.03.22/Question.xml"/>
+    <include file="database/insert/2024.03.22/Answer.xml"/>
 </databaseChangeLog>

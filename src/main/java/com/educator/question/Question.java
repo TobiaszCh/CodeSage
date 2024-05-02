@@ -14,9 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Question {
     @Id
-    @GeneratedValue
     private Long id;
-
     private String displayName;
 
     @ManyToOne

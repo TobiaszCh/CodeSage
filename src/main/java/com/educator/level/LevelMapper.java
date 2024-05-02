@@ -1,5 +1,4 @@
 package com.educator.level;
-
 import com.educator.subject.SubjectRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

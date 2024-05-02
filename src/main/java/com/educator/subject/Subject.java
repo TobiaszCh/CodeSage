@@ -11,7 +11,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Subject {
     @Id
-    @GeneratedValue
     private Long id;
 
     private String displayName;

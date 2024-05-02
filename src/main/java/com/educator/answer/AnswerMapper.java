@@ -1,5 +1,4 @@
 package com.educator.answer;
-
 import com.educator.question.QuestionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

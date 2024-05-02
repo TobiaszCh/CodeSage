@@ -57,7 +57,7 @@
 
         <insert tableName="answer">
             <column name="id" value= "49"/>
-            <column name="display_name" value=" Za pomocą operatora ':'"/>
+            <column name="display_name" value="Za pomocą operatora ':'"/>
             <column name="is_correct" value="false"/>
             <column name="question_id" value="36"/>
         </insert>
@@ -107,7 +107,7 @@
 
         <insert tableName="answer">
             <column name="id" value= "57"/>
-            <column name="display_name" value="Prevent"/>
+            <column name="display_name" value="prevent"/>
             <column name="is_correct" value="false"/>
             <column name="question_id" value="38"/>
         </insert>

@@ -9,14 +9,17 @@ import java.util.List;
 public class AnswerController {
 
     private final AnswerService answerService;
+
     @GetMapping
     public List<AnswerDto> getAllAnswer () {
         return answerService.getAllAnswer();
     }
+
     @DeleteMapping(value = "/{id}")
     public void deleteAnswer(@PathVariable Long id) {
         answerService.deleteAnswer(id);
     }
+
     @PostMapping
     public void createAnswer(@RequestBody AnswerDto answerDto) {
         answerService.createAnswer(answerDto);

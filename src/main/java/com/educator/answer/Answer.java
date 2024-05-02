@@ -5,14 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
-
 @Getter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 public class Answer {
+
     @Id
-    @GeneratedValue
     private Long id;
 
     private String displayName;

@@ -1,0 +1,23 @@
+package com.educator.core.answer;
+import com.educator.core.question.Question;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import javax.persistence.*;
+
+@Getter
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+public class Answer {
+
+    @Id
+    private Long id;
+
+    private String displayName;
+
+    private boolean isCorrect;
+
+    @ManyToOne
+    private Question question;
+}

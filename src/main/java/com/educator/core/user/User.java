@@ -9,10 +9,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
+
     @Id
     private Long id;
-    private String userName;
-    private String achievements;
-    private int points;
 
+    private String userName;
+
+    private String achievements;
+
+    private int points;
 }

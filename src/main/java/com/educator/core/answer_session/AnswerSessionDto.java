@@ -7,8 +7,11 @@ import lombok.Getter;
 public class AnswerSessionDto {
 
     private Long id;
+
     private Long userPoints;
+
     private Long userId;
+
     private Long subjectId;
 
 

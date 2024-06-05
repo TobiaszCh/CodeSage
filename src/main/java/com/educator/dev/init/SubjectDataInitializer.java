@@ -9,12 +9,13 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
+@AllArgsConstructor
 @Profile("development")
 @DependsOn("courseDataInitializer")
-@AllArgsConstructor
 public class SubjectDataInitializer {
 
     private final SubjectRepository subjectRepository;
+
     private final CourseRepository courseRepository;
 
     @PostConstruct
@@ -30,5 +31,4 @@ public class SubjectDataInitializer {
         subjectRepository.save(new Subject(17L, "Funkcje", courseRepository.getById(1L)));
 
     }
-
 }

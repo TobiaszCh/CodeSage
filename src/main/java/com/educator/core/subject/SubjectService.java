@@ -1,5 +1,4 @@
 package com.educator.core.subject;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -10,7 +9,9 @@ import java.util.stream.Collectors;
 public class SubjectService {
 
     private Long courseId;
+
     private final SubjectRepository subjectRepository;
+
     private final SubjectMapper subjectMapper;
   
     public List<SubjectDto> getAllSubjects() {

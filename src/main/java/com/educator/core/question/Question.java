@@ -12,11 +12,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Question {
+
     @Id
     private Long id;
+
     private String displayName;
+
     @ManyToOne
     private Subject subject;
+
     @OneToMany(mappedBy = "question")
     private List<Answer> answers;
 

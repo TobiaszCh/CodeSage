@@ -10,10 +10,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Subject {
+
     @Id
     private Long id;
+
     private String displayName;
+
     @ManyToOne
     private Course course;
-
 }

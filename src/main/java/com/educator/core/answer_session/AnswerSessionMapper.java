@@ -1,5 +1,5 @@
 package com.educator.core.answer_session;
-import com.educator.core.user.User;
+import com.educator.auth.AuthService;
 import com.educator.core.subject.SubjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AnswerSessionMapper {
 
+    private final AuthService authService;
+
     private final SubjectRepository subjectRepository;
+
 
     public AnswerSessionDto mapToDtoAnswerSession(AnswerSession answerSession) {
         return new AnswerSessionDto(
@@ -23,7 +26,7 @@ public class AnswerSessionMapper {
     public AnswerSession mapToAnswerSession(AnswerSessionDto answerSessionDto) {
         return new AnswerSession(
                 answerSessionDto.getId(),
-                new User(69L, "TestUser", "beginner", 0),
+                authService.getLoggedUser(),
                 subjectRepository.getById(answerSessionDto.getSubjectId()));
     }
 

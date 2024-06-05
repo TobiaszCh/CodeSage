@@ -7,9 +7,13 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class QuestionService {
+
     private Long subjectId;
+
     private int nextQuestionAndAnswers;
+
     private final QuestionMapper questionMapper;
+
     private final QuestionRepository questionRepository;
 
     public List<QuestionDto> getAllQuestions () {
@@ -23,6 +27,7 @@ public class QuestionService {
     public void deleteQuestion(Long id) {
         questionRepository.deleteById(id);
     }
+
     public QuestionDto getQuestionById(Long id) {
         return questionMapper.mapToDtoQuestion(questionRepository.findAllById(id));
     }
@@ -30,6 +35,7 @@ public class QuestionService {
     public void sendSubjectIdFromAngular(Long subjectId) {
         this.subjectId = subjectId;
     }
+
     //ta metoda zwraca losowe pytanie z danego subject
     public QuestionDto getQuestionFilterBySubjectIdFromAngular(String nextQuestion) {
         List<QuestionDto> questionsSelect = questionMapper.mapToListDtoQuestion(questionRepository.findAll()).stream()

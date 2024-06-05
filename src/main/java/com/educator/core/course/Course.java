@@ -9,8 +9,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Course {
+
     @Id
     private Long id;
+
     private String displayName;
 
 }

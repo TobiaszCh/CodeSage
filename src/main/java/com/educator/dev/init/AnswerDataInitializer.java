@@ -9,13 +9,15 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
+@AllArgsConstructor
 @Profile("development")
 @DependsOn("questionDataInitializer")
-@AllArgsConstructor
 public class AnswerDataInitializer {
 
     private final AnswerRepository answerRepository;
+
     private final QuestionRepository questionRepository;
+
     @PostConstruct
     public void initializeAnswerData () {
         answerRepository.save(new Answer(21L, "Zbiór funkcji", false, questionRepository.getById(18L)));

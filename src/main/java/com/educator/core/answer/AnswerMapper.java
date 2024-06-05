@@ -28,6 +28,4 @@ public class AnswerMapper {
     public List<AnswerDto> mapToListDtoAnswer(List<Answer> answers) {
         return answers.stream().map(this::mapToDtoAnswer).collect(Collectors.toList());
     }
-
-
 }

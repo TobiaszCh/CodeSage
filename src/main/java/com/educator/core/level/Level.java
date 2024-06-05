@@ -10,13 +10,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Level {
+
     @Id
     private Long id;
-
-
-
-
-
-
-
 }

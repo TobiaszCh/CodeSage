@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
+@AllArgsConstructor
 @Profile("development")
 @DependsOn("userDataInitializer")
-@AllArgsConstructor
 public class CourseDataInitializer {
 
     private final CourseRepository courseRepository;

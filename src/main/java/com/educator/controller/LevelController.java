@@ -8,19 +8,22 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/levels")
+@CrossOrigin(origins = "http://localhost:4200")
 public class LevelController {
 
     private final LevelService levelService;
+
     @GetMapping
     public List<LevelDto> getAllLevel() {
         return levelService.getAllLevel();
     }
+
     @PostMapping
     public void createLevel(@RequestBody Level level) {
         levelService.createLevel(level);
     }
+
     @DeleteMapping("/{id}")
     public void deleteLevel(@PathVariable Long id) {
         levelService.deleteLevel(id);

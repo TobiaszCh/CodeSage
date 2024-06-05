@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/courses")
 @RequiredArgsConstructor
+@RequestMapping("/courses")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CourseController {
+
     @Autowired
     private final CourseService courseService;
 
@@ -42,5 +43,4 @@ public class CourseController {
     public void createCourse(@RequestBody CourseDto courseDto) {
         courseService.createCourse(courseDto);
     }
-
 }

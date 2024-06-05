@@ -9,13 +9,15 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
+@AllArgsConstructor
 @Profile("development")
 @DependsOn("levelDataInitializer")
-@AllArgsConstructor
 public class QuestionDataInitializer {
 
     private final QuestionRepository questionRepository;
+
     private final SubjectRepository subjectRepository;
+
     @PostConstruct
     public void initializeQuestionData () {
         questionRepository.save(new Question(18L, "Czym jest klasa w Javie?", subjectRepository.getById(9L)));

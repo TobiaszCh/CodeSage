@@ -1,6 +1,5 @@
 package com.educator.dev.init;
-
-import com.educator.core.user.User;
+import com.educator.auth.AuthService;
 import com.educator.core.user.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -13,9 +12,10 @@ public class UserDataInitializer {
 
     private final UserRepository userRepository;
 
+    private final AuthService authService;
+
     @PostConstruct
     public void initializeUserData () {
-        userRepository.save(new User(69L, "TestUser", "beginner", 0));
-
+        userRepository.save(authService.getLoggedUser());
     }
 }

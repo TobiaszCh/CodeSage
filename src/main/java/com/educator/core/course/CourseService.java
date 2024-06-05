@@ -7,7 +7,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CourseService {
+
     final private CourseRepository courseRepository;
+
     private final CourseMapper courseMapper;
 
     public CourseDto getCourse(Long id) {

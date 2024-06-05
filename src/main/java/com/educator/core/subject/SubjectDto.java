@@ -1,5 +1,4 @@
 package com.educator.core.subject;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -8,7 +7,8 @@ import lombok.Getter;
 public class SubjectDto {
 
     private Long id;
-    private String displayName;
-    private Long courseId;
 
+    private String displayName;
+
+    private Long courseId;
 }

@@ -9,7 +9,8 @@
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="user_points" type="BIGINT"/>
+            <column name="all_answers" type="BIGINT"/>
+            <column name="correct_answers" type="BIGINT"/>
             <column name="users_id" type="BIGINT">
                 <constraints foreignKeyName="users_id" references="users(id)"/>
             </column>

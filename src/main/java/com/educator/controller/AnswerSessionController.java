@@ -1,6 +1,7 @@
 package com.educator.controller;
-import com.educator.core.answer_session.AnswerSessionDto;
+import com.educator.core.answer_session.dto.AnswerSessionDto;
 import com.educator.core.answer_session.AnswerSessionService;
+import com.educator.core.answer_session.dto.QuestionAnswerSelectDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -29,4 +30,8 @@ public class AnswerSessionController {
     //Metoda Post selectQuestionAnswer(answerSessionId, questionId, answerId)
     //ta metoda sprawdza czy odp jest prawidłowa, podbija licznik wszystkich odpowiedzi i prawidłowych odpowiedzi)
     //zwraca correctAnswerId
+    @PutMapping(value = "/selectQuestionAnswer/{id}")
+    public Long selectQuestionAnswer(@PathVariable Long id, @RequestBody QuestionAnswerSelectDto questionAnswerSelectDto) {
+        return answerSessionService.selectQuestionAnswer(id, questionAnswerSelectDto);
+    }
 }

@@ -1,4 +1,4 @@
-package com.educator.core.answer_session;
+package com.educator.core.answer_session.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -8,11 +8,12 @@ public class AnswerSessionDto {
 
     private Long id;
 
-    private Long userPoints;
+    private int allAnswers;
+
+    private int correctAnswers;
 
     private Long userId;
 
     private Long subjectId;
-
 
 }

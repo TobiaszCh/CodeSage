@@ -8,8 +8,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class SubjectService {
 
-    private Long courseId;
-
     private final SubjectRepository subjectRepository;
 
     private final SubjectMapper subjectMapper;
@@ -30,12 +28,8 @@ public class SubjectService {
         subjectRepository.deleteAll();
     }
 
-    public void sendCourseIdFromAngular(Long courseId) {
-        this.courseId = courseId;
-    }
-
-    public List<SubjectDto> getSubjectsFilterByCourseIdFromAngular() {
+    public List<SubjectDto> getSubjectsFilterByCourseIdFromAngular(Long courseId) {
         return subjectMapper.mapToDtoSubjectList(subjectRepository.findAll()).stream()
-                .filter(i -> i.getCourseId().equals(this.courseId)).collect(Collectors.toList());
+                .filter(i -> i.getCourseId().equals(courseId)).collect(Collectors.toList());
     }
 }

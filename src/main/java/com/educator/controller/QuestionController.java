@@ -33,13 +33,8 @@ public class QuestionController {
         return questionService.getQuestionById(id);
     }
 
-    @PostMapping("/subjectId")
-    public void sendSubjectIdFromAngular(@RequestBody QuestionDto questionDto) {
-        questionService.sendSubjectIdFromAngular(questionDto.getSubjectId());
-    }
-
-    @GetMapping("/subjectId/{nextQuestion}")
-    public QuestionDto getQuestionFilterBySubjectIdFromAngular(@PathVariable String nextQuestion) {
-        return questionService.getQuestionFilterBySubjectIdFromAngular(nextQuestion);
+    @GetMapping("/answerSessionId/{answerSessionId}")
+    public QuestionDto getQuestionFilterBySubjectIdFromAngular(@PathVariable Long answerSessionId) {
+        return questionService.getQuestionFilterBySubjectIdFromAngular(answerSessionId);
     }
 }

@@ -4,10 +4,12 @@ import com.educator.core.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnswerSession {
@@ -16,7 +18,9 @@ public class AnswerSession {
     @GeneratedValue(generator = "course_sequence")
     private Long id;
 
-    private Long userPoints;
+    private int allAnswers;
+
+    private int correctAnswers;
 
     @OneToOne
     private User users;

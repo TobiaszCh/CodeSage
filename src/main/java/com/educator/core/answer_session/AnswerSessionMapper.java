@@ -1,5 +1,6 @@
 package com.educator.core.answer_session;
 import com.educator.auth.AuthService;
+import com.educator.core.answer_session.dto.AnswerSessionDto;
 import com.educator.core.subject.SubjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,8 @@ public class AnswerSessionMapper {
     public AnswerSessionDto mapToDtoAnswerSession(AnswerSession answerSession) {
         return new AnswerSessionDto(
                 answerSession.getId(),
-                answerSession.getUserPoints(),
+                answerSession.getAllAnswers(),
+                answerSession.getCorrectAnswers(),
                 answerSession.getUsers() != null ? answerSession.getUsers().getId(): null,
                 answerSession.getSubject() != null ? answerSession.getSubject().getId(): null);
     }

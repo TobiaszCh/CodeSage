@@ -28,13 +28,8 @@ public class SubjectController {
         subjectService.deleteAllCourse();
     }
 
-    @PostMapping("/courseId")
-    public void sendCourseIdFromAngular(@RequestBody SubjectDto subjectDto) {
-        subjectService.sendCourseIdFromAngular(subjectDto.getCourseId());
-    }
-
-    @GetMapping("/courseId")
-    public List<SubjectDto> getSubjectsFilterByCourseIdFromAngular() {
-        return subjectService.getSubjectsFilterByCourseIdFromAngular();
+    @GetMapping(value = "/{courseId}")
+    public List<SubjectDto> getSubjectsFilterByCourseIdFromAngular(@PathVariable Long courseId) {
+        return subjectService.getSubjectsFilterByCourseIdFromAngular(courseId);
     }
 }

@@ -10,6 +10,5 @@
                 <constraints foreignKeyName="answer_session_id" references="answer_session(id)"/>
             </column>
         </addColumn>
-
     </changeSet>
 </databaseChangeLog>

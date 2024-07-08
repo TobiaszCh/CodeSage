@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 public class AuthService {
 
     public User getLoggedUser() {
-        return new User(69L, "TestUser", "beginner", 0);
+        return new User(-69L, "TestUser", "beginner", 0);
     }
 }

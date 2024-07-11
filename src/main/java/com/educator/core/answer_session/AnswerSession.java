@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class AnswerSession {
 
     @Id
-    @GeneratedValue(generator = "course_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private int allAnswers;

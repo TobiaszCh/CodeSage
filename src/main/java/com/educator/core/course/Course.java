@@ -11,6 +11,7 @@ import javax.persistence.*;
 public class Course {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String displayName;

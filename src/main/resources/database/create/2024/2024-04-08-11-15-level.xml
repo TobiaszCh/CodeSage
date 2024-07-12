@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="11" author="Tobiasz">
+    <changeSet id="create-level-table" author="Tobiasz">
         <createTable tableName="level">
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true"/>

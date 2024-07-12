@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="16" author="Tobiasz">
+    <changeSet id="add-new-column-to-level-table" author="Tobiasz">
         <addColumn tableName="level" >
             <column name="answer_session_id" type="BIGINT">
                 <constraints foreignKeyName="answer_session_id" references="answer_session(id)"/>

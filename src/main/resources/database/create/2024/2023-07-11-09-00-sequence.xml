@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="17" author="Tobiasz">
+    <changeSet id="create-sequence-table" author="Tobiasz">
         <createSequence sequenceName="hibernate_sequence"/>
     </changeSet>
 </databaseChangeLog>

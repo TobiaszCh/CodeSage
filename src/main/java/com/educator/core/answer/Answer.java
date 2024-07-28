@@ -1,5 +1,6 @@
 package com.educator.core.answer;
 import com.educator.core.question.Question;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,4 +21,9 @@ public class Answer {
 
     @ManyToOne
     private Question question;
+
+    @JsonIgnore
+    public boolean isCorrect() {
+        return isCorrect;
+    }
 }

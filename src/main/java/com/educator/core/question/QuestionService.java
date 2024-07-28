@@ -3,7 +3,6 @@ import com.educator.core.answer_session.AnswerSessionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -13,7 +12,6 @@ public class QuestionService {
     private final QuestionMapper questionMapper;
     private final AnswerSessionRepository answerSessionRepository;
     private final QuestionRepository questionRepository;
-
 
 
     public List<QuestionDto> getAllQuestions () {
@@ -33,10 +31,14 @@ public class QuestionService {
     }
     //ta metoda zwraca losowe pytanie z danego subject
     public QuestionDto getQuestionFilterBySubjectIdFromAngular(Long answerSessionId) {
-        Random randomQuestion = new Random();
         Long subjectId = answerSessionRepository.getById(answerSessionId).getSubject().getId();
         List<QuestionDto> questionsSelect = questionMapper.mapToListDtoQuestion(questionRepository.findAll()).stream()
                 .filter(s -> s.getSubjectId().equals(subjectId)).collect(Collectors.toList());
-        return questionsSelect.get(randomQuestion.nextInt(questionsSelect.size()));
+        if(answerSessionRepository.getById(answerSessionId).getAllAnswers() < 10) {
+            return questionsSelect.get(answerSessionRepository.getById(answerSessionId).getAllAnswers());
+        }
+        else {
+            return null;
+        }
     }
 }

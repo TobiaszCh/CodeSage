@@ -20,10 +20,10 @@ public class AnswerDataInitializer {
 
     @PostConstruct
     public void initializeAnswerData() {
-        answerRepository.save(new Answer(-21L, "Zbiór funkcji", false, questionRepository.getById(-18L)));
-        answerRepository.save(new Answer(-22L, "Szablon lub wzorzec", true, questionRepository.getById(-18L)));
-        answerRepository.save(new Answer(-23L, "Zbiór funkcji", false, questionRepository.getById(-18L)));
-        answerRepository.save(new Answer(-24L, "Zbiór funkcji", false, questionRepository.getById(-18L)));
+        answerRepository.save(new Answer(-21L, "Klasa w Javie to wzorzec projektowy używany do tworzenia obiektów", false, questionRepository.getById(-18L)));
+        answerRepository.save(new Answer(-22L, "Klasa w Javie to struktura danych służąca do modelowania rzeczywistości, definiująca stan i zachowania, które mogą posiadać obiekty", true, questionRepository.getById(-18L)));
+        answerRepository.save(new Answer(-23L, "Klasa w Javie to specjalny rodzaj funkcji zapewniający wyższą wydajność aplikacji", false, questionRepository.getById(-18L)));
+        answerRepository.save(new Answer(-24L, "Klasa w Javie to narzędzie służące do bezpośredniej manipulacji bazami danych", false, questionRepository.getById(-18L)));
 
         answerRepository.save(new Answer(-25L, "Metody zaimplementowane w klasie", false, questionRepository.getById(-19L)));
         answerRepository.save(new Answer(-26L, "Zmienne zdefiniowane w klasie", true, questionRepository.getById(-19L)));

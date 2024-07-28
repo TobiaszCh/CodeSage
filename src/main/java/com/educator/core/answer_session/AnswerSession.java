@@ -1,4 +1,5 @@
 package com.educator.core.answer_session;
+import com.educator.core.question.Question;
 import com.educator.core.subject.Subject;
 import com.educator.core.user.User;
 import lombok.AllArgsConstructor;

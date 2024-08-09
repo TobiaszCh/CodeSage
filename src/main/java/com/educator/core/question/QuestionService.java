@@ -1,4 +1,5 @@
 package com.educator.core.question;
+import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,15 +28,19 @@ public class QuestionService {
     }
 
     public QuestionDto getQuestionById(Long id) {
-        return questionMapper.mapToDtoQuestion(questionRepository.findAllById(id));
+        return questionMapper.mapToDtoQuestion(questionRepository.getById(id));
     }
     //ta metoda zwraca losowe pytanie z danego subject
-    public QuestionDto getQuestionFilterBySubjectIdFromAngular(Long answerSessionId) {
-        Long subjectId = answerSessionRepository.getById(answerSessionId).getSubject().getId();
-        List<QuestionDto> questionsSelect = questionMapper.mapToListDtoQuestion(questionRepository.findAll()).stream()
-                .filter(s -> s.getSubjectId().equals(subjectId)).collect(Collectors.toList());
-        if(answerSessionRepository.getById(answerSessionId).getAllAnswers() < 10) {
-            return questionsSelect.get(answerSessionRepository.getById(answerSessionId).getAllAnswers());
+    //ToDo nie używać słowa agular w backend
+    public QuestionDto getQuestionFilterBySubject(Long answerSessionId) {
+        AnswerSession answerSession = answerSessionRepository.getById(answerSessionId);
+        Long subjectId = answerSession.getSubject().getId();
+
+        List<QuestionDto> questionsSelect = questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectId(subjectId));
+
+        int answeredQuestion = answerSession.getAllAnswers();
+        if(answeredQuestion < 10) {
+            return questionsSelect.get(answeredQuestion);
         }
         else {
             return null;

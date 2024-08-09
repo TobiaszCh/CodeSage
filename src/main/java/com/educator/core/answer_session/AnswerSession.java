@@ -16,7 +16,8 @@ import javax.persistence.*;
 public class AnswerSession {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE) // , generator = "answer_session_seq"
+    //@SequenceGenerator(allocationSize)
     private Long id;
 
     private int allAnswers;

@@ -18,6 +18,11 @@ public class SubjectController {
         return subjectService.getAllSubjects();
     }
 
+    @PostMapping
+    public void createSubject(@RequestBody SubjectDto subjectDto) {
+        subjectService.createSubject(subjectDto);
+    }
+
     @DeleteMapping(value = "/{id}")
     public void deleteSubject(@PathVariable Long id) {
         subjectService.deleteCourse(id);

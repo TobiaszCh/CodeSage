@@ -12,6 +12,8 @@ import javax.persistence.*;
 public class Subject {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subject_sequence")
+    @SequenceGenerator(name = "subject_sequence", sequenceName = "subject_sequence", allocationSize = 1)
     private Long id;
 
     private String displayName;

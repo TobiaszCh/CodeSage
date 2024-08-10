@@ -5,6 +5,10 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="create-sequence-table" author="Tobiasz">
-        <createSequence sequenceName="hibernate_sequence"/>
+        <createSequence sequenceName="course_sequence"/>
+        <createSequence sequenceName="subject_sequence"/>
+        <createSequence sequenceName="question_sequence"/>
+        <createSequence sequenceName="answer_sequence"/>
+        <createSequence sequenceName="answer_session_sequence"/>
     </changeSet>
 </databaseChangeLog>

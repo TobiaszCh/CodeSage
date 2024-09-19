@@ -13,8 +13,8 @@ import javax.persistence.*;
 public class Answer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_sequence")
-    @SequenceGenerator(name = "answer_sequence", sequenceName = "answer_sequence", allocationSize = 1)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_sequence")
+    //@SequenceGenerator(name = "answer_sequence", sequenceName = "answer_sequence", allocationSize = 1)
     private Long id;
 
     private String displayName;
@@ -24,8 +24,5 @@ public class Answer {
     @ManyToOne
     private Question question;
 
-    @JsonIgnore
-    public boolean isCorrect() {
-        return isCorrect;
-    }
+
 }

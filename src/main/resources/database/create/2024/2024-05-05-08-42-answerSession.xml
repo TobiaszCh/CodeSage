@@ -11,6 +11,7 @@
             </column>
             <column name="all_answers" type="BIGINT"/>
             <column name="correct_answers" type="BIGINT"/>
+            <column name="status_answer_session" type="varchar"/>
             <column name="users_id" type="BIGINT">
                 <constraints foreignKeyName="users_id" references="users(id)"/>
             </column>

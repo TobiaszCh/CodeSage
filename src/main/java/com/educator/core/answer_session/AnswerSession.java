@@ -1,5 +1,4 @@
 package com.educator.core.answer_session;
-import com.educator.core.question.Question;
 import com.educator.core.subject.Subject;
 import com.educator.core.user.User;
 import lombok.AllArgsConstructor;
@@ -24,15 +23,19 @@ public class AnswerSession {
 
     private int correctAnswers;
 
+    @Enumerated(value = EnumType.STRING)
+    private StatusAnswerSession statusAnswerSession;
+
     @OneToOne
     private User users;
 
     @ManyToOne
     private Subject subject;
 
-    public AnswerSession(Long id, User users, Subject subject) {
+    public AnswerSession(Long id, User users, Subject subject, StatusAnswerSession statusAnswerSession) {
         this.id = id;
         this.users = users;
         this.subject = subject;
+        this.statusAnswerSession = statusAnswerSession;
     }
 }

@@ -21,6 +21,7 @@ public class AnswerSessionMapper {
                 answerSession.getId(),
                 answerSession.getAllAnswers(),
                 answerSession.getCorrectAnswers(),
+                answerSession.getStatusAnswerSession(),
                 answerSession.getUsers() != null ? answerSession.getUsers().getId(): null,
                 answerSession.getSubject() != null ? answerSession.getSubject().getId(): null);
     }
@@ -29,7 +30,8 @@ public class AnswerSessionMapper {
         return new AnswerSession(
                 answerSessionDto.getId(),
                 authService.getLoggedUser(),
-                subjectRepository.getById(answerSessionDto.getSubjectId()));
+                subjectRepository.getById(answerSessionDto.getSubjectId()),
+                StatusAnswerSession.IN_PROGRESS);
     }
 
     public List<AnswerSessionDto> mapToListDtoAnswerSession(List<AnswerSession> answerSession) {

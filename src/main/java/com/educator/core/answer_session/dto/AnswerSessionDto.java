@@ -1,4 +1,5 @@
 package com.educator.core.answer_session.dto;
+import com.educator.core.answer_session.StatusAnswerSession;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -11,6 +12,8 @@ public class AnswerSessionDto {
     private int allAnswers;
 
     private int correctAnswers;
+
+    private StatusAnswerSession statusAnswerSession;
 
     private Long userId;
 

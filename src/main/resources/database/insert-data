@@ -1,8 +1,0 @@
-    <include file="database/insert/2024.03.07/Course.xml"/>
-    <include file="database/insert/2024.03.07/Subject.xml"/>
-    <include file="database/insert/2024.03.11/Level.xml"/>
-    <include file="database/insert/2024.03.07/Question.xml"/>
-    <include file="database/update/2024.03.11/Question.xml"/>
-    <include file="database/insert/2024.03.07/Answer.xml"/>
-    <include file="database/insert/2024.03.22/Question.xml"/>
-    <include file="database/insert/2024.03.22/Answer.xml"/>

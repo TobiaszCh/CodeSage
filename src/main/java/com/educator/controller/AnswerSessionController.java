@@ -1,6 +1,7 @@
 package com.educator.controller;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
 import com.educator.core.answer_session.AnswerSessionService;
+import com.educator.core.answer_session.dto.AnswerSessionStatusIdDto;
 import com.educator.core.answer_session.dto.QuestionAnswerSelectDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -34,4 +35,9 @@ public class AnswerSessionController {
     public Long selectQuestionAnswer(@PathVariable Long id, @RequestBody QuestionAnswerSelectDto questionAnswerSelectDto) {
         return answerSessionService.selectQuestionAnswer(id, questionAnswerSelectDto);
     }
+    @PutMapping(value = "/updateStatus/{id}")
+    public void updateAnswerSessionStatus(@PathVariable Long id, @RequestBody AnswerSessionStatusIdDto answerSessionStatusIdDto) {
+        answerSessionService.updateAnswerSessionStatus(id, answerSessionStatusIdDto);
+    }
+
 }

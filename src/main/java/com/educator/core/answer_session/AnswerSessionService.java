@@ -2,16 +2,14 @@ package com.educator.core.answer_session;
 import com.educator.core.answer.Answer;
 import com.educator.core.answer.AnswerRepository;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
+import com.educator.core.answer_session.dto.AnswerSessionStatusIdDto;
 import com.educator.core.answer_session.dto.QuestionAnswerSelectDto;
 import com.educator.core.question.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.LongStream;
+
 
 @Service
 @RequiredArgsConstructor
@@ -51,4 +49,16 @@ public class AnswerSessionService {
                 .stream().filter(Answer::isCorrect).mapToLong(Answer::getId).sum();
 
     }
+
+    public void updateAnswerSessionStatus(Long id, AnswerSessionStatusIdDto answerSessionStatusIdDto) {
+        AnswerSession answerSession = answerSessionRepository.getById(answerSessionStatusIdDto.getId());
+        if(answerSession.getAllAnswers() == 10) {
+            answerSession.setStatusAnswerSession(StatusAnswerSession.COMPLETED);
+        }
+        else {
+            answerSession.setStatusAnswerSession(StatusAnswerSession.ABANDONED);
+        }
+        answerSessionRepository.save(answerSession);
+    }
+
 }

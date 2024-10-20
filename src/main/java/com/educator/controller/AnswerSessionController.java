@@ -2,6 +2,7 @@ package com.educator.controller;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
 import com.educator.core.answer_session.AnswerSessionService;
 import com.educator.core.answer_session.dto.AnswerSessionStatusIdDto;
+import com.educator.core.answer_session.dto.CheckCompletedSessionsDto;
 import com.educator.core.answer_session.dto.QuestionAnswerSelectDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,10 @@ public class AnswerSessionController {
     @PutMapping(value = "/updateStatus/{id}")
     public void updateAnswerSessionStatus(@PathVariable Long id, @RequestBody AnswerSessionStatusIdDto answerSessionStatusIdDto) {
         answerSessionService.updateAnswerSessionStatus(id, answerSessionStatusIdDto);
+    }
+    @GetMapping(value = "/correctAnswersAtLeast80Percent/{courseId}")
+    public List<CheckCompletedSessionsDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(@PathVariable Long courseId) {
+        return answerSessionService.getAllNumbersOfCorrectAnswersAtLeast80Percent(courseId);
     }
 
 }

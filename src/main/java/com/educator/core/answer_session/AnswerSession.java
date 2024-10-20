@@ -1,15 +1,15 @@
 package com.educator.core.answer_session;
+import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.subject.Subject;
 import com.educator.core.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnswerSession {
@@ -23,6 +23,8 @@ public class AnswerSession {
 
     private int correctAnswers;
 
+    private LocalDate sessionStartDate;
+
     @Enumerated(value = EnumType.STRING)
     private StatusAnswerSession statusAnswerSession;
 
@@ -32,10 +34,4 @@ public class AnswerSession {
     @ManyToOne
     private Subject subject;
 
-    public AnswerSession(Long id, User users, Subject subject, StatusAnswerSession statusAnswerSession) {
-        this.id = id;
-        this.users = users;
-        this.subject = subject;
-        this.statusAnswerSession = statusAnswerSession;
-    }
 }

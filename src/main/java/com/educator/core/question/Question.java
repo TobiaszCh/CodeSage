@@ -14,8 +14,8 @@ import java.util.List;
 public class Question {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_sequence")
-    //@SequenceGenerator(name = "question_sequence", sequenceName = "question_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_sequence")
+    @SequenceGenerator(name = "question_sequence", sequenceName = "question_sequence", allocationSize = 1)
     private Long id;
 
     private String displayName;

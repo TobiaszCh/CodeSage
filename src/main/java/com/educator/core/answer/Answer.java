@@ -1,6 +1,5 @@
 package com.educator.core.answer;
 import com.educator.core.question.Question;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +12,8 @@ import javax.persistence.*;
 public class Answer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_sequence")
-    @SequenceGenerator(name = "answer_sequence", sequenceName = "answer_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_seq_generator")
+    @SequenceGenerator(name = "answer_seq_generator", sequenceName = "answer_seq", allocationSize = 1)
     private Long id;
 
     private String displayName;

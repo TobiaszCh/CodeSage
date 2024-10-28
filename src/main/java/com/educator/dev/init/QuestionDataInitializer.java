@@ -20,221 +20,220 @@ public class QuestionDataInitializer {
 
     @PostConstruct
     public void initializeQuestionData () {
-        //Klasy - Java
-        questionRepository.save(new Question(-18L, "Czym jest klasa w Javie?", subjectRepository.getById(-9L)));
-        questionRepository.save(new Question(-19L, "Jaką funkcję pełnią atrybuty w Klasie?", subjectRepository.getById(-9L)));
-        questionRepository.save(new Question(-20L, "Czym jest konstruktor w Javie?", subjectRepository.getById(-9L)));
-        questionRepository.save(new Question(-34L, "Które słowo kluczowe służy do definiowania nowej klasy w języku Java?", subjectRepository.getById(-9L)));
-        questionRepository.save(new Question(-35L, "Które słowo kluczowe oznacza, że metoda nie zwraca żadnej wartości?", subjectRepository.getById(-9L)));
-        questionRepository.save(new Question(-36L, "Jak oznacza się dziedziczenie między klasami w języku Java?", subjectRepository.getById(-9L)));
-        questionRepository.save(new Question(-37L, "Które z poniższych jest przykładem enkapsulacji w języku Java?", subjectRepository.getById(-9L)));
-        questionRepository.save(new Question(-38L, "Które z poniższych słów kluczowych służy do zapobiegania dziedziczeniu klasy w Javie?", subjectRepository.getById(-9L)));
-        questionRepository.save(new Question(-39L, "Co oznacza koncepcja polimorfizmu w programowaniu obiektowym?", subjectRepository.getById(-9L)));
-        questionRepository.save(new Question(-40L, "Które słowo kluczowe jest używane do oznaczania metody, która może być zaimplementowana w klasach potomnych?", subjectRepository.getById(-9L)));
+        // Klasy - Java
+        questionRepository.save(Question.builder().id(-18L).displayName("Czym jest klasa w Javie?").subject(subjectRepository.getById(-9L)).build());
+        questionRepository.save(Question.builder().id(-19L).displayName("Jaką funkcję pełnią atrybuty w Klasie?").subject(subjectRepository.getById(-9L)).build());
+        questionRepository.save(Question.builder().id(-20L).displayName("Czym jest konstruktor w Javie?").subject(subjectRepository.getById(-9L)).build());
+        questionRepository.save(Question.builder().id(-34L).displayName("Które słowo kluczowe służy do definiowania nowej klasy w języku Java?").subject(subjectRepository.getById(-9L)).build());
+        questionRepository.save(Question.builder().id(-35L).displayName("Które słowo kluczowe oznacza, że metoda nie zwraca żadnej wartości?").subject(subjectRepository.getById(-9L)).build());
+        questionRepository.save(Question.builder().id(-36L).displayName("Jak oznacza się dziedziczenie między klasami w języku Java?").subject(subjectRepository.getById(-9L)).build());
+        questionRepository.save(Question.builder().id(-37L).displayName("Które z poniższych jest przykładem enkapsulacji w języku Java?").subject(subjectRepository.getById(-9L)).build());
+        questionRepository.save(Question.builder().id(-38L).displayName("Które z poniższych słów kluczowych służy do zapobiegania dziedziczeniu klasy w Javie?").subject(subjectRepository.getById(-9L)).build());
+        questionRepository.save(Question.builder().id(-39L).displayName("Co oznacza koncepcja polimorfizmu w programowaniu obiektowym?").subject(subjectRepository.getById(-9L)).build());
+        questionRepository.save(Question.builder().id(-40L).displayName("Które słowo kluczowe jest używane do oznaczania metody, która może być zaimplementowana w klasach potomnych?").subject(subjectRepository.getById(-9L)).build());
 
-        //Klasy abstrakcyjne - Java
-        questionRepository.save(new Question(-70L, "Co charakteryzuje klasę abstrakcyjną w Javie?", subjectRepository.getById(-10L)));
-        questionRepository.save(new Question(-71L, "Która z poniższych metod jest poprawnym przykładem metody abstrakcyjnej w klasie abstrakcyjnej?", subjectRepository.getById(-10L)));
-        questionRepository.save(new Question(-72L, "Dlaczego klasy abstrakcyjne są użyteczne w programowaniu obiektowym?", subjectRepository.getById(-10L)));
-        questionRepository.save(new Question(-73L, "Co się stanie, jeśli klasa dziedziczy po klasie abstrakcyjnej i nie implementuje wszystkich jej metod abstrakcyjnych?", subjectRepository.getById(-10L)));
-        questionRepository.save(new Question(-74L, "Czy klasa abstrakcyjna może zawierać pola statyczne?", subjectRepository.getById(-10L)));
-        questionRepository.save(new Question(-75L, "Czy klasa abstrakcyjna może implementować interfejs?", subjectRepository.getById(-10L)));
-        questionRepository.save(new Question(-76L, "Jaka jest różnica między klasą abstrakcyjną a interfejsem w Javie?", subjectRepository.getById(-10L)));
-        questionRepository.save(new Question(-77L, "Czy klasa abstrakcyjna może zawierać metody prywatne?", subjectRepository.getById(-10L)));
-        questionRepository.save(new Question(-78L, "Jakie jest główne zastosowanie klas abstrakcyjnych?", subjectRepository.getById(-10L)));
-        questionRepository.save(new Question(-79L, "Czy klasa abstrakcyjna może mieć konstruktory?", subjectRepository.getById(-10L)));
+        // Klasy abstrakcyjne - Java
+        questionRepository.save(Question.builder().id(-70L).displayName("Co charakteryzuje klasę abstrakcyjną w Javie?").subject(subjectRepository.getById(-10L)).build());
+        questionRepository.save(Question.builder().id(-71L).displayName("Która z poniższych metod jest poprawnym przykładem metody abstrakcyjnej w klasie abstrakcyjnej?").subject(subjectRepository.getById(-10L)).build());
+        questionRepository.save(Question.builder().id(-72L).displayName("Dlaczego klasy abstrakcyjne są użyteczne w programowaniu obiektowym?").subject(subjectRepository.getById(-10L)).build());
+        questionRepository.save(Question.builder().id(-73L).displayName("Co się stanie, jeśli klasa dziedziczy po klasie abstrakcyjnej i nie implementuje wszystkich jej metod abstrakcyjnych?").subject(subjectRepository.getById(-10L)).build());
+        questionRepository.save(Question.builder().id(-74L).displayName("Czy klasa abstrakcyjna może zawierać pola statyczne?").subject(subjectRepository.getById(-10L)).build());
+        questionRepository.save(Question.builder().id(-75L).displayName("Czy klasa abstrakcyjna może implementować interfejs?").subject(subjectRepository.getById(-10L)).build());
+        questionRepository.save(Question.builder().id(-76L).displayName("Jaka jest różnica między klasą abstrakcyjną a interfejsem w Javie?").subject(subjectRepository.getById(-10L)).build());
+        questionRepository.save(Question.builder().id(-77L).displayName("Czy klasa abstrakcyjna może zawierać metody prywatne?").subject(subjectRepository.getById(-10L)).build());
+        questionRepository.save(Question.builder().id(-78L).displayName("Jakie jest główne zastosowanie klas abstrakcyjnych?").subject(subjectRepository.getById(-10L)).build());
+        questionRepository.save(Question.builder().id(-79L).displayName("Czy klasa abstrakcyjna może mieć konstruktory?").subject(subjectRepository.getById(-10L)).build());
 
-        //Podstawy Python - Python
-        questionRepository.save(new Question(-193L, "Jak zainstalować Pythona na swoim komputerze?", subjectRepository.getById(-120L)));
-        questionRepository.save(new Question(-194L, "Jak uruchomić skrypt Pythona z linii komend?", subjectRepository.getById(-120L)));
-        questionRepository.save(new Question(-195L, "Co to jest zmienna w Pythonie i jak ją zdefiniować?", subjectRepository.getById(-120L)));
-        questionRepository.save(new Question(-196L, "Jakie są podstawowe typy danych w Pythonie?", subjectRepository.getById(-120L)));
-        questionRepository.save(new Question(-197L, "Jak stworzyć listę w Pythonie i jak dodawać do niej elementy?", subjectRepository.getById(-120L)));
-        questionRepository.save(new Question(-198L, "Jak działa instrukcja warunkowa if w Pythonie?", subjectRepository.getById(-120L)));
-        questionRepository.save(new Question(-199L, "Co to są pętle w Pythonie i jakie są ich rodzaje?", subjectRepository.getById(-120L)));
-        questionRepository.save(new Question(-200L, "Jak zdefiniować funkcję w Pythonie?", subjectRepository.getById(-120L)));
-        questionRepository.save(new Question(-201L, "Co to są moduły w Pythonie i jak je importować?", subjectRepository.getById(-120L)));
-        questionRepository.save(new Question(-202L, "Jakie są metody manipulacji ciągami znaków w Pythonie?", subjectRepository.getById(-120L)));
+        // Podstawy Python - Python
+        questionRepository.save(Question.builder().id(-193L).displayName("Jak zainstalować Pythona na swoim komputerze?").subject(subjectRepository.getById(-120L)).build());
+        questionRepository.save(Question.builder().id(-194L).displayName("Jak uruchomić skrypt Pythona z linii komend?").subject(subjectRepository.getById(-120L)).build());
+        questionRepository.save(Question.builder().id(-195L).displayName("Co to jest zmienna w Pythonie i jak ją zdefiniować?").subject(subjectRepository.getById(-120L)).build());
+        questionRepository.save(Question.builder().id(-196L).displayName("Jakie są podstawowe typy danych w Pythonie?").subject(subjectRepository.getById(-120L)).build());
+        questionRepository.save(Question.builder().id(-197L).displayName("Jak stworzyć listę w Pythonie i jak dodawać do niej elementy?").subject(subjectRepository.getById(-120L)).build());
+        questionRepository.save(Question.builder().id(-198L).displayName("Jak działa instrukcja warunkowa if w Pythonie?").subject(subjectRepository.getById(-120L)).build());
+        questionRepository.save(Question.builder().id(-199L).displayName("Co to są pętle w Pythonie i jakie są ich rodzaje?").subject(subjectRepository.getById(-120L)).build());
+        questionRepository.save(Question.builder().id(-200L).displayName("Jak zdefiniować funkcję w Pythonie?").subject(subjectRepository.getById(-120L)).build());
+        questionRepository.save(Question.builder().id(-201L).displayName("Co to są moduły w Pythonie i jak je importować?").subject(subjectRepository.getById(-120L)).build());
+        questionRepository.save(Question.builder().id(-202L).displayName("Jakie są metody manipulacji ciągami znaków w Pythonie?").subject(subjectRepository.getById(-120L)).build());
 
-        //Obiektowość-Python
-        questionRepository.save(new Question(-243L, "Co to jest klasa w Pythonie?", subjectRepository.getById(-125L)));
-        questionRepository.save(new Question(-244L, "Jak tworzyć instancje klasy w Pythonie?", subjectRepository.getById(-125L)));
-        questionRepository.save(new Question(-245L, "Co to jest dziedziczenie w kontekście klas w Pythonie?", subjectRepository.getById(-125L)));
-        questionRepository.save(new Question(-246L, "Jak definiuje się metodę w klasie Pythona?", subjectRepository.getById(-125L)));
-        questionRepository.save(new Question(-247L, "Co to jest konstruktor klasy w Pythonie i jak go zdefiniować?", subjectRepository.getById(-125L)));
-        questionRepository.save(new Question(-248L, "Jak można zmodyfikować atrybuty instancji klasy w Pythonie?", subjectRepository.getById(-125L)));
-        questionRepository.save(new Question(-249L, "Co to jest polimorfizm w Pythonie?", subjectRepository.getById(-125L)));
-        questionRepository.save(new Question(-250L, "Jak użyć hermetyzacji w klasach Pythona?", subjectRepository.getById(-125L)));
-        questionRepository.save(new Question(-251L, "Jakie są metody specjalne klasy w Pythonie i do czego służą?", subjectRepository.getById(-125L)));
-        questionRepository.save(new Question(-252L, "Jak można zaimplementować dziedziczenie wielokrotne w Pythonie?", subjectRepository.getById(-125L)));
+        // Obiektowość-Python
+        questionRepository.save(Question.builder().id(-243L).displayName("Co to jest klasa w Pythonie?").subject(subjectRepository.getById(-125L)).build());
+        questionRepository.save(Question.builder().id(-244L).displayName("Jak tworzyć instancje klasy w Pythonie?").subject(subjectRepository.getById(-125L)).build());
+        questionRepository.save(Question.builder().id(-245L).displayName("Co to jest dziedziczenie w kontekście klas w Pythonie?").subject(subjectRepository.getById(-125L)).build());
+        questionRepository.save(Question.builder().id(-246L).displayName("Jak definiuje się metodę w klasie Pythona?").subject(subjectRepository.getById(-125L)).build());
+        questionRepository.save(Question.builder().id(-247L).displayName("Co to jest konstruktor klasy w Pythonie i jak go zdefiniować?").subject(subjectRepository.getById(-125L)).build());
+        questionRepository.save(Question.builder().id(-248L).displayName("Jak można zmodyfikować atrybuty instancji klasy w Pythonie?").subject(subjectRepository.getById(-125L)).build());
+        questionRepository.save(Question.builder().id(-249L).displayName("Co to jest polimorfizm w Pythonie?").subject(subjectRepository.getById(-125L)).build());
+        questionRepository.save(Question.builder().id(-250L).displayName("Jak użyć hermetyzacji w klasach Pythona?").subject(subjectRepository.getById(-125L)).build());
+        questionRepository.save(Question.builder().id(-251L).displayName("Jakie są metody specjalne klasy w Pythonie i do czego służą?").subject(subjectRepository.getById(-125L)).build());
+        questionRepository.save(Question.builder().id(-252L).displayName("Jak można zaimplementować dziedziczenie wielokrotne w Pythonie?").subject(subjectRepository.getById(-125L)).build());
 
-        //Wprowadzenie do TypeScript - TypeScript
-        questionRepository.save(new Question(-293L, "Co to jest TypeScript i do czego służy?", subjectRepository.getById(-129L)));
-        questionRepository.save(new Question(-294L, "Jakie są główne różnice między TypeScript a JavaScript?", subjectRepository.getById(-129L)));
-        questionRepository.save(new Question(-295L, "Co to są typy w TypeScript i jak są używane?", subjectRepository.getById(-129L)));
-        questionRepository.save(new Question(-296L, "Jak zadeklarować zmienną w TypeScript?", subjectRepository.getById(-129L)));
-        questionRepository.save(new Question(-297L, "Jakie są zalety używania TypeScript w dużych projektach?", subjectRepository.getById(-129L)));
-        questionRepository.save(new Question(-298L, "Jak TypeScript wspiera programowanie obiektowe?", subjectRepository.getById(-129L)));
-        questionRepository.save(new Question(-299L, "Jak można zdefiniować interfejs w TypeScript?", subjectRepository.getById(-129L)));
-        questionRepository.save(new Question(-300L, "Jakie są różnice między interfejsami a klasami w TypeScript?", subjectRepository.getById(-129L)));
-        questionRepository.save(new Question(-301L, "Jak TypeScript obsługuje typy generyczne?", subjectRepository.getById(-129L)));
-        questionRepository.save(new Question(-302L, "Jak skonfigurować środowisko dla TypeScript?", subjectRepository.getById(-129L)));
+        // Wprowadzenie do TypeScript - TypeScript
+        questionRepository.save(Question.builder().id(-293L).displayName("Co to jest TypeScript i do czego służy?").subject(subjectRepository.getById(-129L)).build());
+        questionRepository.save(Question.builder().id(-294L).displayName("Jakie są główne różnice między TypeScript a JavaScript?").subject(subjectRepository.getById(-129L)).build());
+        questionRepository.save(Question.builder().id(-295L).displayName("Co to są typy w TypeScript i jak są używane?").subject(subjectRepository.getById(-129L)).build());
+        questionRepository.save(Question.builder().id(-296L).displayName("Jak zadeklarować zmienną w TypeScript?").subject(subjectRepository.getById(-129L)).build());
+        questionRepository.save(Question.builder().id(-297L).displayName("Jakie są zalety używania TypeScript w dużych projektach?").subject(subjectRepository.getById(-129L)).build());
+        questionRepository.save(Question.builder().id(-298L).displayName("Jak TypeScript wspiera programowanie obiektowe?").subject(subjectRepository.getById(-129L)).build());
+        questionRepository.save(Question.builder().id(-299L).displayName("Jak można zdefiniować interfejs w TypeScript?").subject(subjectRepository.getById(-129L)).build());
+        questionRepository.save(Question.builder().id(-300L).displayName("Jakie są różnice między interfejsami a klasami w TypeScript?").subject(subjectRepository.getById(-129L)).build());
+        questionRepository.save(Question.builder().id(-301L).displayName("Jak TypeScript obsługuje typy generyczne?").subject(subjectRepository.getById(-129L)).build());
+        questionRepository.save(Question.builder().id(-302L).displayName("Jak skonfigurować środowisko dla TypeScript?").subject(subjectRepository.getById(-129L)).build());
 
-        //Integracja z JavaScript - TypeScript
-        questionRepository.save(new Question(-343L, "Jakie są podstawowe sposoby integracji TypeScript z JavaScript?", subjectRepository.getById(-137L)));
-        questionRepository.save(new Question(-344L, "Czy można wykorzystać biblioteki JavaScript w projektach TypeScript?", subjectRepository.getById(-137L)));
-        questionRepository.save(new Question(-345L, "Jakie są różnice w obsłudze błędów pomiędzy JavaScript a TypeScript?", subjectRepository.getById(-137L)));
-        questionRepository.save(new Question(-346L, "Jak TypeScript wpływa na wydajność aplikacji JavaScript?", subjectRepository.getById(-137L)));
-        questionRepository.save(new Question(-347L, "Czy TypeScript wymaga transpilacji do JavaScript przed uruchomieniem w przeglądarce?", subjectRepository.getById(-137L)));
-        questionRepository.save(new Question(-348L, "Jak korzystać z plików definicji typów w TypeScript dla bibliotek JavaScript?", subjectRepository.getById(-137L)));
-        questionRepository.save(new Question(-349L, "Jakie są najlepsze praktyki przy mieszaniu kodu TypeScript i JavaScript?", subjectRepository.getById(-137L)));
-        questionRepository.save(new Question(-350L, "Jak narzędzia deweloperskie wspierają integrację TypeScript z JavaScript?", subjectRepository.getById(-137L)));
-        questionRepository.save(new Question(-351L, "Jakie są zalety używania TypeScript w istniejących projektach JavaScript?", subjectRepository.getById(-137L)));
-        questionRepository.save(new Question(-352L, "Jakie są wyzwania związane z integracją TypeScript i JavaScript w dużych projektach?", subjectRepository.getById(-137L)));
+        // Integracja z JavaScript - TypeScript
+        questionRepository.save(Question.builder().id(-343L).displayName("Jakie są podstawowe sposoby integracji TypeScript z JavaScript?").subject(subjectRepository.getById(-137L)).build());
+        questionRepository.save(Question.builder().id(-344L).displayName("Czy można wykorzystać biblioteki JavaScript w projektach TypeScript?").subject(subjectRepository.getById(-137L)).build());
+        questionRepository.save(Question.builder().id(-345L).displayName("Jakie są różnice w obsłudze błędów pomiędzy JavaScript a TypeScript?").subject(subjectRepository.getById(-137L)).build());
+        questionRepository.save(Question.builder().id(-346L).displayName("Jak TypeScript wpływa na wydajność aplikacji JavaScript?").subject(subjectRepository.getById(-137L)).build());
+        questionRepository.save(Question.builder().id(-347L).displayName("Czy TypeScript wymaga transpilacji do JavaScript przed uruchomieniem w przeglądarce?").subject(subjectRepository.getById(-137L)).build());
+        questionRepository.save(Question.builder().id(-348L).displayName("Jak korzystać z plików definicji typów w TypeScript dla bibliotek JavaScript?").subject(subjectRepository.getById(-137L)).build());
+        questionRepository.save(Question.builder().id(-349L).displayName("Jakie są najlepsze praktyki przy mieszaniu kodu TypeScript i JavaScript?").subject(subjectRepository.getById(-137L)).build());
+        questionRepository.save(Question.builder().id(-350L).displayName("Jak narzędzia deweloperskie wspierają integrację TypeScript z JavaScript?").subject(subjectRepository.getById(-137L)).build());
+        questionRepository.save(Question.builder().id(-351L).displayName("Jakie są zalety używania TypeScript w istniejących projektach JavaScript?").subject(subjectRepository.getById(-137L)).build());
+        questionRepository.save(Question.builder().id(-352L).displayName("Jakie są wyzwania związane z integracją TypeScript i JavaScript w dużych projektach?").subject(subjectRepository.getById(-137L)).build());
 
-        //Podstawy JavaScript - JavaScript
-        questionRepository.save(new Question(-393L, "Co to jest JavaScript i w jakim celu jest używany?", subjectRepository.getById(-138L)));
-        questionRepository.save(new Question(-394L, "Jakie są typy danych dostępne w JavaScript?", subjectRepository.getById(-138L)));
-        questionRepository.save(new Question(-395L, "Jak stworzyć zmienną w JavaScript?", subjectRepository.getById(-138L)));
-        questionRepository.save(new Question(-396L, "Jakie są różnice między var, let i const w JavaScript?", subjectRepository.getById(-138L)));
-        questionRepository.save(new Question(-397L, "Co to jest funkcja w JavaScript i jak ją zdefiniować?", subjectRepository.getById(-138L)));
-        questionRepository.save(new Question(-398L, "Jak działają pętle w JavaScript, jakie są ich rodzaje?", subjectRepository.getById(-138L)));
-        questionRepository.save(new Question(-399L, "Co to jest obiekt w JavaScript i jak można go stworzyć?", subjectRepository.getById(-138L)));
-        questionRepository.save(new Question(-400L, "Jakie są metody manipulacji DOM w JavaScript?", subjectRepository.getById(-138L)));
-        questionRepository.save(new Question(-401L, "Jak obsługiwać zdarzenia w JavaScript?", subjectRepository.getById(-138L)));
-        questionRepository.save(new Question(-402L, "Co to jest JSON i jak jest używany w JavaScript?", subjectRepository.getById(-138L)));
+        // Podstawy JavaScript - JavaScript
+        questionRepository.save(Question.builder().id(-393L).displayName("Co to jest JavaScript i w jakim celu jest używany?").subject(subjectRepository.getById(-138L)).build());
+        questionRepository.save(Question.builder().id(-394L).displayName("Jakie są typy danych dostępne w JavaScript?").subject(subjectRepository.getById(-138L)).build());
+        questionRepository.save(Question.builder().id(-395L).displayName("Jak stworzyć zmienną w JavaScript?").subject(subjectRepository.getById(-138L)).build());
+        questionRepository.save(Question.builder().id(-396L).displayName("Jakie są różnice między var, let i const w JavaScript?").subject(subjectRepository.getById(-138L)).build());
+        questionRepository.save(Question.builder().id(-397L).displayName("Co to jest funkcja w JavaScript i jak ją zdefiniować?").subject(subjectRepository.getById(-138L)).build());
+        questionRepository.save(Question.builder().id(-398L).displayName("Jak działają pętle w JavaScript, jakie są ich rodzaje?").subject(subjectRepository.getById(-138L)).build());
+        questionRepository.save(Question.builder().id(-399L).displayName("Co to jest obiekt w JavaScript i jak można go stworzyć?").subject(subjectRepository.getById(-138L)).build());
+        questionRepository.save(Question.builder().id(-400L).displayName("Jakie są metody manipulacji DOM w JavaScript?").subject(subjectRepository.getById(-138L)).build());
+        questionRepository.save(Question.builder().id(-401L).displayName("Jak obsługiwać zdarzenia w JavaScript?").subject(subjectRepository.getById(-138L)).build());
+        questionRepository.save(Question.builder().id(-402L).displayName("Co to jest JSON i jak jest używany w JavaScript?").subject(subjectRepository.getById(-138L)).build());
 
-        //Frameworki i biblioteki JavaScript - JavaScript
-        questionRepository.save(new Question(-443L, "Co to jest jQuery i do czego jest używane?", subjectRepository.getById(-146L)));
-        questionRepository.save(new Question(-444L, "Jakie są główne cechy frameworka Angular?", subjectRepository.getById(-146L)));
-        questionRepository.save(new Question(-445L, "Na czym polega główna różnica między Angular a React?", subjectRepository.getById(-146L)));
-        questionRepository.save(new Question(-446L, "Co to jest Vue.js i jakie ma zastosowania?", subjectRepository.getById(-146L)));
-        questionRepository.save(new Question(-447L, "Jakie są zalety używania React w projektach webowych?", subjectRepository.getById(-146L)));
-        questionRepository.save(new Question(-448L, "Co to jest Node.js i jak jest używane?", subjectRepository.getById(-146L)));
-        questionRepository.save(new Question(-449L, "Jakie biblioteki JavaScript służą do tworzenia animacji?", subjectRepository.getById(-146L)));
-        questionRepository.save(new Question(-450L, "Co charakteryzuje framework Ember.js?", subjectRepository.getById(-146L)));
-        questionRepository.save(new Question(-451L, "W jaki sposób TypeScript współpracuje z frameworkami JavaScript?", subjectRepository.getById(-146L)));
-        questionRepository.save(new Question(-452L, "Jakie są różnice w zarządzaniu stanem w React i Vue?", subjectRepository.getById(-146L)));
+        // Frameworki i biblioteki JavaScript - JavaScript
+        questionRepository.save(Question.builder().id(-443L).displayName("Co to jest jQuery i do czego jest używane?").subject(subjectRepository.getById(-146L)).build());
+        questionRepository.save(Question.builder().id(-444L).displayName("Jakie są główne cechy frameworka Angular?").subject(subjectRepository.getById(-146L)).build());
+        questionRepository.save(Question.builder().id(-445L).displayName("Na czym polega główna różnica między Angular a React?").subject(subjectRepository.getById(-146L)).build());
+        questionRepository.save(Question.builder().id(-446L).displayName("Co to jest Vue.js i jakie ma zastosowania?").subject(subjectRepository.getById(-146L)).build());
+        questionRepository.save(Question.builder().id(-447L).displayName("Jakie są zalety używania React w projektach webowych?").subject(subjectRepository.getById(-146L)).build());
+        questionRepository.save(Question.builder().id(-448L).displayName("Co to jest Node.js i jak jest używane?").subject(subjectRepository.getById(-146L)).build());
+        questionRepository.save(Question.builder().id(-449L).displayName("Jakie biblioteki JavaScript służą do tworzenia animacji?").subject(subjectRepository.getById(-146L)).build());
+        questionRepository.save(Question.builder().id(-450L).displayName("Co charakteryzuje framework Ember.js?").subject(subjectRepository.getById(-146L)).build());
+        questionRepository.save(Question.builder().id(-451L).displayName("W jaki sposób TypeScript współpracuje z frameworkami JavaScript?").subject(subjectRepository.getById(-146L)).build());
+        questionRepository.save(Question.builder().id(-452L).displayName("Jakie są różnice w zarządzaniu stanem w React i Vue?").subject(subjectRepository.getById(-146L)).build());
 
-        //Wprowadzenie do React i JSX - React
-        questionRepository.save(new Question(-493L, "Co to jest React i kto jest jego twórcą?", subjectRepository.getById(-147L)));
-        questionRepository.save(new Question(-494L, "Co to jest JSX i jak jest używany w React?", subjectRepository.getById(-147L)));
-        questionRepository.save(new Question(-495L, "Jakie są zalety używania React w porównaniu z tradycyjnymi podejściami do budowy interfejsów użytkownika?", subjectRepository.getById(-147L)));
-        questionRepository.save(new Question(-496L, "Co to są komponenty w React i jakie są ich rodzaje?", subjectRepository.getById(-147L)));
-        questionRepository.save(new Question(-497L, "Jak działa stan (state) w komponentach React?", subjectRepository.getById(-147L)));
-        questionRepository.save(new Question(-498L, "Co to są propsy (props) w React i do czego są używane?", subjectRepository.getById(-147L)));
-        questionRepository.save(new Question(-499L, "Jak można zarządzać stanem aplikacji w React bez użycia zewnętrznych bibliotek?", subjectRepository.getById(-147L)));
-        questionRepository.save(new Question(-500L, "Jakie są różnice między klasowymi a funkcyjnymi komponentami w React?", subjectRepository.getById(-147L)));
-        questionRepository.save(new Question(-501L, "Jakie są najpopularniejsze narzędzia i biblioteki używane z React?", subjectRepository.getById(-147L)));
-        questionRepository.save(new Question(-502L, "Jakie są najlepsze praktyki dotyczące optymalizacji wydajności aplikacji React?", subjectRepository.getById(-147L)));
+        // Wprowadzenie do React i JSX - React
+        questionRepository.save(Question.builder().id(-493L).displayName("Co to jest React i kto jest jego twórcą?").subject(subjectRepository.getById(-147L)).build());
+        questionRepository.save(Question.builder().id(-494L).displayName("Co to jest JSX i jak jest używany w React?").subject(subjectRepository.getById(-147L)).build());
+        questionRepository.save(Question.builder().id(-495L).displayName("Jakie są zalety używania React w porównaniu z tradycyjnymi podejściami do budowy interfejsów użytkownika?").subject(subjectRepository.getById(-147L)).build());
+        questionRepository.save(Question.builder().id(-496L).displayName("Co to są komponenty w React i jakie są ich rodzaje?").subject(subjectRepository.getById(-147L)).build());
+        questionRepository.save(Question.builder().id(-497L).displayName("Jak działa stan (state) w komponentach React?").subject(subjectRepository.getById(-147L)).build());
+        questionRepository.save(Question.builder().id(-498L).displayName("Co to są propsy (props) w React i do czego są używane?").subject(subjectRepository.getById(-147L)).build());
+        questionRepository.save(Question.builder().id(-499L).displayName("Jak można zarządzać stanem aplikacji w React bez użycia zewnętrznych bibliotek?").subject(subjectRepository.getById(-147L)).build());
+        questionRepository.save(Question.builder().id(-500L).displayName("Jakie są różnice między klasowymi a funkcyjnymi komponentami w React?").subject(subjectRepository.getById(-147L)).build());
+        questionRepository.save(Question.builder().id(-501L).displayName("Jakie są najpopularniejsze narzędzia i biblioteki używane z React?").subject(subjectRepository.getById(-147L)).build());
+        questionRepository.save(Question.builder().id(-502L).displayName("Jakie są najlepsze praktyki dotyczące optymalizacji wydajności aplikacji React?").subject(subjectRepository.getById(-147L)).build());
 
-        //Optmalizacja wydajności, Lazy Loading - React
-        questionRepository.save(new Question(-543L, "Co to jest optymalizacja wydajności w kontekście rozwoju webowego?", subjectRepository.getById(-155L)));
-        questionRepository.save(new Question(-544L, "Jakie są ogólne techniki optymalizacji wydajności stron internetowych?", subjectRepository.getById(-155L)));
-        questionRepository.save(new Question(-545L, "Co to jest 'Lazy Loading' i jak wpływa na wydajność strony?", subjectRepository.getById(-155L)));
-        questionRepository.save(new Question(-546L, "Jakie są zalety stosowania Lazy Loading w aplikacjach webowych?", subjectRepository.getById(-155L)));
-        questionRepository.save(new Question(-547L, "Jak można zaimplementować Lazy Loading w JavaScript?", subjectRepository.getById(-155L)));
-        questionRepository.save(new Question(-548L, "Jakie narzędzia można użyć do analizy wydajności strony internetowej?", subjectRepository.getById(-155L)));
-        questionRepository.save(new Question(-549L, "Jakie są najlepsze praktyki w optymalizacji renderowania strony?", subjectRepository.getById(-155L)));
-        questionRepository.save(new Question(-550L, "Jakie są różnice między optymalizacją na stronie klienta a serwerowej?", subjectRepository.getById(-155L)));
-        questionRepository.save(new Question(-551L, "Jak wpływa minifikacja zasobów na wydajność strony?", subjectRepository.getById(-155L)));
-        questionRepository.save(new Question(-552L, "Jak technika Lazy Loading wpływa na SEO strony internetowej?", subjectRepository.getById(-155L)));
+        // Optymalizacja wydajności, Lazy Loading - React
+        questionRepository.save(Question.builder().id(-543L).displayName("Co to jest optymalizacja wydajności w kontekście rozwoju webowego?").subject(subjectRepository.getById(-155L)).build());
+        questionRepository.save(Question.builder().id(-544L).displayName("Jakie są ogólne techniki optymalizacji wydajności stron internetowych?").subject(subjectRepository.getById(-155L)).build());
+        questionRepository.save(Question.builder().id(-545L).displayName("Co to jest 'Lazy Loading' i jak wpływa na wydajność strony?").subject(subjectRepository.getById(-155L)).build());
+        questionRepository.save(Question.builder().id(-546L).displayName("Jakie są zalety stosowania Lazy Loading w aplikacjach webowych?").subject(subjectRepository.getById(-155L)).build());
+        questionRepository.save(Question.builder().id(-547L).displayName("Jak można zaimplementować Lazy Loading w JavaScript?").subject(subjectRepository.getById(-155L)).build());
+        questionRepository.save(Question.builder().id(-548L).displayName("Jakie narzędzia można użyć do analizy wydajności strony internetowej?").subject(subjectRepository.getById(-155L)).build());
+        questionRepository.save(Question.builder().id(-549L).displayName("Jakie są najlepsze praktyki w optymalizacji renderowania strony?").subject(subjectRepository.getById(-155L)).build());
+        questionRepository.save(Question.builder().id(-550L).displayName("Jakie są różnice między optymalizacją na stronie klienta a serwerowej?").subject(subjectRepository.getById(-155L)).build());
+        questionRepository.save(Question.builder().id(-551L).displayName("Jak wpływa minifikacja zasobów na wydajność strony?").subject(subjectRepository.getById(-155L)).build());
+        questionRepository.save(Question.builder().id(-552L).displayName("Jak technika Lazy Loading wpływa na SEO strony internetowej?").subject(subjectRepository.getById(-155L)).build());
 
-        //Podstawy Kotlina - Kotlin
-        questionRepository.save(new Question(-593L, "Co to jest Kotlin i do czego jest używany?", subjectRepository.getById(-156L)));
-        questionRepository.save(new Question(-594L, "Jakie są główne cechy języka Kotlin?", subjectRepository.getById(-156L)));
-        questionRepository.save(new Question(-595L, "Jak Kotlin obsługuje nullability w porównaniu do Javy?", subjectRepository.getById(-156L)));
-        questionRepository.save(new Question(-596L, "Jak zadeklarować zmienną w Kotlinie?", subjectRepository.getById(-156L)));
-        questionRepository.save(new Question(-597L, "Jakie są różnice między 'val' a 'var' w Kotlinie?", subjectRepository.getById(-156L)));
-        questionRepository.save(new Question(-598L, "Jak zdefiniować funkcję w Kotlinie?", subjectRepository.getById(-156L)));
-        questionRepository.save(new Question(-599L, "Jak Kotlin obsługuje dziedziczenie?", subjectRepository.getById(-156L)));
-        questionRepository.save(new Question(-600L, "Co to są data classes w Kotlinie i do czego są używane?", subjectRepository.getById(-156L)));
-        questionRepository.save(new Question(-601L, "Jak w Kotlinie zaimplementować interfejs?", subjectRepository.getById(-156L)));
-        questionRepository.save(new Question(-602L, "Jakie są zalety używania Kotlin Coroutines?", subjectRepository.getById(-156L)));
+        // Podstawy Kotlin - Kotlin
+        questionRepository.save(Question.builder().id(-593L).displayName("Co to jest Kotlin i do czego jest używany?").subject(subjectRepository.getById(-156L)).build());
+        questionRepository.save(Question.builder().id(-594L).displayName("Jakie są główne cechy języka Kotlin?").subject(subjectRepository.getById(-156L)).build());
+        questionRepository.save(Question.builder().id(-595L).displayName("Jak Kotlin obsługuje nullability w porównaniu do Javy?").subject(subjectRepository.getById(-156L)).build());
+        questionRepository.save(Question.builder().id(-596L).displayName("Jak zadeklarować zmienną w Kotlinie?").subject(subjectRepository.getById(-156L)).build());
+        questionRepository.save(Question.builder().id(-597L).displayName("Jakie są różnice między 'val' a 'var' w Kotlinie?").subject(subjectRepository.getById(-156L)).build());
+        questionRepository.save(Question.builder().id(-598L).displayName("Jak zdefiniować funkcję w Kotlinie?").subject(subjectRepository.getById(-156L)).build());
+        questionRepository.save(Question.builder().id(-599L).displayName("Jak Kotlin obsługuje dziedziczenie?").subject(subjectRepository.getById(-156L)).build());
+        questionRepository.save(Question.builder().id(-600L).displayName("Co to są data classes w Kotlinie i do czego są używane?").subject(subjectRepository.getById(-156L)).build());
+        questionRepository.save(Question.builder().id(-601L).displayName("Jak w Kotlinie zaimplementować interfejs?").subject(subjectRepository.getById(-156L)).build());
+        questionRepository.save(Question.builder().id(-602L).displayName("Jakie są zalety używania Kotlin Coroutines?").subject(subjectRepository.getById(-156L)).build());
 
-        //Zaawansowane funkcje języka Kotlin - Kotlin
-        questionRepository.save(new Question(-643L, "Jak w Kotlinie używa się delegacji właściwości?", subjectRepository.getById(-164L)));
-        questionRepository.save(new Question(-644L, "Co to są funkcje rozszerzające w Kotlinie i jak można je zaimplementować?", subjectRepository.getById(-164L)));
-        questionRepository.save(new Question(-645L, "Jak działają wyrażenia lambda w Kotlinie i do czego są używane?", subjectRepository.getById(-164L)));
-        questionRepository.save(new Question(-646L, "Jakie są zalety stosowania sekwencji (sequences) w Kotlinie?", subjectRepository.getById(-164L)));
-        questionRepository.save(new Question(-647L, "Jak można zaimplementować wzorzec projektowy 'Singleton' w Kotlinie?", subjectRepository.getById(-164L)));
-        questionRepository.save(new Question(-648L, "Co to jest 'inline function' w Kotlinie i jakie przynosi korzyści?", subjectRepository.getById(-164L)));
-        questionRepository.save(new Question(-649L, "Jak Kotlin obsługuje wielowątkowość i jakie mechanizmy są do tego używane?", subjectRepository.getById(-164L)));
-        questionRepository.save(new Question(-650L, "Co to jest typ generyczny w Kotlinie i jakie ma zastosowania?", subjectRepository.getById(-164L)));
-        questionRepository.save(new Question(-651L, "Jak można użyć wzorca 'Decorator' w Kotlinie?", subjectRepository.getById(-164L)));
-        questionRepository.save(new Question(-652L, "Co to jest rekursja ogonowa w Kotlinie i jak jest optymalizowana?", subjectRepository.getById(-164L)));
+        // Zaawansowane funkcje języka Kotlin - Kotlin
+        questionRepository.save(Question.builder().id(-643L).displayName("Jak w Kotlinie używa się delegacji właściwości?").subject(subjectRepository.getById(-164L)).build());
+        questionRepository.save(Question.builder().id(-644L).displayName("Co to są funkcje rozszerzające w Kotlinie i jak można je zaimplementować?").subject(subjectRepository.getById(-164L)).build());
+        questionRepository.save(Question.builder().id(-645L).displayName("Jak działają wyrażenia lambda w Kotlinie i do czego są używane?").subject(subjectRepository.getById(-164L)).build());
+        questionRepository.save(Question.builder().id(-646L).displayName("Jakie są zalety stosowania sekwencji (sequences) w Kotlinie?").subject(subjectRepository.getById(-164L)).build());
+        questionRepository.save(Question.builder().id(-647L).displayName("Jak można zaimplementować wzorzec projektowy 'Singleton' w Kotlinie?").subject(subjectRepository.getById(-164L)).build());
+        questionRepository.save(Question.builder().id(-648L).displayName("Co to jest 'inline function' w Kotlinie i jakie przynosi korzyści?").subject(subjectRepository.getById(-164L)).build());
+        questionRepository.save(Question.builder().id(-649L).displayName("Jak Kotlin obsługuje wielowątkowość i jakie mechanizmy są do tego używane?").subject(subjectRepository.getById(-164L)).build());
+        questionRepository.save(Question.builder().id(-650L).displayName("Co to jest typ generyczny w Kotlinie i jakie ma zastosowania?").subject(subjectRepository.getById(-164L)).build());
+        questionRepository.save(Question.builder().id(-651L).displayName("Jak można użyć wzorca 'Decorator' w Kotlinie?").subject(subjectRepository.getById(-164L)).build());
+        questionRepository.save(Question.builder().id(-652L).displayName("Co to jest rekursja ogonowa w Kotlinie i jak jest optymalizowana?").subject(subjectRepository.getById(-164L)).build());
 
-        //Podstawy C++ - C++
-        questionRepository.save(new Question(-693L, "Co to jest C++ i do czego jest używany?", subjectRepository.getById(-165L)));
-        questionRepository.save(new Question(-694L, "Jakie są podstawowe typy danych w C++?", subjectRepository.getById(-165L)));
-        questionRepository.save(new Question(-695L, "Jak zadeklarować zmienną w C++?", subjectRepository.getById(-165L)));
-        questionRepository.save(new Question(-696L, "Co to są wskaźniki i jak się ich używa w C++?", subjectRepository.getById(-165L)));
-        questionRepository.save(new Question(-697L, "Jakie są różnice między wskaźnikiem a referencją w C++?", subjectRepository.getById(-165L)));
-        questionRepository.save(new Question(-698L, "Jak zdefiniować funkcję w C++?", subjectRepository.getById(-165L)));
-        questionRepository.save(new Question(-699L, "Co to jest klasa w C++ i jak ją zdefiniować?", subjectRepository.getById(-165L)));
-        questionRepository.save(new Question(-700L, "Jak działa dziedziczenie w C++?", subjectRepository.getById(-165L)));
-        questionRepository.save(new Question(-701L, "Co to jest konstruktor i destruktor w C++?", subjectRepository.getById(-165L)));
-        questionRepository.save(new Question(-702L, "Jakie są podstawowe różnice między C++ a innymi językami programowania, takimi jak Python lub Java?", subjectRepository.getById(-165L)));
+        // Podstawy C++ - C++
+        questionRepository.save(Question.builder().id(-693L).displayName("Co to jest C++ i do czego jest używany?").subject(subjectRepository.getById(-165L)).build());
+        questionRepository.save(Question.builder().id(-694L).displayName("Jakie są podstawowe typy danych w C++?").subject(subjectRepository.getById(-165L)).build());
+        questionRepository.save(Question.builder().id(-695L).displayName("Jak zadeklarować zmienną w C++?").subject(subjectRepository.getById(-165L)).build());
+        questionRepository.save(Question.builder().id(-696L).displayName("Co to są wskaźniki i jak się ich używa w C++?").subject(subjectRepository.getById(-165L)).build());
+        questionRepository.save(Question.builder().id(-697L).displayName("Jakie są różnice między wskaźnikiem a referencją w C++?").subject(subjectRepository.getById(-165L)).build());
+        questionRepository.save(Question.builder().id(-698L).displayName("Jak zdefiniować funkcję w C++?").subject(subjectRepository.getById(-165L)).build());
+        questionRepository.save(Question.builder().id(-699L).displayName("Co to jest klasa w C++ i jak ją zdefiniować?").subject(subjectRepository.getById(-165L)).build());
+        questionRepository.save(Question.builder().id(-700L).displayName("Jak działa dziedziczenie w C++?").subject(subjectRepository.getById(-165L)).build());
+        questionRepository.save(Question.builder().id(-701L).displayName("Co to jest konstruktor i destruktor w C++?").subject(subjectRepository.getById(-165L)).build());
+        questionRepository.save(Question.builder().id(-702L).displayName("Jakie są podstawowe różnice między C++ a innymi językami programowania, takimi jak Python lub Java?").subject(subjectRepository.getById(-165L)).build());
 
         // Nowości w C++20
-        questionRepository.save(new Question(-743L, "Co to jest koncept (concept) w C++20?", subjectRepository.getById(-173L)));
-        questionRepository.save(new Question(-744L, "Jakie są główne cele wprowadzenia korutyn (coroutines) w C++20?", subjectRepository.getById(-173L)));
-        questionRepository.save(new Question(-745L, "Jak działa operator trójargumentowy (spaceship operator) w C++20?", subjectRepository.getById(-173L)));
-        questionRepository.save(new Question(-746L, "Co to jest zakres (range) w C++20 i jakie daje korzyści?", subjectRepository.getById(-173L)));
-        questionRepository.save(new Question(-747L, "Jakie są nowości w zarządzaniu pamięcią w C++20?", subjectRepository.getById(-173L)));
-        questionRepository.save(new Question(-748L, "Jakie zmiany wprowadzono w modułach (modules) w C++20?", subjectRepository.getById(-173L)));
-        questionRepository.save(new Question(-749L, "Czym są wyrażenia kontraktowe (contracts) w C++20?", subjectRepository.getById(-173L)));
-        questionRepository.save(new Question(-750L, "Jakie są usprawnienia w algorytmach w C++20?", subjectRepository.getById(-173L)));
-        questionRepository.save(new Question(-751L, "Jakie są nowe możliwości formatowania tekstu w C++20?", subjectRepository.getById(-173L)));
-        questionRepository.save(new Question(-752L, "Jakie są zmiany w standardowej bibliotece C++ wprowadzone w C++20?", subjectRepository.getById(-173L)));
+        questionRepository.save(Question.builder().id(-743L).displayName("Co to jest koncept (concept) w C++20?").subject(subjectRepository.getById(-173L)).build());
+        questionRepository.save(Question.builder().id(-744L).displayName("Jakie są główne cele wprowadzenia korutyn (coroutines) w C++20?").subject(subjectRepository.getById(-173L)).build());
+        questionRepository.save(Question.builder().id(-745L).displayName("Jak działa operator trójargumentowy (spaceship operator) w C++20?").subject(subjectRepository.getById(-173L)).build());
+        questionRepository.save(Question.builder().id(-746L).displayName("Co to jest zakres (range) w C++20 i jakie daje korzyści?").subject(subjectRepository.getById(-173L)).build());
+        questionRepository.save(Question.builder().id(-747L).displayName("Jakie są nowości w zarządzaniu pamięcią w C++20?").subject(subjectRepository.getById(-173L)).build());
+        questionRepository.save(Question.builder().id(-748L).displayName("Jakie zmiany wprowadzono w modułach (modules) w C++20?").subject(subjectRepository.getById(-173L)).build());
+        questionRepository.save(Question.builder().id(-749L).displayName("Czym są wyrażenia kontraktowe (contracts) w C++20?").subject(subjectRepository.getById(-173L)).build());
+        questionRepository.save(Question.builder().id(-750L).displayName("Jakie są usprawnienia w algorytmach w C++20?").subject(subjectRepository.getById(-173L)).build());
+        questionRepository.save(Question.builder().id(-751L).displayName("Jakie są nowe możliwości formatowania tekstu w C++20?").subject(subjectRepository.getById(-173L)).build());
+        questionRepository.save(Question.builder().id(-752L).displayName("Jakie są zmiany w standardowej bibliotece C++ wprowadzone w C++20?").subject(subjectRepository.getById(-173L)).build());
 
         // Podstawy PHP - PHP
-        questionRepository.save(new Question(-793L, "Co to jest PHP i do czego jest używane?", subjectRepository.getById(-174L)));
-        questionRepository.save(new Question(-794L, "Jakie są podstawowe typy danych w PHP?", subjectRepository.getById(-174L)));
-        questionRepository.save(new Question(-795L, "Jak zadeklarować zmienną w PHP?", subjectRepository.getById(-174L)));
-        questionRepository.save(new Question(-796L, "Co to są tablice w PHP i jak się je definiuje?", subjectRepository.getById(-174L)));
-        questionRepository.save(new Question(-797L, "Jakie są różnice między zmiennymi lokalnymi a globalnymi w PHP?", subjectRepository.getById(-174L)));
-        questionRepository.save(new Question(-798L, "Jak zdefiniować funkcję w PHP?", subjectRepository.getById(-174L)));
-        questionRepository.save(new Question(-799L, "Co to są superglobalne tablice w PHP i jakie są ich przykłady?", subjectRepository.getById(-174L)));
-        questionRepository.save(new Question(-800L, "Jakie są metody obsługi formularzy w PHP?", subjectRepository.getById(-174L)));
-        questionRepository.save(new Question(-801L, "Co to jest sesja w PHP i jak ją rozpocząć?", subjectRepository.getById(-174L)));
-        questionRepository.save(new Question(-802L, "Jakie są podstawowe funkcje do operacji na plikach w PHP?", subjectRepository.getById(-174L)));
+        questionRepository.save(Question.builder().id(-793L).displayName("Co to jest PHP i do czego jest używane?").subject(subjectRepository.getById(-174L)).build());
+        questionRepository.save(Question.builder().id(-794L).displayName("Jakie są podstawowe typy danych w PHP?").subject(subjectRepository.getById(-174L)).build());
+        questionRepository.save(Question.builder().id(-795L).displayName("Jak zadeklarować zmienną w PHP?").subject(subjectRepository.getById(-174L)).build());
+        questionRepository.save(Question.builder().id(-796L).displayName("Co to są tablice w PHP i jak się je definiuje?").subject(subjectRepository.getById(-174L)).build());
+        questionRepository.save(Question.builder().id(-797L).displayName("Jakie są różnice między zmiennymi lokalnymi a globalnymi w PHP?").subject(subjectRepository.getById(-174L)).build());
+        questionRepository.save(Question.builder().id(-798L).displayName("Jak zdefiniować funkcję w PHP?").subject(subjectRepository.getById(-174L)).build());
+        questionRepository.save(Question.builder().id(-799L).displayName("Co to są superglobalne tablice w PHP i jakie są ich przykłady?").subject(subjectRepository.getById(-174L)).build());
+        questionRepository.save(Question.builder().id(-800L).displayName("Jakie są metody obsługi formularzy w PHP?").subject(subjectRepository.getById(-174L)).build());
+        questionRepository.save(Question.builder().id(-801L).displayName("Co to jest sesja w PHP i jak ją rozpocząć?").subject(subjectRepository.getById(-174L)).build());
+        questionRepository.save(Question.builder().id(-802L).displayName("Jakie są podstawowe funkcje do operacji na plikach w PHP?").subject(subjectRepository.getById(-174L)).build());
 
         // Nowości w PHP 8 - PHP
-        questionRepository.save(new Question(-843L, "Co to jest JIT (Just-In-Time) w PHP 8?", subjectRepository.getById(-182L)));
-        questionRepository.save(new Question(-844L, "Jakie są główne korzyści z użycia JIT w PHP 8?", subjectRepository.getById(-182L)));
-        questionRepository.save(new Question(-845L, "Co to są atrybuty w PHP 8 i jak są używane?", subjectRepository.getById(-182L)));
-        questionRepository.save(new Question(-846L, "Jakie nowe typy danych wprowadza PHP 8?", subjectRepository.getById(-182L)));
-        questionRepository.save(new Question(-847L, "Co to jest operator Nullsafe w PHP 8 i jak działa?", subjectRepository.getById(-182L)));
-        questionRepository.save(new Question(-848L, "Jakie są zmiany w zarządzaniu błędami w PHP 8?", subjectRepository.getById(-182L)));
-        questionRepository.save(new Question(-849L, "Jakie ulepszenia wprowadzono w zakresie typowania w PHP 8?", subjectRepository.getById(-182L)));
-        questionRepository.save(new Question(-850L, "Co to jest Match Expression w PHP 8 i jak działa?", subjectRepository.getById(-182L)));
-        questionRepository.save(new Question(-851L, "Jakie są główne różnice między PHP 7 a PHP 8?", subjectRepository.getById(-182L)));
-        questionRepository.save(new Question(-852L, "Jakie nowe funkcje wprowadzono w PHP 8 dla programowania obiektowego?", subjectRepository.getById(-182L)));
+        questionRepository.save(Question.builder().id(-843L).displayName("Co to jest JIT (Just-In-Time) w PHP 8?").subject(subjectRepository.getById(-182L)).build());
+        questionRepository.save(Question.builder().id(-844L).displayName("Jakie są główne korzyści z użycia JIT w PHP 8?").subject(subjectRepository.getById(-182L)).build());
+        questionRepository.save(Question.builder().id(-845L).displayName("Co to są atrybuty w PHP 8 i jak są używane?").subject(subjectRepository.getById(-182L)).build());
+        questionRepository.save(Question.builder().id(-846L).displayName("Jakie nowe typy danych wprowadza PHP 8?").subject(subjectRepository.getById(-182L)).build());
+        questionRepository.save(Question.builder().id(-847L).displayName("Co to jest operator Nullsafe w PHP 8 i jak działa?").subject(subjectRepository.getById(-182L)).build());
+        questionRepository.save(Question.builder().id(-848L).displayName("Jakie są zmiany w zarządzaniu błędami w PHP 8?").subject(subjectRepository.getById(-182L)).build());
+        questionRepository.save(Question.builder().id(-849L).displayName("Jakie ulepszenia wprowadzono w zakresie typowania w PHP 8?").subject(subjectRepository.getById(-182L)).build());
+        questionRepository.save(Question.builder().id(-850L).displayName("Co to jest Match Expression w PHP 8 i jak działa?").subject(subjectRepository.getById(-182L)).build());
+        questionRepository.save(Question.builder().id(-851L).displayName("Jakie są główne różnice między PHP 7 a PHP 8?").subject(subjectRepository.getById(-182L)).build());
+        questionRepository.save(Question.builder().id(-852L).displayName("Jakie nowe funkcje wprowadzono w PHP 8 dla programowania obiektowego?").subject(subjectRepository.getById(-182L)).build());
 
-        //Podstawy Ruby - Ruby
-        questionRepository.save(new Question(-893L, "Co to jest Ruby i do czego jest używany?", subjectRepository.getById(-184L)));
-        questionRepository.save(new Question(-894L, "Jakie są podstawowe typy danych w Ruby?", subjectRepository.getById(-184L)));
-        questionRepository.save(new Question(-895L, "Jak zadeklarować zmienną w Ruby?", subjectRepository.getById(-184L)));
-        questionRepository.save(new Question(-896L, "Co to są tablice w Ruby i jak się je definiuje?", subjectRepository.getById(-184L)));
-        questionRepository.save(new Question(-897L, "Jakie są różnice między zmiennymi lokalnymi a globalnymi w Ruby?", subjectRepository.getById(-184L)));
-        questionRepository.save(new Question(-898L, "Jak zdefiniować metodę w Ruby?", subjectRepository.getById(-184L)));
-        questionRepository.save(new Question(-899L, "Co to są bloki w Ruby i jak się je używa?", subjectRepository.getById(-184L)));
-        questionRepository.save(new Question(-900L, "Jakie są metody iteracji w Ruby?", subjectRepository.getById(-184L)));
-        questionRepository.save(new Question(-901L, "Co to jest symbol w Ruby i do czego służy?", subjectRepository.getById(-184L)));
-        questionRepository.save(new Question(-902L, "Jakie są podstawowe różnice między Ruby a innymi językami programowania, takimi jak Python lub JavaScript?", subjectRepository.getById(-184L)));
+        // Podstawy Ruby - Ruby
+        questionRepository.save(Question.builder().id(-893L).displayName("Co to jest Ruby i do czego jest używany?").subject(subjectRepository.getById(-184L)).build());
+        questionRepository.save(Question.builder().id(-894L).displayName("Jakie są podstawowe typy danych w Ruby?").subject(subjectRepository.getById(-184L)).build());
+        questionRepository.save(Question.builder().id(-895L).displayName("Jak zadeklarować zmienną w Ruby?").subject(subjectRepository.getById(-184L)).build());
+        questionRepository.save(Question.builder().id(-896L).displayName("Co to są tablice w Ruby i jak się je definiuje?").subject(subjectRepository.getById(-184L)).build());
+        questionRepository.save(Question.builder().id(-897L).displayName("Jakie są różnice między zmiennymi lokalnymi a globalnymi w Ruby?").subject(subjectRepository.getById(-184L)).build());
+        questionRepository.save(Question.builder().id(-898L).displayName("Jak zdefiniować metodę w Ruby?").subject(subjectRepository.getById(-184L)).build());
+        questionRepository.save(Question.builder().id(-899L).displayName("Co to są bloki w Ruby i jak się je używa?").subject(subjectRepository.getById(-184L)).build());
+        questionRepository.save(Question.builder().id(-900L).displayName("Jakie są metody iteracji w Ruby?").subject(subjectRepository.getById(-184L)).build());
+        questionRepository.save(Question.builder().id(-901L).displayName("Co to jest symbol w Ruby i do czego służy?").subject(subjectRepository.getById(-184L)).build());
+        questionRepository.save(Question.builder().id(-902L).displayName("Jakie są podstawowe różnice między Ruby a innymi językami programowania, takimi jak Python lub JavaScript?").subject(subjectRepository.getById(-184L)).build());
 
-        //Ruby on Rails - Ruby
-        questionRepository.save(new Question(-941L, "Co to jest Ruby on Rails i jakie są jego główne założenia?", subjectRepository.getById(-192L)));
-        questionRepository.save(new Question(-942L, "Jakie wzorce projektowe są najczęściej stosowane w Ruby on Rails?", subjectRepository.getById(-192L)));
-        questionRepository.save(new Question(-943L, "Jakie są zasady konwencji nad konfiguracją w Ruby on Rails?", subjectRepository.getById(-192L)));
-        questionRepository.save(new Question(-944L, "Co to są migracje w kontekście Ruby on Rails i jak są wykorzystywane?", subjectRepository.getById(-192L)));
-        questionRepository.save(new Question(-945L, "Jak działa system routingu w Ruby on Rails?", subjectRepository.getById(-192L)));
-        questionRepository.save(new Question(-946L, "Co to jest ActiveRecord w Ruby on Rails i jakie ma zastosowanie?", subjectRepository.getById(-192L)));
-        questionRepository.save(new Question(-947L, "Jak w Ruby on Rails wykorzystywane są widoki i jak można je modyfikować?", subjectRepository.getById(-192L)));
-        questionRepository.save(new Question(-948L, "Jakie są metody optymalizacji wydajności aplikacji w Ruby on Rails?", subjectRepository.getById(-192L)));
-        questionRepository.save(new Question(-949L, "Jak obsługuje się błędy i wyjątki w Ruby on Rails?", subjectRepository.getById(-192L)));
-        questionRepository.save(new Question(-950L, "Jakie są najlepsze praktyki związane z testowaniem aplikacji w Ruby on Rails?", subjectRepository.getById(-192L)));
-
+        // Ruby on Rails - Ruby
+        questionRepository.save(Question.builder().id(-941L).displayName("Co to jest Ruby on Rails i jakie są jego główne założenia?").subject(subjectRepository.getById(-192L)).build());
+        questionRepository.save(Question.builder().id(-942L).displayName("Jakie wzorce projektowe są najczęściej stosowane w Ruby on Rails?").subject(subjectRepository.getById(-192L)).build());
+        questionRepository.save(Question.builder().id(-943L).displayName("Jakie są zasady konwencji nad konfiguracją w Ruby on Rails?").subject(subjectRepository.getById(-192L)).build());
+        questionRepository.save(Question.builder().id(-944L).displayName("Co to są migracje w kontekście Ruby on Rails i jak są wykorzystywane?").subject(subjectRepository.getById(-192L)).build());
+        questionRepository.save(Question.builder().id(-945L).displayName("Jak działa system routingu w Ruby on Rails?").subject(subjectRepository.getById(-192L)).build());
+        questionRepository.save(Question.builder().id(-946L).displayName("Co to jest ActiveRecord w Ruby on Rails i jakie ma zastosowanie?").subject(subjectRepository.getById(-192L)).build());
+        questionRepository.save(Question.builder().id(-947L).displayName("Jak w Ruby on Rails wykorzystywane są widoki i jak można je modyfikować?").subject(subjectRepository.getById(-192L)).build());
+        questionRepository.save(Question.builder().id(-948L).displayName("Jakie są metody optymalizacji wydajności aplikacji w Ruby on Rails?").subject(subjectRepository.getById(-192L)).build());
+        questionRepository.save(Question.builder().id(-949L).displayName("Jak obsługuje się błędy i wyjątki w Ruby on Rails?").subject(subjectRepository.getById(-192L)).build());
+        questionRepository.save(Question.builder().id(-950L).displayName("Jakie są najlepsze praktyki związane z testowaniem aplikacji w Ruby on Rails?").subject(subjectRepository.getById(-192L)).build());
     }
 }

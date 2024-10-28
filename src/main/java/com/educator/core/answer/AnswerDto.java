@@ -1,8 +1,8 @@
 package com.educator.core.answer;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
 @Getter
 @AllArgsConstructor
 public class AnswerDto {

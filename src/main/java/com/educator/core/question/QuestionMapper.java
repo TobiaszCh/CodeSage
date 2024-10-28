@@ -15,20 +15,19 @@ public class QuestionMapper {
     private final SubjectRepository subjectRepository;
 
     public  QuestionDto mapToDtoQuestion(Question question) {
-        return new QuestionDto(
-                question.getId(),
-                question.getDisplayName(),
-                question.getSubject() != null ? question.getSubject().getId(): null,
-                answerMapper.mapToListDtoAnswer(question.getAnswers())
-        );
+        return QuestionDto.builder().id(question.getId())
+                .displayName(question.getDisplayName())
+                .subjectId(question.getSubject() != null ? question.getSubject().getId(): null)
+                .answers(answerMapper.mapToListDtoAnswer(question.getAnswers()))
+                .build();
     }
 
     public  Question mapToQuestion (QuestionDto questionDto) {
-        return new Question(
-                questionDto.getId(),
-                questionDto.getDisplayName(),
-                subjectRepository.getById(questionDto.getId())
-        );
+        return Question.builder()
+                .id(questionDto.getId())
+                .displayName(questionDto.getDisplayName())
+                .subject(subjectRepository.getById(questionDto.getId()))
+                .build();
     }
 
     public List<QuestionDto> mapToListDtoQuestion (List<Question> questions) {

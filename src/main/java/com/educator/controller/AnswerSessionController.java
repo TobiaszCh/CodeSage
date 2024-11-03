@@ -6,6 +6,8 @@ import com.educator.core.answer_session.dto.CheckCompletedSessionsDto;
 import com.educator.core.answer_session.dto.QuestionAnswerSelectDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +23,7 @@ public class AnswerSessionController {
     }
 
     @PostMapping("/subjectId")
-    public Long sendSubjectIdToAnswerSession(@RequestBody AnswerSessionDto answerSessionDto) {
+    public Long sendSubjectIdToAnswerSession(@Valid @RequestBody AnswerSessionDto answerSessionDto) {
         return answerSessionService.sendSubjectIdToAnswerSession(answerSessionDto);
     }
 

@@ -3,6 +3,7 @@ import com.educator.core.answer_session.enums.StatusAnswerSession;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -19,8 +20,10 @@ public class AnswerSessionDto {
 
     private StatusAnswerSession statusAnswerSession;
 
+    @NotNull
     private Long userId;
 
+    @NotNull
     private Long subjectId;
 
 }

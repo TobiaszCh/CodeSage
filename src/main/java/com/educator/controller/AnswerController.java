@@ -3,6 +3,7 @@ import com.educator.core.answer.AnswerDto;
 import com.educator.core.answer.AnswerService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class AnswerController {
     }
 
     @PostMapping
-    public void createAnswer(@RequestBody AnswerDto answerDto) {
+    public void createAnswer(@Valid @RequestBody AnswerDto answerDto) {
         answerService.createAnswer(answerDto);
     }
 }

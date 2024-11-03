@@ -3,6 +3,7 @@ import com.educator.core.subject.SubjectDto;
 import com.educator.core.subject.SubjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class SubjectController {
     }
 
     @PostMapping
-    public void createSubject(@RequestBody SubjectDto subjectDto) {
+    public void createSubject(@Valid @RequestBody SubjectDto subjectDto) {
         subjectService.createSubject(subjectDto);
     }
 

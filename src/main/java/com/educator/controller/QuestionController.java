@@ -3,6 +3,7 @@ import com.educator.core.question.QuestionDto;
 import com.educator.core.question.QuestionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class QuestionController {
     }
 
     @PostMapping
-    public void createQuestion(@RequestBody QuestionDto questionDto) {
+    public void createQuestion(@Valid @RequestBody QuestionDto questionDto) {
         questionService.createQuestion(questionDto);
     }
 

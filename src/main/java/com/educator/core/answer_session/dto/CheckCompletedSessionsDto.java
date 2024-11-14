@@ -15,6 +15,4 @@ public class CheckCompletedSessionsDto {
     private SubjectColor subjectColor;
 
 
-
-
 }

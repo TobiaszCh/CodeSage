@@ -10,7 +10,7 @@
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="display_name" type="varchar"/>
+            <column name="display_name" type="BIGINT"/>
             <column name="subject_id" type="BIGINT">
                 <constraints foreignKeyName="subject_id" references="subject(id)"/>
             </column>

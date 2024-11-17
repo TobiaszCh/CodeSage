@@ -1,5 +1,6 @@
 package com.educator.controller;
-import com.educator.core.subject.SubjectDto;
+import com.educator.core.subject.dto.CheckCompletedSessionsDto;
+import com.educator.core.subject.dto.SubjectDto;
 import com.educator.core.subject.SubjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +38,10 @@ public class SubjectController {
     @GetMapping(value = "/{courseId}")
     public List<SubjectDto> getSubjectsFilterByCourseIdFromAngular(@PathVariable Long courseId) {
         return subjectService.getSubjectsFilterByCourseIdFromAngular(courseId);
+    }
+
+    @GetMapping(value = "/correctAnswersAtLeast80Percent/{courseId}")
+    public List<CheckCompletedSessionsDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(@PathVariable Long courseId) {
+        return subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(courseId);
     }
 }

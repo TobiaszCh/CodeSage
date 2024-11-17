@@ -8,4 +8,5 @@ public interface AnswerSessionRepository extends JpaRepository<AnswerSession, Lo
 
     List<AnswerSession> findByStatusAnswerSession(StatusAnswerSession statusAnswerSession);
 
+
 }

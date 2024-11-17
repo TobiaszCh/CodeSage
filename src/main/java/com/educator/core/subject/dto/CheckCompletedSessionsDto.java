@@ -1,6 +1,6 @@
-package com.educator.core.answer_session.dto;
+package com.educator.core.subject.dto;
 
-import com.educator.core.answer_session.enums.SubjectColor;
+import com.educator.core.subject.SubjectColor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

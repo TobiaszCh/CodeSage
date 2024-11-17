@@ -1,4 +1,4 @@
-package com.educator.core.subject;
+package com.educator.core.subject.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import javax.validation.constraints.NotNull;

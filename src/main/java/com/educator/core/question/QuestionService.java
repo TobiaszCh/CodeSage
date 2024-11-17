@@ -1,8 +1,10 @@
 package com.educator.core.question;
+
 import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -14,7 +16,7 @@ public class QuestionService {
     private final QuestionRepository questionRepository;
 
 
-    public List<QuestionDto> getAllQuestions () {
+    public List<QuestionDto> getAllQuestions() {
         return questionMapper.mapToListDtoQuestion(questionRepository.findAll());
     }
 
@@ -29,6 +31,7 @@ public class QuestionService {
     public QuestionDto getQuestionById(Long id) {
         return questionMapper.mapToDtoQuestion(questionRepository.getById(id));
     }
+
     //ta metoda zwraca losowe pytanie z danego subject
     //ToDo nie używać słowa agular w backend
     public QuestionDto getQuestionFilterBySubject(Long answerSessionId) {
@@ -38,10 +41,9 @@ public class QuestionService {
         List<QuestionDto> questionsSelect = questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectId(subjectId));
 
         int answeredQuestion = answerSession.getAllAnswers();
-        if(answeredQuestion < 10) {
+        if (answeredQuestion < 10) {
             return questionsSelect.get(answeredQuestion);
-        }
-        else {
+        } else {
             return null;
         }
     }

@@ -1,4 +1,5 @@
 package com.educator.core.answer_session.dto;
+
 import com.educator.core.answer_session.enums.StatusAnswerSession;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,10 +21,10 @@ public class AnswerSessionDto {
 
     private StatusAnswerSession statusAnswerSession;
 
-    @NotNull
+    //ToDo Tu było @NotNull
     private Long userId;
 
-    @NotNull
+    //    @NotNull
     private Long subjectId;
 
 }

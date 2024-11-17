@@ -35,7 +35,7 @@ public class QuestionController {
     }
 
     @GetMapping("/answerSessionId/{answerSessionId}")
-    public QuestionDto getQuestionFilterBySubjectIdFromAngular(@PathVariable Long answerSessionId) {
+    public QuestionDto getQuestionFilterBySubjectId(@PathVariable Long answerSessionId) {
         return questionService.getQuestionFilterBySubject(answerSessionId);
     }
 }

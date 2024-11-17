@@ -1,5 +1,6 @@
 package com.educator.core.subject;
 import com.educator.core.course.CourseRepository;
+import com.educator.core.subject.dto.SubjectDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import java.util.List;

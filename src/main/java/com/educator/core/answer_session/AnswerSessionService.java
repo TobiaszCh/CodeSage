@@ -17,6 +17,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AnswerSessionService {
 
+    private static final int POINT_FOR_GOOD_ANSWER = 1;
+
+    private static final int POINT_FOR_ANSWER = 1;
+
+    private static final int MAX_VALUE_ALL_ANSWERS = 10;
+
     private final AnswerSessionRepository answerSessionRepository;
 
     private final QuestionRepository questionRepository;
@@ -42,9 +48,9 @@ public class AnswerSessionService {
     public Long selectQuestionAnswer(Long id, QuestionAnswerSelectDto questionAnswerSelectDto) {
         if (questionAnswerSelectDto.getAnswerId() != null) {
             AnswerSession answerSessionUpdate = answerSessionRepository.getById(id);
-            answerSessionUpdate.setAllAnswers(answerSessionUpdate.getAllAnswers() + 1);
+            answerSessionUpdate.setAllAnswers(answerSessionUpdate.getAllAnswers() + POINT_FOR_ANSWER);
             if (answerRepository.getById(questionAnswerSelectDto.getAnswerId()).isCorrect()) {
-                answerSessionUpdate.setCorrectAnswers(answerSessionUpdate.getCorrectAnswers() + 1);
+                answerSessionUpdate.setCorrectAnswers(answerSessionUpdate.getCorrectAnswers() + POINT_FOR_GOOD_ANSWER);
             }
             answerSessionRepository.save(answerSessionUpdate);
         }
@@ -55,7 +61,7 @@ public class AnswerSessionService {
 
     public void updateAnswerSessionStatus(Long id, AnswerSessionStatusIdDto answerSessionStatusIdDto) {
         AnswerSession answerSession = answerSessionRepository.getById(answerSessionStatusIdDto.getId());
-        if (answerSession.getAllAnswers() == 10) {
+        if (answerSession.getAllAnswers() == MAX_VALUE_ALL_ANSWERS) {
             answerSession.setStatusAnswerSession(StatusAnswerSession.COMPLETED);
         } else {
             answerSession.setStatusAnswerSession(StatusAnswerSession.ABANDONED);

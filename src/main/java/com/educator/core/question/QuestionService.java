@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class QuestionService {
-
+    private static final int MAX_VALUE_ALL_ANSWERS = 10;
     private final QuestionMapper questionMapper;
     private final AnswerSessionRepository answerSessionRepository;
     private final QuestionRepository questionRepository;
@@ -41,7 +41,7 @@ public class QuestionService {
         List<QuestionDto> questionsSelect = questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectId(subjectId));
 
         int answeredQuestion = answerSession.getAllAnswers();
-        if (answeredQuestion < 10) {
+        if (answeredQuestion < MAX_VALUE_ALL_ANSWERS) {
             return questionsSelect.get(answeredQuestion);
         } else {
             return null;

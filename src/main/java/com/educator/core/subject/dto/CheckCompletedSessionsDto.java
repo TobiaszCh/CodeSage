@@ -10,7 +10,7 @@ public class CheckCompletedSessionsDto {
 
     private Long id;
 
-    private Long subjectId;
+    private Long answerSessionId;
 
     private SubjectColor subjectColor;
 

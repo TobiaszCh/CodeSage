@@ -37,7 +37,7 @@ public class SubjectController {
 
     @GetMapping(value = "/{courseId}")
     public List<SubjectDto> getSubjectsFilterByCourseIdFromAngular(@PathVariable Long courseId) {
-        return subjectService.getSubjectsFilterByCourseIdFromAngular(courseId);
+        return subjectService.getSubjectsFilterByCourseId(courseId);
     }
 
     @GetMapping(value = "/correctAnswersAtLeast80Percent/{courseId}")

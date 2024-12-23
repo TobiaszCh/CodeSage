@@ -2,15 +2,14 @@ package com.educator.core.answer_session.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
 @AllArgsConstructor
-public class QuestionAnswerSelectDto {
+@NoArgsConstructor
+public class SubjectIdToAnswerSessionDto {
     @NotNull
-    private Long questionId;
-    @NotNull
-    private Long answerId;
-
+    private Long id;
 }

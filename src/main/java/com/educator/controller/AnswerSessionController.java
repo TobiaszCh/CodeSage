@@ -1,9 +1,8 @@
 package com.educator.controller;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
 import com.educator.core.answer_session.AnswerSessionService;
-import com.educator.core.answer_session.dto.AnswerSessionStatusIdDto;
-import com.educator.core.subject.dto.CheckCompletedSessionsDto;
 import com.educator.core.answer_session.dto.QuestionAnswerSelectDto;
+import com.educator.core.answer_session.dto.SubjectIdToAnswerSessionDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,25 +22,22 @@ public class AnswerSessionController {
     }
 
     @PostMapping("/subjectId")
-    public Long sendSubjectIdToAnswerSession(@Valid @RequestBody AnswerSessionDto answerSessionDto) {
-        return answerSessionService.sendSubjectIdToAnswerSession(answerSessionDto);
+    public Long sendSubjectIdToAnswerSession(@Valid @RequestBody SubjectIdToAnswerSessionDto subjectIdToAnswerSessionDto) {
+        return answerSessionService.sendSubjectIdToNewAnswerSession(subjectIdToAnswerSessionDto);
     }
 
     @DeleteMapping(value = "/{id}")
     public void deleteById(@PathVariable Long id) {
         answerSessionService.deleteById(id);
     }
-    //Metoda Post selectQuestionAnswer(answerSessionId, questionId, answerId)
-    //ta metoda sprawdza czy odp jest prawidłowa, podbija licznik wszystkich odpowiedzi i prawidłowych odpowiedzi)
-    //zwraca correctAnswerId
+
     @PutMapping(value = "/selectQuestionAnswer/{id}")
-    public Long selectQuestionAnswer(@PathVariable Long id, @RequestBody QuestionAnswerSelectDto questionAnswerSelectDto) {
+    public Long selectQuestionAnswer(@PathVariable Long id,@Valid @RequestBody QuestionAnswerSelectDto questionAnswerSelectDto) {
         return answerSessionService.selectQuestionAnswer(id, questionAnswerSelectDto);
     }
+
     @PutMapping(value = "/updateStatus/{id}")
-    public void updateAnswerSessionStatus(@PathVariable Long id, @RequestBody AnswerSessionStatusIdDto answerSessionStatusIdDto) {
-        answerSessionService.updateAnswerSessionStatus(id, answerSessionStatusIdDto);
+    public void updateAnswerSessionStatus(@PathVariable Long id) {
+        answerSessionService.updateAnswerSessionStatus(id);
     }
-
-
 }

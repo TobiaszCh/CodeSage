@@ -24,7 +24,7 @@ public class AnswerSessionDto {
     //ToDo Tu było @NotNull
     private Long userId;
 
-    //    @NotNull
+    //@NotNull
     private Long subjectId;
 
 }

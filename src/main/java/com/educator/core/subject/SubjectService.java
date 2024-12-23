@@ -56,7 +56,7 @@ public class SubjectService {
         return getCheckCompletedSessionsDtos(subjectsIdFilterByCourseId, answerSessionsCompletedList, authService);
 
     }
-
+    //ToDo ta metoda nie powinna być statyczna, czy potrzebny jest 3 parametr?
     private static List<CheckCompletedSessionsDto> getCheckCompletedSessionsDtos(List<Long> subjectsIdFilterByCourseId, List<AnswerSession> answerSessionsCompletedList, AuthService authService) {
         List<CheckCompletedSessionsDto> checkCompletedSessionsDtoList = new ArrayList<>();
         for (AnswerSession answerSessionCompleted : answerSessionsCompletedList) {
@@ -64,9 +64,9 @@ public class SubjectService {
             if (checkAllAndCorrectAnswers >= BORDER_FINISHED_SUBJECT && subjectsIdFilterByCourseId.contains(answerSessionCompleted.getSubject().getId())
             && answerSessionCompleted.getUsers().getId().equals(authService.getLoggedUser().getId())) {
                 if (getDifferenceInDaysBetweenTheStartedSessionAndToday(answerSessionCompleted) <= BORDER_SEVEN_DAYS) {
-                    checkCompletedSessionsDtoList.add(new CheckCompletedSessionsDto(answerSessionCompleted.getSubject().getId(),answerSessionCompleted.getId(), SubjectColor.TO_SEVEN_DAYS));
+                    checkCompletedSessionsDtoList.add(new CheckCompletedSessionsDto(answerSessionCompleted.getSubject().getId(),answerSessionCompleted.getId(), SubjectCompletedAge.FRESH));
                 } else {
-                    checkCompletedSessionsDtoList.add(new CheckCompletedSessionsDto(answerSessionCompleted.getSubject().getId(),answerSessionCompleted.getId(), SubjectColor.AFTER_SEVEN_DAYS));
+                    checkCompletedSessionsDtoList.add(new CheckCompletedSessionsDto(answerSessionCompleted.getSubject().getId(),answerSessionCompleted.getId(), SubjectCompletedAge.OLD));
                 }
             }
         }

@@ -1,8 +1,10 @@
 package com.educator.core.answer_session;
-import com.educator.auth.AuthService;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
+import com.educator.core.answer_session.dto.SubjectIdToAnswerSessionDto;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
+import com.educator.core.subject.Subject;
 import com.educator.core.subject.SubjectRepository;
+import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +15,6 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class AnswerSessionMapper {
-
-    private final AuthService authService;
-
-    private final SubjectRepository subjectRepository;
-
 
     public AnswerSessionDto mapToDtoAnswerSession(AnswerSession answerSession) {
         return new AnswerSessionDto(
@@ -30,12 +27,11 @@ public class AnswerSessionMapper {
                 answerSession.getSubject() != null ? answerSession.getSubject().getId(): null);
     }
 
-    public AnswerSession mapToAnswerSession(AnswerSessionDto answerSessionDto) {
+    public AnswerSession mapToAnswerSession(Subject subject, User user, StatusAnswerSession statusAnswerSession) {
         return AnswerSession.builder()
-                .id(answerSessionDto.getId())
-                .users(authService.getLoggedUser())
-                .subject(subjectRepository.getById(answerSessionDto.getSubjectId()))
-                .statusAnswerSession(StatusAnswerSession.IN_PROGRESS)
+                .users(user)
+                .subject(subject)
+                .statusAnswerSession(statusAnswerSession)
                 .sessionStartDate(LocalDate.now())
                 .build();
 

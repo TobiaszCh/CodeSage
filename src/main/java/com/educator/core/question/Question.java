@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -16,7 +17,7 @@ import java.util.List;
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_seq_generator")
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_seq_generator")
     @SequenceGenerator(name = "question_seq_generator", sequenceName = "question_seq", allocationSize = 1)
     private Long id;
 

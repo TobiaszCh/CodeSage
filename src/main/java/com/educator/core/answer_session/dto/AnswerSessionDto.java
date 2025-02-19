@@ -4,7 +4,6 @@ import com.educator.core.answer_session.enums.StatusAnswerSession;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter

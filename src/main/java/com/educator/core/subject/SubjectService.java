@@ -2,9 +2,9 @@ package com.educator.core.subject;
 import com.educator.auth.AuthService;
 import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
-import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.subject.dto.CheckCompletedSessionsDto;
 import com.educator.core.subject.dto.SubjectDto;
+import com.educator.core.answer_session.enums.StatusAnswerSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
@@ -53,11 +53,11 @@ public class SubjectService {
     public List<CheckCompletedSessionsDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(Long courseId) {
         List<Long> subjectsIdFilterByCourseId = subjectRepository.findByCourseId(courseId).stream().map(Subject::getId).collect(Collectors.toList());
         List<AnswerSession> answerSessionsCompletedList = answerSessionRepository.findByStatusAnswerSession(StatusAnswerSession.COMPLETED);
-        return getCheckCompletedSessionsDtos(subjectsIdFilterByCourseId, answerSessionsCompletedList, authService);
+        return getCheckCompletedSessionsDtos(subjectsIdFilterByCourseId, answerSessionsCompletedList);
 
     }
-    //ToDo ta metoda nie powinna być statyczna, czy potrzebny jest 3 parametr?
-    private static List<CheckCompletedSessionsDto> getCheckCompletedSessionsDtos(List<Long> subjectsIdFilterByCourseId, List<AnswerSession> answerSessionsCompletedList, AuthService authService) {
+    //ToDo ta metoda nie powinna być statyczna, czy potrzebny jest 3 parametr? (zmienione!!)
+    private List<CheckCompletedSessionsDto> getCheckCompletedSessionsDtos(List<Long> subjectsIdFilterByCourseId, List<AnswerSession> answerSessionsCompletedList) {
         List<CheckCompletedSessionsDto> checkCompletedSessionsDtoList = new ArrayList<>();
         for (AnswerSession answerSessionCompleted : answerSessionsCompletedList) {
             double checkAllAndCorrectAnswers = getCheckAllAndCorrectAnswers(answerSessionCompleted);

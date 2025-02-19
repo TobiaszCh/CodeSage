@@ -1,9 +1,7 @@
 package com.educator.core.answer_session;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
-import com.educator.core.answer_session.dto.SubjectIdToAnswerSessionDto;
-import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.subject.Subject;
-import com.educator.core.subject.SubjectRepository;
+import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

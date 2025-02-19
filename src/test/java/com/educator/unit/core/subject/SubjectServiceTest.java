@@ -1,10 +1,14 @@
-package com.educator.core.subject;
+package com.educator.unit.core.subject;
 
 import com.educator.auth.AuthService;
 import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.course.Course;
+import com.educator.core.subject.Subject;
+import com.educator.core.subject.SubjectMapper;
+import com.educator.core.subject.SubjectRepository;
+import com.educator.core.subject.SubjectService;
 import com.educator.core.subject.dto.CheckCompletedSessionsDto;
 import com.educator.core.subject.dto.SubjectDto;
 import com.educator.core.user.User;

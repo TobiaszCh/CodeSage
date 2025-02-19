@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Answer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_seq_generator")
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_seq_generator")
     @SequenceGenerator(name = "answer_seq_generator", sequenceName = "answer_seq", allocationSize = 1)
     private Long id;
 

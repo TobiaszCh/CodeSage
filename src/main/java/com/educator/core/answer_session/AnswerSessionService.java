@@ -43,8 +43,7 @@ public class AnswerSessionService {
     }
 
     public Long sendSubjectIdToNewAnswerSession(SubjectIdToAnswerSessionDto subjectIdToAnswerSessionDto) {
-        AnswerSession answerSession = answerSessionRepository
-                .save(answerSessionMapper.mapToAnswerSession(subjectRepository.getById(subjectIdToAnswerSessionDto.getId()), authService.getLoggedUser(), StatusAnswerSession.IN_PROGRESS));
+        AnswerSession answerSession = answerSessionRepository.save(answerSessionMapper.mapToAnswerSession(subjectRepository.getById(subjectIdToAnswerSessionDto.getId()), authService.getLoggedUser(), StatusAnswerSession.IN_PROGRESS));
         return answerSessionMapper.mapToDtoAnswerSession(answerSession).getId();
     }
 
@@ -53,12 +52,12 @@ public class AnswerSessionService {
     }
 
     public Long selectQuestionAnswer(Long id, QuestionAnswerSelectDto questionAnswerSelectDto) {
-            AnswerSession answerSessionUpdate = answerSessionRepository.getById(id);
-            boolean correctAnswer = answerRepository.getById(questionAnswerSelectDto.getAnswerId()).isCorrect();
-            changeAllAndCorrectAnswers(answerSessionUpdate, correctAnswer);
-            answerSessionRepository.save(answerSessionUpdate);
-            return questionRepository.getById(questionAnswerSelectDto.getQuestionId()).getAnswers()
-                    .stream().filter(Answer::isCorrect).mapToLong(Answer::getId).sum();
+        AnswerSession answerSessionUpdate = answerSessionRepository.getById(id);
+        boolean correctAnswer = answerRepository.getById(questionAnswerSelectDto.getAnswerId()).isCorrect();
+        changeAllAndCorrectAnswers(answerSessionUpdate, correctAnswer);
+        answerSessionRepository.save(answerSessionUpdate);
+        return questionRepository.getById(questionAnswerSelectDto.getQuestionId()).getAnswers()
+                .stream().filter(Answer::isCorrect).mapToLong(Answer::getId).sum();
     }
 
     private static void changeAllAndCorrectAnswers(AnswerSession answerSessionUpdate, boolean correctAnswer) {
@@ -69,9 +68,9 @@ public class AnswerSessionService {
     }
 
     public void updateAnswerSessionStatus(Long id) {
-            AnswerSession answerSession = answerSessionRepository.getById(id);
-            changeStatus(answerSession);
-            answerSessionRepository.save(answerSession);
+        AnswerSession answerSession = answerSessionRepository.getById(id);
+        changeStatus(answerSession);
+        answerSessionRepository.save(answerSession);
     }
 
     private static void changeStatus(AnswerSession answerSession) {

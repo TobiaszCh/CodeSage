@@ -1,6 +1,6 @@
 package com.educator.core.level;
-import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.subject.SubjectRepository;
+import com.educator.core.answer_session.AnswerSessionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import java.util.List;

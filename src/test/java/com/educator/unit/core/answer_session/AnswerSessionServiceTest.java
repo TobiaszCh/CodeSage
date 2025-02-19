@@ -1,6 +1,10 @@
-package com.educator.core.answer_session;
+package com.educator.unit.core.answer_session;
 
 import com.educator.auth.AuthService;
+import com.educator.core.answer_session.AnswerSession;
+import com.educator.core.answer_session.AnswerSessionMapper;
+import com.educator.core.answer_session.AnswerSessionRepository;
+import com.educator.core.answer_session.AnswerSessionService;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
 import com.educator.core.answer_session.dto.SubjectIdToAnswerSessionDto;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
@@ -14,11 +18,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDate;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)

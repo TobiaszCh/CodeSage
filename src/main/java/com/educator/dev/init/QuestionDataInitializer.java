@@ -235,5 +235,87 @@ public class QuestionDataInitializer {
         questionRepository.save(Question.builder().id(-948L).displayName("Jakie są metody optymalizacji wydajności aplikacji w Ruby on Rails?").subject(subjectRepository.getById(-192L)).build());
         questionRepository.save(Question.builder().id(-949L).displayName("Jak obsługuje się błędy i wyjątki w Ruby on Rails?").subject(subjectRepository.getById(-192L)).build());
         questionRepository.save(Question.builder().id(-950L).displayName("Jakie są najlepsze praktyki związane z testowaniem aplikacji w Ruby on Rails?").subject(subjectRepository.getById(-192L)).build());
+
+        // Po jednym pytaniu do tematów javy - testowo
+        questionRepository.save(Question.builder().id(-951L).displayName("Jak interfejsy wpływają na modularność i elastyczność kodu w aplikacjach Java?").subject(subjectRepository.getById(-11L)).build());
+        questionRepository.save(Question.builder().id(-952L).displayName("W jaki sposób enumy zwiększają bezpieczeństwo typów i ułatwiają utrzymanie kodu?").subject(subjectRepository.getById(-12L)).build());
+        questionRepository.save(Question.builder().id(-953L).displayName("Jak atrybuty mogą być wykorzystywane do przechowywania metadanych oraz modyfikacji zachowania aplikacji?").subject(subjectRepository.getById(-13L)).build());
+        questionRepository.save(Question.builder().id(-954L).displayName("Jakie są różnice między metodami statycznymi a niestatycznymi oraz kiedy warto je stosować?").subject(subjectRepository.getById(-14L)).build());
+        questionRepository.save(Question.builder().id(-955L).displayName("Jak adnotacje wpływają na konfigurację i działanie frameworków w aplikacjach Java?").subject(subjectRepository.getById(-15L)).build());
+        questionRepository.save(Question.builder().id(-956L).displayName("Jakie typy kolekcji są najczęściej stosowane i jak wybrać odpowiednią do konkretnego zadania?").subject(subjectRepository.getById(-16L)).build());
+        questionRepository.save(Question.builder().id(-957L).displayName("Jakie korzyści płyną ze stosowania funkcji wyższego rzędu w programowaniu funkcyjnym?").subject(subjectRepository.getById(-17L)).build());
+
+        // Po jednym pytaniu do tematów TypeScript - testowo
+        questionRepository.save(Question.builder().id(-958L).displayName("Jakie są główne typy danych dostępne w TypeScript i jak wpływają na bezpieczeństwo kodu?").subject(subjectRepository.getById(-129L)).build());
+        questionRepository.save(Question.builder().id(-959L).displayName("Jakie są różnice między funkcjami strzałkowymi a tradycyjnymi funkcjami w TypeScript oraz jakie korzyści daje ich stosowanie?").subject(subjectRepository.getById(-130L)).build());
+        questionRepository.save(Question.builder().id(-960L).displayName("W jaki sposób klasy i interfejsy w TypeScript współpracują, aby zapewnić silne typowanie i obiektowe podejście do programowania?").subject(subjectRepository.getById(-131L)).build());
+        questionRepository.save(Question.builder().id(-961L).displayName("Jakie są różnice między modułami ES6 a przestrzeniami nazw w TypeScript i kiedy warto stosować jedno rozwiązanie zamiast drugiego?").subject(subjectRepository.getById(-132L)).build());
+        questionRepository.save(Question.builder().id(-962L).displayName("Jak dekoratory w TypeScript mogą być wykorzystane do modyfikacji zachowania klas i metod oraz jakie są potencjalne wyzwania ich stosowania?").subject(subjectRepository.getById(-133L)).build());
+        questionRepository.save(Question.builder().id(-963L).displayName("Jak programowanie generyczne w TypeScript umożliwia tworzenie elastycznych i wielokrotnego użytku komponentów?").subject(subjectRepository.getById(-134L)).build());
+        questionRepository.save(Question.builder().id(-964L).displayName("Jakie zaawansowane typy i techniki, takie jak warunkowe typy czy typy indeksowane, mogą zwiększyć bezpieczeństwo i skalowalność aplikacji w TypeScript?").subject(subjectRepository.getById(-135L)).build());
+
+        // Po jednym pytaniu do tematów Phyton - testowo
+        questionRepository.save(Question.builder().id(-965L).displayName("Jakie są najlepsze praktyki związane z kontrolą przepływu w Pythonie oraz jak wpływają one na czytelność kodu?").subject(subjectRepository.getById(-121L)).build());
+        questionRepository.save(Question.builder().id(-966L).displayName("W jaki sposób funkcje i moduły w Pythonie ułatwiają organizację kodu i wspierają ponowne użycie?").subject(subjectRepository.getById(-122L)).build());
+        questionRepository.save(Question.builder().id(-967L).displayName("Jakie są kluczowe zasady obsługi wyjątków w Pythonie i jak można je skutecznie implementować?").subject(subjectRepository.getById(-123L)).build());
+        questionRepository.save(Question.builder().id(-968L).displayName("Jakie metody pracy z plikami w Pythonie są najczęściej stosowane w projektach?").subject(subjectRepository.getById(-124L)).build());
+        questionRepository.save(Question.builder().id(-969L).displayName("Jakie są podstawowe zasady programowania obiektowego w Pythonie i jakie korzyści płyną z ich stosowania?").subject(subjectRepository.getById(-125L)).build());
+        questionRepository.save(Question.builder().id(-970L).displayName("Jakie biblioteki Python są najbardziej popularne i jakie mają zastosowania w różnych dziedzinach?").subject(subjectRepository.getById(-126L)).build());
+        questionRepository.save(Question.builder().id(-971L).displayName("Jakie narzędzia i biblioteki Python są wykorzystywane do analizy danych oraz wizualizacji wyników?").subject(subjectRepository.getById(-127L)).build());
+
+        // Po jednym pytaniu do tematów JavaScript - testowo
+        questionRepository.save(Question.builder().id(-972L).displayName("Jak funkcje w JavaScript wpływają na zakres zmiennych oraz jakie zasady dotyczą hoistingu?").subject(subjectRepository.getById(-139L)).build());
+        questionRepository.save(Question.builder().id(-973L).displayName("Jakie techniki obsługi wyjątków i błędów są najczęściej stosowane w JavaScript i jak wpływają na stabilność aplikacji?").subject(subjectRepository.getById(-140L)).build());
+        questionRepository.save(Question.builder().id(-974L).displayName("Jakie są różnice między pracą z DOM a BOM w JavaScript i w jaki sposób wpływają one na manipulację stroną?").subject(subjectRepository.getById(-141L)).build());
+        questionRepository.save(Question.builder().id(-975L).displayName("Jak asynchroniczność w JavaScript, np. poprzez Promises czy async/await, poprawia wydajność aplikacji?").subject(subjectRepository.getById(-142L)).build());
+        questionRepository.save(Question.builder().id(-976L).displayName("Jakie mechanizmy obsługi zdarzeń w JavaScript są najczęściej wykorzystywane i jakie dają korzyści?").subject(subjectRepository.getById(-143L)).build());
+        questionRepository.save(Question.builder().id(-977L).displayName("Jakie podejścia do programowania obiektowego w JavaScript umożliwiają tworzenie skalowalnych i modularnych aplikacji?").subject(subjectRepository.getById(-144L)).build());
+        questionRepository.save(Question.builder().id(-978L).displayName("Jak nowoczesne API i interfejsy Webowe zmieniają interakcję użytkowników z aplikacjami internetowymi?").subject(subjectRepository.getById(-145L)).build());
+
+        // Po jednym pytaniu do tematów React - testowo
+        questionRepository.save(Question.builder().id(-979L).displayName("Jakie są główne różnice między komponentami klasowymi a funkcyjnymi w React oraz jakie korzyści płyną z ich stosowania?").subject(subjectRepository.getById(-148L)).build());
+        questionRepository.save(Question.builder().id(-980L).displayName("Jakie techniki zarządzania stanem i cykl życia komponentów w React są najczęściej stosowane w praktyce?").subject(subjectRepository.getById(-149L)).build());
+        questionRepository.save(Question.builder().id(-981L).displayName("W jaki sposób obsługa zdarzeń i formularzy w React różni się od tradycyjnych metod w JavaScript?").subject(subjectRepository.getById(-150L)).build());
+        questionRepository.save(Question.builder().id(-982L).displayName("Jakie zalety daje użycie React Routera do routingu w aplikacjach React i jakie wyzwania mogą się pojawić?").subject(subjectRepository.getById(-151L)).build());
+        questionRepository.save(Question.builder().id(-983L).displayName("Jakie są różnice między zarządzaniem stanem za pomocą Redux a Context API w React i kiedy warto stosować jedno z tych rozwiązań?").subject(subjectRepository.getById(-152L)).build());
+        questionRepository.save(Question.builder().id(-984L).displayName("Jakie korzyści płyną ze stosowania hooków (Hooks) w React oraz jakie są najczęściej używane haki?").subject(subjectRepository.getById(-153L)).build());
+        questionRepository.save(Question.builder().id(-985L).displayName("Jakie metody testowania komponentów React są najbardziej efektywne i jak wpływają na jakość aplikacji?").subject(subjectRepository.getById(-154L)).build());
+
+        // Po jednym pytaniu do tematów Kotlin - testowo
+        questionRepository.save(Question.builder().id(-986L).displayName("Jakie mechanizmy kontroli przepływu i rodzaje kolekcji w Kotlin wpływają na efektywność i czytelność kodu?").subject(subjectRepository.getById(-157L)).build());
+        questionRepository.save(Question.builder().id(-987L).displayName("Jakie są zalety stosowania funkcji i wyrażeń lambda w Kotlin oraz jak przyczyniają się do zwięzłości kodu?").subject(subjectRepository.getById(-158L)).build());
+        questionRepository.save(Question.builder().id(-988L).displayName("W jaki sposób klasy, obiekty i mechanizmy dziedziczenia w Kotlin wspierają programowanie obiektowe?").subject(subjectRepository.getById(-159L)).build());
+        questionRepository.save(Question.builder().id(-989L).displayName("Jak Kotlin zapewnia bezpieczeństwo typów i obsługę nullability, eliminując ryzyko wystąpienia błędów NullPointerException?").subject(subjectRepository.getById(-160L)).build());
+        questionRepository.save(Question.builder().id(-990L).displayName("Jakie cechy programowania funkcyjnego w Kotlin umożliwiają tworzenie bardziej zwięzłego i przejrzystego kodu?").subject(subjectRepository.getById(-161L)).build());
+        questionRepository.save(Question.builder().id(-991L).displayName("Jak delegaty i properties w Kotlin ułatwiają zarządzanie stanem obiektów i implementację wzorców projektowych?").subject(subjectRepository.getById(-162L)).build());
+        questionRepository.save(Question.builder().id(-992L).displayName("Jakie korzyści niesie wykorzystanie korutyn w Kotlin do obsługi współbieżności i jakie mogą wystąpić wyzwania przy ich implementacji?").subject(subjectRepository.getById(-163L)).build());
+
+        // Po jednym pytaniu do tematów C++ - testowo
+        questionRepository.save(Question.builder().id(-993L).displayName("Jakie są najlepsze praktyki definiowania obiektów i klas w C++ oraz jak wpływają na projektowanie oprogramowania?").subject(subjectRepository.getById(-166L)).build());
+        questionRepository.save(Question.builder().id(-994L).displayName("Jak dziedziczenie i polimorfizm w C++ umożliwiają tworzenie elastycznych i skalowalnych hierarchii klas?").subject(subjectRepository.getById(-167L)).build());
+        questionRepository.save(Question.builder().id(-995L).displayName("Jakie są korzyści wynikające z wykorzystania szablonów i metaprogramowania w C++ przy projektowaniu generycznych rozwiązań?").subject(subjectRepository.getById(-168L)).build());
+        questionRepository.save(Question.builder().id(-996L).displayName("Jakie strategie zarządzania pamięcią w C++ pomagają unikać błędów i optymalizować wydajność aplikacji?").subject(subjectRepository.getById(-169L)).build());
+        questionRepository.save(Question.builder().id(-997L).displayName("Jakie techniki obsługi wyjątków i błędów w C++ pozwalają na tworzenie bardziej niezawodnych aplikacji?").subject(subjectRepository.getById(-170L)).build());
+        questionRepository.save(Question.builder().id(-998L).displayName("Jakie elementy Standardowej Biblioteki Szablonów (STL) są najczęściej wykorzystywane w projektach C++ i dlaczego?").subject(subjectRepository.getById(-171L)).build());
+        questionRepository.save(Question.builder().id(-999L).displayName("Jakie mechanizmy współbieżności i wielowątkowości w C++ umożliwiają efektywne wykorzystanie zasobów sprzętowych?").subject(subjectRepository.getById(-172L)).build());
+
+        // Po jednym pytaniu do tematów PHP - testowo
+        questionRepository.save(Question.builder().id(-1000L).displayName("Jakie są najlepsze praktyki obsługi formularzy w PHP, aby zapewnić bezpieczeństwo i poprawność przesyłanych danych?").subject(subjectRepository.getById(-175L)).build());
+        questionRepository.save(Question.builder().id(-1001L).displayName("Jakie są kluczowe aspekty pracy z bazami danych w PHP, uwzględniając optymalizację zapytań oraz zabezpieczenia przed SQL Injection?").subject(subjectRepository.getById(-176L)).build());
+        questionRepository.save(Question.builder().id(-1002L).displayName("Jakie techniki i narzędzia można zastosować, aby zwiększyć bezpieczeństwo aplikacji PHP przed atakami?").subject(subjectRepository.getById(-177L)).build());
+        questionRepository.save(Question.builder().id(-1003L).displayName("Jakie są najlepsze metody zarządzania sesjami i ciasteczkami w PHP, aby zapewnić funkcjonalność i bezpieczeństwo użytkowników?").subject(subjectRepository.getById(-178L)).build());
+        questionRepository.save(Question.builder().id(-1004L).displayName("Jak obsługa wyjątków i błędów w PHP wpływa na stabilność aplikacji oraz jakie praktyki warto stosować?").subject(subjectRepository.getById(-179L)).build());
+        questionRepository.save(Question.builder().id(-1005L).displayName("Jakie są zalety stosowania systemów szablonów w PHP i jak wpływają one na organizację oraz czytelność kodu?").subject(subjectRepository.getById(-180L)).build());
+        questionRepository.save(Question.builder().id(-1006L).displayName("Jakie różnice występują między frameworkami PHP, takimi jak Laravel i Symfony, i kiedy warto zastosować jeden z nich?").subject(subjectRepository.getById(-181L)).build());
+
+        // Po jednym pytaniu do tematów Ruby - testowo
+        questionRepository.save(Question.builder().id(-1007L).displayName("Jakie są najlepsze praktyki definiowania obiektów i metod w Ruby, aby poprawić czytelność i modularność kodu?").subject(subjectRepository.getById(-185L)).build());
+        questionRepository.save(Question.builder().id(-1008L).displayName("Jakie są główne zasady implementacji klas i dziedziczenia w Ruby oraz jak wpływają one na organizację kodu obiektowego?").subject(subjectRepository.getById(-186L)).build());
+        questionRepository.save(Question.builder().id(-1009L).displayName("W jaki sposób moduły i mieszanki (mixins) w Ruby umożliwiają ponowne użycie kodu i ułatwiają jego modularizację?").subject(subjectRepository.getById(-187L)).build());
+        questionRepository.save(Question.builder().id(-1010L).displayName("Jakie techniki zarządzania wyjątkami w Ruby zapewniają stabilność i niezawodność aplikacji?").subject(subjectRepository.getById(-188L)).build());
+        questionRepository.save(Question.builder().id(-1011L).displayName("Jakie metody pracy z plikami oraz serializacji danych w Ruby są najczęściej stosowane w praktyce?").subject(subjectRepository.getById(-189L)).build());
+        questionRepository.save(Question.builder().id(-1012L).displayName("Jakie korzyści i wyzwania niesie ze sobą metaprogramowanie w Ruby oraz jakie są najlepsze praktyki jego stosowania?").subject(subjectRepository.getById(-190L)).build());
+        questionRepository.save(Question.builder().id(-1013L).displayName("Jakie narzędzia deweloperskie i metody testowania w Ruby przyczyniają się do podniesienia jakości kodu?").subject(subjectRepository.getById(-191L)).build());
+
     }
 }

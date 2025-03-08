@@ -19,9 +19,8 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
-@SpringBootTest
 @Transactional
+@SpringBootTest
 public class AnswerSessionServiceTest {
 
     @Autowired

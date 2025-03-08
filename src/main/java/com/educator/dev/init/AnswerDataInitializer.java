@@ -1089,5 +1089,410 @@ public class AnswerDataInitializer {
         answerRepository.save(new Answer(-988L, "Rails promuje TDD (Test Driven Development) i używa RSpec, MiniTest dla testowania.", true, questionRepository.getById(-950L)));
         answerRepository.save(new Answer(-989L, "Najlepszą praktyką jest unikanie testów jednostkowych na rzecz testów integracyjnych.", false, questionRepository.getById(-950L)));
         answerRepository.save(new Answer(-990L, "Testy powinny być pisane tylko po zakończeniu projektu.", false, questionRepository.getById(-950L)));
+
+
+        // ----------------------  JAVA  ----------------------
+
+// (JAVA) Pytanie ID -951: "Jak interfejsy wpływają na modularność i elastyczność kodu w aplikacjach Java?"
+        answerRepository.save(new Answer(-1014L, "Interfejsy służą wyłącznie do określania zakresu widoczności zmiennych globalnych.", false, questionRepository.getById(-951L)));
+        answerRepository.save(new Answer(-1015L, "Wprowadzenie interfejsów zwiększa spójność kodu i sprzyja rozszerzalności przez polimorfizm.", true, questionRepository.getById(-951L)));
+        answerRepository.save(new Answer(-1016L, "Interfejsy w Javie umożliwiają wykonywanie kodu wyłącznie w środowisku wirtualnym bez potrzeby kompilacji.", false, questionRepository.getById(-951L)));
+        answerRepository.save(new Answer(-1017L, "Interfejsy w Javie zastępują klasy abstrakcyjne i nie pozwalają na implementację metod domyślnych.", false, questionRepository.getById(-951L)));
+
+// (JAVA) Pytanie ID -952: "W jaki sposób enumy zwiększają bezpieczeństwo typów i ułatwiają utrzymanie kodu?"
+        answerRepository.save(new Answer(-1018L, "Enumy w Javie pozwalają definiować dowolne metody publiczne, ale nie zapewniają żadnego bezpieczeństwa typów.", false, questionRepository.getById(-952L)));
+        answerRepository.save(new Answer(-1019L, "Enumy w Javie wymuszają użycie stałych zdefiniowanych w jednym miejscu, co ogranicza błędne wartości i poprawia czytelność kodu.", true, questionRepository.getById(-952L)));
+        answerRepository.save(new Answer(-1020L, "Enumy w Javie służą głównie do automatycznego generowania diagramów UML.", false, questionRepository.getById(-952L)));
+        answerRepository.save(new Answer(-1021L, "Enumy pozwalają przechowywać wyłącznie wartości numeryczne, bez możliwości nadania im nazw opisowych.", false, questionRepository.getById(-952L)));
+
+// (JAVA) Pytanie ID -953: "Jak atrybuty mogą być wykorzystywane do przechowywania metadanych oraz modyfikacji zachowania aplikacji?"
+        answerRepository.save(new Answer(-1022L, "Atrybuty w Javie to tablice stałych, które w żadnym wypadku nie wpływają na działanie aplikacji.", false, questionRepository.getById(-953L)));
+        answerRepository.save(new Answer(-1023L, "Atrybuty (adnotacje) pozwalają osadzać metadane w kodzie, co może zmieniać sposób działania frameworków i narzędzi.", true, questionRepository.getById(-953L)));
+        answerRepository.save(new Answer(-1024L, "Atrybuty działają jedynie w trakcie kompilacji i nie mają znaczenia w środowisku uruchomieniowym.", false, questionRepository.getById(-953L)));
+        answerRepository.save(new Answer(-1025L, "Atrybuty w Javie nie istnieją, zamiast nich stosuje się wyłącznie komentarze w kodzie.", false, questionRepository.getById(-953L)));
+
+// (JAVA) Pytanie ID -954: "Jakie są różnice między metodami statycznymi a niestatycznymi oraz kiedy warto je stosować?"
+        answerRepository.save(new Answer(-1026L, "Metody statyczne są powiązane z instancją klasy i wymagają utworzenia obiektu, aby je wywołać.", false, questionRepository.getById(-954L)));
+        answerRepository.save(new Answer(-1027L, "Metody niestatyczne działają na stan konkretnych obiektów, podczas gdy statyczne mogą być wywoływane bez tworzenia instancji.", true, questionRepository.getById(-954L)));
+        answerRepository.save(new Answer(-1028L, "Metody statyczne mogą jedynie rzucać wyjątki, ale nie mogą zwracać wartości.", false, questionRepository.getById(-954L)));
+        answerRepository.save(new Answer(-1029L, "Metody niestatyczne w Javie zawsze muszą mieć słowo kluczowe 'abstract'.", false, questionRepository.getById(-954L)));
+
+// (JAVA) Pytanie ID -955: "Jak adnotacje wpływają na konfigurację i działanie frameworków w aplikacjach Java?"
+        answerRepository.save(new Answer(-1030L, "Adnotacje w Javie nie mają znaczenia przy konfiguracji, ponieważ frameworki używają wyłącznie plików XML.", false, questionRepository.getById(-955L)));
+        answerRepository.save(new Answer(-1031L, "Adnotacje pozwalają na przekazywanie informacji o konfiguracji do frameworków, wpływając na sposób tworzenia i zarządzania komponentami aplikacji.", true, questionRepository.getById(-955L)));
+        answerRepository.save(new Answer(-1032L, "Adnotacje są kompilowane do osobnego pliku binarnego i nie są widoczne w czasie działania aplikacji.", false, questionRepository.getById(-955L)));
+        answerRepository.save(new Answer(-1033L, "Adnotacje służą wyłącznie do generowania dokumentacji technicznej w formacie HTML.", false, questionRepository.getById(-955L)));
+
+// (JAVA) Pytanie ID -956: "Jakie typy kolekcji są najczęściej stosowane i jak wybrać odpowiednią do konkretnego zadania?"
+        answerRepository.save(new Answer(-1034L, "W Javie jedynym powszechnie stosowanym typem kolekcji jest HashMap, która zastępuje listy i zestawy.", false, questionRepository.getById(-956L)));
+        answerRepository.save(new Answer(-1035L, "Wybór kolekcji zależy od wymagań dotyczących dostępu, wstawiania i sortowania danych – np. ArrayList, LinkedList, HashSet, czy TreeMap.", true, questionRepository.getById(-956L)));
+        answerRepository.save(new Answer(-1036L, "Kolekcje w Javie zawsze wymagają użycia generyków, nawet jeśli przechowują prymitywy.", false, questionRepository.getById(-956L)));
+        answerRepository.save(new Answer(-1037L, "Kolekcje w Javie nie obsługują usuwania elementów, co wymaga używania tablic tradycyjnych.", false, questionRepository.getById(-956L)));
+
+// (JAVA) Pytanie ID -957: "Jakie korzyści płyną ze stosowania funkcji wyższego rzędu w programowaniu funkcyjnym?"
+        answerRepository.save(new Answer(-1038L, "Funkcje wyższego rzędu uniemożliwiają użycie lambd w kodzie i zmniejszają czytelność aplikacji.", false, questionRepository.getById(-957L)));
+        answerRepository.save(new Answer(-1039L, "Stosowanie funkcji wyższego rzędu upraszcza operacje na kolekcjach i pozwala pisać bardziej zwięzły kod.", true, questionRepository.getById(-957L)));
+        answerRepository.save(new Answer(-1040L, "Funkcje wyższego rzędu mogą być wywoływane jedynie wewnątrz statycznych metod klas abstrakcyjnych.", false, questionRepository.getById(-957L)));
+        answerRepository.save(new Answer(-1041L, "Funkcje wyższego rzędu służą tylko do tworzenia interfejsów graficznych w Javie.", false, questionRepository.getById(-957L)));
+
+
+// ----------------------  TYPESCRIPT  ----------------------
+
+// (TS) Pytanie ID -958: "Jakie są główne typy danych dostępne w TypeScript i jak wpływają na bezpieczeństwo kodu?"
+        answerRepository.save(new Answer(-1042L, "TypeScript oferuje tylko typ 'any', co pozwala ograniczyć liczbę błędów kompilacji.", false, questionRepository.getById(-958L)));
+        answerRepository.save(new Answer(-1043L, "TypeScript zapewnia m.in. typy 'string', 'number', 'boolean', 'void', 'null', 'undefined', 'any', 'never', co pomaga we wczesnym wykrywaniu błędów.", true, questionRepository.getById(-958L)));
+        answerRepository.save(new Answer(-1044L, "TypeScript używa wyłącznie typów dynamicznych, identycznie jak JavaScript.", false, questionRepository.getById(-958L)));
+        answerRepository.save(new Answer(-1045L, "W TypeScript nie można korzystać z typów zdefiniowanych przez użytkownika.", false, questionRepository.getById(-958L)));
+
+// (TS) Pytanie ID -959: "Jakie są różnice między funkcjami strzałkowymi a tradycyjnymi funkcjami w TypeScript oraz jakie korzyści daje ich stosowanie?"
+        answerRepository.save(new Answer(-1046L, "Funkcje strzałkowe w TypeScript nie posiadają własnego kontekstu 'this' i są często bardziej zwięzłe w zapisie.", true, questionRepository.getById(-959L)));
+        answerRepository.save(new Answer(-1047L, "Funkcje strzałkowe w TypeScript zawsze powodują utratę typów w trakcie transpilacji.", false, questionRepository.getById(-959L)));
+        answerRepository.save(new Answer(-1048L, "Tradycyjne funkcje w TypeScript nie mogą zawierać parametrów opcjonalnych.", false, questionRepository.getById(-959L)));
+        answerRepository.save(new Answer(-1049L, "Funkcje strzałkowe w TypeScript wymagają definicji interfejsu przy każdym wywołaniu.", false, questionRepository.getById(-959L)));
+
+// (TS) Pytanie ID -960: "W jaki sposób klasy i interfejsy w TypeScript współpracują, aby zapewnić silne typowanie i obiektowe podejście do programowania?"
+        answerRepository.save(new Answer(-1050L, "Interfejsy w TypeScript nie mogą być implementowane przez klasy, służą wyłącznie do tworzenia aliasów typów.", false, questionRepository.getById(-960L)));
+        answerRepository.save(new Answer(-1051L, "Klasy mogą implementować interfejsy, co zapewnia zgodność strukturalną i pozwala na silne typowanie w czasie kompilacji.", true, questionRepository.getById(-960L)));
+        answerRepository.save(new Answer(-1052L, "Klasy w TypeScript są jedynie aliasami dla funkcji strzałkowych, a interfejsy nie mają wpływu na typowanie.", false, questionRepository.getById(-960L)));
+        answerRepository.save(new Answer(-1053L, "Interfejsy w TypeScript służą do definiowania wewnętrznych funkcji kompilatora i nie mają zastosowania w kodzie użytkownika.", false, questionRepository.getById(-960L)));
+
+// (TS) Pytanie ID -961: "Jakie są różnice między modułami ES6 a przestrzeniami nazw w TypeScript i kiedy warto stosować jedno rozwiązanie zamiast drugiego?"
+        answerRepository.save(new Answer(-1054L, "Przestrzenie nazw w TypeScript działają tak samo jak moduły ES6, nie ma między nimi żadnej różnicy.", false, questionRepository.getById(-961L)));
+        answerRepository.save(new Answer(-1055L, "Moduły ES6 wykorzystują import/export i są wspierane przez bundlery, podczas gdy przestrzenie nazw często używane są w większych projektach do grupowania kodu bez konieczności zewnętrznego bundlowania.", true, questionRepository.getById(-961L)));
+        answerRepository.save(new Answer(-1056L, "Przestrzenie nazw służą wyłącznie do definiowania typów prymitywnych i nie mogą zawierać funkcji.", false, questionRepository.getById(-961L)));
+        answerRepository.save(new Answer(-1057L, "Moduły ES6 pozwalają na tworzenie klas abstrakcyjnych, a przestrzenie nazw nie.", false, questionRepository.getById(-961L)));
+
+// (TS) Pytanie ID -962: "Jak dekoratory w TypeScript mogą być wykorzystane do modyfikacji zachowania klas i metod oraz jakie są potencjalne wyzwania ich stosowania?"
+        answerRepository.save(new Answer(-1058L, "Dekoratory w TypeScript nie modyfikują kodu, a wyłącznie służą do generowania dokumentacji.", false, questionRepository.getById(-962L)));
+        answerRepository.save(new Answer(-1059L, "Dekoratory pozwalają wprowadzić dodatkową logikę przy definiowaniu klas, metod, właściwości czy parametrów, jednak wymagają włączenia odpowiednich opcji w konfiguracji TypeScript.", true, questionRepository.getById(-962L)));
+        answerRepository.save(new Answer(-1060L, "Dekoratory można stosować tylko do funkcji strzałkowych, co znacznie ogranicza ich zastosowanie.", false, questionRepository.getById(-962L)));
+        answerRepository.save(new Answer(-1061L, "Dekoratory w TypeScript są domyślnie dostępne bez modyfikacji pliku tsconfig.json.", false, questionRepository.getById(-962L)));
+
+// (TS) Pytanie ID -963: "Jak programowanie generyczne w TypeScript umożliwia tworzenie elastycznych i wielokrotnego użytku komponentów?"
+        answerRepository.save(new Answer(-1062L, "Generyki w TypeScript blokują wykorzystanie interfejsów oraz klas abstrakcyjnych.", false, questionRepository.getById(-963L)));
+        answerRepository.save(new Answer(-1063L, "Dzięki generykom możemy tworzyć komponenty i funkcje, które działają z różnymi typami, zwiększając ponowne użycie kodu.", true, questionRepository.getById(-963L)));
+        answerRepository.save(new Answer(-1064L, "Generyki w TypeScript służą wyłącznie do walidacji formularzy w przeglądarce.", false, questionRepository.getById(-963L)));
+        answerRepository.save(new Answer(-1065L, "Programowanie generyczne w TypeScript uniemożliwia użycie typów wbudowanych, np. string czy number.", false, questionRepository.getById(-963L)));
+
+// (TS) Pytanie ID -964: "Jakie zaawansowane typy i techniki, takie jak warunkowe typy czy typy indeksowane, mogą zwiększyć bezpieczeństwo i skalowalność aplikacji w TypeScript?"
+        answerRepository.save(new Answer(-1066L, "Warunkowe typy i typy indeksowane służą jedynie do dekorowania klas, nie wpływając na bezpieczeństwo aplikacji.", false, questionRepository.getById(-964L)));
+        answerRepository.save(new Answer(-1067L, "Zaawansowane typy w TypeScript umożliwiają tworzenie bardziej precyzyjnych definicji, co minimalizuje błędy i poprawia skalowalność kodu.", true, questionRepository.getById(-964L)));
+        answerRepository.save(new Answer(-1068L, "Warunkowe typy w TypeScript automatycznie usuwają wszystkie wyjątki w kodzie.", false, questionRepository.getById(-964L)));
+        answerRepository.save(new Answer(-1069L, "Typy indeksowane w TypeScript blokują dziedziczenie i nie są zalecane w większych projektach.", false, questionRepository.getById(-964L)));
+
+
+// ----------------------  PYTHON  ----------------------
+
+// (PYTHON) Pytanie ID -965: "Jakie są najlepsze praktyki związane z kontrolą przepływu w Pythonie oraz jak wpływają one na czytelność kodu?"
+        answerRepository.save(new Answer(-1070L, "Nadużywanie wielokrotnych instrukcji goto jest polecaną praktyką w Pythonie, usprawnia czytelność kodu.", false, questionRepository.getById(-965L)));
+        answerRepository.save(new Answer(-1071L, "Stosowanie czytelnych konstrukcji if-elif-else, pętli while i for, a także unikanie zbyt zagnieżdżonych bloków poprawia czytelność i utrzymanie kodu.", true, questionRepository.getById(-965L)));
+        answerRepository.save(new Answer(-1072L, "Python nie wspiera instrukcji warunkowych, dlatego kontrola przepływu nie ma znaczenia.", false, questionRepository.getById(-965L)));
+        answerRepository.save(new Answer(-1073L, "Zaleca się używanie wyłącznie rekurencji zamiast pętli for i while, aby zachować konwencję 'Pythonic'.", false, questionRepository.getById(-965L)));
+
+// (PYTHON) Pytanie ID -966: "W jaki sposób funkcje i moduły w Pythonie ułatwiają organizację kodu i wspierają ponowne użycie?"
+        answerRepository.save(new Answer(-1074L, "Funkcje i moduły w Pythonie uniemożliwiają dzielenie projektu na mniejsze części i komplikują zarządzanie kodem.", false, questionRepository.getById(-966L)));
+        answerRepository.save(new Answer(-1075L, "Dzięki funkcjom możemy wydzielić powtarzające się fragmenty logiki, a moduły pozwalają na logiczne grupowanie kodu i jego wielokrotne wykorzystanie.", true, questionRepository.getById(-966L)));
+        answerRepository.save(new Answer(-1076L, "Moduły w Pythonie zawsze muszą być skompilowane do plików .exe, co ułatwia ich integrację.", false, questionRepository.getById(-966L)));
+        answerRepository.save(new Answer(-1077L, "Funkcji w Pythonie nie można definiować w modułach, ponieważ moduły przechowują tylko zmienne globalne.", false, questionRepository.getById(-966L)));
+
+// (PYTHON) Pytanie ID -967: "Jakie są kluczowe zasady obsługi wyjątków w Pythonie i jak można je skutecznie implementować?"
+        answerRepository.save(new Answer(-1078L, "W Pythonie nie stosuje się obsługi wyjątków, ponieważ błędy należy traktować jako sytuacje nieodwracalne.", false, questionRepository.getById(-967L)));
+        answerRepository.save(new Answer(-1079L, "Kluczowe zasady to używanie bloków try-except-finally, wyrzucanie specyficznych typów wyjątków oraz unikanie 'gołych' except, co poprawia jakość i czytelność kodu.", true, questionRepository.getById(-967L)));
+        answerRepository.save(new Answer(-1080L, "Aby uniknąć wyjątków w Pythonie, należy używać wyłącznie funkcji wbudowanych i unikać kodu niestandardowego.", false, questionRepository.getById(-967L)));
+        answerRepository.save(new Answer(-1081L, "Obsługa wyjątków wymaga kompilacji kodu do języka C++, w przeciwnym wypadku Python nie wspiera błędów.", false, questionRepository.getById(-967L)));
+
+// (PYTHON) Pytanie ID -968: "Jakie metody pracy z plikami w Pythonie są najczęściej stosowane w projektach?"
+        answerRepository.save(new Answer(-1082L, "Standardowe podejście to stosowanie metody write() wyłącznie w obrębie klas abstrakcyjnych.", false, questionRepository.getById(-968L)));
+        answerRepository.save(new Answer(-1083L, "Najczęściej korzysta się z instrukcji with open(...) as f, używając metod read(), readline(), write() i try/finally do bezpiecznego zamykania plików.", true, questionRepository.getById(-968L)));
+        answerRepository.save(new Answer(-1084L, "W Pythonie obsługa plików jest możliwa jedynie przez moduł systemowy i nie wolno używać wbudowanej funkcji open().", false, questionRepository.getById(-968L)));
+        answerRepository.save(new Answer(-1085L, "Od wersji Python 3.0 wprowadzono obowiązek używania jedynie formatów binarnych, aby zachować spójność z C++.", false, questionRepository.getById(-968L)));
+
+// (PYTHON) Pytanie ID -969: "Jakie są podstawowe zasady programowania obiektowego w Pythonie i jakie korzyści płyną z ich stosowania?"
+        answerRepository.save(new Answer(-1086L, "Python nie wspiera programowania obiektowego – możliwe jest tylko programowanie proceduralne.", false, questionRepository.getById(-969L)));
+        answerRepository.save(new Answer(-1087L, "Klasy, obiekty, dziedziczenie i polimorfizm w Pythonie pozwalają tworzyć kod modularny, wielokrotnego użytku i łatwiejszy w utrzymaniu.", true, questionRepository.getById(-969L)));
+        answerRepository.save(new Answer(-1088L, "Programowanie obiektowe w Pythonie wyklucza stosowanie funkcji dekoratorów i lambd.", false, questionRepository.getById(-969L)));
+        answerRepository.save(new Answer(-1089L, "Dziedziczenie w Pythonie jest zabronione ze względu na obawę przed występowaniem diamentu śmierci.", false, questionRepository.getById(-969L)));
+
+// (PYTHON) Pytanie ID -970: "Jakie biblioteki Python są najbardziej popularne i jakie mają zastosowania w różnych dziedzinach?"
+        answerRepository.save(new Answer(-1090L, "Jedyne popularne biblioteki w Pythonie to os i sys, stosowane głównie do obliczeń naukowych.", false, questionRepository.getById(-970L)));
+        answerRepository.save(new Answer(-1091L, "Biblioteki takie jak NumPy, Pandas czy TensorFlow są powszechnie używane w data science, a Django czy Flask w web developmencie.", true, questionRepository.getById(-970L)));
+        answerRepository.save(new Answer(-1092L, "Popularność bibliotek Python maleje, bo nie wspierają pracy w chmurze.", false, questionRepository.getById(-970L)));
+        answerRepository.save(new Answer(-1093L, "Python nie posiada oficjalnego repozytorium pakietów, przez co konieczne jest instalowanie wszystkiego ręcznie.", false, questionRepository.getById(-970L)));
+
+// (PYTHON) Pytanie ID -971: "Jakie narzędzia i biblioteki Python są wykorzystywane do analizy danych oraz wizualizacji wyników?"
+        answerRepository.save(new Answer(-1094L, "Do analizy danych w Pythonie używa się głównie modułu datetime, a do wizualizacji – jedynie biblioteki math.", false, questionRepository.getById(-971L)));
+        answerRepository.save(new Answer(-1095L, "Popularne narzędzia to Pandas, NumPy do analizy, oraz Matplotlib, Seaborn do wizualizacji wyników.", true, questionRepository.getById(-971L)));
+        answerRepository.save(new Answer(-1096L, "W Pythonie nie ma dostępnych bibliotek do wizualizacji, należy używać zewnętrznych aplikacji.", false, questionRepository.getById(-971L)));
+        answerRepository.save(new Answer(-1097L, "Analiza danych w Pythonie wymaga kompilacji do pliku .jar i użycia JVM do wizualizacji.", false, questionRepository.getById(-971L)));
+
+
+// ----------------------  JAVASCRIPT  ----------------------
+
+// (JS) Pytanie ID -972: "Jak funkcje w JavaScript wpływają na zakres zmiennych oraz jakie zasady dotyczą hoistingu?"
+        answerRepository.save(new Answer(-1098L, "W JavaScript nie istnieje hoisting, a zmienne są zawsze dostępne od momentu ich deklaracji wewnątrz pliku.", false, questionRepository.getById(-972L)));
+        answerRepository.save(new Answer(-1099L, "Funkcje mają własny zakres, a hoisting przenosi deklaracje funkcji i zmiennych na początek zakresu, co wpływa na kolejność wywołań.", true, questionRepository.getById(-972L)));
+        answerRepository.save(new Answer(-1100L, "Hoisting w JavaScript przenosi jedynie wyrażenia lambda na koniec pliku.", false, questionRepository.getById(-972L)));
+        answerRepository.save(new Answer(-1101L, "Zakres zmiennych w JavaScript jest zawsze globalny i nie można go zmienić w obszarze funkcji.", false, questionRepository.getById(-972L)));
+
+// (JS) Pytanie ID -973: "Jakie techniki obsługi wyjątków i błędów są najczęściej stosowane w JavaScript i jak wpływają na stabilność aplikacji?"
+        answerRepository.save(new Answer(-1102L, "JavaScript nie posiada mechanizmu try-catch, dlatego obsługa błędów odbywa się wyłącznie przez sprawdzanie kodów błędów.", false, questionRepository.getById(-973L)));
+        answerRepository.save(new Answer(-1103L, "Stosowanie bloków try-catch-finally oraz promisy z .catch() umożliwia przechwycenie wyjątków i zwiększa stabilność aplikacji.", true, questionRepository.getById(-973L)));
+        answerRepository.save(new Answer(-1104L, "W JavaScript nie da się rzucić własnego wyjątku, zawsze rzucane są błędy wbudowane.", false, questionRepository.getById(-973L)));
+        answerRepository.save(new Answer(-1105L, "Obsługa błędów w JS wymaga transpilacji kodu do Javy i użycia wyjątków typowych dla JVM.", false, questionRepository.getById(-973L)));
+
+// (JS) Pytanie ID -974: "Jakie są różnice między pracą z DOM a BOM w JavaScript i w jaki sposób wpływają one na manipulację stroną?"
+        answerRepository.save(new Answer(-1106L, "DOM to model obiektowy dokumentu HTML, a BOM odnosi się do obiektów przeglądarki – rozumienie obu pozwala efektywnie manipulować stroną i jej otoczeniem.", true, questionRepository.getById(-974L)));
+        answerRepository.save(new Answer(-1107L, "BOM w JavaScript służy tylko do generowania stylów CSS, a DOM do obsługi zapytań sieciowych.", false, questionRepository.getById(-974L)));
+        answerRepository.save(new Answer(-1108L, "DOM nie istnieje w JavaScript – wszystkie operacje wykonuje się w BOM.", false, questionRepository.getById(-974L)));
+        answerRepository.save(new Answer(-1109L, "BOM zawiera wyłącznie obiekt console, a DOM – obiekty do obsługi zdarzeń myszki.", false, questionRepository.getById(-974L)));
+
+// (JS) Pytanie ID -975: "Jak asynchroniczność w JavaScript, np. poprzez Promises czy async/await, poprawia wydajność aplikacji?"
+        answerRepository.save(new Answer(-1110L, "Asynchroniczność w JavaScript nie istnieje, bo kod zawsze wykonuje się liniowo i blokuje wątek główny.", false, questionRepository.getById(-975L)));
+        answerRepository.save(new Answer(-1111L, "Promises i async/await pozwalają wykonywać zadania w tle, nie blokując głównego wątku, co przekłada się na lepszą responsywność aplikacji.", true, questionRepository.getById(-975L)));
+        answerRepository.save(new Answer(-1112L, "Async/await wprowadza wielowątkowość w JavaScript, a Promises wykluczają tę możliwość.", false, questionRepository.getById(-975L)));
+        answerRepository.save(new Answer(-1113L, "Asynchroniczność w JavaScript jest zawsze automatycznie włączona i nie wymaga żadnej konfiguracji.", false, questionRepository.getById(-975L)));
+
+// (JS) Pytanie ID -976: "Jakie mechanizmy obsługi zdarzeń w JavaScript są najczęściej wykorzystywane i jakie dają korzyści?"
+        answerRepository.save(new Answer(-1114L, "Mechanizm attachEvent() jest obecnie standardem, a addEventListener() nie jest wspierany w nowoczesnych przeglądarkach.", false, questionRepository.getById(-976L)));
+        answerRepository.save(new Answer(-1115L, "Najczęściej korzysta się z addEventListener(), a model zdarzeń pozwala separować logikę od struktury i umożliwia reagowanie na interakcje użytkownika.", true, questionRepository.getById(-976L)));
+        answerRepository.save(new Answer(-1116L, "Obsługa zdarzeń wymaga użycia zewnętrznej biblioteki, bo JavaScript nie posiada wbudowanych metod.", false, questionRepository.getById(-976L)));
+        answerRepository.save(new Answer(-1117L, "Współczesne przeglądarki nie pozwalają na usunięcie nasłuchiwaczy zdarzeń, więc kod staje się trudny w utrzymaniu.", false, questionRepository.getById(-976L)));
+
+// (JS) Pytanie ID -977: "Jakie podejścia do programowania obiektowego w JavaScript umożliwiają tworzenie skalowalnych i modularnych aplikacji?"
+        answerRepository.save(new Answer(-1118L, "JavaScript nie umożliwia programowania obiektowego, bo jest wyłącznie językiem funkcyjnym.", false, questionRepository.getById(-977L)));
+        answerRepository.save(new Answer(-1119L, "Można stosować prototypy i klasy (od ES6), co pozwala tworzyć obiekty, dziedziczenie i bardziej modularne rozwiązania.", true, questionRepository.getById(-977L)));
+        answerRepository.save(new Answer(-1120L, "Programowanie obiektowe w JavaScript wymaga doinstalowania wtyczki do przeglądarki i nie jest częścią standardu.", false, questionRepository.getById(-977L)));
+        answerRepository.save(new Answer(-1121L, "Podejście obiektowe w JavaScript eliminuje potrzebę wykorzystania funkcji i zmiennych globalnych.", false, questionRepository.getById(-977L)));
+
+// (JS) Pytanie ID -978: "Jak nowoczesne API i interfejsy Webowe zmieniają interakcję użytkowników z aplikacjami internetowymi?"
+        answerRepository.save(new Answer(-1122L, "Nowoczesne API w JavaScript ogranicza dostęp do danych, co zmniejsza możliwości interakcji z użytkownikiem.", false, questionRepository.getById(-978L)));
+        answerRepository.save(new Answer(-1123L, "Nowe interfejsy (np. Web Storage, WebSockets, Service Workers) pozwalają na lepsze zarządzanie danymi, komunikację w czasie rzeczywistym i działanie offline.", true, questionRepository.getById(-978L)));
+        answerRepository.save(new Answer(-1124L, "Nowoczesne API w przeglądarkach nie wspierają już AJAX, dlatego użytkownicy nie mogą wchodzić w interakcje asynchroniczne.", false, questionRepository.getById(-978L)));
+        answerRepository.save(new Answer(-1125L, "Interfejsy Webowe z reguły wymagają przeładowania strony po każdej akcji, co zmniejsza dynamikę aplikacji.", false, questionRepository.getById(-978L)));
+
+
+// ----------------------  REACT  ----------------------
+
+// (REACT) Pytanie ID -979: "Jakie są główne różnice między komponentami klasowymi a funkcyjnymi w React oraz jakie korzyści płyną z ich stosowania?"
+        answerRepository.save(new Answer(-1126L, "Komponenty klasowe są definiowane za pomocą funkcji strzałkowej, a funkcyjne za pomocą słów kluczowych extends Component.", false, questionRepository.getById(-979L)));
+        answerRepository.save(new Answer(-1127L, "Komponenty funkcyjne są zazwyczaj krótsze i korzystają z Hooków, a klasowe oferują lifecycle methods w bardziej tradycyjny sposób.", true, questionRepository.getById(-979L)));
+        answerRepository.save(new Answer(-1128L, "Komponenty klasowe nigdy nie mogą posiadać stanu, dlatego używa się ich tylko do wyświetlania statycznych danych.", false, questionRepository.getById(-979L)));
+        answerRepository.save(new Answer(-1129L, "Komponenty funkcyjne nie mogą korzystać z props, więc są mało użyteczne w większych projektach.", false, questionRepository.getById(-979L)));
+
+// (REACT) Pytanie ID -980: "Jakie techniki zarządzania stanem i cykl życia komponentów w React są najczęściej stosowane w praktyce?"
+        answerRepository.save(new Answer(-1130L, "React nie obsługuje zarządzania stanem, każdy komponent musi być renderowany od nowa przy każdej zmianie.", false, questionRepository.getById(-980L)));
+        answerRepository.save(new Answer(-1131L, "Najczęściej stosuje się useState, useEffect (w komponentach funkcyjnych) oraz setState, componentDidMount, componentWillUnmount (w klasowych).", true, questionRepository.getById(-980L)));
+        answerRepository.save(new Answer(-1132L, "Funkcja render w komponentach klasowych jest wywoływana tylko raz i nie jest powiązana z cyklem życia.", false, questionRepository.getById(-980L)));
+        answerRepository.save(new Answer(-1133L, "Zarządzanie stanem w React wymaga użycia zewnętrznych bibliotek typu jQuery i nie jest wspierane natywnie.", false, questionRepository.getById(-980L)));
+
+// (REACT) Pytanie ID -981: "W jaki sposób obsługa zdarzeń i formularzy w React różni się od tradycyjnych metod w JavaScript?"
+        answerRepository.save(new Answer(-1134L, "Obsługa zdarzeń w React jest identyczna jak w czystym JavaScript, nie wymaga żadnych zmian.", false, questionRepository.getById(-981L)));
+        answerRepository.save(new Answer(-1135L, "W React stosuje się m.in. obsługę zdarzeń poprzez JSX (np. onClick), a formularze wykorzystują kontrolowane i niekontrolowane komponenty, co ułatwia zarządzanie stanem.", true, questionRepository.getById(-981L)));
+        answerRepository.save(new Answer(-1136L, "Formularze w React wymagają użycia natywnych zdarzeń submit, które muszą być zawsze obsługiwane w pliku HTML.", false, questionRepository.getById(-981L)));
+        answerRepository.save(new Answer(-1137L, "React nie wspiera obsługi zdarzeń w elementach formularza, zaleca się więc użycie frameworka Angular.", false, questionRepository.getById(-981L)));
+
+// (REACT) Pytanie ID -982: "Jakie zalety daje użycie React Routera do routingu w aplikacjach React i jakie wyzwania mogą się pojawić?"
+        answerRepository.save(new Answer(-1138L, "React Router pozwala jedynie na definiowanie statycznych tras i nie wspiera parametrów w ścieżkach.", false, questionRepository.getById(-982L)));
+        answerRepository.save(new Answer(-1139L, "React Router umożliwia nawigację po aplikacji bez przeładowywania strony, wspiera trasy dynamiczne, co poprawia UX, choć może wymagać dodatkowej konfiguracji na serwerze.", true, questionRepository.getById(-982L)));
+        answerRepository.save(new Answer(-1140L, "Korzystanie z React Routera wymusza używanie klasowych komponentów i wyklucza funkcyjne komponenty.", false, questionRepository.getById(-982L)));
+        answerRepository.save(new Answer(-1141L, "React Router działa tylko w najnowszych wersjach Node.js i nie można go używać w przeglądarce.", false, questionRepository.getById(-982L)));
+
+// (REACT) Pytanie ID -983: "Jakie są różnice między zarządzaniem stanem za pomocą Redux a Context API w React i kiedy warto stosować jedno z tych rozwiązań?"
+        answerRepository.save(new Answer(-1142L, "Redux służy tylko do obsługi asynchronicznych żądań sieciowych, a Context API do wywoływania metod cyklu życia.", false, questionRepository.getById(-983L)));
+        answerRepository.save(new Answer(-1143L, "Redux oferuje scentralizowany store i jest przydatny w dużych projektach, zaś Context API jest wbudowane w React i nadaje się do prostszego przekazywania danych przez drzewo komponentów.", true, questionRepository.getById(-983L)));
+        answerRepository.save(new Answer(-1144L, "W React najczęściej używa się jQuery do zarządzania stanem, natomiast Redux i Context API są przestarzałe.", false, questionRepository.getById(-983L)));
+        answerRepository.save(new Answer(-1145L, "Context API zawsze wymaga stosowania serwera Node.js, a Redux można używać tylko z hostingiem w chmurze.", false, questionRepository.getById(-983L)));
+
+// (REACT) Pytanie ID -984: "Jakie korzyści płyną ze stosowania hooków (Hooks) w React oraz jakie są najczęściej używane haki?"
+        answerRepository.save(new Answer(-1146L, "Hooki eliminują potrzebę korzystania z Virtual DOM w React, co radykalnie zmienia proces renderowania.", false, questionRepository.getById(-984L)));
+        answerRepository.save(new Answer(-1147L, "Hooki, takie jak useState czy useEffect, pozwalają używać stanu i efektów ubocznych w komponentach funkcyjnych, ułatwiając zarządzanie logiką bez klas.", true, questionRepository.getById(-984L)));
+        answerRepository.save(new Answer(-1148L, "Hooki w React można używać tylko w komponentach klasowych, co utrudnia pisanie prostych komponentów.", false, questionRepository.getById(-984L)));
+        answerRepository.save(new Answer(-1149L, "Najczęściej używanym hookiem w React jest useDOM, który bezpośrednio manipuluje strukturą HTML.", false, questionRepository.getById(-984L)));
+
+// (REACT) Pytanie ID -985: "Jakie metody testowania komponentów React są najbardziej efektywne i jak wpływają na jakość aplikacji?"
+        answerRepository.save(new Answer(-1150L, "Testowanie w React ogranicza się do ręcznego klikana w interfejs, ponieważ nie istnieją narzędzia automatyczne.", false, questionRepository.getById(-985L)));
+        answerRepository.save(new Answer(-1151L, "Zastosowanie narzędzi takich jak Jest, React Testing Library czy Enzyme pozwala na szybkie wykrywanie błędów i utrzymanie wysokiej jakości kodu.", true, questionRepository.getById(-985L)));
+        answerRepository.save(new Answer(-1152L, "Komponentów React nie da się testować jednostkowo, zawsze wymagane jest testowanie integracyjne.", false, questionRepository.getById(-985L)));
+        answerRepository.save(new Answer(-1153L, "Testowanie komponentów React wymaga transpilacji do Pythona i użycia narzędzi do testów Django.", false, questionRepository.getById(-985L)));
+
+
+// ----------------------  KOTLIN  ----------------------
+
+// (KOTLIN) Pytanie ID -986: "Jakie mechanizmy kontroli przepływu i rodzaje kolekcji w Kotlin wpływają na efektywność i czytelność kodu?"
+        answerRepository.save(new Answer(-1154L, "Kotlin nie oferuje żadnych instrukcji warunkowych ani pętli, co bardzo utrudnia kontrolę przepływu.", false, questionRepository.getById(-986L)));
+        answerRepository.save(new Answer(-1155L, "Kotlin udostępnia m.in. elvis operator, when, a także bogaty zestaw kolekcji (listy, sety, mapy) wraz z funkcjami wyższego rzędu, co poprawia czytelność i efektywność.", true, questionRepository.getById(-986L)));
+        answerRepository.save(new Answer(-1156L, "W Kotlinie kolekcje można tworzyć wyłącznie poprzez klasę ArrayList z Javy, nie ma natywnych struktur.", false, questionRepository.getById(-986L)));
+        answerRepository.save(new Answer(-1157L, "Kotlin wymusza zawsze stosowanie operatora 'goto' w celu sterowania przepływem w programie.", false, questionRepository.getById(-986L)));
+
+// (KOTLIN) Pytanie ID -987: "Jakie są zalety stosowania funkcji i wyrażeń lambda w Kotlin oraz jak przyczyniają się do zwięzłości kodu?"
+        answerRepository.save(new Answer(-1158L, "Kotlin nie wspiera funkcji lambda, ponieważ bazuje na programowaniu obiektowym z Javy.", false, questionRepository.getById(-987L)));
+        answerRepository.save(new Answer(-1159L, "Wyrażenia lambda pozwalają skrócić kod, unikając nadmiaru boilerplate, a funkcje wyższego rzędu ułatwiają operacje na kolekcjach i sekwencjach.", true, questionRepository.getById(-987L)));
+        answerRepository.save(new Answer(-1160L, "Funkcje w Kotlinie zawsze muszą zwracać wartość typu Unit, co zmniejsza elastyczność kodu.", false, questionRepository.getById(-987L)));
+        answerRepository.save(new Answer(-1161L, "Lambdy w Kotlinie zastępują klasy i uniemożliwiają tworzenie hierarchii dziedziczenia.", false, questionRepository.getById(-987L)));
+
+// (KOTLIN) Pytanie ID -988: "W jaki sposób klasy, obiekty i mechanizmy dziedziczenia w Kotlin wspierają programowanie obiektowe?"
+        answerRepository.save(new Answer(-1162L, "Kotlin nie wspiera dziedziczenia, każda klasa musi być final, co ogranicza programowanie obiektowe.", false, questionRepository.getById(-988L)));
+        answerRepository.save(new Answer(-1163L, "Kotlin pozwala na otwarte klasy (open) i dziedziczenie, wspiera też klasy abstrakcyjne i interfejsy, co ułatwia tworzenie elastycznej architektury.", true, questionRepository.getById(-988L)));
+        answerRepository.save(new Answer(-1164L, "W Kotlinie nie można tworzyć obiektów, ponieważ język ten działa wyłącznie w trybie skryptowym.", false, questionRepository.getById(-988L)));
+        answerRepository.save(new Answer(-1165L, "Mechanizm 'object' w Kotlinie służy tylko do debugowania, nie ma zastosowania w normalnym kodzie.", false, questionRepository.getById(-988L)));
+
+// (KOTLIN) Pytanie ID -989: "Jak Kotlin zapewnia bezpieczeństwo typów i obsługę nullability, eliminując ryzyko wystąpienia błędów NullPointerException?"
+        answerRepository.save(new Answer(-1166L, "Kotlin nie odróżnia typów nullable od non-nullable, co sprawia, że NPE występuje równie często co w Javie.", false, questionRepository.getById(-989L)));
+        answerRepository.save(new Answer(-1167L, "Kotlin wprowadza system typów nullable i operatorów bezpieczeństwa, takich jak '?.' i '?:', co ogranicza NPE do absolutnego minimum.", true, questionRepository.getById(-989L)));
+        answerRepository.save(new Answer(-1168L, "Aby uniknąć NPE w Kotlinie, należy każdą zmienną oznaczyć słowem kluczowym throwNPE.", false, questionRepository.getById(-989L)));
+        answerRepository.save(new Answer(-1169L, "System typów w Kotlinie eliminuje potrzebę sprawdzania typów w czasie kompilacji.", false, questionRepository.getById(-989L)));
+
+// (KOTLIN) Pytanie ID -990: "Jakie cechy programowania funkcyjnego w Kotlin umożliwiają tworzenie bardziej zwięzłego i przejrzystego kodu?"
+        answerRepository.save(new Answer(-1170L, "Kotlin nie pozwala na żadne elementy stylu funkcyjnego, bo jest ściśle obiektowy.", false, questionRepository.getById(-990L)));
+        answerRepository.save(new Answer(-1171L, "Funkcje wyższego rzędu, lambdy, funkcje inline oraz zestaw operacji na kolekcjach (map, filter, reduce) znacznie upraszczają i skracają kod.", true, questionRepository.getById(-990L)));
+        answerRepository.save(new Answer(-1172L, "W Kotlinie nie można używać funkcji anonimowych, jedynie klasy wewnętrzne do obsługi zdarzeń.", false, questionRepository.getById(-990L)));
+        answerRepository.save(new Answer(-1173L, "Programowanie funkcyjne jest wspierane tylko w kompilatorze Kotlin/Native i nie działa w JVM.", false, questionRepository.getById(-990L)));
+
+// (KOTLIN) Pytanie ID -991: "Jak delegaty i properties w Kotlin ułatwiają zarządzanie stanem obiektów i implementację wzorców projektowych?"
+        answerRepository.save(new Answer(-1174L, "Delegaty i properties to funkcje niskopoziomowe w Kotlinie, które nie mają wpływu na zarządzanie stanem.", false, questionRepository.getById(-991L)));
+        answerRepository.save(new Answer(-1175L, "Delegaty pozwalają przekazać logikę get/set do odrębnych obiektów, a properties mogą być obsługiwane za pomocą customowych akcesorów, co ułatwia stosowanie wzorców projektowych.", true, questionRepository.getById(-991L)));
+        answerRepository.save(new Answer(-1176L, "W Kotlinie do zarządzania stanem używa się wyłącznie zmiennych globalnych, delegaty nie są zalecane.", false, questionRepository.getById(-991L)));
+        answerRepository.save(new Answer(-1177L, "Delegaty w Kotlinie służą tylko do obserwowania zmian w interfejsie użytkownika, nie mają innych zastosowań.", false, questionRepository.getById(-991L)));
+
+// (KOTLIN) Pytanie ID -992: "Jakie korzyści niesie wykorzystanie korutyn w Kotlin do obsługi współbieżności i jakie mogą wystąpić wyzwania przy ich implementacji?"
+        answerRepository.save(new Answer(-1178L, "Korutyny w Kotlinie to jedynie alias na wielowątkowość, nie wprowadzają żadnych usprawnień w stosunku do Thread.", false, questionRepository.getById(-992L)));
+        answerRepository.save(new Answer(-1179L, "Korutyny pozwalają pisać asynchroniczny kod w stylu sekwencyjnym, upraszczając obsługę współbieżności, choć mogą pojawić się trudności z doborem właściwego kontekstu i struktur danych.", true, questionRepository.getById(-992L)));
+        answerRepository.save(new Answer(-1180L, "Kotlin nie wspiera uruchamiania wielu korutyn równocześnie, każda korutyna musi zakończyć się przed startem kolejnej.", false, questionRepository.getById(-992L)));
+        answerRepository.save(new Answer(-1181L, "Korutyny w Kotlinie zawsze wymagają użycia frameworka Spring, inaczej nie można ich uruchomić.", false, questionRepository.getById(-992L)));
+
+
+// ----------------------  C++  ----------------------
+
+// (C++) Pytanie ID -993: "Jakie są najlepsze praktyki definiowania obiektów i klas w C++ oraz jak wpływają na projektowanie oprogramowania?"
+        answerRepository.save(new Answer(-1182L, "W C++ nie ma możliwości tworzenia własnych klas, wszystkie typy są wbudowane.", false, questionRepository.getById(-993L)));
+        answerRepository.save(new Answer(-1183L, "Stosowanie hermetyzacji (private/protected), unikanie zbędnych zależności nagłówkowych oraz jasno zdefiniowane interfejsy wspomagają przejrzystość i skalowalność kodu.", true, questionRepository.getById(-993L)));
+        answerRepository.save(new Answer(-1184L, "Najlepszą praktyką w C++ jest używanie wyłącznie publicznych pól w klasach, by uprościć kod.", false, questionRepository.getById(-993L)));
+        answerRepository.save(new Answer(-1185L, "Projektowanie obiektów w C++ polega głównie na kopiowaniu kodu z biblioteki standardowej STL.", false, questionRepository.getById(-993L)));
+
+// (C++) Pytanie ID -994: "Jak dziedziczenie i polimorfizm w C++ umożliwiają tworzenie elastycznych i skalowalnych hierarchii klas?"
+        answerRepository.save(new Answer(-1186L, "Dziedziczenie i polimorfizm w C++ praktycznie nie są używane, bo język ten jest z natury proceduralny.", false, questionRepository.getById(-994L)));
+        answerRepository.save(new Answer(-1187L, "Poprzez dziedziczenie klasy bazowej i wirtualne funkcje można osiągnąć polimorfizm, co pozwala na rozszerzanie funkcjonalności bez modyfikacji istniejącego kodu.", true, questionRepository.getById(-994L)));
+        answerRepository.save(new Answer(-1188L, "Polimorfizm w C++ wymaga użycia słowa kluczowego 'static', co blokuje możliwość dynamicznego wyboru funkcji.", false, questionRepository.getById(-994L)));
+        answerRepository.save(new Answer(-1189L, "Dziedziczenie w C++ jest zakazane od standardu C++11, zastąpiono je wyłącznie interfejsami jak w Javie.", false, questionRepository.getById(-994L)));
+
+// (C++) Pytanie ID -995: "Jakie są korzyści wynikające z wykorzystania szablonów i metaprogramowania w C++ przy projektowaniu generycznych rozwiązań?"
+        answerRepository.save(new Answer(-1190L, "Szablony w C++ nie pozwalają na typowanie czasu kompilacji, dlatego nie nadają się do projektów wieloplatformowych.", false, questionRepository.getById(-995L)));
+        answerRepository.save(new Answer(-1191L, "Szablony i metaprogramowanie umożliwiają tworzenie uniwersalnych struktur i algorytmów, które mogą być dopasowane do różnych typów bez pisania powtarzalnego kodu.", true, questionRepository.getById(-995L)));
+        answerRepository.save(new Answer(-1192L, "Metaprogramowanie w C++ polega na dynamicznym generowaniu kodu w trakcie działania programu.", false, questionRepository.getById(-995L)));
+        answerRepository.save(new Answer(-1193L, "Użycie szablonów w C++ wymaga osobnego kompilatora, który nie jest częścią standardu.", false, questionRepository.getById(-995L)));
+
+// (C++) Pytanie ID -996: "Jakie strategie zarządzania pamięcią w C++ pomagają unikać błędów i optymalizować wydajność aplikacji?"
+        answerRepository.save(new Answer(-1194L, "Najlepszą praktyką jest zawsze używać surowych wskaźników i samodzielnie zwalniać pamięć, ponieważ to nie wymaga overheadu.", false, questionRepository.getById(-996L)));
+        answerRepository.save(new Answer(-1195L, "Korzystanie z inteligentnych wskaźników (std::unique_ptr, std::shared_ptr) i RAII zmniejsza ryzyko wycieków pamięci i ułatwia zarządzanie zasobami.", true, questionRepository.getById(-996L)));
+        answerRepository.save(new Answer(-1196L, "C++ wspiera automatyczny garbage collector, przez co manualne zarządzanie pamięcią nie jest konieczne.", false, questionRepository.getById(-996L)));
+        answerRepository.save(new Answer(-1197L, "Zarządzanie pamięcią w C++ ogranicza się do używania tablic dynamicznych i pętli for.", false, questionRepository.getById(-996L)));
+
+// (C++) Pytanie ID -997: "Jakie techniki obsługi wyjątków i błędów w C++ pozwalają na tworzenie bardziej niezawodnych aplikacji?"
+        answerRepository.save(new Answer(-1198L, "W C++ nie ma obsługi wyjątków, zaleca się zwracanie kodów błędów z funkcji.", false, questionRepository.getById(-997L)));
+        answerRepository.save(new Answer(-1199L, "Stosowanie mechanizmu throw, catch i wyjątków specyficznych dla danej sytuacji ułatwia diagnozę i poprawia niezawodność, choć trzeba uważać na koszty wydajności.", true, questionRepository.getById(-997L)));
+        answerRepository.save(new Answer(-1200L, "Obowiązkowo należy używać bloku rescue i ensure, podobnie jak w języku Ruby.", false, questionRepository.getById(-997L)));
+        answerRepository.save(new Answer(-1201L, "W C++ wyjątki muszą być zawsze zdefiniowane jako globalne zmienne typu int, co ogranicza ich liczbę.", false, questionRepository.getById(-997L)));
+
+// (C++) Pytanie ID -998: "Jakie elementy Standardowej Biblioteki Szablonów (STL) są najczęściej wykorzystywane w projektach C++ i dlaczego?"
+        answerRepository.save(new Answer(-1202L, "STL zawiera wyłącznie kontener vector, który służy do wszystkich zadań.", false, questionRepository.getById(-998L)));
+        answerRepository.save(new Answer(-1203L, "Najczęściej korzysta się z vector, list, map, set oraz algorytmów (np. sort, find), bo ułatwiają one szybkie i bezpieczne tworzenie struktur danych oraz operacji na nich.", true, questionRepository.getById(-998L)));
+        answerRepository.save(new Answer(-1204L, "STL oferuje klasę String jako jedyny kontener, co ogranicza zastosowania w projektach.", false, questionRepository.getById(-998L)));
+        answerRepository.save(new Answer(-1205L, "Korzystanie z STL jest niezalecane, bo zawsze prowadzi do błędów łączenia i spowalnia kod.", false, questionRepository.getById(-998L)));
+
+// (C++) Pytanie ID -999: "Jakie mechanizmy współbieżności i wielowątkowości w C++ umożliwiają efektywne wykorzystanie zasobów sprzętowych?"
+        answerRepository.save(new Answer(-1206L, "C++ nie pozwala na tworzenie wątków, należy użyć wyłącznie procesów fork.", false, questionRepository.getById(-999L)));
+        answerRepository.save(new Answer(-1207L, "Biblioteka <thread>, mutexy, lock_guard, condition_variable i inne elementy standardu C++11 i nowszych umożliwiają efektywną współbieżność.", true, questionRepository.getById(-999L)));
+        answerRepository.save(new Answer(-1208L, "Wielowątkowość w C++ ogranicza się do jednego wątku wspomagającego i nie można go modyfikować.", false, questionRepository.getById(-999L)));
+        answerRepository.save(new Answer(-1209L, "Do obsługi współbieżności w C++ używa się zawsze coroutines z języka Kotlin, bo C++ nie oferuje swoich rozwiązań.", false, questionRepository.getById(-999L)));
+
+
+// ----------------------  PHP  ----------------------
+
+// (PHP) Pytanie ID -1000: "Jakie są najlepsze praktyki obsługi formularzy w PHP, aby zapewnić bezpieczeństwo i poprawność przesyłanych danych?"
+        answerRepository.save(new Answer(-1210L, "W PHP dane z formularza należy bezpośrednio wstrzykiwać do zapytań SQL, co przyspiesza proces programowania.", false, questionRepository.getById(-1000L)));
+        answerRepository.save(new Answer(-1211L, "Ważne jest sprawdzanie i walidacja danych, filtrowanie zmiennych (filter_input) oraz stosowanie tokenów CSRF, aby zapobiec atakom i błędom.", true, questionRepository.getById(-1000L)));
+        answerRepository.save(new Answer(-1212L, "Zaleca się wysyłać dane formularzy w formacie binarnym, aby uniemożliwić użytkownikom ich odczyt.", false, questionRepository.getById(-1000L)));
+        answerRepository.save(new Answer(-1213L, "W PHP nie ma możliwości walidacji danych, dlatego bezpieczeństwo formularzy nie jest możliwe do osiągnięcia.", false, questionRepository.getById(-1000L)));
+
+// (PHP) Pytanie ID -1001: "Jakie są kluczowe aspekty pracy z bazami danych w PHP, uwzględniając optymalizację zapytań oraz zabezpieczenia przed SQL Injection?"
+        answerRepository.save(new Answer(-1214L, "Podczas pracy z bazami danych w PHP należy korzystać wyłącznie z funkcji mysql_query, która automatycznie chroni przed SQL Injection.", false, questionRepository.getById(-1001L)));
+        answerRepository.save(new Answer(-1215L, "Stosowanie PDO lub MySQLi z zapytaniami z użyciem prepared statements oraz indeksowanie tabel to klucz do bezpieczeństwa i optymalizacji w PHP.", true, questionRepository.getById(-1001L)));
+        answerRepository.save(new Answer(-1216L, "W PHP nie można używać parametrów bindowanych, dlatego SQL Injection jest nieuniknione.", false, questionRepository.getById(-1001L)));
+        answerRepository.save(new Answer(-1217L, "Zaleca się rezygnację z indeksów w bazie danych, aby przyspieszyć czas wstawiania rekordów.", false, questionRepository.getById(-1001L)));
+
+// (PHP) Pytanie ID -1002: "Jakie techniki i narzędzia można zastosować, aby zwiększyć bezpieczeństwo aplikacji PHP przed atakami?"
+        answerRepository.save(new Answer(-1218L, "Najlepszą obroną jest przechowywanie haseł w pliku cookies w formacie tekstowym, co ułatwia logowanie.", false, questionRepository.getById(-1002L)));
+        answerRepository.save(new Answer(-1219L, "Stosowanie filtracji danych, szyfrowanie haseł (np. password_hash), używanie HTTPS, unikanie wyświetlania błędów i aktualizacja bibliotek to kluczowe techniki.", true, questionRepository.getById(-1002L)));
+        answerRepository.save(new Answer(-1220L, "W celu ochrony kodu PHP należy go zawsze kompilować do .exe, co gwarantuje pełne bezpieczeństwo.", false, questionRepository.getById(-1002L)));
+        answerRepository.save(new Answer(-1221L, "Brak jakichkolwiek plików konfiguracyjnych w projekcie całkowicie wyklucza ataki na aplikację.", false, questionRepository.getById(-1002L)));
+
+// (PHP) Pytanie ID -1003: "Jakie są najlepsze metody zarządzania sesjami i ciasteczkami w PHP, aby zapewnić funkcjonalność i bezpieczeństwo użytkowników?"
+        answerRepository.save(new Answer(-1222L, "W PHP nie wolno używać sesji, bo są niezgodne ze standardem HTTP/2.", false, questionRepository.getById(-1003L)));
+        answerRepository.save(new Answer(-1223L, "Stosowanie secure cookies, ustawianie HttpOnly, poprawne zarządzanie czasem życia sesji i unikanie przechowywania wrażliwych danych w cookie.", true, questionRepository.getById(-1003L)));
+        answerRepository.save(new Answer(-1224L, "Zaleca się przechowywanie wszystkich danych sesji w parametrach URL, aby zwiększyć wydajność.", false, questionRepository.getById(-1003L)));
+        answerRepository.save(new Answer(-1225L, "Aby zapewnić bezpieczeństwo, sesje muszą być inicjowane w pliku .htaccess i nie można ich używać w kodzie PHP.", false, questionRepository.getById(-1003L)));
+
+// (PHP) Pytanie ID -1004: "Jak obsługa wyjątków i błędów w PHP wpływa na stabilność aplikacji oraz jakie praktyki warto stosować?"
+        answerRepository.save(new Answer(-1226L, "PHP nie obsługuje wyjątków, należy polegać na komunikatach ostrzeżeń i noticach.", false, questionRepository.getById(-1004L)));
+        answerRepository.save(new Answer(-1227L, "Wyjątki w PHP pozwalają na bardziej czytelne i kontrolowane zarządzanie błędami, warto również stosować logowanie i wyświetlać przyjazne komunikaty użytkownikom.", true, questionRepository.getById(-1004L)));
+        answerRepository.save(new Answer(-1228L, "Zaleca się wyświetlanie pełnego tracebacku użytkownikowi, co przyspiesza diagnostykę błędów.", false, questionRepository.getById(-1004L)));
+        answerRepository.save(new Answer(-1229L, "Obsługa błędów w PHP wymaga wyłączenia trybu strict w pliku konfiguracyjnym, aby unikać przerwań działania.", false, questionRepository.getById(-1004L)));
+
+// (PHP) Pytanie ID -1005: "Jakie są zalety stosowania systemów szablonów w PHP i jak wpływają one na organizację oraz czytelność kodu?"
+        answerRepository.save(new Answer(-1230L, "Systemy szablonów ograniczają czytelność, bo musimy trzymać logikę i strukturę w jednym pliku .php.", false, questionRepository.getById(-1005L)));
+        answerRepository.save(new Answer(-1231L, "Rozdzielenie warstwy prezentacji (HTML) od logiki (PHP) poprawia czytelność i umożliwia łatwiejszą współpracę między programistami i projektantami.", true, questionRepository.getById(-1005L)));
+        answerRepository.save(new Answer(-1232L, "Systemy szablonów w PHP wykluczają korzystanie z pętli for i if w kodzie.", false, questionRepository.getById(-1005L)));
+        answerRepository.save(new Answer(-1233L, "Korzystając z systemów szablonów, nie można już łączyć się z bazą danych w projekcie.", false, questionRepository.getById(-1005L)));
+
+// (PHP) Pytanie ID -1006: "Jakie różnice występują między frameworkami PHP, takimi jak Laravel i Symfony, i kiedy warto zastosować jeden z nich?"
+        answerRepository.save(new Answer(-1234L, "Laravel i Symfony to ten sam framework, różnią się wyłącznie nazwą pliku głównego.", false, questionRepository.getById(-1006L)));
+        answerRepository.save(new Answer(-1235L, "Laravel jest często uważany za bardziej przyjazny dla początkujących, z dużą liczbą gotowych rozwiązań, a Symfony jest bardziej konfigurowalny i modularny, sprawdzający się w złożonych projektach.", true, questionRepository.getById(-1006L)));
+        answerRepository.save(new Answer(-1236L, "W PHP nie ma żadnych znanych frameworków, wszystko pisze się od podstaw.", false, questionRepository.getById(-1006L)));
+        answerRepository.save(new Answer(-1237L, "Symfony jest frameworkiem front-end, natomiast Laravel służy wyłącznie do obsługi warstwy bazy danych.", false, questionRepository.getById(-1006L)));
+
+
+// ----------------------  RUBY  ----------------------
+
+// (RUBY) Pytanie ID -1007: "Jakie są najlepsze praktyki definiowania obiektów i metod w Ruby, aby poprawić czytelność i modularność kodu?"
+        answerRepository.save(new Answer(-1238L, "W Ruby nie definiuje się metod, ponieważ kod pisze się wyłącznie w formie bloków.", false, questionRepository.getById(-1007L)));
+        answerRepository.save(new Answer(-1239L, "Tworzenie krótkich, dobrze nazwanych metod, wykorzystanie konwencji snake_case i ograniczanie zakresu zmiennych poprawia czytelność i ułatwia utrzymanie.", true, questionRepository.getById(-1007L)));
+        answerRepository.save(new Answer(-1240L, "Aby zachować modularność, należy wszystkie funkcje trzymać w jednym pliku bez podziału na klasy czy moduły.", false, questionRepository.getById(-1007L)));
+        answerRepository.save(new Answer(-1241L, "Ruby wymaga definiowania metod wyłącznie w konstruktorze klasy, inaczej kod nie skompiluje się.", false, questionRepository.getById(-1007L)));
+
+// (RUBY) Pytanie ID -1008: "Jakie są główne zasady implementacji klas i dziedziczenia w Ruby oraz jak wpływają one na organizację kodu obiektowego?"
+        answerRepository.save(new Answer(-1242L, "Ruby nie wspiera dziedziczenia, można jedynie kopiować metody z innej klasy ręcznie.", false, questionRepository.getById(-1008L)));
+        answerRepository.save(new Answer(-1243L, "Dziedziczenie w Ruby jest pojedyncze, a do współdzielenia kodu używa się modułów. Stosowanie jasnych hierarchii sprzyja czytelności i rozszerzalności kodu.", true, questionRepository.getById(-1008L)));
+        answerRepository.save(new Answer(-1244L, "W Ruby każda klasa musi dziedziczyć z modułu Kernel, co narzuca wielopoziomowe dziedziczenie.", false, questionRepository.getById(-1008L)));
+        answerRepository.save(new Answer(-1245L, "Aby zdefiniować klasę w Ruby, trzeba użyć słowa kluczowego structure zamiast class.", false, questionRepository.getById(-1008L)));
+
+// (RUBY) Pytanie ID -1009: "W jaki sposób moduły i mieszanki (mixins) w Ruby umożliwiają ponowne użycie kodu i ułatwiają jego modularizację?"
+        answerRepository.save(new Answer(-1246L, "Mieszanki (mixins) to forma wielokrotnego dziedziczenia, która wyklucza możliwość stosowania klas w Ruby.", false, questionRepository.getById(-1009L)));
+        answerRepository.save(new Answer(-1247L, "Moduły w Ruby można włączać do klas przez include lub extend, co umożliwia dzielenie metod między różne klasy, unikając typowych problemów wielokrotnego dziedziczenia.", true, questionRepository.getById(-1009L)));
+        answerRepository.save(new Answer(-1248L, "W Ruby nie używa się modułów, bo konwencja zaleca pisanie całego kodu w jednej klasie głównej.", false, questionRepository.getById(-1009L)));
+        answerRepository.save(new Answer(-1249L, "Mieszanki w Ruby wymagają kompilacji do kodu C w celu współdzielenia funkcji.", false, questionRepository.getById(-1009L)));
+
+// (RUBY) Pytanie ID -1010: "Jakie techniki zarządzania wyjątkami w Ruby zapewniają stabilność i niezawodność aplikacji?"
+        answerRepository.save(new Answer(-1250L, "Ruby nie obsługuje wyjątków, błędy należy zgłaszać poprzez zwracanie nil.", false, questionRepository.getById(-1010L)));
+        answerRepository.save(new Answer(-1251L, "Stosowanie bloków begin-rescue-ensure, definiowanie własnych klas wyjątków i unikanie przechwytywania Exception sprawia, że kod jest bardziej odporny na nieprzewidziane błędy.", true, questionRepository.getById(-1010L)));
+        answerRepository.save(new Answer(-1252L, "Najlepszą praktyką w Ruby jest przechwytywanie tylko Exception, aby uchwycić wszystkie możliwe błędy.", false, questionRepository.getById(-1010L)));
+        answerRepository.save(new Answer(-1253L, "W Ruby nie ma możliwości zdefiniowania własnych wyjątków, należy korzystać wyłącznie z wbudowanych typów.", false, questionRepository.getById(-1010L)));
+
+// (RUBY) Pytanie ID -1011: "Jakie metody pracy z plikami oraz serializacji danych w Ruby są najczęściej stosowane w praktyce?"
+        answerRepository.save(new Answer(-1254L, "Ruby nie oferuje wbudowanych funkcji do operacji na plikach, dlatego wszystkie działania wykonuje się w Bashu.", false, questionRepository.getById(-1011L)));
+        answerRepository.save(new Answer(-1255L, "Do pracy z plikami często używa się File.open, IO i bloków begin-end, a serializację można realizować m.in. przez JSON lub YAML.", true, questionRepository.getById(-1011L)));
+        answerRepository.save(new Answer(-1256L, "W Ruby serializacja jest możliwa tylko w formacie CSV i nie można użyć JSON.", false, questionRepository.getById(-1011L)));
+        answerRepository.save(new Answer(-1257L, "Wbudowana biblioteka Ruby daje metody do automatycznej serializacji wszystkich klas do formatu .exe.", false, questionRepository.getById(-1011L)));
+
+// (RUBY) Pytanie ID -1012: "Jakie korzyści i wyzwania niesie ze sobą metaprogramowanie w Ruby oraz jakie są najlepsze praktyki jego stosowania?"
+        answerRepository.save(new Answer(-1258L, "Metaprogramowanie w Ruby nie istnieje, język nie pozwala na dynamiczne definiowanie metod.", false, questionRepository.getById(-1012L)));
+        answerRepository.save(new Answer(-1259L, "Pozwala dynamicznie definiować metody, zmieniać klasy w locie i skracać kod, jednak trzeba uważać na czytelność i unikać nadmiernie złożonej logiki runtime.", true, questionRepository.getById(-1012L)));
+        answerRepository.save(new Answer(-1260L, "Dzięki metaprogramowaniu w Ruby można tylko generować pliki .class, podobnie jak w Javie.", false, questionRepository.getById(-1012L)));
+        answerRepository.save(new Answer(-1261L, "Metaprogramowanie w Ruby automatycznie tworzy dokumentację kodu w formacie PDF.", false, questionRepository.getById(-1012L)));
+
+// (RUBY) Pytanie ID -1013: "Jakie narzędzia deweloperskie i metody testowania w Ruby przyczyniają się do podniesienia jakości kodu?"
+        answerRepository.save(new Answer(-1262L, "W Ruby nie stosuje się testów jednostkowych, bo kod jest interpretowany dynamicznie.", false, questionRepository.getById(-1013L)));
+        answerRepository.save(new Answer(-1263L, "Narzędzia takie jak RSpec, Minitest oraz stosowanie TDD/BDD pozwalają wykryć błędy we wczesnej fazie i zwiększyć niezawodność aplikacji.", true, questionRepository.getById(-1013L)));
+        answerRepository.save(new Answer(-1264L, "Aby testować kod w Ruby, należy użyć zewnętrznego kompilatora do C++ i biblioteki Google Test.", false, questionRepository.getById(-1013L)));
+        answerRepository.save(new Answer(-1265L, "Ruby wspiera tylko testy integracyjne, testy jednostkowe są niemożliwe do przeprowadzenia.", false, questionRepository.getById(-1013L)));
     }
 }

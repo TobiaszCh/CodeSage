@@ -22,7 +22,7 @@ public class CourseController {
 
     @GetMapping(value = "/search/{id}")
     public CourseDto getCoursesId(@PathVariable Long id) {
-        return courseService.getCourse(id);
+        return courseService.getCourseById(id);
     }
 
     @GetMapping

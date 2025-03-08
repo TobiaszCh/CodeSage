@@ -12,7 +12,7 @@ public class CourseService {
 
     private final CourseMapper courseMapper;
 
-    public CourseDto getCourse(Long id) {
+    public CourseDto getCourseById(Long id) {
         return courseMapper.mapToDtoCourse(courseRepository.findAllById(id));
     }
 

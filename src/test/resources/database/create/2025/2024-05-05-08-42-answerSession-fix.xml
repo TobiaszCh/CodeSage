@@ -1,0 +1,25 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="create-answer_session-table-fix" author="Tobiasz">
+        <createTable tableName="answer_session">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="all_answers" type="BIGINT"/>
+            <column name="correct_answers" type="BIGINT"/>
+            <column name="session_start_date" type="DATE"/>
+            <column name="status_answer_session" type="varchar"/>
+            <column name="users_id" type="BIGINT">
+                <constraints foreignKeyName="fk_answer_session_users_id" references="users(id)"/>
+            </column>
+            <column name="subject_id" type="BIGINT">
+                <constraints foreignKeyName="fk_answer_session_subject_id" references="subject(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

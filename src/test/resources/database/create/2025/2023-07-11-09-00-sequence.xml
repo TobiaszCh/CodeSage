@@ -1,0 +1,15 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="create-sequence-seq" author="Tobiasz">
+        <createSequence sequenceName="course_seq"/>
+        <createSequence sequenceName="subject_seq"/>
+        <createSequence sequenceName="question_seq"/>
+        <createSequence sequenceName="answer_seq"/>
+        <createSequence sequenceName="answer_session_seq"/>
+    </changeSet>
+</databaseChangeLog>

@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class AnswerSession {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_seq_generator")
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_seq_generator")
     @SequenceGenerator(name = "answer_seq_generator", sequenceName = "answer_session_seq", allocationSize = 1)
     private Long id;
 

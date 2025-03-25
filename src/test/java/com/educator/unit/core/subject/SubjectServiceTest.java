@@ -5,10 +5,7 @@ import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.course.Course;
-import com.educator.core.subject.Subject;
-import com.educator.core.subject.SubjectMapper;
-import com.educator.core.subject.SubjectRepository;
-import com.educator.core.subject.SubjectService;
+import com.educator.core.subject.*;
 import com.educator.core.subject.dto.CheckCompletedSessionsDto;
 import com.educator.core.subject.dto.SubjectDto;
 import com.educator.core.user.User;
@@ -21,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -91,14 +89,16 @@ class SubjectServiceTest {
 
         User user = new User(4L, "Tobek", "Nothing", 0);
 
-        AnswerSession answerSession1 = new AnswerSession(14L, 10, 7, LocalDate.now(),
-                StatusAnswerSession.COMPLETED, user, subject1);
-        AnswerSession answerSession2 = new AnswerSession(15L, 10, 0, LocalDate.now(),
-                StatusAnswerSession.COMPLETED, user, subject2);
-        AnswerSession answerSession3 = new AnswerSession(16L, 10, 10, LocalDate.now(),
-                StatusAnswerSession.COMPLETED, user, subject3);
-        AnswerSession answerSession4 = new AnswerSession(17L, 10, 10, LocalDate.now(),
-                StatusAnswerSession.COMPLETED, user, subject4);
+        AnswerSession answerSession1 = new AnswerSession(14L, 10, 7,
+                LocalDate.now().minusDays(1), StatusAnswerSession.COMPLETED, user, subject1);
+        AnswerSession answerSession2 = new AnswerSession(15L, 10, 0,
+                LocalDate.now().minusDays(3), StatusAnswerSession.COMPLETED, user, subject2);
+        AnswerSession answerSession3 = new AnswerSession(16L, 10, 10,
+                LocalDate.now().minusDays(7), StatusAnswerSession.COMPLETED, user, subject3);
+        AnswerSession answerSession4 = new AnswerSession(17L, 10, 8,
+                LocalDate.now().minusDays(8), StatusAnswerSession.COMPLETED, user, subject3);
+        AnswerSession answerSession5 = new AnswerSession(18L, 10, 8,
+                LocalDate.now().minusDays(5), StatusAnswerSession.COMPLETED, user, subject4);
 
         List<AnswerSession> answerSessionsTests = new ArrayList<>();
         answerSessionsTests.add(answerSession1);
@@ -116,8 +116,18 @@ class SubjectServiceTest {
         List<CheckCompletedSessionsDto> resultTest3 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(3L);
         List<CheckCompletedSessionsDto> resultTest4 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(null);
 
+
+        SubjectCompletedAge subjectCompletedAge3 = resultTest1.stream().filter(id -> id.getAnswerSessionId().equals(16L))
+                .map(CheckCompletedSessionsDto::getSubjectCompletedAge).collect(Collectors.toList()).get(0);
+        SubjectCompletedAge subjectCompletedAge4 = resultTest1.stream().filter(id -> id.getAnswerSessionId().equals(17L))
+                .map(CheckCompletedSessionsDto::getSubjectCompletedAge).collect(Collectors.toList()).get(0);
+
+
         //Then
-        assertEquals(1, resultTest1.size());
+        assertEquals(SubjectCompletedAge.FRESH, subjectCompletedAge3);
+        assertEquals(SubjectCompletedAge.OLD, subjectCompletedAge4);
+
+        assertEquals(2, resultTest1.size());
         assertEquals(0, resultTest2.size());
         assertEquals(0, resultTest3.size());
         assertEquals(0, resultTest4.size());

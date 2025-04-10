@@ -11,5 +11,5 @@
         <createSequence sequenceName="question_seq"/>
         <createSequence sequenceName="answer_seq"/>
         <createSequence sequenceName="answer_session_seq"/>
-    </changeSet>
+    </changeSet>        
 </databaseChangeLog>

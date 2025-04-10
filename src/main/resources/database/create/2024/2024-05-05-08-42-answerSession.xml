@@ -18,7 +18,7 @@
                 <constraints foreignKeyName="users_id" references="users(id)"/>
             </column>
             <column name="subject_id" type="BIGINT">
-                <constraints foreignKeyName="subject_id" references="subject(id)"/>
+                <constraints foreignKeyName="fk_answer_session_subject_id" references="subject(id)"/>
             </column>
         </createTable>
     </changeSet>

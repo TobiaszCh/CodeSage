@@ -8,6 +8,7 @@ import com.educator.core.course.Course;
 import com.educator.core.subject.*;
 import com.educator.core.subject.dto.CheckCompletedSessionsDto;
 import com.educator.core.subject.dto.SubjectDto;
+import com.educator.core.user.Role;
 import com.educator.core.user.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -87,7 +88,7 @@ class SubjectServiceTest {
         subjects.add(subject2);
         subjects.add(subject3);
 
-        User user = new User(4L, "Tobek", "Nothing", 0);
+        User user = new User(4L, "Tobek","fsfsf", true, Role.USER, "Nothing", 0);
 
         AnswerSession answerSession1 = new AnswerSession(14L, 10, 7,
                 LocalDate.now().minusDays(1), StatusAnswerSession.COMPLETED, user, subject1);
@@ -105,6 +106,7 @@ class SubjectServiceTest {
         answerSessionsTests.add(answerSession2);
         answerSessionsTests.add(answerSession3);
         answerSessionsTests.add(answerSession4);
+        answerSessionsTests.add(answerSession5);
 
         when(subjectRepository.findByCourseId(1L)).thenReturn(subjects);
         when(answerSessionRepository.findByStatusAnswerSession(StatusAnswerSession.COMPLETED)).thenReturn(answerSessionsTests);

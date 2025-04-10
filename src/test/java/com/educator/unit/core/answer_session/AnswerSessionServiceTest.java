@@ -11,6 +11,7 @@ import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.course.Course;
 import com.educator.core.subject.Subject;
 import com.educator.core.subject.SubjectRepository;
+import com.educator.core.user.Role;
 import com.educator.core.user.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -47,7 +48,7 @@ class AnswerSessionServiceTest {
         //Given
         Long subjectId = 1L;
         SubjectIdToAnswerSessionDto subjectIdToAnswerSessionDto = new SubjectIdToAnswerSessionDto(subjectId);
-        User user = new User(2L, "Tobek", "Nothing", 0);
+        User user = new User(2L, "Tobek","sdfsf", true, Role.USER, "Nothing", 0);
         Course course = new Course(3L, "Course1");
         Subject subject = new Subject(4L, "Subject1", course);
         StatusAnswerSession statusAnswerSession = StatusAnswerSession.IN_PROGRESS;

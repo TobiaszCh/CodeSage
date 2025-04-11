@@ -12,7 +12,7 @@
             </column>
             <column name="display_name" type="BIGINT"/>
             <column name="subject_id" type="BIGINT">
-                <constraints foreignKeyName="subject_id" references="subject(id)"/>
+                <constraints foreignKeyName="fk_question_subject_id" references="subject(id)"/>
             </column>
         </createTable>
     </changeSet>

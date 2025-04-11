@@ -13,7 +13,7 @@
             <column name="display_name" type="varchar"/>
             <column name="is_correct" type="boolean"/>
             <column name="question_id" type="BIGINT">
-                <constraints foreignKeyName="question_id" references="question(id)"/>
+                <constraints foreignKeyName="fk_answer_question_id" references="question(id)"/>
             </column>
         </createTable>
     </changeSet>

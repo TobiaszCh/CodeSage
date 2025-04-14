@@ -1,14 +1,14 @@
 package com.educator.core.subject;
+
 import com.educator.auth.AuthService;
 import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
+import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.subject.dto.CheckCompletedSessionsDto;
 import com.educator.core.subject.dto.SubjectDto;
-import com.educator.core.answer_session.enums.StatusAnswerSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,8 +19,6 @@ public class SubjectService {
 
     private static final double BORDER_FINISHED_SUBJECT = 0.8;
 
-    private static final int BORDER_SEVEN_DAYS = 7;
-
     private final AuthService authService;
 
     private final SubjectRepository subjectRepository;
@@ -28,7 +26,9 @@ public class SubjectService {
     private final AnswerSessionRepository answerSessionRepository;
 
     private final SubjectMapper subjectMapper;
-  
+
+    private final SubjectAgeService subjectAgeService;
+
     public List<SubjectDto> getAllSubjects() {
         return subjectMapper.mapToDtoSubjectList(subjectRepository.findAll());
     }
@@ -56,31 +56,22 @@ public class SubjectService {
         return getCheckCompletedSessionsDtos(subjectsIdFilterByCourseId, answerSessionsCompletedList);
 
     }
-    //ToDo ta metoda nie powinna być statyczna, czy potrzebny jest 3 parametr? (zmienione!!)
+
     private List<CheckCompletedSessionsDto> getCheckCompletedSessionsDtos(List<Long> subjectsIdFilterByCourseId, List<AnswerSession> answerSessionsCompletedList) {
         List<CheckCompletedSessionsDto> checkCompletedSessionsDtoList = new ArrayList<>();
         for (AnswerSession answerSessionCompleted : answerSessionsCompletedList) {
             double checkAllAndCorrectAnswers = getCheckAllAndCorrectAnswers(answerSessionCompleted);
             if (checkAllAndCorrectAnswers >= BORDER_FINISHED_SUBJECT && subjectsIdFilterByCourseId.contains(answerSessionCompleted.getSubject().getId())
-            && answerSessionCompleted.getUsers().getId().equals(authService.getLoggedUser().getId())) {
-                if (getDifferenceInDaysBetweenTheStartedSessionAndToday(answerSessionCompleted) <= BORDER_SEVEN_DAYS) {
-                    checkCompletedSessionsDtoList.add(new CheckCompletedSessionsDto(answerSessionCompleted.getSubject().getId(),answerSessionCompleted.getId(), SubjectCompletedAge.FRESH));
-                } else {
-                    checkCompletedSessionsDtoList.add(new CheckCompletedSessionsDto(answerSessionCompleted.getSubject().getId(),answerSessionCompleted.getId(), SubjectCompletedAge.OLD));
-                }
+                    && answerSessionCompleted.getUsers().getId().equals(authService.getLoggedUser().getId())) {
+                SubjectCompletedAge resultCompletedAge = subjectAgeService.informAboutSubjectAge(answerSessionCompleted);
+                checkCompletedSessionsDtoList.add(new CheckCompletedSessionsDto(answerSessionCompleted.getSubject().getId(), answerSessionCompleted.getId(), resultCompletedAge));
             }
         }
         return checkCompletedSessionsDtoList;
     }
 
-    private static double getCheckAllAndCorrectAnswers(AnswerSession answerSessionCompleted) {
-        return answerSessionCompleted.getAllAnswers() == 0 ? 0: (double) answerSessionCompleted.getCorrectAnswers() / answerSessionCompleted.getAllAnswers();
-    }
-
-    private static long getDifferenceInDaysBetweenTheStartedSessionAndToday(AnswerSession answerSessionCompleted) {
-        long differenceInDaysBetweenTheStartedSessionAndToday;
-        differenceInDaysBetweenTheStartedSessionAndToday = ChronoUnit.DAYS.between(answerSessionCompleted.getSessionStartDate(), LocalDate.now());
-        return differenceInDaysBetweenTheStartedSessionAndToday;
+    private double getCheckAllAndCorrectAnswers(AnswerSession answerSessionCompleted) {
+        return answerSessionCompleted.getAllAnswers() == 0 ? 0 : (double) answerSessionCompleted.getCorrectAnswers() / answerSessionCompleted.getAllAnswers();
     }
 }
 

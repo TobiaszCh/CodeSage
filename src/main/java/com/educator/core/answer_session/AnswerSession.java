@@ -1,10 +1,14 @@
 package com.educator.core.answer_session;
+
 import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.subject.Subject;
+import com.educator.core.subject.SubjectCompletedAge;
 import com.educator.core.user.User;
 import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 @Getter
@@ -33,5 +37,12 @@ public class AnswerSession {
 
     @ManyToOne
     private Subject subject;
+
+    private static final int BORDER_SEVEN_DAYS = 7;
+
+    public SubjectCompletedAge getCompletedAge(LocalDate now) {
+        long days = ChronoUnit.DAYS.between(this.sessionStartDate, now);
+        return days <= BORDER_SEVEN_DAYS ? SubjectCompletedAge.FRESH : SubjectCompletedAge.OLD;
+    }
 
 }

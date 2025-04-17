@@ -39,9 +39,6 @@ class SubjectServiceTest {
     @Mock
     private SubjectMapper subjectMapper;
 
-    @Mock
-    private SubjectAgeService subjectAgeService;
-
     @InjectMocks
     private SubjectService subjectService;
 
@@ -114,8 +111,6 @@ class SubjectServiceTest {
         when(subjectRepository.findByCourseId(1L)).thenReturn(subjects);
         when(answerSessionRepository.findByStatusAnswerSession(StatusAnswerSession.COMPLETED)).thenReturn(answerSessionsTests);
         when(authService.getLoggedUser()).thenReturn(user);
-        when(subjectAgeService.informAboutSubjectAge(answerSession3)).thenReturn(SubjectCompletedAge.FRESH);
-        when(subjectAgeService.informAboutSubjectAge(answerSession4)).thenReturn(SubjectCompletedAge.OLD);
 
         //When
         List<CheckCompletedSessionsDto> resultTest1 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(1L);
@@ -128,7 +123,6 @@ class SubjectServiceTest {
                 .map(CheckCompletedSessionsDto::getSubjectCompletedAge).collect(Collectors.toList()).get(0);
         SubjectCompletedAge subjectCompletedAge4 = resultTest1.stream().filter(id -> id.getAnswerSessionId().equals(17L))
                 .map(CheckCompletedSessionsDto::getSubjectCompletedAge).collect(Collectors.toList()).get(0);
-
 
         //Then
         assertEquals(SubjectCompletedAge.FRESH, subjectCompletedAge3);

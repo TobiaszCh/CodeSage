@@ -9,6 +9,7 @@ import com.educator.core.subject.dto.SubjectDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,8 +27,6 @@ public class SubjectService {
     private final AnswerSessionRepository answerSessionRepository;
 
     private final SubjectMapper subjectMapper;
-
-    private final SubjectAgeService subjectAgeService;
 
     public List<SubjectDto> getAllSubjects() {
         return subjectMapper.mapToDtoSubjectList(subjectRepository.findAll());
@@ -63,7 +62,7 @@ public class SubjectService {
             double checkAllAndCorrectAnswers = getCheckAllAndCorrectAnswers(answerSessionCompleted);
             if (checkAllAndCorrectAnswers >= BORDER_FINISHED_SUBJECT && subjectsIdFilterByCourseId.contains(answerSessionCompleted.getSubject().getId())
                     && answerSessionCompleted.getUsers().getId().equals(authService.getLoggedUser().getId())) {
-                SubjectCompletedAge resultCompletedAge = subjectAgeService.informAboutSubjectAge(answerSessionCompleted);
+                SubjectCompletedAge resultCompletedAge = answerSessionCompleted.getCompletedAge(LocalDate.now());
                 checkCompletedSessionsDtoList.add(new CheckCompletedSessionsDto(answerSessionCompleted.getSubject().getId(), answerSessionCompleted.getId(), resultCompletedAge));
             }
         }

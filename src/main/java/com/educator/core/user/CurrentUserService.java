@@ -1,7 +1,5 @@
 package com.educator.core.user;
 
-import com.educator.auth.AuthService;
-import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

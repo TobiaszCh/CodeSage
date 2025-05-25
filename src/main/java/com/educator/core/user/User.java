@@ -1,5 +1,6 @@
 package com.educator.core.user;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 
 @Getter
+@Builder
 @Entity(name = "Users")
 @NoArgsConstructor
 @AllArgsConstructor

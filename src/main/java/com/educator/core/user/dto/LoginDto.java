@@ -1,4 +1,4 @@
-package com.educator.core.user;
+package com.educator.core.user.dto;
 
 import lombok.Getter;
 

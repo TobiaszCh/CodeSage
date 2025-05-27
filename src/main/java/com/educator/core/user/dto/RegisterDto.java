@@ -1,4 +1,4 @@
-package com.educator.core.user;
+package com.educator.core.user.dto;
 
 import lombok.Getter;
 
@@ -9,5 +9,6 @@ public class RegisterDto {
 
     private String password;
 
-    private String repeatPassword;
+    private String repeatedPassword;
+
 }

@@ -1,36 +1,40 @@
 package com.educator.core.user;
 
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.user.dto.RegisterDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserService implements UserDetailsService {
+public class UserService {
 
     public final UserRepository userRepository;
 
     private final UserMapper userMapper;
 
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
-    }
-    
     public void registerDetails(RegisterDto registerDto) {
         if (registerDto == null) {
             throw new CodeSageRuntimeException("Obiekt jest nullem");
         }
-        if(!registerDto.getPassword().equals(registerDto.getRepeatPassword())) {
-            throw new CodeSageRuntimeException("Powtórzenie hasła nie jest zgodne z hasłem");
+
+        if(!registerDto.getPassword().equals(registerDto.getRepeatedPassword())) {
+            throw new CodeSageRuntimeException("Powtórzenie hasła nie jest zgodne z oryginalnym hasłem");
         }
+
         if(userRepository.existsByUsername(registerDto.getUsername())) {
             throw new CodeSageRuntimeException("Taki login już istnieje!");
         }
-        userRepository.save(userMapper.mapToUser(registerDto));
+        userRepository.save(hashingPassword(registerDto));
+    }
+
+    private User hashingPassword(RegisterDto registerDto) {
+        User user = userMapper.mapToUser(registerDto);
+        String hashedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
+        return user;
     }
 }

@@ -1,19 +1,16 @@
 package com.educator.core.user;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
 
 @Getter
+@Setter
 @Builder
 @Entity(name = "Users")
 @NoArgsConstructor
@@ -21,6 +18,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class User implements UserDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_generator")
+    @SequenceGenerator(name = "user_seq_generator", sequenceName = "user_seq", allocationSize = 1)
     private Long id;
 
     private String username;
@@ -54,4 +53,5 @@ public class User implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
 }

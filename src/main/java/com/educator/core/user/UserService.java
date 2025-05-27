@@ -18,7 +18,7 @@ public class UserService {
 
     public void registerDetails(RegisterDto registerDto) {
         if (registerDto == null) {
-            throw new CodeSageRuntimeException("Obiekt jest nullem");
+            throw new CodeSageRuntimeException("Obiekt jest nulem");
         }
 
         if(!registerDto.getPassword().equals(registerDto.getRepeatedPassword())) {
@@ -35,6 +35,7 @@ public class UserService {
         User user = userMapper.mapToUser(registerDto);
         String hashedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
+        user.setUsername(registerDto.getUsername().trim());
         return user;
     }
 }

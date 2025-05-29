@@ -22,7 +22,7 @@ public class UserService {
         }
 
         if(!registerDto.getPassword().equals(registerDto.getRepeatedPassword())) {
-            throw new CodeSageRuntimeException("Powtórzenie hasła nie jest zgodne z oryginalnym hasłem");
+            throw new CodeSageRuntimeException("Powtórzenie hasła nie jest zgodne z oryginałem");
         }
 
         if(userRepository.existsByUsername(registerDto.getUsername())) {

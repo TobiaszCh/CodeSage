@@ -1,5 +1,6 @@
 package com.educator.controller;
 
+import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.user.UserService;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,15 +25,13 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class UserController {
 
-    public final AuthenticationManager manager;
-
     private final UserService userService;
 
     @PostMapping("/login")
-    public void login(@RequestBody LoginDto loginDto, HttpServletRequest request) {
-        Authentication authentication = manager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.username, loginDto.password));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+    public ResponseEntity<Map<String,String>> login(@Valid @RequestBody LoginDto loginDto, HttpServletRequest request) {
+        SecurityContextHolder.getContext().setAuthentication(userService.authenticate(loginDto));
         request.getSession(true);
+        return ResponseEntity.ok(Map.of("message","Logowanie wykonane pomyślnie"));
     }
 
     @PostMapping("/register")

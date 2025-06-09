@@ -1,6 +1,6 @@
 package com.educator.config;
 
-import com.educator.core.user.UserServiceDetails;
+import com.educator.core.user.AppUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,11 +14,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public final UserServiceDetails userServiceDetails;
+    public final AppUserDetailsService appUserDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userServiceDetails).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Override

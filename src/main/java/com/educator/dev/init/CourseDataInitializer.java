@@ -10,7 +10,6 @@ import javax.annotation.PostConstruct;
 @Component
 @AllArgsConstructor
 @Profile("development")
-@DependsOn("userDataInitializer")
 public class CourseDataInitializer {
 
     private final CourseRepository courseRepository;

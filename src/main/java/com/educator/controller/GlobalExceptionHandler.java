@@ -1,5 +1,6 @@
-package com.educator.core.exception;
+package com.educator.controller;
 
+import com.educator.core.exception.CodeSageRuntimeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
@@ -23,11 +24,11 @@ public class GlobalExceptionHandler {
         List<ObjectError> results = ex.getBindingResult().getAllErrors();
 
         if (results.isEmpty()) {
-            throw new CodeSageRuntimeException("Brak błędów walidacji - to nie powinno się wydarzyć!");
+            throw new CodeSageRuntimeException("Lack of validation mistakes - it shouldn't happen!");
         }
 
         String message = results.get(0).getDefaultMessage();
-        if (message == null) throw new CodeSageRuntimeException("Message nie może być nulem");
+        if (message == null) throw new CodeSageRuntimeException("Message can't be null");
 
         return new ResponseEntity<>(Map.of("message", message), HttpStatus.BAD_REQUEST);
     }

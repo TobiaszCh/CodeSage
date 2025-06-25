@@ -22,7 +22,7 @@ public class UserService {
 
     public Authentication authenticate(LoginDto loginDto) {
         if (loginDto == null) {
-            throw new CodeSageRuntimeException("Obiekt jest nulem");
+            throw new CodeSageRuntimeException("LoginDto doesn't have value. Object is null");
         }
         try {
             return manager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername()
@@ -34,7 +34,7 @@ public class UserService {
 
     public void registerDetails(RegisterDto registerDto) {
         if (registerDto == null) {
-            throw new CodeSageRuntimeException("Obiekt jest nulem");
+            throw new CodeSageRuntimeException("RegisterDto doesn't have value. Object is null");
         }
 
         if (!registerDto.getPassword().equals(registerDto.getRepeatedPassword())) {
@@ -54,4 +54,5 @@ public class UserService {
         user.setUsername(registerDto.getUsername().trim());
         return user;
     }
+
 }

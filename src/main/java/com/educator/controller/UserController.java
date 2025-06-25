@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.net.CookieStore;
 import java.util.Map;
 
 @RestController
@@ -28,7 +27,7 @@ public class UserController {
     public ResponseEntity<Map<String,String>> login(@Valid @RequestBody LoginDto loginDto, HttpServletRequest request) {
         SecurityContextHolder.getContext().setAuthentication(userService.authenticate(loginDto));
         request.getSession(true);
-        return ResponseEntity.ok(Map.of("message","Logowanie wykonane pomyślnie"));
+        return ResponseEntity.ok(Map.of("message","Zalogowano pomyślnie"));
     }
 
     @PostMapping("/logout")
@@ -42,12 +41,12 @@ public class UserController {
                 response.addCookie(deleteCookie);
 
             } else {
-                throw new CodeSageRuntimeException("Sesja nie istnieje");
+                throw new CodeSageRuntimeException("Session doesn't have value. Object is null");
             }
         } else {
-            throw new CodeSageRuntimeException("Serwer nie dostał szczegółowych informacji o żądaniu");
+            throw new CodeSageRuntimeException("Request doesn't have value. Object is null");
         }
-        return ResponseEntity.ok(Map.of("message","Wylogowanie wykonane pomyślnie"));
+        return ResponseEntity.ok(Map.of("message","Wylogowano pomyślnie"));
     }
 
     @PostMapping("/register")
@@ -55,4 +54,5 @@ public class UserController {
         userService.registerDetails(registerDto);
         return ResponseEntity.ok(Map.of("message","Rejestracja wykonana pomyślnie"));
     }
+
 }

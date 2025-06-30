@@ -1,11 +1,13 @@
 package com.educator.controller;
 
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.user.User;
 import com.educator.core.user.UserService;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,4 +57,14 @@ public class UserController {
         return ResponseEntity.ok(Map.of("message","Rejestracja wykonana pomyślnie"));
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<Boolean> sendCookie() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication.getPrincipal() instanceof User) {
+            return ResponseEntity.ok(true);
+        }
+        else {
+            throw new CodeSageRuntimeException("No authenticated user found in the security context");
+        }
+    }
 }

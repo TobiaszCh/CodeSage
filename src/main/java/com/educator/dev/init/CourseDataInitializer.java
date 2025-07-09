@@ -2,15 +2,13 @@ package com.educator.dev.init;
 import com.educator.core.course.Course;
 import com.educator.core.course.CourseRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.DependsOn;
-import org.springframework.context.annotation.Profile;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
 @AllArgsConstructor
-@Profile("development")
-@DependsOn("userDataInitializer")
+@ConditionalOnProperty(prefix = "dev", name = "data.init", havingValue = "true")
 public class CourseDataInitializer {
 
     private final CourseRepository courseRepository;

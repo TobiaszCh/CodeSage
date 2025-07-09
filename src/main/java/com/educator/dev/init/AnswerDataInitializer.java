@@ -3,15 +3,15 @@ import com.educator.core.answer.Answer;
 import com.educator.core.answer.AnswerRepository;
 import com.educator.core.question.QuestionRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.DependsOn;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
 @AllArgsConstructor
-@Profile("development")
 @DependsOn("questionDataInitializer")
+@ConditionalOnProperty(prefix = "dev", name = "data.init", havingValue = "true")
 public class AnswerDataInitializer {
 
     private final AnswerRepository answerRepository;

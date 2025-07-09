@@ -58,7 +58,7 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<Boolean> sendCookie() {
+    public ResponseEntity<Boolean> isUserLoggedIn() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication.getPrincipal() instanceof User) {
             return ResponseEntity.ok(true);

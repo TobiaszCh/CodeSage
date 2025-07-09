@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
         List<ObjectError> results = ex.getBindingResult().getAllErrors();
 
         if (results.isEmpty()) {
-            throw new CodeSageRuntimeException("Lack of validation mistakes - it shouldn't happen!");
+            throw new CodeSageRuntimeException("Lack of validation errors - it shouldn't happen!");
         }
 
         String message = results.get(0).getDefaultMessage();

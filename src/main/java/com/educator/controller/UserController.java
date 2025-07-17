@@ -20,15 +20,14 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200", "https://code-sage-front-a970cdb2bc71.herokuapp.com"}, allowCredentials = "true")
 public class UserController {
 
     private final UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String,String>> login(@Valid @RequestBody LoginDto loginDto, HttpServletRequest request) {
+    public ResponseEntity<Map<String,String>> login(@Valid @RequestBody LoginDto loginDto) {
         SecurityContextHolder.getContext().setAuthentication(userService.authenticate(loginDto));
-        request.getSession(true);
         return ResponseEntity.ok(Map.of("message","Zalogowano pomyślnie"));
     }
 
@@ -39,6 +38,7 @@ public class UserController {
             if (session != null) {
                 session.invalidate();
                 Cookie deleteCookie = new Cookie("JSESSIONID", "");
+                deleteCookie.setSecure(true);
                 deleteCookie.setMaxAge(0);
                 response.addCookie(deleteCookie);
 

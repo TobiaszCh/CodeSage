@@ -38,6 +38,7 @@ public class UserController {
             if (session != null) {
                 session.invalidate();
                 Cookie deleteCookie = new Cookie("JSESSIONID", "");
+                deleteCookie.setSecure(true);
                 deleteCookie.setMaxAge(0);
                 response.addCookie(deleteCookie);
 

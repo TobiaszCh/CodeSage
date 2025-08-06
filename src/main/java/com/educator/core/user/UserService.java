@@ -1,5 +1,6 @@
 package com.educator.core.user;
 
+import com.educator.core.email.EmailService;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
@@ -19,6 +20,7 @@ public class UserService {
     public final AuthenticationManager manager;
     private final UserMapper userMapper;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final EmailService emailService;
 
     public Authentication authenticate(LoginDto loginDto) {
         if (loginDto == null) {
@@ -45,6 +47,7 @@ public class UserService {
             throw new CodeSageRuntimeException("Taki login już istnieje!");
         }
         userRepository.save(hashingPassword(registerDto));
+        emailService.sendWelcomeMessage(registerDto.getUsername());
     }
 
     private User hashingPassword(RegisterDto registerDto) {

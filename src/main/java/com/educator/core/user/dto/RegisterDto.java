@@ -2,6 +2,7 @@ package com.educator.core.user.dto;
 
 import lombok.Getter;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -9,8 +10,7 @@ import javax.validation.constraints.Size;
 @Getter
 public class RegisterDto {
     @NotBlank
-    @Pattern(regexp = "^[0-9A-Za-z_-]+$"
-            , message = "Login może zawierać tylko litery, cyfry, myślnik i podłogę bez znaków diakrytycznych.")
+    @Email(message = "It isn't email")
     private String username;
     @NotBlank
     @Size(min = 8, max = 100, message = "Hasło musi mieć od 8 do 100 znaków")

@@ -1,4 +1,5 @@
 package com.educator.controller;
+import com.educator.core.answer_session.dto.AllPointsAnswerSessionDto;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
 import com.educator.core.answer_session.AnswerSessionService;
 import com.educator.core.answer_session.dto.QuestionAnswerSelectDto;
@@ -19,6 +20,10 @@ public class AnswerSessionController {
     @GetMapping
     public List<AnswerSessionDto> getAllAnswer() {
         return answerSessionService.getAllAnswer();
+    }
+    @GetMapping(value = "/{id}")
+    public AllPointsAnswerSessionDto getPoints(@PathVariable Long id) {
+        return answerSessionService.getPoints(id);
     }
 
     @PostMapping("/subjectId")

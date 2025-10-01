@@ -5,6 +5,7 @@ import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionMapper;
 import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.answer_session.AnswerSessionService;
+import com.educator.core.answer_session.dto.AllPointsAnswerSessionDto;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
 import com.educator.core.answer_session.dto.SubjectIdToAnswerSessionDto;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
@@ -19,6 +20,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDate;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -72,11 +74,4 @@ class AnswerSessionServiceTest {
         assertNotEquals(3L, result);
     }
 
-    @Test
-    void selectQuestionAnswer() {
-    }
-
-    @Test
-    void updateAnswerSessionStatus() {
-    }
 }

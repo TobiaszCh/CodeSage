@@ -1,4 +1,5 @@
 package com.educator.core.course;
+import com.educator.core.exception.CodeSageRuntimeException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -13,7 +14,8 @@ public class CourseService {
     private final CourseMapper courseMapper;
 
     public CourseDto getCourseById(Long id) {
-        return courseMapper.mapToDtoCourse(courseRepository.findAllById(id));
+        return courseMapper.mapToDtoCourse(courseRepository.findById(id)
+                .orElseThrow(() -> new CodeSageRuntimeException("This course doesn't exist")));
     }
 
     public List<CourseDto> getWithPhrase(String phrase) {

@@ -51,7 +51,7 @@ class AnswerSessionServiceTest {
         Long subjectId = 1L;
         SubjectIdToAnswerSessionDto subjectIdToAnswerSessionDto = new SubjectIdToAnswerSessionDto(subjectId);
         User user = new User(2L, "Tobek","sdfsf", true, Role.USER, "Nothing", 0);
-        Course course = new Course(3L, "Course1");
+        Course course = Course.builder().id(3L).users(AuthService.getLoggedAdmin()).displayName("Course1").build();
         Subject subject = new Subject(4L, "Subject1", course);
         StatusAnswerSession statusAnswerSession = StatusAnswerSession.IN_PROGRESS;
         AnswerSession answerSession = AnswerSession.builder().id(5L).users(user).subject(subject)
@@ -77,7 +77,7 @@ class AnswerSessionServiceTest {
         //Given
         Long id = 1L;
         User user = new User(2L, "Tobek","sdfsf", true, Role.USER, "Nothing", 0);
-        Course course = new Course(3L, "Course1");
+        Course course = Course.builder().id(3L).users(AuthService.getLoggedAdmin()).displayName("Course1").build();
         Subject subject = new Subject(4L, "Subject1", course);
         StatusAnswerSession statusAnswerSession = StatusAnswerSession.IN_PROGRESS;
         AnswerSession answerSession = AnswerSession.builder().id(id).users(user).subject(subject).allAnswers(10)

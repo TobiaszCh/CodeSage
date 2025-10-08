@@ -46,10 +46,10 @@ class SubjectServiceTest {
     void getSubjectsFilterByCourseId() {
         //Given
         List<Subject> subjects = new ArrayList<>();
-        subjects.add(new Subject(10L, "Subject1", new Course(1L, "Course1")));
-        subjects.add(new Subject(11L, "Subject2", new Course(1L, "Course1")));
-        subjects.add(new Subject(12L, "Subject3", new Course(1L, "Course1")));
-        subjects.add(new Subject(13L, "Subject4", new Course(2L, "Course2")));
+        subjects.add(new Subject(10L, "Subject1", Course.builder().id(1L).displayName("Course1").build()));
+        subjects.add(new Subject(11L, "Subject2", Course.builder().id(1L).displayName("Course1").build()));
+        subjects.add(new Subject(12L, "Subject3", Course.builder().id(1L).displayName("Course1").build()));
+        subjects.add(new Subject(13L, "Subject4", Course.builder().id(2L).displayName("Course2").build()));
 
         List<SubjectDto> subjectsDto = new ArrayList<>();
         subjectsDto.add(new SubjectDto(10L, "Subject1", 1L));
@@ -78,10 +78,10 @@ class SubjectServiceTest {
     @Test
     void getAllNumbersOfCorrectAnswersAtLeast80Percent() {
         //Given
-        Subject subject1 = new Subject(10L, "Subject1", new Course(1L, "Course1"));
-        Subject subject2 = new Subject(11L, "Subject2", new Course(1L, "Course1"));
-        Subject subject3 = new Subject(12L, "Subject3", new Course(1L, "Course1"));
-        Subject subject4 = new Subject(13L, "Subject4", new Course(2L, "Course2"));
+        Subject subject1 = new Subject(10L, "Subject1", Course.builder().id(1L).displayName("Course1").build());
+        Subject subject2 = new Subject(11L, "Subject2", Course.builder().id(1L).displayName("Course1").build());
+        Subject subject3 = new Subject(12L, "Subject3", Course.builder().id(1L).displayName("Course1").build());
+        Subject subject4 = new Subject(13L, "Subject4", Course.builder().id(2L).displayName("Course2").build());
 
         List<Subject> subjects = new ArrayList<>();
         subjects.add(subject1);

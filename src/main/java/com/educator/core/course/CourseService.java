@@ -33,7 +33,7 @@ public class CourseService {
         return courseMapper.mapToListDtoCourse(courseRepository.findAll());
     }
 
-    public void deleteCourse(Long id) {
+    public void deleteCourseById(Long id) {
         courseRepository.deleteById(id);
     }
 

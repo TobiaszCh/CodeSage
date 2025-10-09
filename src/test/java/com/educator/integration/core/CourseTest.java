@@ -36,7 +36,7 @@ class CourseTest {
         entityManager.clear();
 
         //When
-        courseService.deleteCourse(-1L);
+        courseService.deleteCourseById(-1L);
         Course course = (Course) entityManager.createNativeQuery("SELECT * FROM course WHERE status_course = 'DELETED'", Course.class).getSingleResult();
 
         entityManager.clear();

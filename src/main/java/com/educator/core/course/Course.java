@@ -1,11 +1,11 @@
 package com.educator.core.course;
+
 import com.educator.core.course.enums.StatusCourse;
 import com.educator.core.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -21,7 +21,7 @@ import javax.persistence.*;
 public class Course {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_seq_generator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_seq_generator")
     @SequenceGenerator(name = "course_seq_generator", sequenceName = "course_seq", allocationSize = 1)
     private Long id;
 

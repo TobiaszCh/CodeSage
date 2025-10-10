@@ -40,4 +40,10 @@ public class CourseService {
     public void createCourse(CourseDto courseDto) {
         courseRepository.save(courseMapper.mapToCourse(courseDto));
     }
+
+    public void updateCourse(Long id, CourseDto courseDto) {
+        Course course = courseRepository.findById(id).orElseThrow(() -> new CodeSageRuntimeException("Id is null"));
+        course.setDisplayName(courseDto.getDisplayName());
+        courseRepository.save(course);
+    }
 }

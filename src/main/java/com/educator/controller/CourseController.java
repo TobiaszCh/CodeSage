@@ -44,4 +44,9 @@ public class CourseController {
     public void createCourse(@Valid @RequestBody CourseDto courseDto) {
         courseService.createCourse(courseDto);
     }
+
+    @PatchMapping("/update/{id}")
+    public void updateCourse(@PathVariable Long id, @Valid @RequestBody CourseDto courseDto) {
+        courseService.updateCourse(id, courseDto);
+    }
 }

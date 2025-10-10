@@ -2,14 +2,16 @@ package com.educator.core.course;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import javax.validation.constraints.NotNull;
+
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @AllArgsConstructor
 public class CourseDto {
 
     private Long id;
-    @NotNull
+
+    @NotBlank
     private String displayName;
 
 }

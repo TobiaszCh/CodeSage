@@ -5,10 +5,12 @@ import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionMapper;
 import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.answer_session.AnswerSessionService;
+import com.educator.core.answer_session.dto.AllPointsAnswerSessionDto;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
 import com.educator.core.answer_session.dto.SubjectIdToAnswerSessionDto;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.course.Course;
+import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.subject.Subject;
 import com.educator.core.subject.SubjectRepository;
 import com.educator.core.user.Role;
@@ -19,9 +21,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDate;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -62,10 +64,8 @@ class AnswerSessionServiceTest {
         when(answerSessionMapper.mapToAnswerSession(subject, user, statusAnswerSession)).thenReturn(answerSession);
         when(answerSessionRepository.save(answerSession)).thenReturn(answerSession);
         when(answerSessionMapper.mapToDtoAnswerSession(answerSession)).thenReturn(answerSessionDto);
-
         //When
         Long result = answerSessionService.sendSubjectIdToNewAnswerSession(subjectIdToAnswerSessionDto);
-
         //Then
         assertEquals(5L, result);
         assertNotEquals(4L, result);
@@ -73,10 +73,23 @@ class AnswerSessionServiceTest {
     }
 
     @Test
-    void selectQuestionAnswer() {
+    void getPoints() {
+        //Given
+        Long id = 1L;
+        User user = new User(2L, "Tobek","sdfsf", true, Role.USER, "Nothing", 0);
+        Course course = new Course(3L, "Course1");
+        Subject subject = new Subject(4L, "Subject1", course);
+        StatusAnswerSession statusAnswerSession = StatusAnswerSession.IN_PROGRESS;
+        AnswerSession answerSession = AnswerSession.builder().id(id).users(user).subject(subject).allAnswers(10)
+                .correctAnswers(8).statusAnswerSession(statusAnswerSession).sessionStartDate(LocalDate.now()).build();
+
+        when(answerSessionRepository.findById(id)).thenReturn(Optional.ofNullable(answerSession));
+        //When
+        AllPointsAnswerSessionDto allPointsAnswerSessionDto1 = answerSessionService.getPoints(1L);
+        //Then
+        assertEquals(10, allPointsAnswerSessionDto1.getAllAnswers());
+        assertEquals(8, allPointsAnswerSessionDto1.getCorrectAnswers());
+        assertThrows(CodeSageRuntimeException.class, () -> answerSessionService.getPoints(null));
     }
 
-    @Test
-    void updateAnswerSessionStatus() {
-    }
 }

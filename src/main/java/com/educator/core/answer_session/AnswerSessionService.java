@@ -3,10 +3,12 @@ package com.educator.core.answer_session;
 import com.educator.auth.AuthService;
 import com.educator.core.answer.Answer;
 import com.educator.core.answer.AnswerRepository;
+import com.educator.core.answer_session.dto.AllPointsAnswerSessionDto;
 import com.educator.core.answer_session.dto.AnswerSessionDto;
 import com.educator.core.answer_session.dto.QuestionAnswerSelectDto;
 import com.educator.core.answer_session.dto.SubjectIdToAnswerSessionDto;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
+import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.question.QuestionRepository;
 import com.educator.core.subject.SubjectRepository;
 import lombok.RequiredArgsConstructor;
@@ -79,6 +81,13 @@ public class AnswerSessionService {
         } else {
             answerSession.setStatusAnswerSession(StatusAnswerSession.ABANDONED);
         }
+    }
+
+    public AllPointsAnswerSessionDto getPoints(Long id) {
+        if(id == null) throw new CodeSageRuntimeException("Id is null");
+        AnswerSession answerSession = answerSessionRepository.findById(id)
+                .orElseThrow(() -> new CodeSageRuntimeException("This answer session doesn't exist"));
+        return new AllPointsAnswerSessionDto(answerSession.getAllAnswers(), answerSession.getCorrectAnswers());
     }
 
 }

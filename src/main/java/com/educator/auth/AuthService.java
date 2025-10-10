@@ -1,6 +1,7 @@
 package com.educator.auth;
 
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.user.Role;
 import com.educator.core.user.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +21,11 @@ public class AuthService {
         } else {
             throw new CodeSageRuntimeException("Authenticated principal is not type of User");
         }
+    }
+
+    public static User getLoggedAdmin() {
+        return new User(2L, "ADMIN","sdfsf", true, Role.ADMIN, "Nothing", 0);
+
     }
 
 }

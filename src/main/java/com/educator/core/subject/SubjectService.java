@@ -45,8 +45,7 @@ public class SubjectService {
     }
 
     public List<SubjectDto> getSubjectsFilterByCourseId(Long courseId) {
-        return subjectMapper.mapToDtoSubjectList(subjectRepository.findAll()).stream()
-                .filter(i -> i.getCourseId().equals(courseId)).collect(Collectors.toList());
+        return subjectMapper.mapToDtoSubjectList(subjectRepository.findByCourseId(courseId));
     }
 
     public List<CheckCompletedSessionsDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(Long courseId) {

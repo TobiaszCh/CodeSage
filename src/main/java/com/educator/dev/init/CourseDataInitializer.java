@@ -1,6 +1,8 @@
 package com.educator.dev.init;
+import com.educator.auth.AuthService;
 import com.educator.core.course.Course;
 import com.educator.core.course.CourseRepository;
+import com.educator.core.course.enums.StatusCourse;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
@@ -15,14 +17,14 @@ public class CourseDataInitializer {
 
     @PostConstruct
     public void initializeCourseData () {
-        courseRepository.save(new Course(-1L, "Java"));
-        courseRepository.save(new Course(-2L, "TypeScript"));
-        courseRepository.save(new Course(-3L, "Python"));
-        courseRepository.save(new Course(-4L, "JavaScript"));
-        courseRepository.save(new Course(-5L, "React"));
-        courseRepository.save(new Course(-6L, "Kotlin"));
-        courseRepository.save(new Course(-7L, "C++"));
-        courseRepository.save(new Course(-8L, "PHP"));
-        courseRepository.save(new Course(-183L, "Ruby"));
+        courseRepository.save(Course.builder().id(-1L).users(AuthService.getLoggedAdmin()).displayName("Java").build());
+        courseRepository.save(Course.builder().id(-2L).users(AuthService.getLoggedAdmin()).displayName("TypeScript").build());
+        courseRepository.save(Course.builder().id(-3L).users(AuthService.getLoggedAdmin()).displayName("Python").build());
+        courseRepository.save(Course.builder().id(-4L).users(AuthService.getLoggedAdmin()).displayName("JavaScript").build());
+        courseRepository.save(Course.builder().id(-5L).users(AuthService.getLoggedAdmin()).displayName("React").build());
+        courseRepository.save(Course.builder().id(-6L).users(AuthService.getLoggedAdmin()).displayName("Kotlin").build());
+        courseRepository.save(Course.builder().id(-7L).users(AuthService.getLoggedAdmin()).displayName("C++").build());
+        courseRepository.save(Course.builder().id(-8L).users(AuthService.getLoggedAdmin()).displayName("PHP").build());
+        courseRepository.save(Course.builder().id(-183L).users(AuthService.getLoggedAdmin()).displayName("Ruby").build());
     }
 }

@@ -36,12 +36,17 @@ public class CourseController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteCourseId(@PathVariable Long id) {
-        courseService.deleteCourse(id);
+    public void deleteCourseById(@PathVariable Long id) {
+        courseService.deleteCourseById(id);
     }
 
     @PostMapping
     public void createCourse(@Valid @RequestBody CourseDto courseDto) {
         courseService.createCourse(courseDto);
+    }
+
+    @PatchMapping("/update/{id}")
+    public void updateCourse(@PathVariable Long id, @Valid @RequestBody CourseDto courseDto) {
+        courseService.updateCourse(id, courseDto);
     }
 }

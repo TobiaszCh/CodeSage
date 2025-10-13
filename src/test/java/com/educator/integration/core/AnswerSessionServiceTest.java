@@ -59,7 +59,6 @@ public class AnswerSessionServiceTest {
         QuestionAnswerSelectDto questionAnswerSelectDto2 = new QuestionAnswerSelectDto(10001L, 10003L);
         QuestionAnswerSelectDto questionAnswerSelectDt3 = new QuestionAnswerSelectDto(10001L, 10004L);
         QuestionAnswerSelectDto questionAnswerSelectDt4 = new QuestionAnswerSelectDto(10001L, 10004L);
-
         //When
         Long idResult1 = answerSessionService.selectQuestionAnswer(id, questionAnswerSelectDto1);
         Long idResult2 = answerSessionService.selectQuestionAnswer(id, questionAnswerSelectDto2);

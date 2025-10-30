@@ -1,10 +1,12 @@
 package com.educator.controller;
 
+import com.educator.auth.AuthService;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.user.User;
 import com.educator.core.user.UserService;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
+import com.educator.core.user.dto.UsernameDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -66,5 +68,10 @@ public class UserController {
         else {
             throw new CodeSageRuntimeException("No authenticated user found in the security context");
         }
+    }
+
+    @GetMapping("/username")
+    public UsernameDto getUsername() {
+        return userService.getUsername();
     }
 }

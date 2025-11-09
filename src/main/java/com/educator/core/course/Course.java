@@ -19,7 +19,7 @@ import javax.persistence.*;
 public class Course {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_seq_generator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_seq_generator")
     @SequenceGenerator(name = "course_seq_generator", sequenceName = "course_seq", allocationSize = 1)
     private Long id;
 

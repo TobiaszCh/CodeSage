@@ -19,19 +19,15 @@ public class AnswerMapper {
                 answer.getQuestion() != null ? answer.getQuestion().getId(): null);
     }
 
-    public Answer mapToAnswer(AnswerDto answerDto) {
-        return Answer.builder()
-                .id(answerDto.getId())
-                .displayName(answerDto.getDisplayName())
-                .isCorrect(answerDto.isCorrect())
-                .build();
+    public Answer mapToAnswer (AnswerDto answerDto) {
+        return new Answer(
+                answerDto.getId(),
+                answerDto.getDisplayName(),
+                answerDto.isCorrect(),
+                questionRepository.getById(answerDto.getQuestionId()));
     }
 
     public List<AnswerDto> mapToListDtoAnswer(List<Answer> answers) {
         return answers.stream().map(this::mapToDtoAnswer).collect(Collectors.toList());
-    }
-
-    public List<Answer> mapToListAnswer(List<AnswerDto> answers) {
-        return answers.stream().map(this::mapToAnswer).collect(Collectors.toList());
     }
 }

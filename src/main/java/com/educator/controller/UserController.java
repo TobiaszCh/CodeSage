@@ -1,5 +1,6 @@
 package com.educator.controller;
 
+import com.educator.auth.AuthService;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.user.User;
 import com.educator.core.user.UserService;

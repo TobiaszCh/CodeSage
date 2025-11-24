@@ -1,8 +1,6 @@
 package com.educator.core.subject.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -11,7 +9,7 @@ public class SubjectDto {
 
     private Long id;
 
-    @NotBlank
+    @NotNull
     private String displayName;
 
     @NotNull

@@ -1,15 +1,11 @@
 package com.educator.core.question;
 
-import com.educator.core.answer.AnswerDto;
-import com.educator.core.answer.AnswerValidator;
 import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
-import com.educator.core.exception.CodeSageRuntimeException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,8 +14,6 @@ public class QuestionService {
     private final QuestionMapper questionMapper;
     private final AnswerSessionRepository answerSessionRepository;
     private final QuestionRepository questionRepository;
-    private final QuestionValidator questionValidator;
-    private final AnswerValidator answerValidator;
 
 
     public List<QuestionDto> getAllQuestions() {
@@ -27,9 +21,6 @@ public class QuestionService {
     }
 
     public void createQuestion(QuestionDto questionDto) {
-        questionValidator.validateDistinctQuestions(questionDto);
-        answerValidator.validateDistinctAnswers(questionDto);
-        answerValidator.validateAtLeastOneCorrectAnswer(questionDto);
         questionRepository.save(questionMapper.mapToQuestion(questionDto));
     }
 
@@ -37,8 +28,8 @@ public class QuestionService {
         questionRepository.deleteById(id);
     }
 
-    public List<QuestionDto> getQuestionsBySubjectId(Long subjectId) {
-        return questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectId(subjectId));
+    public QuestionDto getQuestionById(Long id) {
+        return questionMapper.mapToDtoQuestion(questionRepository.getById(id));
     }
 
     //ta metoda zwraca losowe pytanie z danego subject
@@ -56,10 +47,4 @@ public class QuestionService {
             return null;
         }
     }
-
-    public boolean hasQuestionsInSubject(Long subjectId) {
-        if(subjectId == null) throw new CodeSageRuntimeException("Object is null");
-        return questionRepository.countBySubjectId(subjectId) >= MAX_VALUE_ALL_ANSWERS;
-    }
-
 }

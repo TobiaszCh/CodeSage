@@ -22,15 +22,12 @@ public class QuestionMapper {
                 .build();
     }
 
-    public Question mapToQuestion(QuestionDto questionDto) {
-        Question question = Question.builder()
+    public  Question mapToQuestion (QuestionDto questionDto) {
+        return Question.builder()
                 .id(questionDto.getId())
                 .displayName(questionDto.getDisplayName())
-                .subject(subjectRepository.getById(questionDto.getSubjectId()))
-                .answers(answerMapper.mapToListAnswer(questionDto.getAnswers()))
+                .subject(subjectRepository.getById(questionDto.getId()))
                 .build();
-        question.getAnswers().forEach(result -> result.setQuestion(question));
-        return question;
     }
 
     public List<QuestionDto> mapToListDtoQuestion (List<Question> questions) {

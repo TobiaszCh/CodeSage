@@ -28,18 +28,14 @@ public class QuestionController {
     public void deleteQuestion(@PathVariable Long id) {
         questionService.deleteQuestion(id);
     }
-    @GetMapping("/{subjectId}")
-    public List<QuestionDto> getQuestionsBySubjectId(@PathVariable Long subjectId) {
-        return questionService.getQuestionsBySubjectId(subjectId);
+
+    @GetMapping(value = "/{id}")
+    public QuestionDto getQuestionById(@PathVariable Long id) {
+        return questionService.getQuestionById(id);
     }
 
     @GetMapping("/answerSessionId/{answerSessionId}")
     public QuestionDto getQuestionFilterBySubjectId(@PathVariable Long answerSessionId) {
         return questionService.getQuestionFilterBySubject(answerSessionId);
-    }
-
-    @GetMapping("/subjectId/{subjectId}")
-    public boolean hasQuestionsInSubject(@PathVariable Long subjectId) {
-        return questionService.hasQuestionsInSubject(subjectId);
     }
 }

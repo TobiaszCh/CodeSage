@@ -20,10 +20,11 @@ public class SubjectMapper {
     }
 
     public Subject mapToSubject(SubjectDto subjectDto) {
-        return new Subject(
-                subjectDto.getId(),
-                subjectDto.getDisplayName(),
-                courseRepository.getById(subjectDto.getCourseId()));
+        return Subject.builder()
+                .id(subjectDto.getId())
+                .displayName(subjectDto.getDisplayName())
+                .course(courseRepository.getById(subjectDto.getCourseId()))
+                .build();
     }
 
     public List<SubjectDto> mapToDtoSubjectList(List<Subject> subjectList) {

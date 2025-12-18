@@ -42,7 +42,7 @@ public class CourseService {
     }
 
     public void updateCourse(Long id, CourseDto courseDto) {
-        Course course = courseRepository.findById(id).orElseThrow(() -> new CodeSageRuntimeException("Id is null"));
+        Course course = courseRepository.findById(id).orElseThrow(() -> new CodeSageRuntimeException("This course doesn't exist"));
         course.setDisplayName(courseDto.getDisplayName());
         courseRepository.save(course);
     }

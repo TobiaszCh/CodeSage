@@ -18,7 +18,7 @@ public class AnswerController {
         return answerService.getAllAnswer();
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("/{id}")
     public void deleteAnswer(@PathVariable Long id) {
         answerService.deleteAnswer(id);
     }

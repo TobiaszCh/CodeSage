@@ -1,9 +1,12 @@
 package com.educator.core.user;
 
+import com.educator.auth.AuthService;
 import com.educator.core.email.EmailService;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
+import com.educator.core.user.dto.UsernameDto;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,6 +24,7 @@ public class UserService {
     private final UserMapper userMapper;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final EmailService emailService;
+    private final AuthService authService;
 
     public Authentication authenticate(LoginDto loginDto) {
         if (loginDto == null) {
@@ -56,6 +60,10 @@ public class UserService {
         user.setPassword(hashedPassword);
         user.setUsername(registerDto.getUsername().trim());
         return user;
+    }
+
+    public UsernameDto getUsername() {
+        return new UsernameDto(authService.getLoggedUser().getUsername());
     }
 
 }

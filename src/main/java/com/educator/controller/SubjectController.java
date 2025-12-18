@@ -2,6 +2,7 @@ package com.educator.controller;
 import com.educator.core.subject.dto.CheckCompletedSessionsDto;
 import com.educator.core.subject.dto.SubjectDto;
 import com.educator.core.subject.SubjectService;
+import com.educator.core.subject.dto.UpdateSubjectDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -25,22 +26,27 @@ public class SubjectController {
         subjectService.createSubject(subjectDto);
     }
 
-    @DeleteMapping(value = "/{id}")
-    public void deleteSubject(@PathVariable Long id) {
-        subjectService.deleteCourse(id);
+    @DeleteMapping("/{id}")
+    public void deleteSubjectById(@PathVariable Long id) {
+        subjectService.deleteSubjectById(id);
     }
 
     @DeleteMapping
-    public void deleteAllSubject() {
-        subjectService.deleteAllCourse();
+    public void deleteAllSubjects() {
+        subjectService.deleteAllSubjects();
     }
 
-    @GetMapping(value = "/{courseId}")
-    public List<SubjectDto> getSubjectsFilterByCourseIdFromAngular(@PathVariable Long courseId) {
+    @PatchMapping("/{id}")
+    public void updateCourse(@PathVariable Long id, @Valid @RequestBody UpdateSubjectDto updateSubjectDisplayNameDto) {
+        subjectService.updateSubject(id, updateSubjectDisplayNameDto);
+    }
+
+    @GetMapping("/by-course/{courseId}")
+    public List<SubjectDto> getSubjectsFilterByCourseId(@PathVariable Long courseId) {
         return subjectService.getSubjectsFilterByCourseId(courseId);
     }
 
-    @GetMapping(value = "/correctAnswersAtLeast80Percent/{courseId}")
+    @GetMapping("/correct-answers-at-least-80/{courseId}")
     public List<CheckCompletedSessionsDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(@PathVariable Long courseId) {
         return subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(courseId);
     }

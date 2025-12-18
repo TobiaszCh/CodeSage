@@ -4,8 +4,10 @@ import com.educator.auth.AuthService;
 import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
+import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.subject.dto.CheckCompletedSessionsDto;
 import com.educator.core.subject.dto.SubjectDto;
+import com.educator.core.subject.dto.UpdateSubjectDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,12 +38,18 @@ public class SubjectService {
         subjectRepository.save(subjectMapper.mapToSubject(subjectDto));
     }
 
-    public void deleteCourse(Long id) {
+    public void deleteSubjectById(Long id) {
         subjectRepository.deleteById(id);
     }
 
-    public void deleteAllCourse() {
+    public void deleteAllSubjects() {
         subjectRepository.deleteAll();
+    }
+
+    public void updateSubject(Long id, UpdateSubjectDto updateSubjectDisplayNameDto) {
+        Subject subject = subjectRepository.findById(id).orElseThrow(() -> new CodeSageRuntimeException("This subject doesn't exist"));
+        subject.setDisplayName(updateSubjectDisplayNameDto.getDisplayName());
+        subjectRepository.save(subject);
     }
 
     public List<SubjectDto> getSubjectsFilterByCourseId(Long courseId) {

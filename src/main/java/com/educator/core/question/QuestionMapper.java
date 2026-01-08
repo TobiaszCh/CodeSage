@@ -33,7 +33,11 @@ public class QuestionMapper {
         return question;
     }
 
-    public List<QuestionDto> mapToListDtoQuestion (List<Question> questions) {
+    public List<QuestionDto> mapToListDtoQuestion(List<Question> questions) {
         return questions.stream().map(this::mapToDtoQuestion).collect(Collectors.toList());
+    }
+
+    public List<Question> mapToListQuestion(List<QuestionDto> questionsDto) {
+        return questionsDto.stream().map(this::mapToQuestion).collect(Collectors.toList());
     }
 }

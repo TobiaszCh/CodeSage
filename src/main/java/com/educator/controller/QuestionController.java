@@ -20,14 +20,15 @@ public class QuestionController {
     }
 
     @PostMapping
-    public void createQuestion(@Valid @RequestBody QuestionDto questionDto) {
-        questionService.createQuestion(questionDto);
+    public Long createQuestions(@Valid @RequestBody List<QuestionDto> questionDto) {
+        return questionService.createQuestions(questionDto);
     }
 
     @DeleteMapping(value = "/{id}")
     public void deleteQuestion(@PathVariable Long id) {
         questionService.deleteQuestion(id);
     }
+
     @GetMapping("/{subjectId}")
     public List<QuestionDto> getQuestionsBySubjectId(@PathVariable Long subjectId) {
         return questionService.getQuestionsBySubjectId(subjectId);

@@ -1,8 +1,10 @@
 package com.educator.controller;
+
 import com.educator.core.question.QuestionDto;
 import com.educator.core.question.QuestionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -43,4 +45,10 @@ public class QuestionController {
     public boolean hasQuestionsInSubject(@PathVariable Long subjectId) {
         return questionService.hasQuestionsInSubject(subjectId);
     }
+
+    @PatchMapping
+    public Long updateQuestions(@Valid @RequestBody List<QuestionDto> questionDto) {
+        return questionService.updateQuestions(questionDto);
+    }
+
 }

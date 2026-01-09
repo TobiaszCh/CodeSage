@@ -1,7 +1,8 @@
 package com.educator.core.answer;
-import com.educator.core.question.QuestionRepository;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,14 +10,12 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class AnswerMapper {
 
-    private final QuestionRepository questionRepository;
-
     public AnswerDto mapToDtoAnswer(Answer answer) {
         return new AnswerDto(
                 answer.getId(),
                 answer.getDisplayName(),
                 answer.isCorrect(),
-                answer.getQuestion() != null ? answer.getQuestion().getId(): null);
+                answer.getQuestion() != null ? answer.getQuestion().getId() : null);
     }
 
     public Answer mapToAnswer(AnswerDto answerDto) {
@@ -34,4 +33,5 @@ public class AnswerMapper {
     public List<Answer> mapToListAnswer(List<AnswerDto> answers) {
         return answers.stream().map(this::mapToAnswer).collect(Collectors.toList());
     }
+
 }

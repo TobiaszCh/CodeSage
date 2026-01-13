@@ -1,5 +1,6 @@
 package com.educator.config;
 
+import com.educator.auth.OAuth2LoginSuccessHandler;
 import com.educator.core.user.AppUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public final AppUserDetailsService appUserDetailsService;
 
+    private final OAuth2LoginSuccessHandler auth2LoginSuccessHandler;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder());
@@ -29,7 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http.cors().and().csrf().disable().logout().disable()
             .authorizeRequests()
             .antMatchers("/", "/login", "/register", "/me", "/actuator/**").permitAll()
-            .anyRequest().authenticated();
+            .anyRequest().authenticated()
+            .and().oauth2Login()
+            .successHandler(auth2LoginSuccessHandler);
     }
 
     @Bean

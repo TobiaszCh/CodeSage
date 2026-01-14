@@ -1,15 +1,13 @@
 package com.educator.controller;
 
+import com.educator.auth.AuthService;
 import com.educator.core.exception.CodeSageRuntimeException;
-import com.educator.core.user.User;
 import com.educator.core.user.UserService;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
 import com.educator.core.user.dto.UsernameDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -26,9 +24,11 @@ public class UserController {
 
     private final UserService userService;
 
+    private final AuthService authService;
+
     @PostMapping("/login")
     public ResponseEntity<Map<String,String>> login(@Valid @RequestBody LoginDto loginDto) {
-        SecurityContextHolder.getContext().setAuthentication(userService.authenticate(loginDto));
+        userService.login(loginDto);
         return ResponseEntity.ok(Map.of("message","Zalogowano pomyślnie"));
     }
 
@@ -60,17 +60,18 @@ public class UserController {
 
     @GetMapping("/me")
     public ResponseEntity<Boolean> isUserLoggedIn() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication.getPrincipal() instanceof User) {
-            return ResponseEntity.ok(true);
-        }
-        else {
-            throw new CodeSageRuntimeException("No authenticated user found in the security context");
-        }
+        return ResponseEntity.ok(authService.isUserLoggedIn());
     }
 
     @GetMapping("/username")
     public UsernameDto getUsername() {
         return userService.getUsername();
     }
+
+    @PostMapping("/random-register")
+    public ResponseEntity<Map<String,String>> createRandomUser() {
+        userService.createRandomUser();
+        return ResponseEntity.ok(Map.of("message","Rejestracja wykonana pomyślnie"));
+    }
+
 }

@@ -45,7 +45,8 @@ public class QuestionService {
             answerValidator.validateAtLeastOneCorrectAnswer(result);
         });
         questionRepository.saveAll(questionMapper.mapToListQuestion(questionDto));
-        return subjectRepository.findCourseIdBySubjectId(questionDto.get(0).getSubjectId());
+        return subjectRepository.findCourseIdBySubjectId(questionDto.get(0).getSubjectId())
+                .orElseThrow(() -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }
 
     @Transactional
@@ -56,7 +57,8 @@ public class QuestionService {
             answerValidator.validateDistinctAnswers(result);
             updateQuestion(result);
         });
-        return subjectRepository.findCourseIdBySubjectId(questionDto.get(0).getSubjectId());
+        return subjectRepository.findCourseIdBySubjectId(questionDto.get(0).getSubjectId())
+                .orElseThrow(() -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }
 
     private void updateQuestion(QuestionDto questionDto) {

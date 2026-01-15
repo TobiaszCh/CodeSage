@@ -79,5 +79,11 @@ public class SubjectService {
     private double getCheckAllAndCorrectAnswers(AnswerSession answerSessionCompleted) {
         return answerSessionCompleted.getAllAnswers() == 0 ? 0 : (double) answerSessionCompleted.getCorrectAnswers() / answerSessionCompleted.getAllAnswers();
     }
+
+    public Long getCourseId(Long id) {
+        if(id == null) throw new CodeSageRuntimeException("Id is null");
+        return subjectRepository.findCourseIdBySubjectId(id).orElseThrow(
+                () -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
+    }
 }
 

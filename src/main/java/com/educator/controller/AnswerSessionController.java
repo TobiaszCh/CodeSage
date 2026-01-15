@@ -21,7 +21,8 @@ public class AnswerSessionController {
     public List<AnswerSessionDto> getAllAnswer() {
         return answerSessionService.getAllAnswer();
     }
-    @GetMapping(value = "/{id}")
+
+    @GetMapping("/{id}")
     public AllPointsAnswerSessionDto getPoints(@PathVariable Long id) {
         return answerSessionService.getPoints(id);
     }
@@ -31,18 +32,24 @@ public class AnswerSessionController {
         return answerSessionService.sendSubjectIdToNewAnswerSession(subjectIdToAnswerSessionDto);
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         answerSessionService.deleteById(id);
     }
 
-    @PutMapping(value = "/selectQuestionAnswer/{id}")
+    @PutMapping("/selectQuestionAnswer/{id}")
     public Long selectQuestionAnswer(@PathVariable Long id,@Valid @RequestBody QuestionAnswerSelectDto questionAnswerSelectDto) {
         return answerSessionService.selectQuestionAnswer(id, questionAnswerSelectDto);
     }
 
-    @PutMapping(value = "/updateStatus/{id}")
+    @PutMapping("/updateStatus/{id}")
     public void updateAnswerSessionStatus(@PathVariable Long id) {
         answerSessionService.updateAnswerSessionStatus(id);
     }
+
+    @GetMapping("/{id}/course-id")
+    public Long getSubjectId(@PathVariable Long id) {
+        return answerSessionService.findSubjectIdById(id);
+    }
+
 }

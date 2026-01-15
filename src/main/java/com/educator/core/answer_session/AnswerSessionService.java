@@ -91,13 +91,12 @@ public class AnswerSessionService {
         return new AllPointsAnswerSessionDto(answerSession.getAllAnswers(), answerSession.getCorrectAnswers());
     }
 
-    public Long findSubjectIdById(Long id) {
+    public Long getCourseId(Long id) {
         if(id == null) throw new CodeSageRuntimeException("Id is null");
         Long subjectId = answerSessionRepository.findSubjectIdByAnswerSessionId(id).orElseThrow(
                 () -> new CodeSageRuntimeException("In this answer session subjectId doesn't exist"));
         return subjectRepository.findCourseIdBySubjectId(subjectId).orElseThrow(
                 () -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
-
     }
 
 }

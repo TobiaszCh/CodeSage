@@ -1,6 +1,9 @@
 package com.educator.core.answer;
+
+import com.educator.core.exception.CodeSageRuntimeException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -20,6 +23,12 @@ public class AnswerService {
     }
 
     public void createAnswer(AnswerDto answerDto) {
-        answerRepository.save(answerMapper.mapToAnswer (answerDto));
+        answerRepository.save(answerMapper.mapToAnswer(answerDto));
     }
+
+    public void updateAnswer(AnswerDto answerDto) {
+        Answer answer = answerRepository.findById(answerDto.getId()).orElseThrow(() -> new CodeSageRuntimeException("This answer doesn't exist"));
+        answer.setDisplayName(answerDto.getDisplayName());
+    }
+
 }

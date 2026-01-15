@@ -13,6 +13,7 @@ import com.educator.core.question.QuestionRepository;
 import com.educator.core.subject.SubjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -88,6 +89,15 @@ public class AnswerSessionService {
         AnswerSession answerSession = answerSessionRepository.findById(id)
                 .orElseThrow(() -> new CodeSageRuntimeException("This answer session doesn't exist"));
         return new AllPointsAnswerSessionDto(answerSession.getAllAnswers(), answerSession.getCorrectAnswers());
+    }
+
+    public Long findSubjectIdById(Long id) {
+        if(id == null) throw new CodeSageRuntimeException("Id is null");
+        Long subjectId = answerSessionRepository.findSubjectIdByAnswerSessionId(id).orElseThrow(
+                () -> new CodeSageRuntimeException("In this answer session subjectId doesn't exist"));
+        return subjectRepository.findCourseIdBySubjectId(subjectId).orElseThrow(
+                () -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
+
     }
 
 }

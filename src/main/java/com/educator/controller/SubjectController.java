@@ -50,4 +50,9 @@ public class SubjectController {
     public List<CheckCompletedSessionsDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(@PathVariable Long courseId) {
         return subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(courseId);
     }
+
+    @GetMapping("/{id}/course-id")
+    public Long getCourseId(@PathVariable Long id) {
+        return subjectService.getCourseId(id);
+    }
 }

@@ -48,8 +48,8 @@ public class AnswerSessionController {
     }
 
     @GetMapping("/{id}/course-id")
-    public Long getSubjectId(@PathVariable Long id) {
-        return answerSessionService.findSubjectIdById(id);
+    public Long getCourseId(@PathVariable Long id) {
+        return answerSessionService.getCourseId(id);
     }
 
 }

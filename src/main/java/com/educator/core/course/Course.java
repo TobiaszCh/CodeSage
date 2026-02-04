@@ -7,6 +7,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,8 +26,11 @@ public class Course {
 
     private String displayName;
 
-    @ManyToOne
-    private User users;
+    @ManyToMany
+    @JoinTable(name = "user_course",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> users;
 
     @Enumerated(value = EnumType.STRING)
     private StatusCourse statusCourse;

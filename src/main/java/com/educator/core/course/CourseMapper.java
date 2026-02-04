@@ -1,4 +1,5 @@
 package com.educator.core.course;
+import com.educator.core.user.User;
 import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,10 +13,11 @@ public class CourseMapper {
                 course.getDisplayName());
     }
 
-    public Course mapToCourse(CourseDto courseDto) {
+    public Course mapToCourse(CourseDto courseDto, List<User> users) {
         return Course.builder()
                 .id(courseDto.getId())
                 .displayName(courseDto.getDisplayName())
+                .users(users)
                 .build();
 
     }

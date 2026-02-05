@@ -1,7 +1,11 @@
 package com.educator.core.course;
+
+import com.educator.auth.AuthService;
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +13,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CourseService {
 
-    final private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
 
     private final CourseMapper courseMapper;
+
+    private final AuthService authService;
 
     public CourseDto getCourseById(Long id) {
         return courseMapper.mapToDtoCourse(courseRepository.findById(id)
@@ -29,16 +35,18 @@ public class CourseService {
         return courseMapper.mapToListDtoCourse(listWithPhrases);
     }
 
-    public List<CourseDto> getAllCourses() {
-        return courseMapper.mapToListDtoCourse(courseRepository.findAll());
+    public List<CourseDto> getAllMyCourses() {
+        User loggedUser = authService.getLoggedUser();
+        return courseMapper.mapToListDtoCourse(courseRepository.findAllByUsersContains(loggedUser));
     }
 
     public void deleteCourseById(Long id) {
         courseRepository.deleteById(id);
     }
 
-    public void createCourse(CourseDto courseDto) {
-        courseRepository.save(courseMapper.mapToCourse(courseDto));
+    public void createMyCourse(CourseDto courseDto) {
+        User loggedUser = authService.getLoggedUser();
+        courseRepository.save(courseMapper.mapToCourse(courseDto, List.of(loggedUser)));
     }
 
     public void updateCourse(Long id, CourseDto courseDto) {
@@ -46,4 +54,5 @@ public class CourseService {
         course.setDisplayName(courseDto.getDisplayName());
         courseRepository.save(course);
     }
+
 }

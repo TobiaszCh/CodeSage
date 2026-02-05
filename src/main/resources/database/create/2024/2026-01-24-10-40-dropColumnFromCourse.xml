@@ -1,0 +1,13 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="drop-column-from-course-table" author="Tobiasz">
+        <dropColumn tableName = "course">
+            <column name = "users_id"/>
+        </dropColumn>
+    </changeSet>
+</databaseChangeLog>

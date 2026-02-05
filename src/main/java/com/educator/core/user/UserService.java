@@ -1,6 +1,7 @@
 package com.educator.core.user;
 
 import com.educator.auth.AuthService;
+import com.educator.core.course.FirstCourseCreator;
 import com.educator.core.email.EmailService;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.user.dto.LoginDto;
@@ -35,6 +36,8 @@ public class UserService {
 
     private final Random random = new Random();
 
+    private final FirstCourseCreator firstCourseCreator;
+
     public void login(LoginDto loginDto) {
         if (loginDto == null) {
             throw new CodeSageRuntimeException("LoginDto doesn't have value. Object is null");
@@ -52,15 +55,14 @@ public class UserService {
         if (registerDto == null) {
             throw new CodeSageRuntimeException("RegisterDto doesn't have value. Object is null");
         }
-
         if (!registerDto.getPassword().equals(registerDto.getRepeatedPassword())) {
             throw new CodeSageRuntimeException("Powtórzenie hasła nie jest zgodne z oryginałem");
         }
-
         if (userRepository.existsByUsername(registerDto.getUsername())) {
             throw new CodeSageRuntimeException("Taki login już istnieje!");
         }
         userRepository.save(hashingPassword(registerDto));
+        firstCourseCreator.createFirstCourse(registerDto.getUsername());
         emailService.sendWelcomeMessage(registerDto.getUsername());
     }
 
@@ -86,6 +88,7 @@ public class UserService {
             checkUser = userRepository.existsByUsername(randomUser.getUsername());
         }
         userRepository.save(hashingPassword(randomUser));
+        firstCourseCreator.createFirstCourse(randomUser.getUsername());
         login(LoginDto.builder().username(randomUser.getUsername()).password(randomUser.getPassword()).build());
     }
 

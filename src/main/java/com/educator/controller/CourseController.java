@@ -25,7 +25,7 @@ public class CourseController {
 
     @GetMapping
     public List<CourseDto> getAllCourses() {
-        return courseService.getAllCourses();
+        return courseService.getAllMyCourses();
     }
 
     @GetMapping("/search/{phrase}")
@@ -40,7 +40,7 @@ public class CourseController {
 
     @PostMapping
     public void createCourse(@Valid @RequestBody CourseDto courseDto) {
-        courseService.createCourse(courseDto);
+        courseService.createMyCourse(courseDto);
     }
 
     @PatchMapping("/{id}")

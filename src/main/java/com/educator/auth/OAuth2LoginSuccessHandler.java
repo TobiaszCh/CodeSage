@@ -1,5 +1,6 @@
 package com.educator.auth;
 
+import com.educator.core.course.FirstCourseCreator;
 import com.educator.core.email.EmailService;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.user.User;
@@ -26,6 +27,8 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     private final EmailService emailService;
 
+    private final FirstCourseCreator firstCourseCreator;
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         Object userObject = authentication.getPrincipal();
@@ -35,9 +38,12 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
             if (!userRepository.existsByUsername(email)) {
                 User user = User.builder().username(email).build();
                 userRepository.save(user);
+                firstCourseCreator.createFirstCourse(user.getUsername());
                 emailService.sendWelcomeMessage(user.getUsername());
+
             }
         }
         response.sendRedirect(redirectedUrl);
     }
+
 }

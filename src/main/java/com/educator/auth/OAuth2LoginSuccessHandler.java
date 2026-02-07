@@ -40,7 +40,6 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
                 userRepository.save(user);
                 firstCourseCreator.createFirstCourse(user.getUsername());
                 emailService.sendWelcomeMessage(user.getUsername());
-
             }
         }
         response.sendRedirect(redirectedUrl);

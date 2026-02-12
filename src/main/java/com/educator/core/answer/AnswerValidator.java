@@ -1,7 +1,8 @@
 package com.educator.core.answer;
 
+import com.educator.core.answer.dto.AnswerDto;
 import com.educator.core.exception.CodeSageRuntimeException;
-import com.educator.core.question.QuestionDto;
+import com.educator.core.question.dto.QuestionDto;
 import org.springframework.stereotype.Component;
 
 

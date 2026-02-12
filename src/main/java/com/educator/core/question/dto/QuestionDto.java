@@ -1,5 +1,6 @@
-package com.educator.core.question;
-import com.educator.core.answer.AnswerDto;
+package com.educator.core.question.dto;
+
+import com.educator.core.answer.dto.AnswerDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,7 +25,5 @@ public class QuestionDto {
 
     @Valid
     private List<AnswerDto> answers;
-
-
 
 }

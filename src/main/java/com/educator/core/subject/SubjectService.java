@@ -34,8 +34,8 @@ public class SubjectService {
         return subjectMapper.mapToDtoSubjectList(subjectRepository.findAll());
     }
 
-    public void createSubject(SubjectDto subjectDto) {
-        subjectRepository.save(subjectMapper.mapToSubject(subjectDto));
+    public Long createSubject(SubjectDto subjectDto) {
+        return subjectRepository.save(subjectMapper.mapToSubject(subjectDto)).getId();
     }
 
     public void deleteSubjectById(Long id) {
@@ -85,5 +85,6 @@ public class SubjectService {
         return subjectRepository.findCourseIdBySubjectId(id).orElseThrow(
                 () -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }
+
 }
 

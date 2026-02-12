@@ -1,5 +1,7 @@
 package com.educator.core.answer;
 
+import com.educator.core.answer.dto.AnswerDto;
+import com.educator.core.answer.dto.AnswerWithoutCorrectDto;
 import com.educator.core.exception.CodeSageRuntimeException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,8 @@ public class AnswerService {
 
     private final AnswerMapper answerMapper;
 
-    public List<AnswerDto> getAllAnswer() {
-        return answerMapper.mapToListDtoAnswer(answerRepository.findAll());
+    public List<AnswerWithoutCorrectDto> getAllAnswer() {
+        return answerMapper.mapToListDtoAnswerWithoutCorrect(answerRepository.findAll());
     }
 
     public void deleteAnswer(Long id) {

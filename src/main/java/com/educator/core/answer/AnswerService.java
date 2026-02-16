@@ -31,6 +31,7 @@ public class AnswerService {
     public void updateAnswer(AnswerDto answerDto) {
         Answer answer = answerRepository.findById(answerDto.getId()).orElseThrow(() -> new CodeSageRuntimeException("This answer doesn't exist"));
         answer.setDisplayName(answerDto.getDisplayName());
+        answer.setCorrect(answerDto.isCorrect());
     }
 
 }

@@ -70,7 +70,7 @@ public class QuestionService {
     }
 
     public List<QuestionDto> getQuestionsBySubjectId(Long subjectId) {
-        return questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectId(subjectId));
+        return questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectIdOrderByIdAsc(subjectId));
     }
 
     //ta metoda zwraca losowe pytanie z danego subject
@@ -78,7 +78,7 @@ public class QuestionService {
     public QuestionWithoutAnswerCorrectDto getQuestionFilterBySubject(Long answerSessionId) {
         AnswerSession answerSession = answerSessionRepository.getById(answerSessionId);
         Long subjectId = answerSession.getSubject().getId();
-        List<QuestionWithoutAnswerCorrectDto> questionsSelect = questionMapper.mapToListDtoQuestionWithoutAnswerCorrect(questionRepository.findBySubjectId(subjectId));
+        List<QuestionWithoutAnswerCorrectDto> questionsSelect = questionMapper.mapToListDtoQuestionWithoutAnswerCorrect(questionRepository.findBySubjectIdOrderByIdAsc(subjectId));
         int answeredQuestion = answerSession.getAllAnswers();
         if (answeredQuestion < MAX_VALUE_ALL_QUESTIONS) {
             return questionsSelect.get(answeredQuestion);

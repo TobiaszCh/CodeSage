@@ -53,11 +53,11 @@ public class SubjectService {
     }
 
     public List<SubjectDto> getSubjectsFilterByCourseId(Long courseId) {
-        return subjectMapper.mapToDtoSubjectList(subjectRepository.findByCourseId(courseId));
+        return subjectMapper.mapToDtoSubjectList(subjectRepository.findByCourseIdOrderByIdAsc(courseId));
     }
 
     public List<CheckCompletedSessionsDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(Long courseId) {
-        List<Long> subjectsIdFilterByCourseId = subjectRepository.findByCourseId(courseId).stream().map(Subject::getId).collect(Collectors.toList());
+        List<Long> subjectsIdFilterByCourseId = subjectRepository.findByCourseIdOrderByIdAsc(courseId).stream().map(Subject::getId).collect(Collectors.toList());
         List<AnswerSession> answerSessionsCompletedList = answerSessionRepository.findByStatusAnswerSession(StatusAnswerSession.COMPLETED);
         return getCheckCompletedSessionsDtos(subjectsIdFilterByCourseId, answerSessionsCompletedList);
 

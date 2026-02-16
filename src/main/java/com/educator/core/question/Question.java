@@ -24,6 +24,7 @@ public class Question {
     @ManyToOne
     private Subject subject;
 
+    @OrderBy("id ASC")
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Answer> answers;
 

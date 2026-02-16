@@ -46,10 +46,10 @@ class SubjectServiceTest {
     void getSubjectsFilterByCourseId() {
         //Given
         List<Subject> subjects = new ArrayList<>();
-        subjects.add(new Subject(10L, "Subject1", Course.builder().id(1L).displayName("Course1").build()));
-        subjects.add(new Subject(11L, "Subject2", Course.builder().id(1L).displayName("Course1").build()));
-        subjects.add(new Subject(12L, "Subject3", Course.builder().id(1L).displayName("Course1").build()));
-        subjects.add(new Subject(13L, "Subject4", Course.builder().id(2L).displayName("Course2").build()));
+        subjects.add(Subject.builder().id(10L).displayName("Subject1").course(Course.builder().id(1L).displayName("Course1").build()).build());
+        subjects.add(Subject.builder().id(11L).displayName("Subject2").course(Course.builder().id(1L).displayName("Course1").build()).build());
+        subjects.add(Subject.builder().id(12L).displayName("Subject3").course(Course.builder().id(1L).displayName("Course1").build()).build());
+        subjects.add(Subject.builder().id(13L).displayName("Subject4").course(Course.builder().id(2L).displayName("Course2").build()).build());
 
         List<SubjectDto> subjectsDto = new ArrayList<>();
         subjectsDto.add(new SubjectDto(10L, "Subject1", 1L));
@@ -78,10 +78,10 @@ class SubjectServiceTest {
     @Test
     void getAllNumbersOfCorrectAnswersAtLeast80Percent() {
         //Given
-        Subject subject1 = new Subject(10L, "Subject1", Course.builder().id(1L).displayName("Course1").build());
-        Subject subject2 = new Subject(11L, "Subject2", Course.builder().id(1L).displayName("Course1").build());
-        Subject subject3 = new Subject(12L, "Subject3", Course.builder().id(1L).displayName("Course1").build());
-        Subject subject4 = new Subject(13L, "Subject4", Course.builder().id(2L).displayName("Course2").build());
+        Subject subject1 = Subject.builder().id(10L).displayName("Subject1").course(Course.builder().id(1L).displayName("Course1").build()).build();
+        Subject subject2 = Subject.builder().id(11L).displayName("Subject2").course(Course.builder().id(1L).displayName("Course1").build()).build();
+        Subject subject3 = Subject.builder().id(12L).displayName("Subject3").course(Course.builder().id(1L).displayName("Course1").build()).build();
+        Subject subject4 = Subject.builder().id(13L).displayName("Subject4").course(Course.builder().id(2L).displayName("Course2").build()).build();
 
         List<Subject> subjects = new ArrayList<>();
         subjects.add(subject1);
@@ -108,7 +108,7 @@ class SubjectServiceTest {
         answerSessionsTests.add(answerSession4);
         answerSessionsTests.add(answerSession5);
 
-        when(subjectRepository.findByCourseId(1L)).thenReturn(subjects);
+        when(subjectRepository.findByCourseIdOrderByIdAsc(1L)).thenReturn(subjects);
         when(answerSessionRepository.findByStatusAnswerSession(StatusAnswerSession.COMPLETED)).thenReturn(answerSessionsTests);
         when(authService.getLoggedUser()).thenReturn(user);
 

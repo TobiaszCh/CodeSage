@@ -1,4 +1,4 @@
-package com.educator.core.email;
+package com.educator.email;
 
 import com.educator.core.exception.CodeSageRuntimeException;
 import lombok.RequiredArgsConstructor;

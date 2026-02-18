@@ -1,7 +1,8 @@
 package com.educator.controller;
 
-import com.educator.core.question.QuestionDto;
+import com.educator.core.question.dto.QuestionDto;
 import com.educator.core.question.QuestionService;
+import com.educator.core.question.dto.QuestionWithoutAnswerCorrectDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,19 +17,9 @@ public class QuestionController {
 
     private final QuestionService questionService;
 
-    @GetMapping
-    public List<QuestionDto> getAllQuestions () {
-        return questionService.getAllQuestions();
-    }
-
     @PostMapping
     public Long createQuestions(@Valid @RequestBody List<QuestionDto> questionDto) {
         return questionService.createQuestions(questionDto);
-    }
-
-    @DeleteMapping(value = "/{id}")
-    public void deleteQuestion(@PathVariable Long id) {
-        questionService.deleteQuestion(id);
     }
 
     @GetMapping("/{subjectId}")
@@ -37,7 +28,7 @@ public class QuestionController {
     }
 
     @GetMapping("/answerSessionId/{answerSessionId}")
-    public QuestionDto getQuestionFilterBySubjectId(@PathVariable Long answerSessionId) {
+    public QuestionWithoutAnswerCorrectDto getQuestionFilterBySubjectId(@PathVariable Long answerSessionId) {
         return questionService.getQuestionFilterBySubject(answerSessionId);
     }
 

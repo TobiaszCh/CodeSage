@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
-    List<Course> findAllByUsersContains(User user);
+    List<Course> findAllByUsersContainsOrderByIdAsc(User user);
 
 }

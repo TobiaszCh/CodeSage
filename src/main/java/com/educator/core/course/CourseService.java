@@ -37,7 +37,7 @@ public class CourseService {
 
     public List<CourseDto> getAllMyCourses() {
         User loggedUser = authService.getLoggedUser();
-        return courseMapper.mapToListDtoCourse(courseRepository.findAllByUsersContains(loggedUser));
+        return courseMapper.mapToListDtoCourse(courseRepository.findAllByUsersContainsOrderByIdAsc(loggedUser));
     }
 
     public void deleteCourseById(Long id) {

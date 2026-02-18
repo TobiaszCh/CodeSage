@@ -5,6 +5,8 @@ import com.educator.core.answer.AnswerValidator;
 import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.question.dto.QuestionDto;
+import com.educator.core.question.dto.QuestionWithoutAnswerCorrectDto;
 import com.educator.core.subject.SubjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -67,20 +69,16 @@ public class QuestionService {
         questionDto.getAnswers().forEach(answerService::updateAnswer);
     }
 
-    public void deleteQuestion(Long id) {
-        questionRepository.deleteById(id);
-    }
-
     public List<QuestionDto> getQuestionsBySubjectId(Long subjectId) {
-        return questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectId(subjectId));
+        return questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectIdOrderByIdAsc(subjectId));
     }
 
     //ta metoda zwraca losowe pytanie z danego subject
     //ToDo nie używać słowa agular w backend
-    public QuestionDto getQuestionFilterBySubject(Long answerSessionId) {
+    public QuestionWithoutAnswerCorrectDto getQuestionFilterBySubject(Long answerSessionId) {
         AnswerSession answerSession = answerSessionRepository.getById(answerSessionId);
         Long subjectId = answerSession.getSubject().getId();
-        List<QuestionDto> questionsSelect = questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectId(subjectId));
+        List<QuestionWithoutAnswerCorrectDto> questionsSelect = questionMapper.mapToListDtoQuestionWithoutAnswerCorrect(questionRepository.findBySubjectIdOrderByIdAsc(subjectId));
         int answeredQuestion = answerSession.getAllAnswers();
         if (answeredQuestion < MAX_VALUE_ALL_QUESTIONS) {
             return questionsSelect.get(answeredQuestion);

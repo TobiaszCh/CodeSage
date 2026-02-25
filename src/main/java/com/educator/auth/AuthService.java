@@ -39,7 +39,7 @@ public class AuthService  {
     }
 
     public static User getLoggedAdmin() {
-        return new User(2L, "ADMIN","sdfsf", true, Role.ADMIN, "Nothing", 0);
+        return new User(2L, "ADMIN","sdfsf", true, Role.ADMIN);
     }
 
 }

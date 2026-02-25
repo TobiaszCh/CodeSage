@@ -21,6 +21,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -50,8 +51,8 @@ class AnswerSessionServiceTest {
         //Given
         Long subjectId = 1L;
         SubjectIdToAnswerSessionDto subjectIdToAnswerSessionDto = new SubjectIdToAnswerSessionDto(subjectId);
-        User user = new User(2L, "Tobek","sdfsf", true, Role.USER, "Nothing", 0);
-        Course course = Course.builder().id(3L).users(AuthService.getLoggedAdmin()).displayName("Course1").build();
+        User user = new User(2L, "Tobek","sdfsf", true, Role.USER);
+        Course course = Course.builder().id(3L).users(List.of(AuthService.getLoggedAdmin())).displayName("Course1").build();
         Subject subject = new Subject(4L, "Subject1", course);
         StatusAnswerSession statusAnswerSession = StatusAnswerSession.IN_PROGRESS;
         AnswerSession answerSession = AnswerSession.builder().id(5L).users(user).subject(subject)

@@ -2,7 +2,7 @@ package com.educator.core.user;
 
 import com.educator.auth.AuthService;
 import com.educator.core.course.FirstCourseCreator;
-import com.educator.core.email.EmailService;
+import com.educator.email.EmailService;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;

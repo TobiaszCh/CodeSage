@@ -8,6 +8,7 @@ import lombok.Getter;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Getter
@@ -16,7 +17,7 @@ import java.util.List;
 public class QuestionDto {
 
     private Long id;
-
+    @Size(max = 150)
     @NotBlank(message = "Pytanie nie może być puste")
     private String displayName;
 

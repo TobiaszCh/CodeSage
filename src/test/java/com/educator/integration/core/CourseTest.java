@@ -3,7 +3,7 @@ package com.educator.integration.core;
 import com.educator.core.course.Course;
 import com.educator.core.course.CourseRepository;
 import com.educator.core.course.CourseService;
-import com.educator.core.course.enums.StatusCourse;
+import com.educator.core.common.Status;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,7 +42,7 @@ class CourseTest {
         entityManager.clear();
         //Then
         assertTrue(courseRepository.findById(-1L).isEmpty());
-        assertEquals(StatusCourse.DELETED, course.getStatusCourse());
+        assertEquals(Status.DELETED, course.getStatus());
 
     }
 

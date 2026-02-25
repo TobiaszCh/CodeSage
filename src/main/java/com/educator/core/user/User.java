@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-@Entity(name = "Users")
+@Entity(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements UserDetails {
@@ -29,10 +29,6 @@ public class User implements UserDetails {
     private boolean enabled;
     @Enumerated(value = EnumType.STRING)
     private Role role;
-
-    private String achievements;
-
-    private int points;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

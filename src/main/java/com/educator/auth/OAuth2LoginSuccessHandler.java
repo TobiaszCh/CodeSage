@@ -1,8 +1,8 @@
 package com.educator.auth;
 
 import com.educator.core.course.FirstCourseCreator;
-import com.educator.email.EmailService;
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.outbox_event.OutboxEventService;
 import com.educator.core.user.User;
 import com.educator.core.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     private final UserRepository userRepository;
 
-    private final EmailService emailService;
+    private final OutboxEventService outboxEventService;
 
     private final FirstCourseCreator firstCourseCreator;
 
@@ -39,7 +39,7 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
                 User user = User.builder().username(email).enabled(true).build();
                 userRepository.save(user);
                 firstCourseCreator.createFirstCourse(user.getUsername());
-                emailService.sendWelcomeMessage(user.getUsername());
+                outboxEventService.createOutboxEvent(user.getUsername());
             }
         }
         response.sendRedirect(redirectedUrl);

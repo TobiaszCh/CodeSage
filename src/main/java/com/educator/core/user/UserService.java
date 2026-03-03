@@ -2,8 +2,8 @@ package com.educator.core.user;
 
 import com.educator.auth.AuthService;
 import com.educator.core.course.FirstCourseCreator;
-import com.educator.email.EmailService;
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.outbox_event.OutboxEventService;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
 import com.educator.core.user.dto.UsernameDto;
@@ -30,13 +30,13 @@ public class UserService {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    private final EmailService emailService;
-
     private final AuthService authService;
 
     private final Random random = new Random();
 
     private final FirstCourseCreator firstCourseCreator;
+
+    private final OutboxEventService outboxEventService;
 
     public void login(LoginDto loginDto) {
         if (loginDto == null) {
@@ -63,7 +63,7 @@ public class UserService {
         }
         userRepository.save(hashingPassword(registerDto));
         firstCourseCreator.createFirstCourse(registerDto.getUsername());
-        emailService.sendWelcomeMessage(registerDto.getUsername());
+        outboxEventService.createOutboxEvent((registerDto.getUsername()));
     }
 
     private User hashingPassword(RegisterDto registerDto) {

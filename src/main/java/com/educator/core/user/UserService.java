@@ -51,6 +51,7 @@ public class UserService {
             throw new CodeSageRuntimeException("Niewłaściwe hasło lub login");
         }
     }
+
     @Transactional
     public void registerDetails(RegisterDto registerDto) {
         if (registerDto == null) {

@@ -1,6 +1,5 @@
 package com.educator.core.user;
 
-import com.educator.core.outbox_event.OutboxEventStatus;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -30,7 +29,9 @@ public class User implements UserDetails {
 
     private LocalDateTime createdAt;
 
+    @Builder.Default
     private boolean enabled = true;
+
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
@@ -39,6 +40,7 @@ public class User implements UserDetails {
         if (createdAt == null) {
             createdAt = LocalDateTime.now();
         }
+
     }
 
     @Override

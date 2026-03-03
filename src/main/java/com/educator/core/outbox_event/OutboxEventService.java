@@ -7,7 +7,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.mail.MessagingException;
 import java.util.List;
 
 @Service
@@ -19,6 +18,9 @@ public class OutboxEventService {
     private final EmailService emailService;
 
     public void createOutboxEvent(String email) {
+        if (email == null) {
+            throw new CodeSageRuntimeException("Object is null");
+        }
         OutboxEvent outboxEvent = OutboxEvent.builder().email(email).build();
         outboxEventRepository.save(outboxEvent);
     }

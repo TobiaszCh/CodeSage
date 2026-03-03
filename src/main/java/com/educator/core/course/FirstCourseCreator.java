@@ -31,7 +31,9 @@ public class FirstCourseCreator {
 
     @Transactional
     public void createFirstCourse(String username) {
-        if (username == null) throw new CodeSageRuntimeException("Object is null");
+        if (username == null) {
+            throw new CodeSageRuntimeException("Object is null");
+        }
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new CodeSageRuntimeException("This " + username + " doesn't exist."));
         createFirstCourse(user);

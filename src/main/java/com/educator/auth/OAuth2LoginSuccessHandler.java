@@ -34,7 +34,9 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
         Object userObject = authentication.getPrincipal();
         if (userObject instanceof OAuth2User) {
             String email = ((OAuth2User) userObject).getAttribute("email");
-            if(email == null) throw new CodeSageRuntimeException("Email is null");
+            if(email == null) {
+                throw new CodeSageRuntimeException("Email is null");
+            }
             if (!userRepository.existsByUsername(email)) {
                 User user = User.builder().username(email).enabled(true).build();
                 userRepository.save(user);

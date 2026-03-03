@@ -15,6 +15,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Random;
 
@@ -50,7 +51,7 @@ public class UserService {
             throw new CodeSageRuntimeException("Niewłaściwe hasło lub login");
         }
     }
-
+    @Transactional
     public void registerDetails(RegisterDto registerDto) {
         if (registerDto == null) {
             throw new CodeSageRuntimeException("RegisterDto doesn't have value. Object is null");
@@ -67,7 +68,7 @@ public class UserService {
     }
 
     private User hashingPassword(RegisterDto registerDto) {
-        User user = userMapper.mapToUser(registerDto);
+        User user = userMapper.mapToUser(registerDto, Role.USER);
         String hashedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
         user.setUsername(registerDto.getUsername().trim());
@@ -78,6 +79,7 @@ public class UserService {
         return new UsernameDto(authService.getLoggedUser().getUsername());
     }
 
+    @Transactional
     public void createRandomUser() {
         RegisterDto randomUser = new RegisterDto();
         boolean checkUser = true;
@@ -90,6 +92,19 @@ public class UserService {
         userRepository.save(hashingPassword(randomUser));
         firstCourseCreator.createFirstCourse(randomUser.getUsername());
         login(LoginDto.builder().username(randomUser.getUsername()).password(randomUser.getPassword()).build());
+    }
+
+    @Transactional
+    public void loginByExternalApi(String email) {
+        if(email == null) {
+            throw new CodeSageRuntimeException("Email is null");
+        }
+        if (!userRepository.existsByUsername(email)) {
+            User user = User.builder().username(email).role(Role.USER).build();
+            userRepository.save(user);
+            firstCourseCreator.createFirstCourse(user.getUsername());
+            outboxEventService.createOutboxEvent(user.getUsername());
+        }
     }
 
 }

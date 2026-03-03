@@ -39,7 +39,7 @@ public class AuthService  {
     }
 
     public static User getLoggedAdmin() {
-        return new User(2L, "ADMIN","sdfsf", true, Role.ADMIN);
+        return User.builder().id(-2L).username("sdcscsdcscs@wp.pl").password("Benfica15x,").role(Role.ADMIN).build();
     }
 
 }

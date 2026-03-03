@@ -14,7 +14,9 @@ public abstract class BaseStatusEntity {
     private Status status;
 
     @PrePersist
-    private void prePersisStatus() {
-        if (status == null) status = Status.ACTIVE;
+    private void prePersistStatus() {
+        if (status == null)  {
+            status = Status.ACTIVE;
+        }
     }
 }

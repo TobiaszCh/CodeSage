@@ -22,28 +22,25 @@ public class EmailService {
     @Value("${app.email.from}")
     private String from;
 
+    private final static String REGISTRATION_WELCOME = "src/main/resources/registration-welcome.html";
+
     private final JavaMailSender javaMailSender;
 
-    public void sendWelcomeMessage(String to) {
+    public void sendWelcomeMessage(String to) throws MessagingException {
         if(to == null) {
             throw new CodeSageRuntimeException("String doesn't have value. Object is null");
         }
-        try {
-            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
-            mimeMessageHelper.setFrom(from);
-            mimeMessageHelper.addTo(to);
-            mimeMessageHelper.setSubject("Powitanie");
-            mimeMessageHelper.setText(convertHtmlToString(), true);
-            javaMailSender.send(mimeMessage);
-        }
-        catch(MessagingException ex) {
-            throw new CodeSageRuntimeException("Mail is failed: " + ex.getMessage());
-        }
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+        mimeMessageHelper.setFrom(from);
+        mimeMessageHelper.addTo(to);
+        mimeMessageHelper.setSubject("Powitanie");
+        mimeMessageHelper.setText(convertHtmlToString(), true);
+        javaMailSender.send(mimeMessage);
     }
 
     private String convertHtmlToString() {
-        File file = new File("src/main/resources/registration-welcome.html");
+        File file = new File(REGISTRATION_WELCOME);
         try {
             Document document = Jsoup.parse(file);
             return document.html();

@@ -3,9 +3,7 @@ package com.educator.config;
 import com.educator.auth.OAuth2LoginSuccessHandler;
 import com.educator.core.user.AppUserDetailsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -19,9 +17,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final OAuth2LoginSuccessHandler auth2LoginSuccessHandler;
 
+    private final BCryptPasswordEncoder passwordEncoder;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder);
     }
 
     @Override
@@ -32,17 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated()
             .and().oauth2Login()
             .successHandler(auth2LoginSuccessHandler);
-    }
-
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
 }

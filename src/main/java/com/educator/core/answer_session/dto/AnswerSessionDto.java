@@ -4,6 +4,7 @@ import com.educator.core.answer_session.enums.StatusAnswerSession;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -20,10 +21,10 @@ public class AnswerSessionDto {
 
     private StatusAnswerSession statusAnswerSession;
 
-    //ToDo Tu było @NotNull
+    @NotNull
     private Long userId;
 
-    //@NotNull
+    @NotNull
     private Long subjectId;
 
 }

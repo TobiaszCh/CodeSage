@@ -17,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,20 +46,27 @@ class SubjectServiceTest {
     @Test
     void getSubjectsFilterByCourseId() {
         //Given
-        List<Subject> subjects = new ArrayList<>();
-        subjects.add(Subject.builder().id(10L).displayName("Subject1").course(Course.builder().id(1L).displayName("Course1").build()).build());
-        subjects.add(Subject.builder().id(11L).displayName("Subject2").course(Course.builder().id(1L).displayName("Course1").build()).build());
-        subjects.add(Subject.builder().id(12L).displayName("Subject3").course(Course.builder().id(1L).displayName("Course1").build()).build());
-        subjects.add(Subject.builder().id(13L).displayName("Subject4").course(Course.builder().id(2L).displayName("Course2").build()).build());
+        List<Subject> subjects1 = new ArrayList<>();
+        subjects1.add(Subject.builder().id(10L).displayName("Subject1").course(Course.builder().id(1L).displayName("Course1").build()).build());
+        subjects1.add(Subject.builder().id(11L).displayName("Subject2").course(Course.builder().id(1L).displayName("Course1").build()).build());
+        subjects1.add(Subject.builder().id(12L).displayName("Subject3").course(Course.builder().id(1L).displayName("Course1").build()).build());
 
-        List<SubjectDto> subjectsDto = new ArrayList<>();
-        subjectsDto.add(new SubjectDto(10L, "Subject1", 1L));
-        subjectsDto.add(new SubjectDto(11L, "Subject2", 1L));
-        subjectsDto.add(new SubjectDto(12L, "Subject3", 1L));
-        subjectsDto.add(new SubjectDto(13L, "Subject4", 2L));
+        List<Subject> subjects2 = new ArrayList<>();
+        subjects2.add(Subject.builder().id(13L).displayName("Subject4").course(Course.builder().id(2L).displayName("Course2").build()).build());
 
-        when(subjectRepository.findAll()).thenReturn(subjects);
-        when(subjectMapper.mapToDtoSubjectList(subjects)).thenReturn(subjectsDto);
+
+        List<SubjectDto> subjectsDto1 = new ArrayList<>();
+        subjectsDto1.add(new SubjectDto(10L, "Subject1", 1L));
+        subjectsDto1.add(new SubjectDto(11L, "Subject2", 1L));
+        subjectsDto1.add(new SubjectDto(12L, "Subject3", 1L));
+
+        List<SubjectDto> subjectsDto2 = new ArrayList<>();
+        subjectsDto2.add(new SubjectDto(13L, "Subject4", 2L));
+
+        when(subjectRepository.findByCourseIdOrderByIdAsc(1L)).thenReturn(subjects1);
+        when(subjectRepository.findByCourseIdOrderByIdAsc(2L)).thenReturn(subjects2);
+        when(subjectMapper.mapToDtoSubjectList(subjects1)).thenReturn(subjectsDto1);
+        when(subjectMapper.mapToDtoSubjectList(subjects2)).thenReturn(subjectsDto2);
 
         //When
         List<SubjectDto> result1 = subjectService.getSubjectsFilterByCourseId(1L);
@@ -88,7 +96,8 @@ class SubjectServiceTest {
         subjects.add(subject2);
         subjects.add(subject3);
 
-        User user = new User(4L, "Tobek","fsfsf", true, Role.USER, "Nothing", 0);
+        User user = new User(2L, "tobek@wp.pl","Qwswdwe19,",
+                LocalDateTime.of(2025, 5,5, 8,15), true, Role.USER);
 
         AnswerSession answerSession1 = new AnswerSession(14L, 10, 7,
                 LocalDate.now().minusDays(1), StatusAnswerSession.COMPLETED, user, subject1);

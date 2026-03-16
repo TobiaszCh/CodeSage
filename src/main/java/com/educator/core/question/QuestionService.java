@@ -73,8 +73,6 @@ public class QuestionService {
         return questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectIdOrderByIdAsc(subjectId));
     }
 
-    //ta metoda zwraca losowe pytanie z danego subject
-    //ToDo nie używać słowa agular w backend
     public QuestionWithoutAnswerCorrectDto getQuestionFilterBySubject(Long answerSessionId) {
         AnswerSession answerSession = answerSessionRepository.getById(answerSessionId);
         Long subjectId = answerSession.getSubject().getId();

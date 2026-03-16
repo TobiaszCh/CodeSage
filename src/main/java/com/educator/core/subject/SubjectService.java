@@ -81,7 +81,9 @@ public class SubjectService {
     }
 
     public Long getCourseId(Long id) {
-        if(id == null) throw new CodeSageRuntimeException("Id is null");
+        if(id == null) {
+            throw new CodeSageRuntimeException("Id is null");
+        }
         return subjectRepository.findCourseIdBySubjectId(id).orElseThrow(
                 () -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }

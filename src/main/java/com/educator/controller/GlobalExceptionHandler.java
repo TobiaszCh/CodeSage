@@ -28,14 +28,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handlerMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
         List<ObjectError> results = ex.getBindingResult().getAllErrors();
-
         if (results.isEmpty()) {
             throw new CodeSageRuntimeException("Lack of validation errors - it shouldn't happen!");
         }
-
         String message = results.get(0).getDefaultMessage();
-        if (message == null) throw new CodeSageRuntimeException("Message can't be null");
-
+        if (message == null) {
+            throw new CodeSageRuntimeException("Message can't be null");
+        }
         return new ResponseEntity<>(Map.of("message", message), HttpStatus.BAD_REQUEST);
     }
 }

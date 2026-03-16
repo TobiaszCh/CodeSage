@@ -13,8 +13,10 @@ import javax.validation.constraints.NotNull;
 public class CheckCompletedSessionsDto {
 
     private Long id;
+
     @NotNull
     private Long answerSessionId;
+
     @NotNull
     private SubjectCompletedAge subjectCompletedAge;
 

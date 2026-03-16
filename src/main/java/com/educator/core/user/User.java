@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,9 +27,21 @@ public class User implements UserDetails {
 
     private String password;
 
-    private boolean enabled;
+    private LocalDateTime createdAt;
+
+    @Builder.Default
+    private boolean enabled = true;
+
     @Enumerated(value = EnumType.STRING)
     private Role role;
+
+    @PrePersist
+    private void prePersistCreatedAt() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
+
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

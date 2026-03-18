@@ -3,12 +3,12 @@ package com.educator.core.outbox_event;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.email.EmailService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Slf4j
 @Service
 @AllArgsConstructor
 public class OutboxEventService {
@@ -25,7 +25,6 @@ public class OutboxEventService {
         outboxEventRepository.save(outboxEvent);
     }
 
-    @Transactional
     @Scheduled(fixedDelay = 5000)
     public void processOutbox() {
         List<OutboxEvent> outboxEventList = outboxEventRepository.findAllByOutboxEventStatus(OutboxEventStatus.NEW);
@@ -33,9 +32,12 @@ public class OutboxEventService {
             try {
                 emailService.sendWelcomeMessage(outboxEvent.getEmail());
                 outboxEvent.setOutboxEventStatus(OutboxEventStatus.SENT);
+                outboxEventRepository.save(outboxEvent);
             }
             catch (Exception e) {
                 outboxEvent.setOutboxEventStatus(OutboxEventStatus.FAILED);
+                outboxEventRepository.save(outboxEvent);
+                log.error("Failed process outbox event", e);
             }
         }
     }

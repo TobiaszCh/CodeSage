@@ -6,6 +6,7 @@ import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.question.dto.QuestionDto;
+import com.educator.core.question.dto.QuestionResponseDto;
 import com.educator.core.question.dto.QuestionWithoutAnswerCorrectDto;
 import com.educator.core.subject.SubjectRepository;
 import lombok.RequiredArgsConstructor;
@@ -73,15 +74,15 @@ public class QuestionService {
         return questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectIdOrderByIdAsc(subjectId));
     }
 
-    public QuestionWithoutAnswerCorrectDto getQuestionFilterBySubject(Long answerSessionId) {
+    public QuestionResponseDto getQuestionFilterBySubject(Long answerSessionId) {
         AnswerSession answerSession = answerSessionRepository.getById(answerSessionId);
         Long subjectId = answerSession.getSubject().getId();
         List<QuestionWithoutAnswerCorrectDto> questionsSelect = questionMapper.mapToListDtoQuestionWithoutAnswerCorrect(questionRepository.findBySubjectIdOrderByIdAsc(subjectId));
         int answeredQuestion = answerSession.getAllAnswers();
         if (answeredQuestion < MAX_VALUE_ALL_QUESTIONS) {
-            return questionsSelect.get(answeredQuestion);
+            return new QuestionResponseDto(false, questionsSelect.get(answeredQuestion));
         } else {
-            return null;
+            return new QuestionResponseDto(true, null);
         }
     }
 

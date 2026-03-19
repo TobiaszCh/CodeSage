@@ -67,65 +67,65 @@ public class FirstCourseCreator {
 
     private void createFirstQuestionsAndAnswers(Subject subject) {
         Question question1 = questionRepository.save(Question.builder().displayName("Czym jest klasa w Javie?").subject(subject).build());
-        Question question2 = questionRepository.save(Question.builder().displayName("Jaką funkcję pełnią atrybuty w Klasie?").subject(subject).build());
+        Question question2 = questionRepository.save(Question.builder().displayName("Czym są pola klasy w Javie?").subject(subject).build());
         Question question3 = questionRepository.save(Question.builder().displayName("Czym jest konstruktor w Javie?").subject(subject).build());
-        Question question4 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe służy do definiowania nowej klasy w języku Java?").subject(subject).build());
-        Question question5 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe oznacza, że metoda nie zwraca żadnej wartości?").subject(subject).build());
-        Question question6 = questionRepository.save(Question.builder().displayName("Jak oznacza się dziedziczenie między klasami w języku Java?").subject(subject).build());
-        Question question7 = questionRepository.save(Question.builder().displayName("Które z poniższych jest przykładem enkapsulacji w języku Java?").subject(subject).build());
-        Question question8 = questionRepository.save(Question.builder().displayName("Które z poniższych słów kluczowych służy do zapobiegania dziedziczeniu klasy w Javie?").subject(subject).build());
-        Question question9 = questionRepository.save(Question.builder().displayName("Co oznacza koncepcja polimorfizmu w programowaniu obiektowym?").subject(subject).build());
-        Question question10 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe jest używane do oznaczania metody, która może być zaimplementowana w klasach potomnych?").subject(subject).build());
+        Question question4 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe służy do definiowania klasy w Javie?").subject(subject).build());
+        Question question5 = questionRepository.save(Question.builder().displayName("Czy klasa w Javie może zawierać metody?").subject(subject).build());
+        Question question6 = questionRepository.save(Question.builder().displayName("Czy klasa w Javie może zawierać pola?").subject(subject).build());
+        Question question7 = questionRepository.save(Question.builder().displayName("Kiedy najczęściej wywoływany jest konstruktor klasy?").subject(subject).build());
+        Question question8 = questionRepository.save(Question.builder().displayName("Czy klasa może posiadać więcej niż jeden konstruktor?").subject(subject).build());
+        Question question9 = questionRepository.save(Question.builder().displayName("Które stwierdzenie o klasie w Javie jest prawdziwe?").subject(subject).build());
+        Question question10 = questionRepository.save(Question.builder().displayName("Co najczęściej definiuje klasa w Javie?").subject(subject).build());
 
-        answerRepository.save(Answer.builder().displayName("Klasa w Javie to wzorzec projektowy używany do tworzenia obiektów").isCorrect(false).question(question1).build());
-        answerRepository.save(Answer.builder().displayName("Klasa w Javie to struktura danych służąca do modelowania rzeczywistości, definiująca stan i zachowania, które mogą posiadać obiekty").isCorrect(true).question(question1).build());
-        answerRepository.save(Answer.builder().displayName("Klasa w Javie to specjalny rodzaj funkcji zapewniający wyższą wydajność aplikacji").isCorrect(false).question(question1).build());
-        answerRepository.save(Answer.builder().displayName("Klasa w Javie to narzędzie służące do bezpośredniej manipulacji bazami danych").isCorrect(false).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Klasa to gotowy obiekt zapisany w pamięci.").isCorrect(false).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Klasa to szablon definiujący stan i zachowanie.").isCorrect(true).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Klasa to specjalny rodzaj pętli.").isCorrect(false).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Klasa to typ wyjątku w Javie.").isCorrect(false).question(question1).build());
 
-        answerRepository.save(Answer.builder().displayName("Metody zaimplementowane w klasie").isCorrect(false).question(question2).build());
-        answerRepository.save(Answer.builder().displayName("Zmienne zdefiniowane w klasie").isCorrect(true).question(question2).build());
-        answerRepository.save(Answer.builder().displayName("Interfejsy implementowane przez klasę").isCorrect(false).question(question2).build());
-        answerRepository.save(Answer.builder().displayName("Nazwy klas używane w dziedziczeniu").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("To zmienne zdefiniowane w klasie.").isCorrect(true).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("To nazwy metod klasy.").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("To pakiety używane przez klasę.").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("To słowa kluczowe języka Java.").isCorrect(false).question(question2).build());
 
-        answerRepository.save(Answer.builder().displayName("Metoda wywołania zwrotnego wywoływana po utworzeniu obiektu").isCorrect(true).question(question3).build());
-        answerRepository.save(Answer.builder().displayName("Specjalna metoda, która zwraca wartość").isCorrect(false).question(question3).build());
-        answerRepository.save(Answer.builder().displayName("Metoda do obsługi wyjątków").isCorrect(false).question(question3).build());
-        answerRepository.save(Answer.builder().displayName("Blok kodu wykonujący się przed utworzeniem obiektu").isCorrect(false).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("To specjalny element klasy służący do jej inicjalizacji podczas tworzenia obiektu.").isCorrect(true).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("To metoda zwracająca zawsze wartość typu String.").isCorrect(false).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("To pole przechowujące nazwę klasy.").isCorrect(false).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("To blok kodu do obsługi błędów.").isCorrect(false).question(question3).build());
 
         answerRepository.save(Answer.builder().displayName("new").isCorrect(false).question(question4).build());
         answerRepository.save(Answer.builder().displayName("class").isCorrect(true).question(question4).build());
-        answerRepository.save(Answer.builder().displayName("define").isCorrect(false).question(question4).build());
         answerRepository.save(Answer.builder().displayName("create").isCorrect(false).question(question4).build());
+        answerRepository.save(Answer.builder().displayName("define").isCorrect(false).question(question4).build());
 
-        answerRepository.save(Answer.builder().displayName("none").isCorrect(false).question(question5).build());
-        answerRepository.save(Answer.builder().displayName("null").isCorrect(false).question(question5).build());
-        answerRepository.save(Answer.builder().displayName("void").isCorrect(true).question(question5).build());
-        answerRepository.save(Answer.builder().displayName("empty").isCorrect(false).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("Nie, klasa może zawierać tylko pola.").isCorrect(false).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("Nie, metody mogą być tylko w interfejsach.").isCorrect(false).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("Tak, klasa może zawierać metody.").isCorrect(true).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("Tak, ale tylko jedną metodę.").isCorrect(false).question(question5).build());
 
-        answerRepository.save(Answer.builder().displayName("Za pomocą operatora ':'").isCorrect(false).question(question6).build());
-        answerRepository.save(Answer.builder().displayName("Za pomocą operatora '='").isCorrect(false).question(question6).build());
-        answerRepository.save(Answer.builder().displayName("Za pomocą operatora 'implements'").isCorrect(false).question(question6).build());
-        answerRepository.save(Answer.builder().displayName("Za pomocą operatora 'extends'").isCorrect(true).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Tak, klasa może zawierać pola.").isCorrect(true).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Nie, klasa nie może zawierać pól.").isCorrect(false).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Tylko klasy abstrakcyjne mogą mieć pola.").isCorrect(false).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Pola mogą być tylko poza klasą.").isCorrect(false).question(question6).build());
 
-        answerRepository.save(Answer.builder().displayName("Umożliwienie dostępu do wszystkich zmiennych instancyjnych z dowolnego miejsca w programie").isCorrect(false).question(question7).build());
-        answerRepository.save(Answer.builder().displayName("Ukrywanie implementacji szczegółów w klasie.").isCorrect(true).question(question7).build());
-        answerRepository.save(Answer.builder().displayName("Tworzenie wielu instancji klasy w programie.").isCorrect(false).question(question7).build());
-        answerRepository.save(Answer.builder().displayName("Rozszerzanie funkcjonalności klasy bazowej.").isCorrect(false).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("Najczęściej w momencie tworzenia obiektu klasy.").isCorrect(true).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("Dopiero po zakończeniu działania programu.").isCorrect(false).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("Tylko wtedy, gdy klasa ma metody statyczne.").isCorrect(false).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("Wyłącznie przy dziedziczeniu klasy.").isCorrect(false).question(question7).build());
 
-        answerRepository.save(Answer.builder().displayName("prevent").isCorrect(false).question(question8).build());
-        answerRepository.save(Answer.builder().displayName("noextend").isCorrect(false).question(question8).build());
-        answerRepository.save(Answer.builder().displayName("final").isCorrect(true).question(question8).build());
-        answerRepository.save(Answer.builder().displayName("locked").isCorrect(false).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("Nie, każda klasa może mieć tylko jeden konstruktor.").isCorrect(false).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("Tylko interfejs może mieć wiele konstruktorów.").isCorrect(false).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("Klasa może mieć wiele konstruktorów tylko wtedy, gdy nie ma pól.").isCorrect(false).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("Tak, klasa może mieć więcej niż jeden konstruktor.").isCorrect(true).question(question8).build());
 
-        answerRepository.save(Answer.builder().displayName("Możliwość tworzenia kopii obiektów.").isCorrect(false).question(question9).build());
-        answerRepository.save(Answer.builder().displayName("Możliwość jednoczesnego dziedziczenia po wielu klasach.").isCorrect(false).question(question9).build());
-        answerRepository.save(Answer.builder().displayName("Możliwość przesłaniania metod z klasy bazowej w klasie pochodnej.").isCorrect(false).question(question9).build());
-        answerRepository.save(Answer.builder().displayName("Możliwość wywoływania różnych metod na tym samym obiekcie w zależności od jego typu.").isCorrect(true).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("Klasa może zawierać tylko konstruktory.").isCorrect(false).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("Klasa nie może zawierać metod.").isCorrect(false).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("Klasa nie może zawierać pól i metod jednocześnie.").isCorrect(false).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("Klasa może zawierać pola, metody i konstruktory.").isCorrect(true).question(question9).build());
 
-        answerRepository.save(Answer.builder().displayName("override").isCorrect(true).question(question10).build());
-        answerRepository.save(Answer.builder().displayName("replace").isCorrect(false).question(question10).build());
-        answerRepository.save(Answer.builder().displayName("implement").isCorrect(false).question(question10).build());
-        answerRepository.save(Answer.builder().displayName("extend").isCorrect(false).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("Stan i zachowanie.").isCorrect(true).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("Wyłącznie dziedziczenie i interfejsy.").isCorrect(false).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("Tylko wyjątki i błędy.").isCorrect(false).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("Wyłącznie zapytania do bazy danych.").isCorrect(false).question(question10).build());
     }
 
     private void createSecondQuestionsAndAnswers(Subject subject) {
@@ -258,9 +258,11 @@ public class FirstCourseCreator {
         Question question1 = questionRepository.save(Question.builder().displayName("Czym jest interfejs w Javie?").subject(subject).build());
         Question question2 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe służy do deklarowania interfejsu w Javie?").subject(subject).build());
         Question question3 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe służy do implementowania interfejsu przez klasę?").subject(subject).build());
-        Question question4 = questionRepository.save(Question.builder().displayName("Które stwierdzenie dotyczące metod w interfejsie (Java podstawy) jest prawdziwe?").subject(subject).build());
+        Question question4 = questionRepository.save(Question.builder().displayName("Które stwierdzenie najlepiej opisuje klasyczne zastosowanie interfejsu w Javie?").subject(subject).build());
         Question question5 = questionRepository.save(Question.builder().displayName("Czy klasa w Javie może implementować więcej niż jeden interfejs?").subject(subject).build());
-        Question question6 = questionRepository.save(Question.builder().displayName("Czy interfejs w Javie może posiadać pola (zmienne)?").subject(subject).build());Question question7 = questionRepository.save(Question.builder().displayName("Które stwierdzenie najlepiej opisuje zastosowanie interfejsów?").subject(subject).build());Question question8 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe jest używane do implementacji wielu interfejsów?").subject(subject).build());
+        Question question6 = questionRepository.save(Question.builder().displayName("Czy interfejs w Javie może posiadać pola (zmienne)?").subject(subject).build());
+        Question question7 = questionRepository.save(Question.builder().displayName("Które stwierdzenie najlepiej opisuje zastosowanie interfejsów?").subject(subject).build());
+        Question question8 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe jest używane do implementacji wielu interfejsów?").subject(subject).build());
         Question question9 = questionRepository.save(Question.builder().displayName("Czy interfejs w Javie może posiadać konstruktor?").subject(subject).build());
         Question question10 = questionRepository.save(Question.builder().displayName("Który przykład poprawnie pokazuje relację klasy do interfejsu?").subject(subject).build());
 
@@ -281,7 +283,7 @@ public class FirstCourseCreator {
 
         answerRepository.save(Answer.builder().displayName("Metody w interfejsie zawsze muszą mieć implementację.").isCorrect(false).question(question4).build());
         answerRepository.save(Answer.builder().displayName("Metody w interfejsie mogą być tylko prywatne.").isCorrect(false).question(question4).build());
-        answerRepository.save(Answer.builder().displayName("Metody w interfejsie (w podstawowej wersji) nie posiadają implementacji.").isCorrect(true).question(question4).build());
+        answerRepository.save(Answer.builder().displayName("Interfejs najczęściej definiuje kontrakt, który klasy implementują.").isCorrect(true).question(question4).build());
         answerRepository.save(Answer.builder().displayName("Metody w interfejsie są zawsze statyczne.").isCorrect(false).question(question4).build());
 
         answerRepository.save(Answer.builder().displayName("Tak, klasa może implementować dowolną liczbę interfejsów.").isCorrect(true).question(question5).build());
@@ -425,7 +427,7 @@ public class FirstCourseCreator {
         answerRepository.save(Answer.builder().displayName("Za pomocą słowa kluczowego extends.").isCorrect(true).question(question7).build());
         answerRepository.save(Answer.builder().displayName("Nie można dziedziczyć po klasie abstrakcyjnej.").isCorrect(false).question(question7).build());
 
-        answerRepository.save(Answer.builder().displayName("Interfejs nie może mieć metod z implementacją, a klasa abstrakcyjna może.").isCorrect(true).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("Klasa abstrakcyjna może przechowywać stan i współdzielić implementację, a interfejs najczęściej definiuje kontrakt.").isCorrect(true).question(question8).build());
         answerRepository.save(Answer.builder().displayName("Klasa abstrakcyjna nie może posiadać pól, a interfejs może.").isCorrect(false).question(question8).build());
         answerRepository.save(Answer.builder().displayName("Interfejs może mieć konstruktor, a klasa abstrakcyjna nie.").isCorrect(false).question(question8).build());
         answerRepository.save(Answer.builder().displayName("Nie ma żadnej różnicy między nimi.").isCorrect(false).question(question8).build());
@@ -442,66 +444,66 @@ public class FirstCourseCreator {
     }
 
     private void createSeventhQuestionsAndAnswers(Subject subject) {
-        Question question1 = questionRepository.save(Question.builder().displayName("Czym jest klasa abstrakcyjna w Javie?").subject(subject).build());
-        Question question2 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe służy do deklarowania klasy abstrakcyjnej w Javie?").subject(subject).build());
-        Question question3 = questionRepository.save(Question.builder().displayName("Czy klasa abstrakcyjna w Javie może posiadać metody z implementacją?").subject(subject).build());
-        Question question4 = questionRepository.save(Question.builder().displayName("Czy można utworzyć instancję klasy abstrakcyjnej?").subject(subject).build());
-        Question question5 = questionRepository.save(Question.builder().displayName("Które stwierdzenie dotyczące metod abstrakcyjnych jest prawdziwe?").subject(subject).build());
-        Question question6 = questionRepository.save(Question.builder().displayName("Czy klasa abstrakcyjna może posiadać konstruktor?").subject(subject).build());
-        Question question7 = questionRepository.save(Question.builder().displayName("Jak klasa dziedziczy po klasie abstrakcyjnej?").subject(subject).build());
-        Question question8 = questionRepository.save(Question.builder().displayName("Które stwierdzenie najlepiej opisuje różnicę między interfejsem a klasą abstrakcyjną?").subject(subject).build());
-        Question question9 = questionRepository.save(Question.builder().displayName("Czy klasa abstrakcyjna może posiadać pola (zmienne)?").subject(subject).build());
-        Question question10 = questionRepository.save(Question.builder().displayName("Kiedy należy użyć klasy abstrakcyjnej zamiast interfejsu?").subject(subject).build());
+        Question question1 = questionRepository.save(Question.builder().displayName("Czym jest obiekt w Javie?").subject(subject).build());
+        Question question2 = questionRepository.save(Question.builder().displayName("Czym jest klasa w Javie?").subject(subject).build());
+        Question question3 = questionRepository.save(Question.builder().displayName("Na czym polega enkapsulacja?").subject(subject).build());
+        Question question4 = questionRepository.save(Question.builder().displayName("Na czym polega dziedziczenie?").subject(subject).build());
+        Question question5 = questionRepository.save(Question.builder().displayName("Na czym polega polimorfizm?").subject(subject).build());
+        Question question6 = questionRepository.save(Question.builder().displayName("Na czym polega abstrakcja?").subject(subject).build());
+        Question question7 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe służy do dziedziczenia klasy w Javie?").subject(subject).build());
+        Question question8 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe służy do implementowania interfejsu?").subject(subject).build());
+        Question question9 = questionRepository.save(Question.builder().displayName("Czy klasa w Javie może dziedziczyć po więcej niż jednej klasie?").subject(subject).build());
+        Question question10 = questionRepository.save(Question.builder().displayName("Czy klasa w Javie może implementować więcej niż jeden interfejs?").subject(subject).build());
 
-        answerRepository.save(Answer.builder().displayName("To klasa, której nie można bezpośrednio tworzyć obiektów i może zawierać metody abstrakcyjne.").isCorrect(true).question(question1).build());
-        answerRepository.save(Answer.builder().displayName("To klasa, która nie może posiadać metod.").isCorrect(false).question(question1).build());
-        answerRepository.save(Answer.builder().displayName("To specjalny typ interfejsu.").isCorrect(false).question(question1).build());
-        answerRepository.save(Answer.builder().displayName("To klasa przeznaczona wyłącznie do przechowywania danych.").isCorrect(false).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Obiekt to nazwa pakietu w Javie.").isCorrect(false).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Obiekt to instancja klasy.").isCorrect(true).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Obiekt to metoda w klasie.").isCorrect(false).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Obiekt to typ pętli w Javie.").isCorrect(false).question(question1).build());
 
-        answerRepository.save(Answer.builder().displayName("abstract").isCorrect(true).question(question2).build());
-        answerRepository.save(Answer.builder().displayName("final").isCorrect(false).question(question2).build());
-        answerRepository.save(Answer.builder().displayName("extends").isCorrect(false).question(question2).build());
-        answerRepository.save(Answer.builder().displayName("class").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("Klasa to gotowy obiekt zapisany w pamięci.").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("Klasa to specjalny rodzaj zmiennej.").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("Klasa to instrukcja warunkowa.").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("Klasa to szablon do tworzenia obiektów.").isCorrect(true).question(question2).build());
 
-        answerRepository.save(Answer.builder().displayName("Tak, klasa abstrakcyjna może mieć metody z implementacją.").isCorrect(true).question(question3).build());
-        answerRepository.save(Answer.builder().displayName("Nie, klasa abstrakcyjna nie może mieć implementacji metod.").isCorrect(false).question(question3).build());
-        answerRepository.save(Answer.builder().displayName("Tak, ale tylko statyczne.").isCorrect(false).question(question3).build());
-        answerRepository.save(Answer.builder().displayName("Tak, ale tylko prywatne.").isCorrect(false).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("Polega na ukrywaniu danych i udostępnianiu do nich kontrolowanego dostępu.").isCorrect(true).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("Polega na dziedziczeniu po wielu klasach jednocześnie.").isCorrect(false).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("Polega na tworzeniu obiektu bez klasy.").isCorrect(false).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("Polega na nadawaniu nazw zmiennym.").isCorrect(false).question(question3).build());
 
-        answerRepository.save(Answer.builder().displayName("Tak, ale tylko w tej samej klasie.").isCorrect(false).question(question4).build());
-        answerRepository.save(Answer.builder().displayName("Nie, nie można tworzyć instancji klasy abstrakcyjnej.").isCorrect(true).question(question4).build());
-        answerRepository.save(Answer.builder().displayName("Tak, jeśli klasa nie ma metod abstrakcyjnych.").isCorrect(false).question(question4).build());
-        answerRepository.save(Answer.builder().displayName("Tak, ale tylko przez refleksję.").isCorrect(false).question(question4).build());
+        answerRepository.save(Answer.builder().displayName("Polega na przejmowaniu cech i metod klasy bazowej przez klasę potomną.").isCorrect(true).question(question4).build());
+        answerRepository.save(Answer.builder().displayName("Polega na ukrywaniu metod przed innymi klasami.").isCorrect(false).question(question4).build());
+        answerRepository.save(Answer.builder().displayName("Polega na tworzeniu kilku obiektów tej samej klasy.").isCorrect(false).question(question4).build());
+        answerRepository.save(Answer.builder().displayName("Polega na usuwaniu pól klasy.").isCorrect(false).question(question4).build());
 
-        answerRepository.save(Answer.builder().displayName("Metody abstrakcyjne muszą posiadać implementację.").isCorrect(false).question(question5).build());
-        answerRepository.save(Answer.builder().displayName("Metody abstrakcyjne nie posiadają implementacji.").isCorrect(true).question(question5).build());
-        answerRepository.save(Answer.builder().displayName("Metody abstrakcyjne są zawsze prywatne.").isCorrect(false).question(question5).build());
-        answerRepository.save(Answer.builder().displayName("Metody abstrakcyjne mogą być tylko statyczne.").isCorrect(false).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("Polega na tym, że ten sam typ operacji może działać różnie dla różnych obiektów.").isCorrect(true).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("Polega na tworzeniu wielu klas w jednym pliku.").isCorrect(false).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("Polega na ukrywaniu wszystkich metod klasy.").isCorrect(false).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("Polega na tym, że klasa może mieć tylko jeden obiekt.").isCorrect(false).question(question5).build());
 
-        answerRepository.save(Answer.builder().displayName("Tak, klasa abstrakcyjna może posiadać konstruktor.").isCorrect(true).question(question6).build());
-        answerRepository.save(Answer.builder().displayName("Nie, klasa abstrakcyjna nie może posiadać konstruktora.").isCorrect(false).question(question6).build());
-        answerRepository.save(Answer.builder().displayName("Tak, ale tylko prywatny.").isCorrect(false).question(question6).build());
-        answerRepository.save(Answer.builder().displayName("Tak, ale tylko bezparametrowy.").isCorrect(false).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Polega na kopiowaniu obiektów w pamięci.").isCorrect(false).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Polega na usuwaniu metod z klasy.").isCorrect(false).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Polega na pokazaniu najważniejszych cech obiektu i ukryciu zbędnych szczegółów.").isCorrect(true).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Polega na zamianie klasy w interfejs.").isCorrect(false).question(question6).build());
 
-        answerRepository.save(Answer.builder().displayName("Za pomocą słowa kluczowego implements.").isCorrect(false).question(question7).build());
-        answerRepository.save(Answer.builder().displayName("Za pomocą słowa kluczowego inherits.").isCorrect(false).question(question7).build());
-        answerRepository.save(Answer.builder().displayName("Za pomocą słowa kluczowego extends.").isCorrect(true).question(question7).build());
-        answerRepository.save(Answer.builder().displayName("Nie można dziedziczyć po klasie abstrakcyjnej.").isCorrect(false).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("implements").isCorrect(false).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("inherit").isCorrect(false).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("extends").isCorrect(true).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("instanceof").isCorrect(false).question(question7).build());
 
-        answerRepository.save(Answer.builder().displayName("Interfejs nie może mieć metod z implementacją, a klasa abstrakcyjna może.").isCorrect(true).question(question8).build());
-        answerRepository.save(Answer.builder().displayName("Klasa abstrakcyjna nie może posiadać pól, a interfejs może.").isCorrect(false).question(question8).build());
-        answerRepository.save(Answer.builder().displayName("Interfejs może mieć konstruktor, a klasa abstrakcyjna nie.").isCorrect(false).question(question8).build());
-        answerRepository.save(Answer.builder().displayName("Nie ma żadnej różnicy między nimi.").isCorrect(false).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("implements").isCorrect(true).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("extends").isCorrect(false).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("interface").isCorrect(false).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("super").isCorrect(false).question(question8).build());
 
-        answerRepository.save(Answer.builder().displayName("Nie, klasa abstrakcyjna nie może mieć pól.").isCorrect(false).question(question9).build());
-        answerRepository.save(Answer.builder().displayName("Tak, klasa abstrakcyjna może posiadać pola.").isCorrect(true).question(question9).build());
-        answerRepository.save(Answer.builder().displayName("Tak, ale tylko statyczne.").isCorrect(false).question(question9).build());
-        answerRepository.save(Answer.builder().displayName("Tak, ale tylko final.").isCorrect(false).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("Nie, klasa może dziedziczyć tylko po jednej klasie.").isCorrect(true).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("Tak, klasa może dziedziczyć po dowolnej liczbie klas.").isCorrect(false).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("Tak, ale tylko jeśli klasy są abstrakcyjne.").isCorrect(false).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("Tak, ale tylko w tym samym pakiecie.").isCorrect(false).question(question9).build());
 
-        answerRepository.save(Answer.builder().displayName("Gdy chcemy zdefiniować tylko kontrakt bez implementacji.").isCorrect(false).question(question10).build());
-        answerRepository.save(Answer.builder().displayName("Gdy chcemy współdzielić kod (implementację) między klasami.").isCorrect(true).question(question10).build());
-        answerRepository.save(Answer.builder().displayName("Zawsze zamiast interfejsu.").isCorrect(false).question(question10).build());
-        answerRepository.save(Answer.builder().displayName("Tylko gdy klasa ma jedną metodę.").isCorrect(false).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("Nie, klasa może implementować tylko jeden interfejs.").isCorrect(false).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("Tak, klasa może implementować wiele interfejsów.").isCorrect(true).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("Nie, interfejsy można tylko dziedziczyć.").isCorrect(false).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("Tak, ale tylko wtedy, gdy interfejsy nie mają metod.").isCorrect(false).question(question10).build());
     }
 
     private void createEighthQuestionsAndAnswers(Subject subject) {
@@ -568,66 +570,66 @@ public class FirstCourseCreator {
     }
 
     private void createNinthQuestionsAndAnswers(Subject subject) {
-        Question question1 = questionRepository.save(Question.builder().displayName("Na czym polega dziedziczenie w Javie?").subject(subject).build());
-        Question question2 = questionRepository.save(Question.builder().displayName("Które słowo kluczowe służy do dziedziczenia klas w Javie?").subject(subject).build());
-        Question question3 = questionRepository.save(Question.builder().displayName("Czy klasa w Javie może dziedziczyć po więcej niż jednej klasie?").subject(subject).build());
-        Question question4 = questionRepository.save(Question.builder().displayName("Które stwierdzenie dotyczące dziedziczenia jest prawdziwe?").subject(subject).build());
-        Question question5 = questionRepository.save(Question.builder().displayName("Czy klasa potomna dziedziczy pola klasy bazowej?").subject(subject).build());
-        Question question6 = questionRepository.save(Question.builder().displayName("Czy metoda oznaczona jako final może zostać nadpisana?").subject(subject).build());
-        Question question7 = questionRepository.save(Question.builder().displayName("Który modyfikator dostępu umożliwia dostęp w klasach potomnych?").subject(subject).build());
-        Question question8 = questionRepository.save(Question.builder().displayName("Jak wywołać konstruktor klasy bazowej?").subject(subject).build());
-        Question question9 = questionRepository.save(Question.builder().displayName("Czym jest metoda przesłonięta (overridden)?").subject(subject).build());
-        Question question10 = questionRepository.save(Question.builder().displayName("Kiedy warto stosować dziedziczenie?").subject(subject).build());
+        Question question1 = questionRepository.save(Question.builder().displayName("Czym jest zmienna w Javie?").subject(subject).build());
+        Question question2 = questionRepository.save(Question.builder().displayName("Który z poniższych jest typem prymitywnym w Javie?").subject(subject).build());
+        Question question3 = questionRepository.save(Question.builder().displayName("Który typ służy do przechowywania liczb całkowitych w Javie?").subject(subject).build());
+        Question question4 = questionRepository.save(Question.builder().displayName("Który typ służy do przechowywania wartości true lub false?").subject(subject).build());
+        Question question5 = questionRepository.save(Question.builder().displayName("Który typ służy do przechowywania pojedynczego znaku?").subject(subject).build());
+        Question question6 = questionRepository.save(Question.builder().displayName("Czy zmienna lokalna w Javie musi być zainicjalizowana przed użyciem?").subject(subject).build());
+        Question question7 = questionRepository.save(Question.builder().displayName("Co oznacza słowo kluczowe final przy zmiennej?").subject(subject).build());
+        Question question8 = questionRepository.save(Question.builder().displayName("Jaka jest różnica między zmienną lokalną a polem klasy?").subject(subject).build());
+        Question question9 = questionRepository.save(Question.builder().displayName("Która z poniższych wartości może być przypisana do zmiennej typu String?").subject(subject).build());
+        Question question10 = questionRepository.save(Question.builder().displayName("Która deklaracja zmiennej w Javie jest poprawna?").subject(subject).build());
 
-        answerRepository.save(Answer.builder().displayName("Polega na przekazywaniu cech i zachowań z klasy bazowej do klasy potomnej.").isCorrect(true).question(question1).build());
-        answerRepository.save(Answer.builder().displayName("Polega na kopiowaniu obiektów w pamięci.").isCorrect(false).question(question1).build());
-        answerRepository.save(Answer.builder().displayName("Polega na tworzeniu wielu instancji tej samej klasy.").isCorrect(false).question(question1).build());
-        answerRepository.save(Answer.builder().displayName("Polega na ukrywaniu danych przed innymi klasami.").isCorrect(false).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Zmienna to specjalny rodzaj metody.").isCorrect(false).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Zmienna to pakiet w Javie.").isCorrect(false).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Zmienna to instrukcja warunkowa.").isCorrect(false).question(question1).build());
+        answerRepository.save(Answer.builder().displayName("Zmienna to nazwane miejsce w pamięci do przechowywania danych.").isCorrect(true).question(question1).build());
 
-        answerRepository.save(Answer.builder().displayName("inherits").isCorrect(false).question(question2).build());
-        answerRepository.save(Answer.builder().displayName("extends").isCorrect(true).question(question2).build());
-        answerRepository.save(Answer.builder().displayName("implements").isCorrect(false).question(question2).build());
-        answerRepository.save(Answer.builder().displayName("super").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("String").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("Integer[]").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("Scanner").isCorrect(false).question(question2).build());
+        answerRepository.save(Answer.builder().displayName("int").isCorrect(true).question(question2).build());
 
-        answerRepository.save(Answer.builder().displayName("Tak, Java pozwala na wielokrotne dziedziczenie klas.").isCorrect(false).question(question3).build());
-        answerRepository.save(Answer.builder().displayName("Tak, ale tylko jeśli klasy są abstrakcyjne.").isCorrect(false).question(question3).build());
-        answerRepository.save(Answer.builder().displayName("Nie, klasa może dziedziczyć tylko po jednej klasie.").isCorrect(true).question(question3).build());
-        answerRepository.save(Answer.builder().displayName("Tylko jeśli używa interfejsów.").isCorrect(false).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("int").isCorrect(true).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("boolean").isCorrect(false).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("char").isCorrect(false).question(question3).build());
+        answerRepository.save(Answer.builder().displayName("double[]").isCorrect(false).question(question3).build());
 
-        answerRepository.save(Answer.builder().displayName("Klasa bazowa dziedziczy po klasie potomnej.").isCorrect(false).question(question4).build());
-        answerRepository.save(Answer.builder().displayName("Klasa potomna może używać metod klasy bazowej.").isCorrect(true).question(question4).build());
-        answerRepository.save(Answer.builder().displayName("Dziedziczenie działa tylko dla metod statycznych.").isCorrect(false).question(question4).build());
-        answerRepository.save(Answer.builder().displayName("Dziedziczenie uniemożliwia używanie polimorfizmu.").isCorrect(false).question(question4).build());
+        answerRepository.save(Answer.builder().displayName("boolean").isCorrect(true).question(question4).build());
+        answerRepository.save(Answer.builder().displayName("char").isCorrect(false).question(question4).build());
+        answerRepository.save(Answer.builder().displayName("String").isCorrect(false).question(question4).build());
+        answerRepository.save(Answer.builder().displayName("int").isCorrect(false).question(question4).build());
 
-        answerRepository.save(Answer.builder().displayName("Tak, klasa potomna dziedziczy pola klasy bazowej.").isCorrect(true).question(question5).build());
-        answerRepository.save(Answer.builder().displayName("Nie, pola nie są dziedziczone.").isCorrect(false).question(question5).build());
-        answerRepository.save(Answer.builder().displayName("Tylko pola publiczne są dziedziczone.").isCorrect(false).question(question5).build());
-        answerRepository.save(Answer.builder().displayName("Tylko pola prywatne są dziedziczone.").isCorrect(false).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("String").isCorrect(false).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("boolean").isCorrect(false).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("char").isCorrect(true).question(question5).build());
+        answerRepository.save(Answer.builder().displayName("byte[]").isCorrect(false).question(question5).build());
 
-        answerRepository.save(Answer.builder().displayName("Tak, zawsze można nadpisać metodę final.").isCorrect(false).question(question6).build());
-        answerRepository.save(Answer.builder().displayName("Tak, ale tylko w tej samej klasie.").isCorrect(false).question(question6).build());
-        answerRepository.save(Answer.builder().displayName("Nie, metody final nie można nadpisać.").isCorrect(true).question(question6).build());
-        answerRepository.save(Answer.builder().displayName("Tylko jeśli metoda jest publiczna.").isCorrect(false).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Tak, zmienna lokalna musi być zainicjalizowana przed użyciem.").isCorrect(true).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Nie, Java zawsze nadaje jej wartość domyślną.").isCorrect(false).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Tylko zmienna typu int musi być zainicjalizowana.").isCorrect(false).question(question6).build());
+        answerRepository.save(Answer.builder().displayName("Tylko zmienna typu String musi być zainicjalizowana.").isCorrect(false).question(question6).build());
 
-        answerRepository.save(Answer.builder().displayName("private").isCorrect(false).question(question7).build());
-        answerRepository.save(Answer.builder().displayName("protected").isCorrect(true).question(question7).build());
-        answerRepository.save(Answer.builder().displayName("default").isCorrect(false).question(question7).build());
-        answerRepository.save(Answer.builder().displayName("static").isCorrect(false).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("Że zmienna staje się prywatna.").isCorrect(false).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("Że wartość zmiennej nie może zostać ponownie przypisana.").isCorrect(true).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("Że zmienna jest dostępna tylko w jednej metodzie.").isCorrect(false).question(question7).build());
+        answerRepository.save(Answer.builder().displayName("Że zmienna musi mieć wartość null.").isCorrect(false).question(question7).build());
 
-        answerRepository.save(Answer.builder().displayName("Przez wywołanie super().").isCorrect(true).question(question8).build());
-        answerRepository.save(Answer.builder().displayName("Przez użycie słowa kluczowego this().").isCorrect(false).question(question8).build());
-        answerRepository.save(Answer.builder().displayName("Automatycznie bez możliwości kontroli.").isCorrect(false).question(question8).build());
-        answerRepository.save(Answer.builder().displayName("Nie można wywołać konstruktora klasy bazowej.").isCorrect(false).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("Zmienna lokalna jest deklarowana w metodzie, a pole klasy należy do obiektu lub klasy.").isCorrect(true).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("Pole klasy może istnieć tylko w metodzie, a zmienna lokalna poza klasą.").isCorrect(false).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("Nie ma między nimi żadnej różnicy.").isCorrect(false).question(question8).build());
+        answerRepository.save(Answer.builder().displayName("Zmienna lokalna zawsze jest publiczna.").isCorrect(false).question(question8).build());
 
-        answerRepository.save(Answer.builder().displayName("To metoda, która została skopiowana z klasy bazowej.").isCorrect(false).question(question9).build());
-        answerRepository.save(Answer.builder().displayName("To metoda, która nie może być wywołana.").isCorrect(false).question(question9).build());
-        answerRepository.save(Answer.builder().displayName("To metoda, która zawsze musi być abstrakcyjna.").isCorrect(false).question(question9).build());
-        answerRepository.save(Answer.builder().displayName("To metoda, która ma taką samą nazwę i parametry jak w klasie bazowej, ale inną implementację.").isCorrect(true).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("true").isCorrect(false).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("\"Hello\"").isCorrect(true).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("'A'").isCorrect(false).question(question9).build());
+        answerRepository.save(Answer.builder().displayName("15.5").isCorrect(false).question(question9).build());
 
-        answerRepository.save(Answer.builder().displayName("Zawsze, nawet gdy klasy nie mają wspólnych cech.").isCorrect(false).question(question10).build());
-        answerRepository.save(Answer.builder().displayName("Gdy istnieje relacja typu „jest rodzajem” (is-a).").isCorrect(true).question(question10).build());
-        answerRepository.save(Answer.builder().displayName("Tylko do ponownego użycia kodu.").isCorrect(false).question(question10).build());
-        answerRepository.save(Answer.builder().displayName("Gdy chcemy połączyć wiele klas jednocześnie.").isCorrect(false).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("age int = 20;").isCorrect(false).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("int = age 20;").isCorrect(false).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("int age = 20;").isCorrect(true).question(question10).build());
+        answerRepository.save(Answer.builder().displayName("20 = int age;").isCorrect(false).question(question10).build());
     }
 
 }

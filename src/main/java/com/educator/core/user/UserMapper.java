@@ -6,12 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper {
 
-    public User mapToUser (RegisterDto registerDto) {
+    public User mapToUser (RegisterDto registerDto, Role role) {
         return User.builder()
                 .username(registerDto.getUsername())
                 .password(registerDto.getPassword())
-                .enabled(true)
-                .role(Role.USER)
+                .role(role)
                 .build();
     }
 }

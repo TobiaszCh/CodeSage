@@ -2,8 +2,8 @@ package com.educator.core.user;
 
 import com.educator.auth.AuthService;
 import com.educator.core.course.FirstCourseCreator;
-import com.educator.core.email.EmailService;
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.outbox_event.OutboxEventService;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
 import com.educator.core.user.dto.UsernameDto;
@@ -15,6 +15,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Random;
 
@@ -30,13 +31,13 @@ public class UserService {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    private final EmailService emailService;
-
     private final AuthService authService;
 
     private final Random random = new Random();
 
     private final FirstCourseCreator firstCourseCreator;
+
+    private final OutboxEventService outboxEventService;
 
     public void login(LoginDto loginDto) {
         if (loginDto == null) {
@@ -51,6 +52,7 @@ public class UserService {
         }
     }
 
+    @Transactional
     public void registerDetails(RegisterDto registerDto) {
         if (registerDto == null) {
             throw new CodeSageRuntimeException("RegisterDto doesn't have value. Object is null");
@@ -63,11 +65,11 @@ public class UserService {
         }
         userRepository.save(hashingPassword(registerDto));
         firstCourseCreator.createFirstCourse(registerDto.getUsername());
-        emailService.sendWelcomeMessage(registerDto.getUsername());
+        outboxEventService.createOutboxEvent((registerDto.getUsername()));
     }
 
     private User hashingPassword(RegisterDto registerDto) {
-        User user = userMapper.mapToUser(registerDto);
+        User user = userMapper.mapToUser(registerDto, Role.USER);
         String hashedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
         user.setUsername(registerDto.getUsername().trim());
@@ -78,6 +80,7 @@ public class UserService {
         return new UsernameDto(authService.getLoggedUser().getUsername());
     }
 
+    @Transactional
     public void createRandomUser() {
         RegisterDto randomUser = new RegisterDto();
         boolean checkUser = true;
@@ -90,6 +93,19 @@ public class UserService {
         userRepository.save(hashingPassword(randomUser));
         firstCourseCreator.createFirstCourse(randomUser.getUsername());
         login(LoginDto.builder().username(randomUser.getUsername()).password(randomUser.getPassword()).build());
+    }
+
+    @Transactional
+    public void loginByExternalApi(String email) {
+        if(email == null) {
+            throw new CodeSageRuntimeException("Email is null");
+        }
+        if (!userRepository.existsByUsername(email)) {
+            User user = User.builder().username(email).role(Role.USER).build();
+            userRepository.save(user);
+            firstCourseCreator.createFirstCourse(user.getUsername());
+            outboxEventService.createOutboxEvent(user.getUsername());
+        }
     }
 
 }

@@ -6,13 +6,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
 @Getter
 @Setter
 @Builder
-@Entity(name = "Users")
+@Entity(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements UserDetails {
@@ -26,13 +27,21 @@ public class User implements UserDetails {
 
     private String password;
 
-    private boolean enabled;
+    private LocalDateTime createdAt;
+
+    @Builder.Default
+    private boolean enabled = true;
+
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    private String achievements;
+    @PrePersist
+    private void prePersistCreatedAt() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
 
-    private int points;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

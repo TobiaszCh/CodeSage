@@ -1,5 +1,6 @@
 package com.educator.controller;
-import com.educator.core.answer.AnswerDto;
+import com.educator.core.answer.dto.AnswerDto;
+import com.educator.core.answer.dto.AnswerWithoutCorrectDto;
 import com.educator.core.answer.AnswerService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ public class AnswerController {
     private final AnswerService answerService;
 
     @GetMapping
-    public List<AnswerDto> getAllAnswer () {
+    public List<AnswerWithoutCorrectDto> getAllAnswer () {
         return answerService.getAllAnswer();
     }
 
@@ -27,4 +28,5 @@ public class AnswerController {
     public void createAnswer(@Valid @RequestBody AnswerDto answerDto) {
         answerService.createAnswer(answerDto);
     }
+
 }

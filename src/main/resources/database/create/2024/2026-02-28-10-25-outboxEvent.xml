@@ -1,0 +1,18 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="create-outbox_event-table" author="Tobiasz">
+        <createTable tableName="outbox_event">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="email" type="varchar"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="outbox_event_status" type="varchar"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

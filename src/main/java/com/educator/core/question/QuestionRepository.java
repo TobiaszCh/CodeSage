@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
-    List<Question> findBySubjectId(Long subjectId);
+    List<Question> findBySubjectIdOrderByIdAsc(Long subjectId);
 
     int countBySubjectId(Long subjectId);
 

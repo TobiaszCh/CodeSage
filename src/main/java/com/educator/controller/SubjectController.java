@@ -22,8 +22,8 @@ public class SubjectController {
     }
 
     @PostMapping
-    public void createSubject(@Valid @RequestBody SubjectDto subjectDto) {
-        subjectService.createSubject(subjectDto);
+    public Long createSubject(@Valid @RequestBody SubjectDto subjectDto) {
+        return subjectService.createSubject(subjectDto);
     }
 
     @DeleteMapping("/{id}")
@@ -55,4 +55,5 @@ public class SubjectController {
     public Long getCourseId(@PathVariable Long id) {
         return subjectService.getCourseId(id);
     }
+
 }

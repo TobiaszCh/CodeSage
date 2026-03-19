@@ -1,26 +1,20 @@
-package com.educator.core.answer;
+package com.educator.core.answer.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Getter
 @AllArgsConstructor
-public class AnswerDto {
+public class AnswerWithoutCorrectDto {
 
     private Long id;
-
+    @Size(max = 200)
     @NotBlank(message = "Odpowiedź nie może być pusta")
     private String displayName;
 
-    private boolean isCorrect;
-
     private Long questionId;
 
-    @JsonIgnore
-    public boolean isCorrect() {
-        return isCorrect;
-    }
 }

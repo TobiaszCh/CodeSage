@@ -1,6 +1,7 @@
 package com.educator.core.question;
 
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.question.dto.QuestionDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

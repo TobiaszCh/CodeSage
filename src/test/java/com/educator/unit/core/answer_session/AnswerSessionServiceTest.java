@@ -21,6 +21,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -50,9 +52,10 @@ class AnswerSessionServiceTest {
         //Given
         Long subjectId = 1L;
         SubjectIdToAnswerSessionDto subjectIdToAnswerSessionDto = new SubjectIdToAnswerSessionDto(subjectId);
-        User user = new User(2L, "Tobek","sdfsf", true, Role.USER, "Nothing", 0);
-        Course course = Course.builder().id(3L).users(AuthService.getLoggedAdmin()).displayName("Course1").build();
-        Subject subject = new Subject(4L, "Subject1", course);
+        User user = new User(2L, "tobek@wp.pl","Qwswdwe19,",
+                LocalDateTime.of(2025, 5,5, 8,15), true, Role.USER);
+        Course course = Course.builder().id(3L).users(List.of(AuthService.getLoggedAdmin())).displayName("Course1").build();
+        Subject subject = Subject.builder().id(4L).displayName("Subject1").course(course).build();
         StatusAnswerSession statusAnswerSession = StatusAnswerSession.IN_PROGRESS;
         AnswerSession answerSession = AnswerSession.builder().id(5L).users(user).subject(subject)
                 .statusAnswerSession(statusAnswerSession).sessionStartDate(LocalDate.now()).build();
@@ -76,9 +79,10 @@ class AnswerSessionServiceTest {
     void getPoints() {
         //Given
         Long id = 1L;
-        User user = new User(2L, "Tobek","sdfsf", true, Role.USER, "Nothing", 0);
-        Course course = Course.builder().id(3L).users(AuthService.getLoggedAdmin()).displayName("Course1").build();
-        Subject subject = new Subject(4L, "Subject1", course);
+        User user = new User(2L, "tobek@wp.pl","Qwswdwe19,",
+                LocalDateTime.of(2025, 5,5, 8,15), true, Role.USER);
+        Course course = Course.builder().id(3L).users(List.of(AuthService.getLoggedAdmin())).displayName("Course1").build();
+        Subject subject = Subject.builder().id(4L).displayName("Subject1").course(course).build();
         StatusAnswerSession statusAnswerSession = StatusAnswerSession.IN_PROGRESS;
         AnswerSession answerSession = AnswerSession.builder().id(id).users(user).subject(subject).allAnswers(10)
                 .correctAnswers(8).statusAnswerSession(statusAnswerSession).sessionStartDate(LocalDate.now()).build();

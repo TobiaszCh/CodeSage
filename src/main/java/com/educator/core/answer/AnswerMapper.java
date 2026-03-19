@@ -1,5 +1,7 @@
 package com.educator.core.answer;
 
+import com.educator.core.answer.dto.AnswerDto;
+import com.educator.core.answer.dto.AnswerWithoutCorrectDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +11,13 @@ import java.util.stream.Collectors;
 @Component
 @AllArgsConstructor
 public class AnswerMapper {
+
+    public AnswerWithoutCorrectDto mapToDtoAnswerWithoutCorrect(Answer answer) {
+        return new AnswerWithoutCorrectDto(
+                answer.getId(),
+                answer.getDisplayName(),
+                answer.getQuestion() != null ? answer.getQuestion().getId() : null);
+    }
 
     public AnswerDto mapToDtoAnswer(Answer answer) {
         return new AnswerDto(
@@ -28,6 +37,10 @@ public class AnswerMapper {
 
     public List<AnswerDto> mapToListDtoAnswer(List<Answer> answers) {
         return answers.stream().map(this::mapToDtoAnswer).collect(Collectors.toList());
+    }
+
+    public List<AnswerWithoutCorrectDto> mapToListDtoAnswerWithoutCorrect(List<Answer> answers) {
+        return answers.stream().map(this::mapToDtoAnswerWithoutCorrect).collect(Collectors.toList());
     }
 
     public List<Answer> mapToListAnswer(List<AnswerDto> answers) {

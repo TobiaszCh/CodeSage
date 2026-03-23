@@ -43,9 +43,10 @@ public class UserService {
         if (loginDto == null) {
             throw new CodeSageRuntimeException("LoginDto doesn't have value. Object is null");
         }
+        loginDto.setUsername(loginDto.getUsername().trim());
         try {
-            Authentication authentication = manager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername()
-                    , loginDto.getPassword()));
+            Authentication authentication = manager.authenticate(new UsernamePasswordAuthenticationToken(
+                loginDto.getUsername(),loginDto.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (AuthenticationException ex) {
             throw new CodeSageRuntimeException("Niewłaściwe hasło lub login");
@@ -58,21 +59,21 @@ public class UserService {
             throw new CodeSageRuntimeException("RegisterDto doesn't have value. Object is null");
         }
         if (!registerDto.getPassword().equals(registerDto.getRepeatedPassword())) {
-            throw new CodeSageRuntimeException("Powtórzenie hasła nie jest zgodne z oryginałem");
+            throw new CodeSageRuntimeException("Password confirmation does not match the original password");
         }
+        registerDto.setUsername(registerDto.getUsername().trim());
         if (userRepository.existsByUsername(registerDto.getUsername())) {
             throw new CodeSageRuntimeException("Taki login już istnieje!");
         }
         userRepository.save(hashingPassword(registerDto));
         firstCourseCreator.createFirstCourse(registerDto.getUsername());
-        outboxEventService.createOutboxEvent((registerDto.getUsername()));
+        outboxEventService.createOutboxEvent(registerDto.getUsername());
     }
 
     private User hashingPassword(RegisterDto registerDto) {
         User user = userMapper.mapToUser(registerDto, Role.USER);
         String hashedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
-        user.setUsername(registerDto.getUsername().trim());
         return user;
     }
 

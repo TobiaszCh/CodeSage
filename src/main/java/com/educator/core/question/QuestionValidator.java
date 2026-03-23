@@ -15,7 +15,7 @@ public class QuestionValidator {
     public void validateDistinctQuestions(List<QuestionDto> questionDto) {
         if (questionDto == null) throw new CodeSageRuntimeException("Object is null");
         if (questionDto.isEmpty()) throw new CodeSageRuntimeException("List is empty");
-        List<String> uniqueTheSameNames = questionDto.stream().map(QuestionDto::getDisplayName).distinct().collect(Collectors.toList());
+        List<String> uniqueTheSameNames = questionDto.stream().map(result -> result.getDisplayName().trim()).distinct().collect(Collectors.toList());
         if (uniqueTheSameNames.size() != questionDto.size()) {
             throw new CodeSageRuntimeException("Pytania nie mogą się powtarzać");
         }

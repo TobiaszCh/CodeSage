@@ -35,6 +35,7 @@ public class SubjectService {
     }
 
     public Long createSubject(SubjectDto subjectDto) {
+        subjectDto.setDisplayName(subjectDto.getDisplayName().trim());
         return subjectRepository.save(subjectMapper.mapToSubject(subjectDto)).getId();
     }
 
@@ -48,7 +49,7 @@ public class SubjectService {
 
     public void updateSubject(Long id, UpdateSubjectDto updateSubjectDisplayNameDto) {
         Subject subject = subjectRepository.findById(id).orElseThrow(() -> new CodeSageRuntimeException("This subject doesn't exist"));
-        subject.setDisplayName(updateSubjectDisplayNameDto.getDisplayName());
+        subject.setDisplayName(updateSubjectDisplayNameDto.getDisplayName().trim());
         subjectRepository.save(subject);
     }
 
@@ -59,11 +60,11 @@ public class SubjectService {
     public List<CheckCompletedSessionsDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(Long courseId) {
         List<Long> subjectsIdFilterByCourseId = subjectRepository.findByCourseIdOrderByIdAsc(courseId).stream().map(Subject::getId).collect(Collectors.toList());
         List<AnswerSession> answerSessionsCompletedList = answerSessionRepository.findByStatusAnswerSession(StatusAnswerSession.COMPLETED);
-        return getCheckCompletedSessionsDtos(subjectsIdFilterByCourseId, answerSessionsCompletedList);
+        return getCheckCompletedSessions(subjectsIdFilterByCourseId, answerSessionsCompletedList);
 
     }
 
-    private List<CheckCompletedSessionsDto> getCheckCompletedSessionsDtos(List<Long> subjectsIdFilterByCourseId, List<AnswerSession> answerSessionsCompletedList) {
+    private List<CheckCompletedSessionsDto> getCheckCompletedSessions(List<Long> subjectsIdFilterByCourseId, List<AnswerSession> answerSessionsCompletedList) {
         List<CheckCompletedSessionsDto> checkCompletedSessionsDtoList = new ArrayList<>();
         for (AnswerSession answerSessionCompleted : answerSessionsCompletedList) {
             double checkAllAndCorrectAnswers = getCheckAllAndCorrectAnswers(answerSessionCompleted);

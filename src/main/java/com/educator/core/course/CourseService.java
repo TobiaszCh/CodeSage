@@ -46,12 +46,13 @@ public class CourseService {
 
     public void createMyCourse(CourseDto courseDto) {
         User loggedUser = authService.getLoggedUser();
+        courseDto.setDisplayName(courseDto.getDisplayName().trim());
         courseRepository.save(courseMapper.mapToCourse(courseDto, List.of(loggedUser)));
     }
 
     public void updateCourse(Long id, CourseDto courseDto) {
         Course course = courseRepository.findById(id).orElseThrow(() -> new CodeSageRuntimeException("This course doesn't exist"));
-        course.setDisplayName(courseDto.getDisplayName());
+        course.setDisplayName(courseDto.getDisplayName().trim());
         courseRepository.save(course);
     }
 

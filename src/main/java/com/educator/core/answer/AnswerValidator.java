@@ -14,7 +14,7 @@ public class AnswerValidator {
             throw new CodeSageRuntimeException("Object is null");
         }
         int beforeDistinct = questionDto.getAnswers().size();
-        int afterDistinct = (int) questionDto.getAnswers().stream().map(AnswerDto::getDisplayName).distinct().count();
+        int afterDistinct = (int) questionDto.getAnswers().stream().map(result -> result.getDisplayName().trim()).distinct().count();
         if (beforeDistinct != afterDistinct) {
             throw new CodeSageRuntimeException("Odpowiedzi nie mogą się powtarzać");
         }

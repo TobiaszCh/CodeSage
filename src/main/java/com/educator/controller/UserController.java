@@ -19,7 +19,11 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = {"http://localhost:4200", "https://code-sage-front-a970cdb2bc71.herokuapp.com"}, allowCredentials = "true")
+@CrossOrigin(origins = {
+        "http://localhost:4200",
+        "https://code-sage-front-a970cdb2bc71.herokuapp.com",
+        "https://www.codesage.pl"
+}, allowCredentials = "true")
 public class UserController {
 
     private final UserService userService;

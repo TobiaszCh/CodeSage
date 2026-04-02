@@ -13,7 +13,11 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/questions")
-@CrossOrigin(origins = {"http://localhost:4200", "https://code-sage-front-a970cdb2bc71.herokuapp.com"}, allowCredentials = "true")
+@CrossOrigin(origins = {
+        "http://localhost:4200",
+        "https://code-sage-front-a970cdb2bc71.herokuapp.com",
+        "https://www.codesage.pl"
+}, allowCredentials = "true")
 public class QuestionController {
 
     private final QuestionService questionService;

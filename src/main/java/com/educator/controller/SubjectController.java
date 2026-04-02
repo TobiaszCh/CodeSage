@@ -11,7 +11,11 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/subjects")
-@CrossOrigin(origins = {"http://localhost:4200", "https://code-sage-front-a970cdb2bc71.herokuapp.com"}, allowCredentials = "true")
+@CrossOrigin(origins = {
+        "http://localhost:4200",
+        "https://code-sage-front-a970cdb2bc71.herokuapp.com",
+        "https://www.codesage.pl"
+}, allowCredentials = "true")
 public class SubjectController {
 
     private final SubjectService subjectService;

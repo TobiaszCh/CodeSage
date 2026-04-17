@@ -6,7 +6,7 @@ import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.course.Course;
 import com.educator.core.subject.*;
-import com.educator.core.subject.dto.CheckCompletedSessionsDto;
+import com.educator.core.subject.dto.SubjectCompletionStatusDto;
 import com.educator.core.subject.dto.SubjectDto;
 import com.educator.core.user.Role;
 import com.educator.core.user.User;
@@ -122,16 +122,16 @@ class SubjectServiceTest {
         when(authService.getLoggedUser()).thenReturn(user);
 
         //When
-        List<CheckCompletedSessionsDto> resultTest1 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(1L);
-        List<CheckCompletedSessionsDto> resultTest2 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(2L);
-        List<CheckCompletedSessionsDto> resultTest3 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(3L);
-        List<CheckCompletedSessionsDto> resultTest4 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(null);
+        List<SubjectCompletionStatusDto> resultTest1 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(1L);
+        List<SubjectCompletionStatusDto> resultTest2 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(2L);
+        List<SubjectCompletionStatusDto> resultTest3 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(3L);
+        List<SubjectCompletionStatusDto> resultTest4 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(null);
 
 
         SubjectCompletedAge subjectCompletedAge3 = resultTest1.stream().filter(id -> id.getAnswerSessionId().equals(16L))
-                .map(CheckCompletedSessionsDto::getSubjectCompletedAge).collect(Collectors.toList()).get(0);
+                .map(SubjectCompletionStatusDto::getSubjectCompletedAge).collect(Collectors.toList()).get(0);
         SubjectCompletedAge subjectCompletedAge4 = resultTest1.stream().filter(id -> id.getAnswerSessionId().equals(17L))
-                .map(CheckCompletedSessionsDto::getSubjectCompletedAge).collect(Collectors.toList()).get(0);
+                .map(SubjectCompletionStatusDto::getSubjectCompletedAge).collect(Collectors.toList()).get(0);
 
         //Then
         assertEquals(SubjectCompletedAge.FRESH, subjectCompletedAge3);

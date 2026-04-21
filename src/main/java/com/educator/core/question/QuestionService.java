@@ -52,15 +52,14 @@ public class QuestionService {
                 .orElseThrow(() -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }
 
-    @Transactional
-    public Long updateQuestions(List<QuestionDto> questionDto) {
+    public Long updateQuestions(List<QuestionDto> questionDto, Long subjectId) {
         questionValidator.validateAllSubjectIdEquals(questionDto);
         questionValidator.validateDistinctQuestions(questionDto);
         questionDto.forEach((result) -> {
             answerValidator.validateDistinctAnswers(result);
             updateQuestion(result);
         });
-        return subjectRepository.findCourseIdBySubjectId(questionDto.get(0).getSubjectId())
+        return subjectRepository.findCourseIdBySubjectId(subjectId)
                 .orElseThrow(() -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }
 

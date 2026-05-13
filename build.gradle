@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.jsoup:jsoup:1.17.2'
+	implementation 'software.amazon.awssdk:s3:2.42.38'
 	testImplementation 'com.h2database:h2'
 	testImplementation 'org.junit.jupiter:junit-jupiter-params'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

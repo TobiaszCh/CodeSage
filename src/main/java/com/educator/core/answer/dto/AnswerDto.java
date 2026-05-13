@@ -14,7 +14,7 @@ public class AnswerDto {
     @Size(max = 200)
     @NotBlank(message = "Odpowiedź nie może być pusta")
     private String displayName;
-
+//TODO rename isCorrect
     @JsonProperty("isCorrect")
     private boolean isCorrect;
 

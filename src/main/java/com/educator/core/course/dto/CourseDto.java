@@ -1,6 +1,8 @@
-package com.educator.core.course;
+package com.educator.core.course.dto;
 
+import com.educator.core.course.Visibility;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +11,7 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 public class CourseDto {
 
@@ -17,5 +20,14 @@ public class CourseDto {
     @NotBlank
     @Size(max = 25)
     private String displayName;
+
+    @NotBlank
+    @Size(max = 700)
+    private String description;
+
+    @NotBlank
+    private String imageUrl;
+
+    private Visibility visibility;
 
 }

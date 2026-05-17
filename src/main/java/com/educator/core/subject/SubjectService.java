@@ -97,7 +97,7 @@ public class SubjectService {
         Subject updateSubject = subjectRepository.findById(id).orElseThrow(
                 () -> new CodeSageRuntimeException("This subject doesn't exist"));
         if(subjectDetailsDto == null) {
-            throw new CodeSageRuntimeException("subjectDetailsDto is null");
+            throw new CodeSageRuntimeException("SubjectDetailsDto is null");
         }
         updateSubject.setDisplayName(subjectDetailsDto.getDisplayName().trim());
         return questionService.updateQuestions(subjectDetailsDto.getQuestions(), id);

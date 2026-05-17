@@ -19,7 +19,7 @@ public class OutboxEventService {
 
     public void createOutboxEvent(String email) {
         if (email == null) {
-            throw new CodeSageRuntimeException("Object is null");
+            throw new CodeSageRuntimeException("String email is null");
         }
         OutboxEvent outboxEvent = OutboxEvent.builder().email(email).build();
         outboxEventRepository.save(outboxEvent);

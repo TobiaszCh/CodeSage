@@ -87,7 +87,7 @@ public class QuestionService {
 
     public boolean hasQuestionsInSubject(Long subjectId) {
         if (subjectId == null) {
-            throw new CodeSageRuntimeException("Object is null");
+            throw new CodeSageRuntimeException("Long subjectId is null");
         }
         return questionRepository.countBySubjectId(subjectId) == MAX_VALUE_ALL_QUESTIONS;
     }

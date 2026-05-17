@@ -17,14 +17,14 @@ import java.util.List;
 public class QuestionDto {
 
     private Long id;
+
     @Size(max = 150)
-    @NotBlank(message = "Pytanie nie może być puste")
+    @NotBlank(message = "Pytanie musi zawierać wartość")
     private String displayName;
 
     @NotNull
     private Long subjectId;
 
-    @Valid
-    private List<AnswerDto> answers;
+    private List<@Valid AnswerDto> answers;
 
 }

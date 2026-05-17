@@ -41,7 +41,7 @@ public class CourseController {
     }
 
     @PostMapping
-    public Long createCourse(@RequestPart CourseDto courseDto, @RequestPart MultipartFile file) {
+    public Long createCourse(@Valid @RequestPart CourseDto courseDto, @RequestPart MultipartFile file) {
         return courseService.createMyCourse(courseDto, file);
     }
 

@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SubjectIdToAnswerSessionDto {
+
     @NotNull
     private Long id;
 }

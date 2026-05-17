@@ -18,7 +18,7 @@ public class QuestionWithoutAnswerCorrectDto {
 
     private Long id;
     @Size(max = 150)
-    @NotBlank(message = "Pytanie nie może być puste")
+    @NotBlank(message = "Pytanie musi zawierać wartość")
     private String displayName;
 
     @NotNull

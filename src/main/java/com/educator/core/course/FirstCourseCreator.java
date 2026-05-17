@@ -30,7 +30,6 @@ public class FirstCourseCreator {
 
     private final UserRepository userRepository;
 
-    private final S3Service s3Service;
 
     @Transactional
     public void createFirstCourse(String username) {

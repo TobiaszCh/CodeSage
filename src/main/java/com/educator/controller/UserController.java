@@ -35,13 +35,14 @@ public class UserController {
         userService.login(loginDto);
         return ResponseEntity.ok(Map.of("message","Zalogowano pomyślnie"));
     }
-
+//TODO extract private method
     @PostMapping("/logout")
     public ResponseEntity<Map<String,String>> logout(HttpServletRequest request, HttpServletResponse response) {
         if(request != null) {
             HttpSession session = request.getSession(false);
             if (session != null) {
                 session.invalidate();
+                //TODO Magic String
                 Cookie deleteCookie = new Cookie("JSESSIONID", "");
                 deleteCookie.setSecure(true);
                 deleteCookie.setMaxAge(0);

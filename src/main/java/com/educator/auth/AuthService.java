@@ -37,7 +37,7 @@ public class AuthService  {
         Object userObject = authentication.getPrincipal();
         return userObject instanceof User || userObject instanceof OAuth2User;
     }
-
+    //ToDo to be remove
     public static User getLoggedAdmin() {
         return User.builder().id(-2L).username("sdcscsdcscs@wp.pl").password("Benfica15x,").role(Role.ADMIN).build();
     }

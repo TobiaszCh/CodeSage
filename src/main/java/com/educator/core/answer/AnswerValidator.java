@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class AnswerValidator {
 
     public void validateDistinctAnswers(QuestionDto questionDto) {
+        //TODO Investigate error
         if (questionDto == null) {
             throw new CodeSageRuntimeException("Object is null");
         }

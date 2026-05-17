@@ -1,12 +1,15 @@
 package com.educator.controller;
-import com.educator.core.course.CourseDto;
+import com.educator.core.course.dto.CourseDto;
 import com.educator.core.course.CourseService;
+import com.educator.core.course.dto.DisplayNameCourseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -28,13 +31,8 @@ public class CourseController {
     }
 
     @GetMapping
-    public List<CourseDto> getAllCourses() {
+    public List<DisplayNameCourseDto> getAllCourses() {
         return courseService.getAllMyCourses();
-    }
-
-    @GetMapping("/search/{phrase}")
-    public List<CourseDto> getCoursesByPhrase(@PathVariable String phrase) {
-        return courseService.getWithPhrase(phrase);
     }
 
     @DeleteMapping("/{id}")
@@ -43,8 +41,8 @@ public class CourseController {
     }
 
     @PostMapping
-    public void createCourse(@Valid @RequestBody CourseDto courseDto) {
-        courseService.createMyCourse(courseDto);
+    public Long createCourse(@RequestPart CourseDto courseDto, @RequestPart MultipartFile file) {
+        return courseService.createMyCourse(courseDto, file);
     }
 
     @PatchMapping("/{id}")

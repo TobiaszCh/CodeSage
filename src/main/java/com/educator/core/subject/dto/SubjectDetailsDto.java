@@ -12,7 +12,7 @@ import java.util.List;
 public class SubjectDetailsDto {
 
     @Size(max = 50)
-    @NotBlank(message = "Temat nie może być pusty")
+    @NotBlank(message = "Temat musi zawierać wartość")
     private String displayName;
 
     @Valid

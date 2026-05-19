@@ -28,7 +28,7 @@ public class EmailService {
 
     public void sendWelcomeMessage(String to) throws MessagingException {
         if(to == null) {
-            throw new CodeSageRuntimeException("String doesn't have value. Object is null");
+            throw new CodeSageRuntimeException("String to is null");
         }
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);

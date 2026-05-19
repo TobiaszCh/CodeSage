@@ -1,5 +1,6 @@
 package com.educator.controller;
 
+import com.educator.core.question.dto.QuestionsDto;
 import com.educator.core.question.dto.QuestionDto;
 import com.educator.core.question.QuestionService;
 import com.educator.core.question.dto.QuestionResponseDto;
@@ -22,8 +23,8 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @PostMapping
-    public Long createQuestions(@Valid @RequestBody List<QuestionDto> questionDto) {
-        return questionService.createQuestions(questionDto);
+    public Long createQuestions(@Valid @RequestBody QuestionsDto questionsDto) {
+        return questionService.createQuestions(questionsDto.getQuestions());
     }
 
     @GetMapping("/{subjectId}")

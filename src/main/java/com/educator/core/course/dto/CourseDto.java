@@ -17,7 +17,7 @@ public class CourseDto {
 
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Kurs musi zawierać wartość")
     @Size(max = 25)
     private String displayName;
 
@@ -25,7 +25,6 @@ public class CourseDto {
     @Size(max = 700)
     private String description;
 
-    @NotBlank
     private String imageUrl;
 
     private Visibility visibility;

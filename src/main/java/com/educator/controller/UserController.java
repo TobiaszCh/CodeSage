@@ -52,7 +52,7 @@ public class UserController {
                 throw new CodeSageRuntimeException("Session doesn't have value. Object is null");
             }
         } else {
-            throw new CodeSageRuntimeException("Request doesn't have value. Object is null");
+            throw new CodeSageRuntimeException("Request doesn't have value. HttpServletRequest is null");
         }
         return ResponseEntity.ok(Map.of("message","Wylogowano pomyślnie"));
     }

@@ -5,7 +5,7 @@ import com.educator.core.level.LevelService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-//TODO Remove!!!
+//ToDo Remove!!!
 @RestController
 @AllArgsConstructor
 @RequestMapping("/levels")

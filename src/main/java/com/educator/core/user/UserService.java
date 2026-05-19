@@ -3,6 +3,7 @@ package com.educator.core.user;
 import com.educator.auth.AuthService;
 import com.educator.core.course.FirstCourseCreator;
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.exception.CodeSageUserException;
 import com.educator.core.outbox_event.OutboxEventService;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
@@ -41,7 +42,7 @@ public class UserService {
 
     public void login(LoginDto loginDto) {
         if (loginDto == null) {
-            throw new CodeSageRuntimeException("LoginDto doesn't have value. Object is null");
+            throw new CodeSageRuntimeException("LoginDto is null");
         }
         loginDto.setUsername(loginDto.getUsername().trim());
         try {
@@ -49,21 +50,21 @@ public class UserService {
                 loginDto.getUsername(),loginDto.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (AuthenticationException ex) {
-            throw new CodeSageRuntimeException("Niewłaściwe hasło lub login");
+            throw CodeSageUserException.withUserMessage("Niewłaściwe hasło lub login");
         }
     }
 
     @Transactional
     public void registerDetails(RegisterDto registerDto) {
         if (registerDto == null) {
-            throw new CodeSageRuntimeException("RegisterDto doesn't have value. Object is null");
+            throw new CodeSageRuntimeException("RegisterDto is null");
         }
         if (!registerDto.getPassword().equals(registerDto.getRepeatedPassword())) {
             throw new CodeSageRuntimeException("Password confirmation does not match the original password");
         }
         registerDto.setUsername(registerDto.getUsername().trim());
         if (userRepository.existsByUsername(registerDto.getUsername())) {
-            throw new CodeSageRuntimeException("Taki login już istnieje!");
+            throw CodeSageUserException.withUserMessage("Taki login już istnieje!");
         }
         userRepository.save(hashingPassword(registerDto));
         firstCourseCreator.createFirstCourse(registerDto.getUsername());

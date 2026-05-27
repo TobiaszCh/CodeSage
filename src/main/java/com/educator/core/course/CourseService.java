@@ -4,6 +4,8 @@ import com.educator.auth.AuthService;
 import com.educator.core.course.dto.CourseDto;
 import com.educator.core.course.dto.DisplayNameCourseDto;
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.outbox_event.OutboxEventService;
+import com.educator.core.outbox_event.OutboxEventType;
 import com.educator.core.s3.S3Service;
 import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,8 @@ public class CourseService {
     private final S3Service s3Service;
 
     private final CourseValidator courseValidator;
+
+    private final OutboxEventService outboxEventService;
 
     public CourseDto getCourseById(Long id) {
         return courseMapper.mapToDtoCourse(courseRepository.findById(id)
@@ -62,7 +66,7 @@ public class CourseService {
         course.setDescription(courseDto.getDescription());
         course.setVisibility(courseDto.getVisibility());
         course.setImageUrl(s3Service.uploadFile(id, file));
-        s3Service.deleteFile(oldImageUrl);
+        outboxEventService.createOutboxEvent(oldImageUrl, OutboxEventType.OLD_IMAGE_URL);
         return course.getId();
     }
 

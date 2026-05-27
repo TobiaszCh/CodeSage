@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -21,12 +22,13 @@ public class CourseDto {
     @Size(max = 25)
     private String displayName;
 
-    @NotBlank
+    @NotBlank(message = "Opis musi zawierać wartość")
     @Size(max = 700)
     private String description;
 
     private String imageUrl;
 
+    @NotNull(message = "Kurs musi mieć ustawioną widoczność")
     private Visibility visibility;
 
 }

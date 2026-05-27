@@ -32,7 +32,7 @@ public class CourseController {
 
     @GetMapping
     public List<DisplayNameCourseDto> getAllCourses() {
-        return courseService.getAllMyCourses();
+        return courseService.getAllCourses();
     }
 
     @DeleteMapping("/{id}")
@@ -42,11 +42,12 @@ public class CourseController {
 
     @PostMapping
     public Long createCourse(@Valid @RequestPart CourseDto courseDto, @RequestPart MultipartFile file) {
-        return courseService.createMyCourse(courseDto, file);
+        return courseService.createCourse(courseDto, file);
     }
 
     @PatchMapping("/{id}")
-    public void updateCourse(@PathVariable Long id, @Valid @RequestBody CourseDto courseDto) {
-        courseService.updateCourse(id, courseDto);
+    public Long updateCourse(@PathVariable Long id, @Valid @RequestPart CourseDto courseDto, @RequestPart MultipartFile file) {
+        return courseService.updateCourse(id, courseDto, file);
     }
+
 }

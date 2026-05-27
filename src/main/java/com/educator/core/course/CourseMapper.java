@@ -1,18 +1,17 @@
 package com.educator.core.course;
+
 import com.educator.core.course.dto.CourseDto;
 import com.educator.core.course.dto.DisplayNameCourseDto;
-import com.educator.core.s3.S3Service;
 import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 public class CourseMapper {
-
-    private final S3Service s3Service;
 
     public CourseDto mapToDtoCourse(Course course) {
         return new CourseDto(
@@ -47,4 +46,5 @@ public class CourseMapper {
                 .map(this::mapToDtoDisplayNameCourse)
                 .collect(Collectors.toList());
     }
+
 }

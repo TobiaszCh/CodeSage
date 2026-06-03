@@ -6,45 +6,38 @@ import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Component
 @RequiredArgsConstructor
 public class CourseMapper {
 
-    public CourseDto mapToDtoCourse(Course course) {
+    public CourseDto mapToDtoCourse(Course course, boolean accessToModifyCourse) {
         return new CourseDto(
                 course.getId(),
                 course.getDisplayName(),
                 course.getDescription(),
                 course.getImageUrl(),
-                course.getVisibility()
+                course.getVisibility(),
+                accessToModifyCourse
         );
     }
 
-    public Course mapToCourse(CourseDto courseDto, List<User> users) {
+    public Course mapToCourse(CourseDto courseDto, User ownerCourse) {
         return Course.builder()
                 .id(courseDto.getId())
                 .displayName(courseDto.getDisplayName())
                 .description(courseDto.getDescription())
                 .visibility(courseDto.getVisibility())
-                .users(users)
+                .owner(ownerCourse)
                 .build();
 
     }
 
-    public DisplayNameCourseDto mapToDtoDisplayNameCourse(Course course) {
+    public DisplayNameCourseDto mapToDtoDisplayNameCourse(Course course, boolean accessToModifyCourse) {
         return new DisplayNameCourseDto(
                 course.getId(),
-                course.getDisplayName()
+                course.getDisplayName(),
+                accessToModifyCourse
         );
-    }
-
-    public List<DisplayNameCourseDto> mapToListDtoDisplayNameCourse(List<Course> course) {
-        return course.stream()
-                .map(this::mapToDtoDisplayNameCourse)
-                .collect(Collectors.toList());
     }
 
 }

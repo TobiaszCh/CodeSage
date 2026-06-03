@@ -31,4 +31,6 @@ public class CourseDto {
     @NotNull(message = "Kurs musi mieć ustawioną widoczność")
     private Visibility visibility;
 
+    boolean accessToModifyCourse;
+
 }

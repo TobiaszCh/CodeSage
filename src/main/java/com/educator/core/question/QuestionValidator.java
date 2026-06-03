@@ -36,8 +36,10 @@ public class QuestionValidator {
         if (questionsDto.isEmpty()) {
             throw new CodeSageRuntimeException("QuestionDto list is empty");
         }
-        for(QuestionDto questionDto: questionsDto) {
-            if (questionDto == null) throw new CodeSageRuntimeException("QuestionDto is null");
+        for (QuestionDto questionDto : questionsDto) {
+            if (questionDto == null) {
+                throw new CodeSageRuntimeException("QuestionDto is null");
+            }
         }
     }
 

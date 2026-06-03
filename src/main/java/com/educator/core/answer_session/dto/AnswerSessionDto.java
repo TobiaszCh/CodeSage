@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class AnswerSessionDto {
 
     private Long id;
-
+    //TODO zamienić na wrapper
     private int allAnswers;
 
     private int correctAnswers;

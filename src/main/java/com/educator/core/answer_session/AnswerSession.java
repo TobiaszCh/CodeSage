@@ -18,11 +18,13 @@ import java.time.temporal.ChronoUnit;
 @AllArgsConstructor
 public class AnswerSession {
 
+    private static final int BORDER_SEVEN_DAYS = 7;
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_seq_generator")
     @SequenceGenerator(name = "answer_seq_generator", sequenceName = "answer_session_seq", allocationSize = 1)
     private Long id;
-
+    //TODO int to wrapper
     private int allAnswers;
 
     private int correctAnswers;
@@ -38,7 +40,6 @@ public class AnswerSession {
     @ManyToOne
     private Subject subject;
 
-    private static final int BORDER_SEVEN_DAYS = 7;
 
     public SubjectCompletedAge getCompletedAge(LocalDate now) {
         long days = ChronoUnit.DAYS.between(this.sessionStartDate, now);

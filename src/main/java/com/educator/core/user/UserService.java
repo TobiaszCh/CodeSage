@@ -5,6 +5,7 @@ import com.educator.core.course.FirstCourseCreator;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.exception.CodeSageUserException;
 import com.educator.core.outbox_event.OutboxEventService;
+import com.educator.core.outbox_event.OutboxEventType;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
 import com.educator.core.user.dto.UsernameDto;
@@ -68,7 +69,7 @@ public class UserService {
         }
         userRepository.save(hashingPassword(registerDto));
         firstCourseCreator.createFirstCourse(registerDto.getUsername());
-        outboxEventService.createOutboxEvent(registerDto.getUsername());
+        outboxEventService.createOutboxEvent(registerDto.getUsername(), OutboxEventType.EMAIL);
     }
 
     private User hashingPassword(RegisterDto registerDto) {
@@ -106,7 +107,7 @@ public class UserService {
             User user = User.builder().username(email).role(Role.USER).build();
             userRepository.save(user);
             firstCourseCreator.createFirstCourse(user.getUsername());
-            outboxEventService.createOutboxEvent(user.getUsername());
+            outboxEventService.createOutboxEvent(user.getUsername(), OutboxEventType.EMAIL);
         }
     }
 

@@ -5,8 +5,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import software.amazon.awssdk.core.exception.SdkException;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.io.IOException;
@@ -36,6 +38,20 @@ public class S3Service {
         }
         catch (IOException e) {
             throw new CodeSageRuntimeException("Cannot upload course image to S3: " + e);
+        }
+    }
+
+    public void deleteFile(String imageUrl) {
+        try {
+            String key = imageUrl.replace(urlAws, "");
+            s3Client.deleteObject(DeleteObjectRequest.builder()
+                    .bucket(bucket)
+                    .key(key)
+                    .build()
+            );
+        }
+        catch (SdkException e) {
+            throw new CodeSageRuntimeException("Cannot delete course image to S3: " + e);
         }
     }
 

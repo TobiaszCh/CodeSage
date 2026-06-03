@@ -4,7 +4,8 @@ public enum OutboxEventStatus {
 
     NEW,
 
-    SENT,
+    EXECUTED,
 
     FAILED
+
 }

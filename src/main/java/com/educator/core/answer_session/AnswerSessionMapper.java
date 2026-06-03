@@ -36,6 +36,9 @@ public class AnswerSessionMapper {
     }
 
     public List<AnswerSessionDto> mapToListDtoAnswerSession(List<AnswerSession> answerSession) {
-        return answerSession.stream().map(this::mapToDtoAnswerSession).collect(Collectors.toList());
+        return answerSession.stream()
+                .map(this::mapToDtoAnswerSession)
+                .collect(Collectors.toList());
     }
+
 }

@@ -1,0 +1,15 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="add-new-column-to-course-table" author="Tobiasz">
+        <addColumn tableName="course">
+            <column name="owner_id" type="BIGINT">
+                <constraints foreignKeyName="fk_course_owner_id" references="users(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

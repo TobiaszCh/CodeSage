@@ -5,7 +5,6 @@ import com.educator.core.answer.AnswerRepository;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.question.Question;
 import com.educator.core.question.QuestionRepository;
-import com.educator.core.s3.S3Service;
 import com.educator.core.subject.Subject;
 import com.educator.core.subject.SubjectRepository;
 import com.educator.core.user.User;
@@ -13,8 +12,6 @@ import com.educator.core.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -42,7 +39,7 @@ public class FirstCourseCreator {
     }
 
     private void createFirstCourse(User user) {
-        Course course1 = courseRepository.save(Course.builder()
+        Course course = courseRepository.save(Course.builder()
                 .displayName("Java")
                 .description("Kurs wprowadza w podstawy języka Java w sposób prosty i uporządkowany." +
                         " Obejmuje kluczowe zagadnienia, takie jak składnia, zmienne, typy danych," +
@@ -52,8 +49,9 @@ public class FirstCourseCreator {
                         " niezbędne do dalszej nauki technologii backendowych.")
                 .imageUrl("https://codesage-course-images.s3.eu-central-1.amazonaws.com/course/default/banner-java.png")
                 .visibility(Visibility.DEFAULT)
-                .users(List.of(user)).build());
-        createThreeSubjects(course1);
+                .owner(user)
+                .build());
+        createThreeSubjects(course);
     }
 
     private void createThreeSubjects(Course course) {

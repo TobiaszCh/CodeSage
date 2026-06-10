@@ -35,8 +35,12 @@ public class Course extends BaseStatusEntity {
     @ManyToMany
     @JoinTable(name = "user_course",
             joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<User> users;
+
+    @ManyToOne
+    private User owner;
 
 }
 

@@ -15,14 +15,27 @@ public class CourseValidator {
 
     private static final List<String> KIND_OF_FILES = List.of("image/jpg", "image/jpeg", "image/png", "image/webp");
 
-    public void validateCourseDetails(CourseDto courseDto, MultipartFile file) {
-        assertNotNullAndEmpty(courseDto, file);
-        validateImage(file);
+    public void validateCourseDetailsInCreate(CourseDto courseDto, MultipartFile file) {
+        assertNotNullAndEmptyInCreate(courseDto, file);
+        validateImageInCreate(file);
         courseDto.setDisplayName(courseDto.getDisplayName().trim());
         courseDto.setDescription(courseDto.getDescription().trim());
     }
 
-    private void validateImage(MultipartFile file) {
+    public void validateCourseDetailsInUpdate(CourseDto courseDto, MultipartFile file) {
+        assertNotNullAndEmptyInUpdate(courseDto, file);
+        validateImageInUpdate(file);
+        courseDto.setDisplayName(courseDto.getDisplayName().trim());
+        courseDto.setDescription(courseDto.getDescription().trim());
+    }
+
+    private void validateImageInUpdate(MultipartFile file) {
+        if (!file.isEmpty()) {
+            validateImageInCreate(file);
+        }
+    }
+
+    private void validateImageInCreate(MultipartFile file) {
         if (file.getSize() > IMAGE_SIZE) {
             throw CodeSageUserException.withUserMessage("Rozmiar obrazu przekracza 5MB");
         }
@@ -31,15 +44,19 @@ public class CourseValidator {
         }
     }
 
-    private void assertNotNullAndEmpty(CourseDto courseDto, MultipartFile file) {
+    private void assertNotNullAndEmptyInCreate(CourseDto courseDto, MultipartFile file) {
+        assertNotNullAndEmptyInUpdate(courseDto, file);
+        if (file.isEmpty()) {
+            throw CodeSageUserException.withUserMessage("Obraz musi zostać dodany");
+        }
+    }
+
+    private void assertNotNullAndEmptyInUpdate(CourseDto courseDto, MultipartFile file) {
         if (courseDto == null) {
             throw new CodeSageRuntimeException("CourseDto is null");
         }
         if (file == null) {
             throw new CodeSageRuntimeException("MultipartFile is null");
-        }
-        if (file.isEmpty()) {
-            throw CodeSageUserException.withUserMessage("Obraz musi zostać dodany");
         }
     }
 

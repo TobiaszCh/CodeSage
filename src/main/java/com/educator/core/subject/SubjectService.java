@@ -1,5 +1,7 @@
 package com.educator.core.subject;
 
+import com.educator.aspect.EntityType;
+import com.educator.aspect.ModificationAccess;
 import com.educator.auth.AuthService;
 import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
@@ -34,21 +36,15 @@ public class SubjectService {
 
     private final QuestionService questionService;
 
-    public List<SubjectDto> getAllSubjects() {
-        return subjectMapper.mapToDtoSubjectList(subjectRepository.findAll());
-    }
-
+    @ModificationAccess(objectType = EntityType.COURSE, idExpression = "#subjectDto.courseId")
     public Long createSubject(SubjectDto subjectDto) {
         subjectDto.setDisplayName(subjectDto.getDisplayName().trim());
         return subjectRepository.save(subjectMapper.mapToSubject(subjectDto)).getId();
     }
 
+    @ModificationAccess(objectType = EntityType.SUBJECT, idExpression = "#id")
     public void deleteSubjectById(Long id) {
         subjectRepository.deleteById(id);
-    }
-
-    public void deleteAllSubjects() {
-        subjectRepository.deleteAll();
     }
 
     public List<SubjectDto> getSubjectsFilterByCourseId(Long courseId) {
@@ -80,7 +76,7 @@ public class SubjectService {
     }
 
     public Long getCourseId(Long id) {
-        if(id == null) {
+        if (id == null) {
             throw new CodeSageRuntimeException("Id is null");
         }
         return subjectRepository.findCourseIdBySubjectId(id).orElseThrow(
@@ -93,14 +89,15 @@ public class SubjectService {
     }
 
     @Transactional
+    @ModificationAccess(objectType = EntityType.SUBJECT, idExpression = "#id")
     public Long updateSubjectDetails(Long id, SubjectDetailsDto subjectDetailsDto) {
         Subject updateSubject = subjectRepository.findById(id).orElseThrow(
                 () -> new CodeSageRuntimeException("This subject doesn't exist"));
-        if(subjectDetailsDto == null) {
+        if (subjectDetailsDto == null) {
             throw new CodeSageRuntimeException("SubjectDetailsDto is null");
         }
         updateSubject.setDisplayName(subjectDetailsDto.getDisplayName().trim());
-        return questionService.updateQuestions(subjectDetailsDto.getQuestions(), id);
+        return questionService.updateQuestions(id, subjectDetailsDto.getQuestions());
     }
 }
 

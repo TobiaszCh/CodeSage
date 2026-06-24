@@ -1,12 +1,14 @@
 package com.educator.core.course;
 
+import com.educator.aspect.EntityType;
+import com.educator.aspect.ModificationAccess;
 import com.educator.auth.AuthService;
 import com.educator.core.course.dto.CourseDto;
 import com.educator.core.course.dto.DisplayNameCourseDto;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.outbox_event.OutboxEventService;
 import com.educator.core.outbox_event.OutboxEventType;
-import com.educator.core.s3.S3Service;
+import com.educator.s3.S3Service;
 import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,37 +37,39 @@ public class CourseService {
 
 
     public CourseDto getCourseById(Long id) {
-        User ownerCourse = authService.getLoggedUser();
+        User loggedUser = authService.getLoggedUser();
         Course course = Optional.ofNullable(id)
                 .flatMap(courseRepository::findById)
                 .orElseThrow(() -> new CodeSageRuntimeException("Entity with id: " + id + " doesn't exist"));
-        return courseMapper.mapToDtoCourse(course, canModify(course, ownerCourse));
+        return courseMapper.mapToDtoCourse(course, canModify(course, loggedUser));
     }
 
     public List<DisplayNameCourseDto> getAllCourses() {
-        User ownerCourse = authService.getLoggedUser();
-        List<Course> course = courseRepository.findAvailableCourses(ownerCourse.getId());
+        User loggedUser = authService.getLoggedUser();
+        List<Course> course = courseRepository.findAvailableCourses(loggedUser.getId());
         return course.stream()
                 .map(result -> courseMapper.mapToDtoDisplayNameCourse(
-                        result, canModify(result, ownerCourse)
+                        result, canModify(result, loggedUser)
                 ))
                 .collect(Collectors.toList());
     }
 
+    @ModificationAccess(objectType = EntityType.COURSE, idExpression = "#id")
     public void deleteCourseById(Long id) {
         courseRepository.deleteById(id);
     }
 
     @Transactional
     public Long createCourse(CourseDto courseDto, MultipartFile file) {
-        User ownerCourse = authService.getLoggedUser();
+        User loggedUser = authService.getLoggedUser();
         courseValidator.validateCourseDetailsInCreate(courseDto, file);
-        Course course = courseRepository.save(courseMapper.mapToCourse(courseDto, ownerCourse));
+        Course course = courseRepository.save(courseMapper.mapToCourse(courseDto, loggedUser));
         course.setImageUrl(s3Service.uploadFile(course.getId(), file));
         return course.getId();
     }
 
     @Transactional
+    @ModificationAccess(objectType = EntityType.COURSE, idExpression = "#id")
     public Long updateCourse(Long id, CourseDto courseDto, MultipartFile file) {
         courseValidator.validateCourseDetailsInUpdate(courseDto, file);
         Course course = Optional.ofNullable(id)

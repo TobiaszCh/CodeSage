@@ -1,4 +1,4 @@
-package com.educator.core.s3;
+package com.educator.s3;
 
 import com.educator.core.exception.CodeSageRuntimeException;
 import lombok.RequiredArgsConstructor;

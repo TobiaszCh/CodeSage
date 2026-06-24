@@ -1,7 +1,7 @@
 package com.educator.core.outbox_event;
 
 import com.educator.core.exception.CodeSageRuntimeException;
-import com.educator.core.s3.S3Service;
+import com.educator.s3.S3Service;
 import com.educator.email.EmailService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

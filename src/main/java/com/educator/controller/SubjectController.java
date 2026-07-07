@@ -18,11 +18,6 @@ public class SubjectController {
 
     private final SubjectService subjectService;
 
-    @GetMapping
-    public List<SubjectDto> getAllSubjects() {
-        return subjectService.getAllSubjects();
-    }
-
     @PostMapping
     public Long createSubject(@Valid @RequestBody SubjectDto subjectDto) {
         return subjectService.createSubject(subjectDto);
@@ -31,11 +26,6 @@ public class SubjectController {
     @DeleteMapping("/{id}")
     public void deleteSubjectById(@PathVariable Long id) {
         subjectService.deleteSubjectById(id);
-    }
-
-    @DeleteMapping
-    public void deleteAllSubjects() {
-        subjectService.deleteAllSubjects();
     }
 
     @GetMapping("/by-course/{courseId}")

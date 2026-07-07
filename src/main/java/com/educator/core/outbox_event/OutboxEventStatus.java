@@ -6,6 +6,11 @@ public enum OutboxEventStatus {
 
     EXECUTED,
 
-    FAILED
+    FAILED,
+    /**
+     * @Deprecated
+     */
+    @Deprecated(forRemoval = true)
+    SENT
 
 }

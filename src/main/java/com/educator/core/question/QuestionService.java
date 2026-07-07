@@ -1,5 +1,7 @@
 package com.educator.core.question;
 
+import com.educator.aspect.EntityType;
+import com.educator.aspect.ModificationAccess;
 import com.educator.core.answer.AnswerService;
 import com.educator.core.answer.AnswerValidator;
 import com.educator.core.answer_session.AnswerSession;
@@ -40,6 +42,7 @@ public class QuestionService {
     }
 
     @Transactional
+    @ModificationAccess(objectType = EntityType.SUBJECT, idExpression = "#questionDto[0].subjectId")
     public Long createQuestions(List<QuestionDto> questionDto) {
         questionValidator.validateAllSubjectIdEquals(questionDto);
         questionValidator.validateDistinctQuestions(questionDto);
@@ -52,7 +55,7 @@ public class QuestionService {
                 .orElseThrow(() -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }
 
-    public Long updateQuestions(List<QuestionDto> questionDto, Long subjectId) {
+    public Long updateQuestions(Long subjectId, List<QuestionDto> questionDto) {
         questionValidator.validateAllSubjectIdEquals(questionDto);
         questionValidator.validateDistinctQuestions(questionDto);
         questionDto.forEach((result) -> {

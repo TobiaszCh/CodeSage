@@ -1,0 +1,19 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="update-data-in-outbox_even-columns" author="Tobiasz">
+        <sql>
+            update outbox_event
+            SET outbox_event_status = 'EXECUTED'
+            WHERE outbox_event_status = 'SENT';
+
+            update outbox_event
+            SET outbox_event_type = 'EMAIL'
+            WHERE outbox_event_type IS NULL;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

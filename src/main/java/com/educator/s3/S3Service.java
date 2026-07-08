@@ -11,6 +11,7 @@ import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -39,6 +40,16 @@ public class S3Service {
         catch (IOException e) {
             throw new CodeSageRuntimeException("Cannot upload course image to S3: " + e);
         }
+    }
+
+    public String uploadFile(Long courseId, File file) {
+        String key = "course/" + courseId + "/" + UUID.randomUUID() + "-" + file.getName();
+        s3Client.putObject(PutObjectRequest.builder()
+                .bucket(bucket)
+                .key(key)
+                .build(), RequestBody.fromFile(file)
+        );
+        return urlAws + key;
     }
 
     public void deleteFile(String imageUrl) {

@@ -30,8 +30,8 @@ public class ModificationAccessAspect {
 
     private final SubjectRepository subjectRepository;
 
-    @Before("@annotation(access)")
-    public void before(JoinPoint joinPoint, ModificationAccess access) {
+    @Before("@annotation(modificationAccess)")
+    public void before(JoinPoint joinPoint, ModificationAccess modificationAccess) {
 
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         String[] parameterNames = signature.getParameterNames();
@@ -47,9 +47,9 @@ public class ModificationAccessAspect {
         }
 
         ExpressionParser expressionParser = new SpelExpressionParser();
-        Long id = expressionParser.parseExpression(access.idExpression()).getValue(context, Long.class);
+        Long id = expressionParser.parseExpression(modificationAccess.idExpression()).getValue(context, Long.class);
 
-        switch (access.objectType()) {
+        switch (modificationAccess.objectType()) {
             case COURSE:
                 checkAccessToCourseMethod(id);
                 break;

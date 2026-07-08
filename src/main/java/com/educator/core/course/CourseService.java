@@ -81,7 +81,9 @@ public class CourseService {
         if (!file.isEmpty()) {
             String oldImageUrl = course.getImageUrl();
             course.setImageUrl(s3Service.uploadFile(id, file));
-            outboxEventService.createOutboxEvent(oldImageUrl, OutboxEventType.OLD_IMAGE_URL);
+            if(oldImageUrl != null && !oldImageUrl.isEmpty()) {
+                outboxEventService.createOutboxEvent(oldImageUrl, OutboxEventType.OLD_IMAGE_URL);
+            }
         }
         return course.getId();
     }

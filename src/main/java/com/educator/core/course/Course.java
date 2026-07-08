@@ -25,11 +25,22 @@ public class Course extends BaseStatusEntity {
 
     private String displayName;
 
+    private String description;
+
+    private String imageUrl;
+
+    @Enumerated(value = EnumType.STRING)
+    private Visibility visibility;
+
     @ManyToMany
     @JoinTable(name = "user_course",
             joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<User> users;
+
+    @ManyToOne
+    private User owner;
 
 }
 

@@ -19,7 +19,11 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = {"http://localhost:4200", "https://code-sage-front-a970cdb2bc71.herokuapp.com"}, allowCredentials = "true")
+@CrossOrigin(origins = {
+        "http://localhost:4200",
+        "https://code-sage-front-a970cdb2bc71.herokuapp.com",
+        "https://www.codesage.pl"
+}, allowCredentials = "true")
 public class UserController {
 
     private final UserService userService;
@@ -31,13 +35,14 @@ public class UserController {
         userService.login(loginDto);
         return ResponseEntity.ok(Map.of("message","Zalogowano pomyślnie"));
     }
-
+//TODO extract private method
     @PostMapping("/logout")
     public ResponseEntity<Map<String,String>> logout(HttpServletRequest request, HttpServletResponse response) {
         if(request != null) {
             HttpSession session = request.getSession(false);
             if (session != null) {
                 session.invalidate();
+                //TODO Magic String
                 Cookie deleteCookie = new Cookie("JSESSIONID", "");
                 deleteCookie.setSecure(true);
                 deleteCookie.setMaxAge(0);
@@ -47,7 +52,7 @@ public class UserController {
                 throw new CodeSageRuntimeException("Session doesn't have value. Object is null");
             }
         } else {
-            throw new CodeSageRuntimeException("Request doesn't have value. Object is null");
+            throw new CodeSageRuntimeException("Request doesn't have value. HttpServletRequest is null");
         }
         return ResponseEntity.ok(Map.of("message","Wylogowano pomyślnie"));
     }

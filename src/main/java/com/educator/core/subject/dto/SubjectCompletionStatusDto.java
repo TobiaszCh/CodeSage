@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @AllArgsConstructor
-public class CheckCompletedSessionsDto {
+public class SubjectCompletionStatusDto {
 
     private Long id;
 
@@ -19,6 +19,4 @@ public class CheckCompletedSessionsDto {
 
     @NotNull
     private SubjectCompletedAge subjectCompletedAge;
-
-
 }

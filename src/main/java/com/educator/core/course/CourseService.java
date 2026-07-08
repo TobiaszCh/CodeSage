@@ -1,13 +1,23 @@
 package com.educator.core.course;
 
+import com.educator.aspect.EntityType;
+import com.educator.aspect.ModificationAccess;
 import com.educator.auth.AuthService;
+import com.educator.core.course.dto.CourseDto;
+import com.educator.core.course.dto.DisplayNameCourseDto;
 import com.educator.core.exception.CodeSageRuntimeException;
+import com.educator.core.outbox_event.OutboxEventService;
+import com.educator.core.outbox_event.OutboxEventType;
+import com.educator.s3.S3Service;
 import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,40 +29,74 @@ public class CourseService {
 
     private final AuthService authService;
 
+    private final S3Service s3Service;
+
+    private final CourseValidator courseValidator;
+
+    private final OutboxEventService outboxEventService;
+
+
     public CourseDto getCourseById(Long id) {
-        return courseMapper.mapToDtoCourse(courseRepository.findById(id)
-                .orElseThrow(() -> new CodeSageRuntimeException("This course doesn't exist")));
-    }
-
-    public List<CourseDto> getWithPhrase(String phrase) {
-        List<Course> courses =  courseRepository.findAll();
-        List<Course> listWithPhrases = new ArrayList<>();
-        for(Course course: courses) {
-            if(course.getDisplayName().contains(phrase)) {
-                listWithPhrases.add(course);
-            }
-        }
-        return courseMapper.mapToListDtoCourse(listWithPhrases);
-    }
-
-    public List<CourseDto> getAllMyCourses() {
         User loggedUser = authService.getLoggedUser();
-        return courseMapper.mapToListDtoCourse(courseRepository.findAllByUsersContainsOrderByIdAsc(loggedUser));
+        Course course = Optional.ofNullable(id)
+                .flatMap(courseRepository::findById)
+                .orElseThrow(() -> new CodeSageRuntimeException("Entity with id: " + id + " doesn't exist"));
+        return courseMapper.mapToDtoCourse(course, canModify(course, loggedUser));
     }
 
+    public List<DisplayNameCourseDto> getAllCourses() {
+        User loggedUser = authService.getLoggedUser();
+        List<Course> course = courseRepository.findAvailableCourses(loggedUser.getId());
+        return course.stream()
+                .map(result -> courseMapper.mapToDtoDisplayNameCourse(
+                        result, canModify(result, loggedUser)
+                ))
+                .collect(Collectors.toList());
+    }
+
+    @ModificationAccess(objectType = EntityType.COURSE, idExpression = "#id")
     public void deleteCourseById(Long id) {
         courseRepository.deleteById(id);
     }
 
-    public void createMyCourse(CourseDto courseDto) {
+    @Transactional
+    public Long createCourse(CourseDto courseDto, MultipartFile file) {
         User loggedUser = authService.getLoggedUser();
-        courseRepository.save(courseMapper.mapToCourse(courseDto, List.of(loggedUser)));
+        courseValidator.validateCourseDetailsInCreate(courseDto, file);
+        Course course = courseRepository.save(courseMapper.mapToCourse(courseDto, loggedUser));
+        course.setImageUrl(s3Service.uploadFile(course.getId(), file));
+        return course.getId();
     }
 
-    public void updateCourse(Long id, CourseDto courseDto) {
-        Course course = courseRepository.findById(id).orElseThrow(() -> new CodeSageRuntimeException("This course doesn't exist"));
+    @Transactional
+    @ModificationAccess(objectType = EntityType.COURSE, idExpression = "#id")
+    public Long updateCourse(Long id, CourseDto courseDto, MultipartFile file) {
+        courseValidator.validateCourseDetailsInUpdate(courseDto, file);
+        Course course = Optional.ofNullable(id)
+                .flatMap(courseRepository::findById)
+                .orElseThrow(() -> new CodeSageRuntimeException("Entity with id: " + id + " doesn't exist"));
         course.setDisplayName(courseDto.getDisplayName());
-        courseRepository.save(course);
+        course.setDescription(courseDto.getDescription());
+        course.setVisibility(courseDto.getVisibility());
+        if (!file.isEmpty()) {
+            String oldImageUrl = course.getImageUrl();
+            course.setImageUrl(s3Service.uploadFile(id, file));
+            outboxEventService.createOutboxEvent(oldImageUrl, OutboxEventType.OLD_IMAGE_URL);
+        }
+        return course.getId();
+    }
+
+    private boolean canModify(Course course, User user) {
+        if (course == null) {
+            throw new CodeSageRuntimeException("Course is null");
+        }
+        if (user == null) {
+            throw new CodeSageRuntimeException("User is null");
+        }
+        if (course.getOwner() == null) {
+            throw new CodeSageRuntimeException("Course doesn't have own owner");
+        }
+        return course.getOwner().getId().equals(user.getId());
     }
 
 }

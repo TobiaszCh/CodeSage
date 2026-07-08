@@ -19,7 +19,7 @@ public class Answer {
     private Long id;
 
     private String displayName;
-
+//TODO rename but keep column name
     private boolean isCorrect;
 
     @ManyToOne

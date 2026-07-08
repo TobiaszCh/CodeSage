@@ -1,16 +1,20 @@
 package com.educator.core.subject;
 
+import com.educator.aspect.EntityType;
+import com.educator.aspect.ModificationAccess;
 import com.educator.auth.AuthService;
 import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.exception.CodeSageRuntimeException;
-import com.educator.core.subject.dto.CheckCompletedSessionsDto;
+import com.educator.core.question.QuestionService;
+import com.educator.core.subject.dto.SubjectCompletionStatusDto;
+import com.educator.core.subject.dto.SubjectDetailsDto;
 import com.educator.core.subject.dto.SubjectDto;
-import com.educator.core.subject.dto.UpdateSubjectDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,50 +34,41 @@ public class SubjectService {
 
     private final SubjectMapper subjectMapper;
 
-    public List<SubjectDto> getAllSubjects() {
-        return subjectMapper.mapToDtoSubjectList(subjectRepository.findAll());
-    }
+    private final QuestionService questionService;
 
+    @ModificationAccess(objectType = EntityType.COURSE, idExpression = "#subjectDto.courseId")
     public Long createSubject(SubjectDto subjectDto) {
+        subjectDto.setDisplayName(subjectDto.getDisplayName().trim());
         return subjectRepository.save(subjectMapper.mapToSubject(subjectDto)).getId();
     }
 
+    @ModificationAccess(objectType = EntityType.SUBJECT, idExpression = "#id")
     public void deleteSubjectById(Long id) {
         subjectRepository.deleteById(id);
-    }
-
-    public void deleteAllSubjects() {
-        subjectRepository.deleteAll();
-    }
-
-    public void updateSubject(Long id, UpdateSubjectDto updateSubjectDisplayNameDto) {
-        Subject subject = subjectRepository.findById(id).orElseThrow(() -> new CodeSageRuntimeException("This subject doesn't exist"));
-        subject.setDisplayName(updateSubjectDisplayNameDto.getDisplayName());
-        subjectRepository.save(subject);
     }
 
     public List<SubjectDto> getSubjectsFilterByCourseId(Long courseId) {
         return subjectMapper.mapToDtoSubjectList(subjectRepository.findByCourseIdOrderByIdAsc(courseId));
     }
 
-    public List<CheckCompletedSessionsDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(Long courseId) {
+    public List<SubjectCompletionStatusDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(Long courseId) {
         List<Long> subjectsIdFilterByCourseId = subjectRepository.findByCourseIdOrderByIdAsc(courseId).stream().map(Subject::getId).collect(Collectors.toList());
         List<AnswerSession> answerSessionsCompletedList = answerSessionRepository.findByStatusAnswerSession(StatusAnswerSession.COMPLETED);
-        return getCheckCompletedSessionsDtos(subjectsIdFilterByCourseId, answerSessionsCompletedList);
+        return getCheckCompletedSessions(subjectsIdFilterByCourseId, answerSessionsCompletedList);
 
     }
 
-    private List<CheckCompletedSessionsDto> getCheckCompletedSessionsDtos(List<Long> subjectsIdFilterByCourseId, List<AnswerSession> answerSessionsCompletedList) {
-        List<CheckCompletedSessionsDto> checkCompletedSessionsDtoList = new ArrayList<>();
+    private List<SubjectCompletionStatusDto> getCheckCompletedSessions(List<Long> subjectsIdFilterByCourseId, List<AnswerSession> answerSessionsCompletedList) {
+        List<SubjectCompletionStatusDto> subjectCompletionStatusDtoList = new ArrayList<>();
         for (AnswerSession answerSessionCompleted : answerSessionsCompletedList) {
             double checkAllAndCorrectAnswers = getCheckAllAndCorrectAnswers(answerSessionCompleted);
             if (checkAllAndCorrectAnswers >= BORDER_FINISHED_SUBJECT && subjectsIdFilterByCourseId.contains(answerSessionCompleted.getSubject().getId())
                     && answerSessionCompleted.getUsers().getId().equals(authService.getLoggedUser().getId())) {
                 SubjectCompletedAge resultCompletedAge = answerSessionCompleted.getCompletedAge(LocalDate.now());
-                checkCompletedSessionsDtoList.add(new CheckCompletedSessionsDto(answerSessionCompleted.getSubject().getId(), answerSessionCompleted.getId(), resultCompletedAge));
+                subjectCompletionStatusDtoList.add(new SubjectCompletionStatusDto(answerSessionCompleted.getSubject().getId(), answerSessionCompleted.getId(), resultCompletedAge));
             }
         }
-        return checkCompletedSessionsDtoList;
+        return subjectCompletionStatusDtoList;
     }
 
     private double getCheckAllAndCorrectAnswers(AnswerSession answerSessionCompleted) {
@@ -81,12 +76,28 @@ public class SubjectService {
     }
 
     public Long getCourseId(Long id) {
-        if(id == null) {
+        if (id == null) {
             throw new CodeSageRuntimeException("Id is null");
         }
         return subjectRepository.findCourseIdBySubjectId(id).orElseThrow(
                 () -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }
 
+    public SubjectDto getSubjectById(Long id) {
+        return subjectMapper.mapToDtoSubject(subjectRepository.findById(id).orElseThrow(
+                () -> new CodeSageRuntimeException("This subject doesn't exist")));
+    }
+
+    @Transactional
+    @ModificationAccess(objectType = EntityType.SUBJECT, idExpression = "#id")
+    public Long updateSubjectDetails(Long id, SubjectDetailsDto subjectDetailsDto) {
+        Subject updateSubject = subjectRepository.findById(id).orElseThrow(
+                () -> new CodeSageRuntimeException("This subject doesn't exist"));
+        if (subjectDetailsDto == null) {
+            throw new CodeSageRuntimeException("SubjectDetailsDto is null");
+        }
+        updateSubject.setDisplayName(subjectDetailsDto.getDisplayName().trim());
+        return questionService.updateQuestions(id, subjectDetailsDto.getQuestions());
+    }
 }
 

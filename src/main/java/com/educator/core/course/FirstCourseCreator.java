@@ -9,11 +9,12 @@ import com.educator.core.subject.Subject;
 import com.educator.core.subject.SubjectRepository;
 import com.educator.core.user.User;
 import com.educator.core.user.UserRepository;
+import com.educator.s3.S3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.io.File;
 
 @Component
 @RequiredArgsConstructor
@@ -29,6 +30,9 @@ public class FirstCourseCreator {
 
     private final UserRepository userRepository;
 
+    private final S3Service s3Service;
+
+
     @Transactional
     public void createFirstCourse(String username) {
         if (username == null) {
@@ -40,8 +44,20 @@ public class FirstCourseCreator {
     }
 
     private void createFirstCourse(User user) {
-        Course course1 = courseRepository.save(Course.builder().displayName("Java").users(List.of(user)).build());
-        createThreeSubjects(course1);
+        File file = new File("src/main/resources/banner-java.png");
+        Course course = courseRepository.save(Course.builder()
+                .displayName("Java")
+                .description("Kurs wprowadza w podstawy języka Java w sposób prosty i uporządkowany." +
+                        " Obejmuje kluczowe zagadnienia, takie jak składnia, zmienne, typy danych," +
+                        " instrukcje warunkowe, pętle oraz podstawy programowania obiektowego." +
+                        " Nauka oparta jest na praktycznych przykładach, które pozwalają szybko zrozumieć" +
+                        " działanie kodu i zacząć tworzyć własne rozwiązania. Kurs buduje solidne fundamenty" +
+                        " niezbędne do dalszej nauki technologii backendowych.")
+                .visibility(Visibility.PRIVATE)
+                .owner(user)
+                .build());
+        createThreeSubjects(course);
+        course.setImageUrl(s3Service.uploadFile(course.getId(), file));
     }
 
     private void createThreeSubjects(Course course) {

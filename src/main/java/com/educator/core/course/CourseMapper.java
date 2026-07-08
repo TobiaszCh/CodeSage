@@ -1,30 +1,43 @@
 package com.educator.core.course;
+
+import com.educator.core.course.dto.CourseDto;
+import com.educator.core.course.dto.DisplayNameCourseDto;
 import com.educator.core.user.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor
 public class CourseMapper {
 
-    public CourseDto mapToDtoCourse(Course course) {
+    public CourseDto mapToDtoCourse(Course course, boolean accessToModifyCourse) {
         return new CourseDto(
                 course.getId(),
-                course.getDisplayName());
+                course.getDisplayName(),
+                course.getDescription(),
+                course.getImageUrl(),
+                course.getVisibility(),
+                accessToModifyCourse
+        );
     }
 
-    public Course mapToCourse(CourseDto courseDto, List<User> users) {
+    public Course mapToCourse(CourseDto courseDto, User ownerCourse) {
         return Course.builder()
                 .id(courseDto.getId())
                 .displayName(courseDto.getDisplayName())
-                .users(users)
+                .description(courseDto.getDescription())
+                .visibility(courseDto.getVisibility())
+                .owner(ownerCourse)
                 .build();
 
     }
 
-    public List<CourseDto> mapToListDtoCourse(List<Course> course) {
-        return course.stream()
-                .map(this::mapToDtoCourse)
-                .collect(Collectors.toList());
+    public DisplayNameCourseDto mapToDtoDisplayNameCourse(Course course, boolean accessToModifyCourse) {
+        return new DisplayNameCourseDto(
+                course.getId(),
+                course.getDisplayName(),
+                accessToModifyCourse
+        );
     }
+
 }

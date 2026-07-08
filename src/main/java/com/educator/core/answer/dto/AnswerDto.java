@@ -12,9 +12,9 @@ public class AnswerDto {
 
     private Long id;
     @Size(max = 200)
-    @NotBlank(message = "Odpowiedź nie może być pusta")
+    @NotBlank(message = "Odpowiedź musi zawierać wartość")
     private String displayName;
-
+//TODO rename isCorrect
     @JsonProperty("isCorrect")
     private boolean isCorrect;
 

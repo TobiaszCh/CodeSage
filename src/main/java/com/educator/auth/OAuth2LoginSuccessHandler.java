@@ -3,6 +3,7 @@ package com.educator.auth;
 import com.educator.core.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
+@ConfigurationProperties
 @RequiredArgsConstructor
 public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -21,11 +23,13 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     private final UserService userService;
 
+    private static final String EMAIL = "email";
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         Object userObject = authentication.getPrincipal();
         if (userObject instanceof OAuth2User) {
-            String email = ((OAuth2User) userObject).getAttribute("email");
+            String email = ((OAuth2User) userObject).getAttribute(EMAIL);
             userService.loginByExternalApi(email);
         }
         response.sendRedirect(redirectedUrl);

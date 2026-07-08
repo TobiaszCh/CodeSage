@@ -1,7 +1,6 @@
 package com.educator.auth;
 
 import com.educator.core.exception.CodeSageRuntimeException;
-import com.educator.core.user.Role;
 import com.educator.core.user.User;
 import com.educator.core.user.UserRepository;
 import lombok.AllArgsConstructor;
@@ -32,14 +31,11 @@ public class AuthService  {
             throw new CodeSageRuntimeException("Authenticated principal is not type of User and OAuth2User");
         }
     }
+
     public boolean isUserLoggedIn() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object userObject = authentication.getPrincipal();
         return userObject instanceof User || userObject instanceof OAuth2User;
-    }
-
-    public static User getLoggedAdmin() {
-        return User.builder().id(-2L).username("sdcscsdcscs@wp.pl").password("Benfica15x,").role(Role.ADMIN).build();
     }
 
 }

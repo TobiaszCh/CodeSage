@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -52,14 +52,17 @@ public class AnswerSessionService {
     public void deleteById(Long id) {
         answerSessionRepository.deleteById(id);
     }
-
+//TODO lack of Transactional
     public Long selectQuestionAnswer(Long id, QuestionAnswerSelectDto questionAnswerSelectDto) {
         AnswerSession answerSessionUpdate = answerSessionRepository.getById(id);
         boolean correctAnswer = answerRepository.getById(questionAnswerSelectDto.getAnswerId()).isCorrect();
         changeAllAndCorrectAnswers(answerSessionUpdate, correctAnswer);
         answerSessionRepository.save(answerSessionUpdate);
         return questionRepository.getById(questionAnswerSelectDto.getQuestionId()).getAnswers()
-                .stream().filter(Answer::isCorrect).mapToLong(Answer::getId).sum();
+                .stream()
+                .filter(Answer::isCorrect)
+                .mapToLong(Answer::getId)
+                .sum();
     }
 
     private static void changeAllAndCorrectAnswers(AnswerSession answerSessionUpdate, boolean correctAnswer) {
@@ -84,9 +87,9 @@ public class AnswerSessionService {
     }
 
     public AllPointsAnswerSessionDto getPoints(Long id) {
-        if(id == null) {
-            throw new CodeSageRuntimeException("Id is null");
-        }
+        //TODO write utils method for null check
+        //TODO Optional.ofNullable(id).map(repo::findById).orElseThrow(() -> "entity with " + id + " not exists");
+        Objects.requireNonNull(id, "AnswerSessionId");
         AnswerSession answerSession = answerSessionRepository.findById(id)
                 .orElseThrow(() -> new CodeSageRuntimeException("This answer session doesn't exist"));
         return new AllPointsAnswerSessionDto(answerSession.getAllAnswers(), answerSession.getCorrectAnswers());
@@ -96,6 +99,7 @@ public class AnswerSessionService {
         if(id == null) {
             throw new CodeSageRuntimeException("Id is null");
         }
+        //TODO optional map
         Long subjectId = answerSessionRepository.findSubjectIdByAnswerSessionId(id).orElseThrow(
                 () -> new CodeSageRuntimeException("In this answer session subjectId doesn't exist"));
         return subjectRepository.findCourseIdBySubjectId(subjectId).orElseThrow(

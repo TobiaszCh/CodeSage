@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 public class RegisterDto {
 
     @NotBlank
-    @Email(message = "It isn't email")
+    @Email(message = "Wartość nie jest emailem")
     private String username;
 
     @NotBlank

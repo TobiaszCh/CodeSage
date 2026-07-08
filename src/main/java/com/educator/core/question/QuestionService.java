@@ -1,5 +1,7 @@
 package com.educator.core.question;
 
+import com.educator.aspect.EntityType;
+import com.educator.aspect.ModificationAccess;
 import com.educator.core.answer.AnswerService;
 import com.educator.core.answer.AnswerValidator;
 import com.educator.core.answer_session.AnswerSession;
@@ -40,6 +42,7 @@ public class QuestionService {
     }
 
     @Transactional
+    @ModificationAccess(objectType = EntityType.SUBJECT, idExpression = "#questionDto[0].subjectId")
     public Long createQuestions(List<QuestionDto> questionDto) {
         questionValidator.validateAllSubjectIdEquals(questionDto);
         questionValidator.validateDistinctQuestions(questionDto);
@@ -52,15 +55,14 @@ public class QuestionService {
                 .orElseThrow(() -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }
 
-    @Transactional
-    public Long updateQuestions(List<QuestionDto> questionDto) {
+    public Long updateQuestions(Long subjectId, List<QuestionDto> questionDto) {
         questionValidator.validateAllSubjectIdEquals(questionDto);
         questionValidator.validateDistinctQuestions(questionDto);
         questionDto.forEach((result) -> {
             answerValidator.validateDistinctAnswers(result);
             updateQuestion(result);
         });
-        return subjectRepository.findCourseIdBySubjectId(questionDto.get(0).getSubjectId())
+        return subjectRepository.findCourseIdBySubjectId(subjectId)
                 .orElseThrow(() -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }
 
@@ -88,7 +90,7 @@ public class QuestionService {
 
     public boolean hasQuestionsInSubject(Long subjectId) {
         if (subjectId == null) {
-            throw new CodeSageRuntimeException("Object is null");
+            throw new CodeSageRuntimeException("Long subjectId is null");
         }
         return questionRepository.countBySubjectId(subjectId) == MAX_VALUE_ALL_QUESTIONS;
     }

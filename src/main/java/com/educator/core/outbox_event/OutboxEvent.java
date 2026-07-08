@@ -18,12 +18,15 @@ public class OutboxEvent {
     @SequenceGenerator(name = "outbox_event_seq_generator", sequenceName = "outbox_event_seq", allocationSize = 1)
     private Long id;
 
-    private String email;
+    private String content;
 
     private LocalDateTime createdAt;
 
     @Enumerated(EnumType.STRING)
     private OutboxEventStatus outboxEventStatus;
+
+    @Enumerated(EnumType.STRING)
+    private OutboxEventType outboxEventType;
 
     @PrePersist
     private void prePersistStatusAndCreatedAt() {

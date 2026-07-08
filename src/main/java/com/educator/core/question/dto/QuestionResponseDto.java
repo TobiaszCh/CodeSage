@@ -10,6 +10,7 @@ import lombok.Getter;
 public class QuestionResponseDto {
 
     private boolean finished;
+
     private QuestionWithoutAnswerCorrectDto question;
 
 }

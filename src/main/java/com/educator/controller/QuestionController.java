@@ -1,9 +1,9 @@
 package com.educator.controller;
 
+import com.educator.core.question.dto.QuestionsDto;
 import com.educator.core.question.dto.QuestionDto;
 import com.educator.core.question.QuestionService;
 import com.educator.core.question.dto.QuestionResponseDto;
-import com.educator.core.question.dto.QuestionWithoutAnswerCorrectDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +23,8 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @PostMapping
-    public Long createQuestions(@Valid @RequestBody List<QuestionDto> questionDto) {
-        return questionService.createQuestions(questionDto);
+    public Long createQuestions(@Valid @RequestBody QuestionsDto questionsDto) {
+        return questionService.createQuestions(questionsDto.getQuestions());
     }
 
     @GetMapping("/{subjectId}")
@@ -40,11 +40,6 @@ public class QuestionController {
     @GetMapping("/subjectId/{subjectId}")
     public boolean hasQuestionsInSubject(@PathVariable Long subjectId) {
         return questionService.hasQuestionsInSubject(subjectId);
-    }
-
-    @PatchMapping
-    public Long updateQuestions(@Valid @RequestBody List<QuestionDto> questionDto) {
-        return questionService.updateQuestions(questionDto);
     }
 
 }

@@ -31,7 +31,7 @@ public class Course extends BaseStatusEntity {
 
     @Enumerated(value = EnumType.STRING)
     private Visibility visibility;
-
+    @Deprecated(forRemoval = true)
     @ManyToMany
     @JoinTable(name = "user_course",
             joinColumns = @JoinColumn(name = "course_id"),

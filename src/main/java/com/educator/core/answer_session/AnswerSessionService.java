@@ -20,25 +20,15 @@ import java.util.Objects;
 @Service
 @RequiredArgsConstructor
 public class AnswerSessionService {
-
     private static final int POINT_FOR_GOOD_ANSWER = 1;
-
     private static final int POINT_FOR_ANSWER = 1;
-
     private static final int MAX_VALUE_ALL_ANSWERS = 10;
-
     private final AuthService authService;
-
     private final AnswerSessionRepository answerSessionRepository;
-
     private final QuestionRepository questionRepository;
-
     private final AnswerRepository answerRepository;
-
     private final AnswerSessionMapper answerSessionMapper;
-
     private final SubjectRepository subjectRepository;
-
 
     public List<AnswerSessionDto> getAllAnswer() {
         return answerSessionMapper.mapToListDtoAnswerSession(answerSessionRepository.findAll());
@@ -71,7 +61,7 @@ public class AnswerSessionService {
             answerSessionUpdate.setCorrectAnswers(answerSessionUpdate.getCorrectAnswers() + POINT_FOR_GOOD_ANSWER);
         }
     }
-
+//TODO add @Transactional
     public void updateAnswerSessionStatus(Long id) {
         AnswerSession answerSession = answerSessionRepository.getById(id);
         changeStatus(answerSession);

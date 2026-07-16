@@ -22,19 +22,12 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class CourseService {
-
     private final CourseRepository courseRepository;
-
     private final CourseMapper courseMapper;
-
     private final AuthService authService;
-
     private final S3Service s3Service;
-
     private final CourseValidator courseValidator;
-
     private final OutboxEventService outboxEventService;
-
 
     public CourseDto getCourseById(Long id) {
         User loggedUser = authService.getLoggedUser();
@@ -46,14 +39,14 @@ public class CourseService {
 
     public List<DisplayNameCourseDto> getAllCourses() {
         User loggedUser = authService.getLoggedUser();
-        List<Course> course = courseRepository.findAvailableCourses(loggedUser.getId());
+        List<Course> course = courseRepository.findPublicCourses(loggedUser.getId());
         return course.stream()
                 .map(result -> courseMapper.mapToDtoDisplayNameCourse(
                         result, canModify(result, loggedUser)
                 ))
                 .collect(Collectors.toList());
     }
-
+//TODO move to controller
     @ModificationAccess(objectType = EntityType.COURSE, idExpression = "#id")
     public void deleteCourseById(Long id) {
         courseRepository.deleteById(id);

@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CodeSageUserException.class)
     public ResponseEntity<Map<String, String>> handlerCodeSageUserException(CodeSageUserException ex) {
         log.warn("Business validation failed", ex);
-        return new ResponseEntity<>(Map.of("message", ex.getUserMessage()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(Map.of("message", ex.getUserMessage()), ex.getHttpStatus());
     }
 
     @ExceptionHandler(EmptyResultDataAccessException.class)

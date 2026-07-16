@@ -19,19 +19,12 @@ import java.io.File;
 @Component
 @RequiredArgsConstructor
 public class FirstCourseCreator {
-
     private final CourseRepository courseRepository;
-
     private final SubjectRepository subjectRepository;
-
     private final QuestionRepository questionRepository;
-
     private final AnswerRepository answerRepository;
-
     private final UserRepository userRepository;
-
     private final S3Service s3Service;
-
 
     @Transactional
     public void createFirstCourse(String username) {

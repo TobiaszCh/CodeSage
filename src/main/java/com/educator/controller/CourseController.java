@@ -24,7 +24,7 @@ import java.util.List;
 public class CourseController {
 
     private final CourseService courseService;
-
+//TODO add @ReadAccess annotation
     @GetMapping("/{id}")
     public CourseDto getCourseById(@PathVariable Long id) {
         return courseService.getCourseById(id);

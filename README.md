@@ -1,5 +1,5 @@
-<h1 style="display: flex; align-items: center; gap: 10px">
-    <img src="src/main/resources/readme/logo.png" alt="CodeSage Logo" width = "30px">
+<h1 align="center">
+    <img src="src/main/resources/readme/logo.png" width = "30px">
     <a href="https://www.codesage.pl">CodeSage</a> Backend 
 </h1>
 
@@ -14,16 +14,26 @@ The complete application consists of:
 ## Screenshots 
 
 ### Desktop view
-<div style="display: flex; justify-content: space-around; margin: 10px">
-    <img src="src/main/resources/readme/course-details.JPG" width="45%">
-    <img src="src/main/resources/readme/answer-session.JPG" width="45%">
-</div>
+
+<table>
+  <td align="center">
+    <img src="src/main/resources/readme/course-details.JPG" width="100%">
+  </td>
+  <td align="center">
+    <img src="src/main/resources/readme/answer-session.JPG" width="100%">
+  </td>
+</table>
 
 ### Mobile view
-<div style="display: flex; justify-content: space-around; margin: 10px">
-    <img src="src/main/resources/readme/courses.JPG" width="20%">
-    <img src="src/main/resources/readme/login.JPG" width="20%">
-</div>
+
+<table>
+  <td align="center">
+    <img src="src/main/resources/readme/courses.JPG" width="30%">
+  </td>
+  <td align="center">
+    <img src="src/main/resources/readme/login.jpg" width="30%">
+  </td>
+</table>
 
 ## Features
 

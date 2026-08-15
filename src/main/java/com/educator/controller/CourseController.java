@@ -1,12 +1,12 @@
 package com.educator.controller;
-import com.educator.core.course.dto.CourseDto;
+
+import com.educator.aspect.AccessPolicy;
+import com.educator.aspect.CourseAccess;
+import com.educator.aspect.EntityType;
 import com.educator.core.course.CourseService;
+import com.educator.core.course.dto.CourseDto;
 import com.educator.core.course.dto.DisplayNameCourseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,8 +24,13 @@ import java.util.List;
 public class CourseController {
 
     private final CourseService courseService;
-//TODO add @ReadAccess annotation
+
     @GetMapping("/{id}")
+    @CourseAccess(
+            idEntityType = EntityType.COURSE,
+            idExpression = "#id",
+            accessPolicy = AccessPolicy.LEARN
+    )
     public CourseDto getCourseById(@PathVariable Long id) {
         return courseService.getCourseById(id);
     }
@@ -36,6 +41,11 @@ public class CourseController {
     }
 
     @DeleteMapping("/{id}")
+    @CourseAccess(
+            idEntityType = EntityType.COURSE,
+            idExpression = "#id",
+            accessPolicy = AccessPolicy.MANAGE
+    )
     public void deleteCourseById(@PathVariable Long id) {
         courseService.deleteCourseById(id);
     }
@@ -46,6 +56,11 @@ public class CourseController {
     }
 
     @PatchMapping("/{id}")
+    @CourseAccess(
+            idEntityType = EntityType.COURSE,
+            idExpression = "#id",
+            accessPolicy = AccessPolicy.MANAGE
+    )
     public Long updateCourse(@PathVariable Long id, @Valid @RequestPart CourseDto courseDto, @RequestPart MultipartFile file) {
         return courseService.updateCourse(id, courseDto, file);
     }

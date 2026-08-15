@@ -3,6 +3,7 @@ package com.educator.core.answer.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -11,13 +12,18 @@ import javax.validation.constraints.Size;
 public class AnswerDto {
 
     private Long id;
+
     @Size(max = 200)
     @NotBlank(message = "Odpowiedź musi zawierać wartość")
     private String displayName;
-//TODO rename isCorrect
-    @JsonProperty("isCorrect")
+
     private boolean isCorrect;
 
     private Long questionId;
+
+    @JsonProperty("isCorrect")
+    public boolean isCorrect() {
+        return isCorrect;
+    }
 
 }

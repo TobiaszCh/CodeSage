@@ -1,7 +1,5 @@
 package com.educator.core.subject;
 
-import com.educator.aspect.EntityType;
-import com.educator.aspect.ModificationAccess;
 import com.educator.auth.AuthService;
 import com.educator.core.answer_session.AnswerSession;
 import com.educator.core.answer_session.AnswerSessionRepository;
@@ -25,29 +23,23 @@ import java.util.stream.Collectors;
 public class SubjectService {
 
     private static final double BORDER_FINISHED_SUBJECT = 0.8;
-
     private final AuthService authService;
-
     private final SubjectRepository subjectRepository;
-
     private final AnswerSessionRepository answerSessionRepository;
-
     private final SubjectMapper subjectMapper;
-
     private final QuestionService questionService;
 
-    @ModificationAccess(objectType = EntityType.COURSE, idExpression = "#subjectDto.courseId")
+
     public Long createSubject(SubjectDto subjectDto) {
         subjectDto.setDisplayName(subjectDto.getDisplayName().trim());
         return subjectRepository.save(subjectMapper.mapToSubject(subjectDto)).getId();
     }
 
-    @ModificationAccess(objectType = EntityType.SUBJECT, idExpression = "#id")
     public void deleteSubjectById(Long id) {
         subjectRepository.deleteById(id);
     }
 
-    public List<SubjectDto> getSubjectsFilterByCourseId(Long courseId) {
+    public List<SubjectDto> getSubjectsByCourseId(Long courseId) {
         return subjectMapper.mapToDtoSubjectList(subjectRepository.findByCourseIdOrderByIdAsc(courseId));
     }
 
@@ -89,7 +81,6 @@ public class SubjectService {
     }
 
     @Transactional
-    @ModificationAccess(objectType = EntityType.SUBJECT, idExpression = "#id")
     public Long updateSubjectDetails(Long id, SubjectDetailsDto subjectDetailsDto) {
         Subject updateSubject = subjectRepository.findById(id).orElseThrow(
                 () -> new CodeSageRuntimeException("This subject doesn't exist"));
@@ -99,5 +90,6 @@ public class SubjectService {
         updateSubject.setDisplayName(subjectDetailsDto.getDisplayName().trim());
         return questionService.updateQuestions(id, subjectDetailsDto.getQuestions());
     }
+
 }
 

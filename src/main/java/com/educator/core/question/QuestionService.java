@@ -1,7 +1,5 @@
 package com.educator.core.question;
 
-import com.educator.aspect.EntityType;
-import com.educator.aspect.ModificationAccess;
 import com.educator.core.answer.AnswerService;
 import com.educator.core.answer.AnswerValidator;
 import com.educator.core.answer_session.AnswerSession;
@@ -22,19 +20,12 @@ import java.util.List;
 public class QuestionService {
 
     private static final int MAX_VALUE_ALL_QUESTIONS = 10;
-
     private final QuestionMapper questionMapper;
-
     private final AnswerSessionRepository answerSessionRepository;
-
     private final QuestionRepository questionRepository;
-
     private final QuestionValidator questionValidator;
-
     private final AnswerValidator answerValidator;
-
     private final SubjectRepository subjectRepository;
-
     private final AnswerService answerService;
 
     public List<QuestionDto> getAllQuestions() {
@@ -42,7 +33,6 @@ public class QuestionService {
     }
 
     @Transactional
-    @ModificationAccess(objectType = EntityType.SUBJECT, idExpression = "#questionDto[0].subjectId")
     public Long createQuestions(List<QuestionDto> questionDto) {
         questionValidator.validateAllSubjectIdEquals(questionDto);
         questionValidator.validateDistinctQuestions(questionDto);
@@ -76,7 +66,7 @@ public class QuestionService {
         return questionMapper.mapToListDtoQuestion(questionRepository.findBySubjectIdOrderByIdAsc(subjectId));
     }
 
-    public QuestionResponseDto getQuestionFilterBySubject(Long answerSessionId) {
+    public QuestionResponseDto getQuestionByAnswerSessionId(Long answerSessionId) {
         AnswerSession answerSession = answerSessionRepository.getById(answerSessionId);
         Long subjectId = answerSession.getSubject().getId();
         List<QuestionWithoutAnswerCorrectDto> questionsSelect = questionMapper.mapToListDtoQuestionWithoutAnswerCorrect(questionRepository.findBySubjectIdOrderByIdAsc(subjectId));

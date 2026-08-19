@@ -19,7 +19,7 @@ public class CourseDto {
     private Long id;
 
     @NotBlank(message = "Kurs musi zawierać wartość")
-    @Size(max = 25)
+    @Size(max = 50)
     private String displayName;
 
     @NotBlank(message = "Opis musi zawierać wartość")

@@ -69,10 +69,10 @@ class SubjectServiceTest {
         when(subjectMapper.mapToDtoSubjectList(subjects2)).thenReturn(subjectsDto2);
 
         //When
-        List<SubjectDto> result1 = subjectService.getSubjectsFilterByCourseId(1L);
-        List<SubjectDto> result2 = subjectService.getSubjectsFilterByCourseId(2L);
-        List<SubjectDto> result3 = subjectService.getSubjectsFilterByCourseId(3L);
-        List<SubjectDto> result4 = subjectService.getSubjectsFilterByCourseId(null);
+        List<SubjectDto> result1 = subjectService.getSubjectsByCourseId(1L);
+        List<SubjectDto> result2 = subjectService.getSubjectsByCourseId(2L);
+        List<SubjectDto> result3 = subjectService.getSubjectsByCourseId(3L);
+        List<SubjectDto> result4 = subjectService.getSubjectsByCourseId(null);
 
         //Then
         assertEquals(3, result1.size());

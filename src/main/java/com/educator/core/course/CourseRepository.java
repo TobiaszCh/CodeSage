@@ -16,6 +16,6 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
             "WHERE c.owner.id = :userId " +
             "OR c.visibility = 'PUBLIC'" +
             "ORDER BY c.visibility ASC")
-    List<Course> findAvailableCourses(@Param("userId") Long userId);
+    List<Course> findPublicCourses(@Param("userId") Long userId);
 
 }

@@ -5,8 +5,8 @@ import com.educator.core.user.User;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -31,13 +31,6 @@ public class Course extends BaseStatusEntity {
 
     @Enumerated(value = EnumType.STRING)
     private Visibility visibility;
-
-    @ManyToMany
-    @JoinTable(name = "user_course",
-            joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private List<User> users;
 
     @ManyToOne
     private User owner;

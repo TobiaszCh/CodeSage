@@ -4,6 +4,8 @@ public enum EntityType {
 
     COURSE,
 
-    SUBJECT
+    SUBJECT,
+
+    ANSWER_SESSION
 
 }

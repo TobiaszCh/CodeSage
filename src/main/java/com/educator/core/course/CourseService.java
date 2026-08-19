@@ -1,15 +1,13 @@
 package com.educator.core.course;
 
-import com.educator.aspect.EntityType;
-import com.educator.aspect.ModificationAccess;
 import com.educator.auth.AuthService;
 import com.educator.core.course.dto.CourseDto;
 import com.educator.core.course.dto.DisplayNameCourseDto;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.outbox_event.OutboxEventService;
 import com.educator.core.outbox_event.OutboxEventType;
-import com.educator.s3.S3Service;
 import com.educator.core.user.User;
+import com.educator.s3.S3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,6 +20,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class CourseService {
+
     private final CourseRepository courseRepository;
     private final CourseMapper courseMapper;
     private final AuthService authService;
@@ -46,8 +45,7 @@ public class CourseService {
                 ))
                 .collect(Collectors.toList());
     }
-//TODO move to controller
-    @ModificationAccess(objectType = EntityType.COURSE, idExpression = "#id")
+
     public void deleteCourseById(Long id) {
         courseRepository.deleteById(id);
     }
@@ -62,7 +60,6 @@ public class CourseService {
     }
 
     @Transactional
-    @ModificationAccess(objectType = EntityType.COURSE, idExpression = "#id")
     public Long updateCourse(Long id, CourseDto courseDto, MultipartFile file) {
         courseValidator.validateCourseDetailsInUpdate(courseDto, file);
         Course course = Optional.ofNullable(id)

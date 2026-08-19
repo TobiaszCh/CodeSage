@@ -25,7 +25,7 @@ public class QuestionValidator {
         validateNullQuestionsDto(questionsDto);
         int quantityOfSubjects = (int) questionsDto.stream().map(QuestionDto::getSubjectId).distinct().count();
         if (quantityOfSubjects > 1) {
-            throw new CodeSageRuntimeException("All subjectId aren't equals");
+            throw new CodeSageRuntimeException("Subject IDs in questions have different values");
         }
     }
 

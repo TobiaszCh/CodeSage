@@ -7,9 +7,12 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ModificationAccess {
+public @interface CourseAccess {
 
-    EntityType objectType();
+    EntityType idEntityType();
 
     String idExpression();
+
+    AccessPolicy accessPolicy();
+
 }

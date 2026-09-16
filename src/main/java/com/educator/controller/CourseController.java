@@ -5,7 +5,7 @@ import com.educator.aspect.CourseAccess;
 import com.educator.aspect.EntityType;
 import com.educator.core.course.CourseService;
 import com.educator.core.course.dto.CourseDto;
-import com.educator.core.course.dto.DisplayNameCourseDto;
+import com.educator.core.course.dto.CourseSummaryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,7 +36,7 @@ public class CourseController {
     }
 
     @GetMapping
-    public List<DisplayNameCourseDto> getAllCourses() {
+    public List<CourseSummaryDto> getAllCourses() {
         return courseService.getAllCourses();
     }
 

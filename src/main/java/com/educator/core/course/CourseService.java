@@ -2,7 +2,7 @@ package com.educator.core.course;
 
 import com.educator.auth.AuthService;
 import com.educator.core.course.dto.CourseDto;
-import com.educator.core.course.dto.DisplayNameCourseDto;
+import com.educator.core.course.dto.CourseSummaryDto;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.outbox_event.OutboxEventService;
 import com.educator.core.outbox_event.OutboxEventType;
@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -29,21 +28,17 @@ public class CourseService {
     private final OutboxEventService outboxEventService;
 
     public CourseDto getCourseById(Long id) {
-        User loggedUser = authService.getLoggedUser();
         Course course = Optional.ofNullable(id)
                 .flatMap(courseRepository::findById)
                 .orElseThrow(() -> new CodeSageRuntimeException("Entity with id: " + id + " doesn't exist"));
-        return courseMapper.mapToDtoCourse(course, canModify(course, loggedUser));
+        return courseMapper.mapToDtoCourse(course);
     }
 
-    public List<DisplayNameCourseDto> getAllCourses() {
+    public List<CourseSummaryDto> getAllCourses() {
         User loggedUser = authService.getLoggedUser();
-        List<Course> course = courseRepository.findPublicCourses(loggedUser.getId());
-        return course.stream()
-                .map(result -> courseMapper.mapToDtoDisplayNameCourse(
-                        result, canModify(result, loggedUser)
-                ))
-                .collect(Collectors.toList());
+        List<CourseSummaryDto> courseSummaries = courseRepository.findOwnedOrPublicCourses(loggedUser.getId());
+        courseSummaries.forEach(result -> result.setAccessToModifyCourse(canModify(result, loggedUser)));
+        return courseSummaries;
     }
 
     public void deleteCourseById(Long id) {
@@ -62,8 +57,7 @@ public class CourseService {
     @Transactional
     public Long updateCourse(Long id, CourseDto courseDto, MultipartFile file) {
         courseValidator.validateCourseDetailsInUpdate(courseDto, file);
-        Course course = Optional.ofNullable(id)
-                .flatMap(courseRepository::findById)
+        Course course = Optional.ofNullable(id).flatMap(courseRepository::findById)
                 .orElseThrow(() -> new CodeSageRuntimeException("Entity with id: " + id + " doesn't exist"));
         course.setDisplayName(courseDto.getDisplayName());
         course.setDescription(courseDto.getDescription());
@@ -71,24 +65,24 @@ public class CourseService {
         if (!file.isEmpty()) {
             String oldImageUrl = course.getImageUrl();
             course.setImageUrl(s3Service.uploadFile(id, file));
-            if(oldImageUrl != null && !oldImageUrl.isEmpty()) {
+            if (oldImageUrl != null && !oldImageUrl.isEmpty()) {
                 outboxEventService.createOutboxEvent(oldImageUrl, OutboxEventType.OLD_IMAGE_URL);
             }
         }
         return course.getId();
     }
 
-    private boolean canModify(Course course, User user) {
-        if (course == null) {
+    private boolean canModify(CourseSummaryDto courseSummaryDto, User user) {
+        if (courseSummaryDto == null) {
             throw new CodeSageRuntimeException("Course is null");
         }
         if (user == null) {
             throw new CodeSageRuntimeException("User is null");
         }
-        if (course.getOwner() == null) {
+        if (courseSummaryDto.getOwner() == null) {
             throw new CodeSageRuntimeException("Course doesn't have own owner");
         }
-        return course.getOwner().getId().equals(user.getId());
+        return courseSummaryDto.getOwner().getId().equals(user.getId());
     }
 
 }

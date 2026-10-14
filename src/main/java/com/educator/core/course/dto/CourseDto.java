@@ -20,9 +20,6 @@ public class CourseDto {
 
     @NotBlank(message = "Kurs musi zawierać wartość")
     @Size(max = 100)
-
-
-
     private String displayName;
 
     @NotBlank(message = "Opis musi zawierać wartość")

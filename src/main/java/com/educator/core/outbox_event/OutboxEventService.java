@@ -31,7 +31,7 @@ public class OutboxEventService {
                 .build();
         outboxEventRepository.save(outboxEvent);
     }
-
+    // TODO move to job package - keep logic here
     @Scheduled(fixedDelay = 5000)
     public void processOutbox() {
         List<OutboxEvent> outboxEventList = outboxEventRepository.findAllByOutboxEventStatus(OutboxEventStatus.NEW);

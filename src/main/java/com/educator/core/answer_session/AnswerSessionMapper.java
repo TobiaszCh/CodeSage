@@ -1,12 +1,13 @@
 package com.educator.core.answer_session;
+
 import com.educator.core.answer_session.dto.AnswerSessionDto;
-import com.educator.core.subject.Subject;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
+import com.educator.core.subject.Subject;
 import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +31,7 @@ public class AnswerSessionMapper {
                 .users(user)
                 .subject(subject)
                 .statusAnswerSession(statusAnswerSession)
-                .sessionStartDate(LocalDate.now())
+                .sessionStartDate(LocalDateTime.now())
                 .build();
 
     }

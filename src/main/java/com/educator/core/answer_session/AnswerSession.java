@@ -2,12 +2,13 @@ package com.educator.core.answer_session;
 
 import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.subject.Subject;
-import com.educator.core.subject.SubjectCompletedAge;
+import com.educator.core.subject.SubjectCompletionStatus;
 import com.educator.core.user.User;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 @Entity
@@ -29,7 +30,7 @@ public class AnswerSession {
 
     private int correctAnswers;
 
-    private LocalDate sessionStartDate;
+    private LocalDateTime sessionStartDate;
 
     @Enumerated(value = EnumType.STRING)
     private StatusAnswerSession statusAnswerSession;
@@ -40,10 +41,9 @@ public class AnswerSession {
     @ManyToOne
     private Subject subject;
 
-
-    public SubjectCompletedAge getCompletedAge(LocalDate now) {
-        long days = ChronoUnit.DAYS.between(this.sessionStartDate, now);
-        return days <= BORDER_SEVEN_DAYS ? SubjectCompletedAge.FRESH : SubjectCompletedAge.OLD;
+    public SubjectCompletionStatus getCompletionStatus(LocalDate now) {
+        long days = ChronoUnit.DAYS.between(this.sessionStartDate.toLocalDate(), now);
+        return days <= BORDER_SEVEN_DAYS ? SubjectCompletionStatus.FRESH : SubjectCompletionStatus.OLD;
     }
 
 }

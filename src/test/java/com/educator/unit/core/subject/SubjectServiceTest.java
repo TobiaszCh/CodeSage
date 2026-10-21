@@ -6,7 +6,6 @@ import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.course.Course;
 import com.educator.core.subject.*;
-import com.educator.core.subject.dto.SubjectCompletionStatusDto;
 import com.educator.core.subject.dto.SubjectDto;
 import com.educator.core.user.Role;
 import com.educator.core.user.User;
@@ -128,14 +127,14 @@ class SubjectServiceTest {
         List<SubjectCompletionStatusDto> resultTest4 = subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(null);
 
 
-        SubjectCompletedAge subjectCompletedAge3 = resultTest1.stream().filter(id -> id.getAnswerSessionId().equals(16L))
-                .map(SubjectCompletionStatusDto::getSubjectCompletedAge).collect(Collectors.toList()).get(0);
-        SubjectCompletedAge subjectCompletedAge4 = resultTest1.stream().filter(id -> id.getAnswerSessionId().equals(17L))
-                .map(SubjectCompletionStatusDto::getSubjectCompletedAge).collect(Collectors.toList()).get(0);
+        SubjectCompletionStatus subjectCompletionStatus3 = resultTest1.stream().filter(id -> id.getAnswerSessionId().equals(16L))
+                .map(SubjectCompletionStatusDto::getSubjectCompletionStatus).collect(Collectors.toList()).get(0);
+        SubjectCompletionStatus subjectCompletionStatus4 = resultTest1.stream().filter(id -> id.getAnswerSessionId().equals(17L))
+                .map(SubjectCompletionStatusDto::getSubjectCompletionStatus).collect(Collectors.toList()).get(0);
 
         //Then
-        assertEquals(SubjectCompletedAge.FRESH, subjectCompletedAge3);
-        assertEquals(SubjectCompletedAge.OLD, subjectCompletedAge4);
+        assertEquals(SubjectCompletionStatus.FRESH, subjectCompletionStatus3);
+        assertEquals(SubjectCompletionStatus.OLD, subjectCompletionStatus4);
 
         assertEquals(2, resultTest1.size());
         assertEquals(0, resultTest2.size());

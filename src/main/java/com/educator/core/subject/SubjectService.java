@@ -6,7 +6,6 @@ import com.educator.core.answer_session.AnswerSessionRepository;
 import com.educator.core.answer_session.enums.StatusAnswerSession;
 import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.question.QuestionService;
-import com.educator.core.subject.dto.SubjectCompletionStatusDto;
 import com.educator.core.subject.dto.SubjectDetailsDto;
 import com.educator.core.subject.dto.SubjectDto;
 import lombok.RequiredArgsConstructor;
@@ -14,9 +13,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +27,6 @@ public class SubjectService {
     private final SubjectMapper subjectMapper;
     private final QuestionService questionService;
 
-
     public Long createSubject(SubjectDto subjectDto) {
         subjectDto.setDisplayName(subjectDto.getDisplayName().trim());
         return subjectRepository.save(subjectMapper.mapToSubject(subjectDto)).getId();
@@ -39,31 +36,30 @@ public class SubjectService {
         subjectRepository.deleteById(id);
     }
 
-    public List<SubjectDto> getSubjectsByCourseId(Long courseId) {
-        return subjectMapper.mapToDtoSubjectList(subjectRepository.findByCourseIdOrderByIdAsc(courseId));
-    }
+    public List<SubjectDto> getSubjectsWithCompletionStatusByCourseId(Long courseId) {
+        List<SubjectDto> subjectsDto = subjectRepository.findByCourseIdOrderByIdAsc(courseId);
 
-    public List<SubjectCompletionStatusDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(Long courseId) {
-        List<Long> subjectsIdFilterByCourseId = subjectRepository.findByCourseIdOrderByIdAsc(courseId).stream().map(Subject::getId).collect(Collectors.toList());
-        List<AnswerSession> answerSessionsCompletedList = answerSessionRepository.findByStatusAnswerSession(StatusAnswerSession.COMPLETED);
-        return getCheckCompletedSessions(subjectsIdFilterByCourseId, answerSessionsCompletedList);
-
-    }
-
-    private List<SubjectCompletionStatusDto> getCheckCompletedSessions(List<Long> subjectsIdFilterByCourseId, List<AnswerSession> answerSessionsCompletedList) {
-        List<SubjectCompletionStatusDto> subjectCompletionStatusDtoList = new ArrayList<>();
-        for (AnswerSession answerSessionCompleted : answerSessionsCompletedList) {
-            double checkAllAndCorrectAnswers = getCheckAllAndCorrectAnswers(answerSessionCompleted);
-            if (checkAllAndCorrectAnswers >= BORDER_FINISHED_SUBJECT && subjectsIdFilterByCourseId.contains(answerSessionCompleted.getSubject().getId())
-                    && answerSessionCompleted.getUsers().getId().equals(authService.getLoggedUser().getId())) {
-                SubjectCompletedAge resultCompletedAge = answerSessionCompleted.getCompletedAge(LocalDate.now());
-                subjectCompletionStatusDtoList.add(new SubjectCompletionStatusDto(answerSessionCompleted.getSubject().getId(), answerSessionCompleted.getId(), resultCompletedAge));
-            }
+        List<AnswerSession> answerSessionsCompletedList = answerSessionRepository
+                .findByStatusAnswerSessionAndSubject_Course_IdAndUsersId(
+                        StatusAnswerSession.COMPLETED,
+                        courseId,
+                        authService.getLoggedUser().getId());
+        for (SubjectDto subjectDto: subjectsDto) {
+            subjectDto.setSubjectCompletionStatus(getSubjectCompletionStatus(answerSessionsCompletedList, subjectDto.getId()));
         }
-        return subjectCompletionStatusDtoList;
+        return subjectsDto;
     }
 
-    private double getCheckAllAndCorrectAnswers(AnswerSession answerSessionCompleted) {
+    private SubjectCompletionStatus getSubjectCompletionStatus(List<AnswerSession> answerSessionsCompletedList, Long subjectId) {
+        return answerSessionsCompletedList.stream()
+                .filter(result -> calculateCorrectAnswerRatio(result) >= BORDER_FINISHED_SUBJECT
+                        && result.getSubject().getId().equals(subjectId))
+                .max(Comparator.comparing(AnswerSession::getSessionStartDate))
+                .map(result -> result.getCompletionStatus(LocalDate.now()))
+                .orElse(SubjectCompletionStatus.UNCOMPLETED);
+    }
+
+    private double calculateCorrectAnswerRatio(AnswerSession answerSessionCompleted) {
         return answerSessionCompleted.getAllAnswers() == 0 ? 0 : (double) answerSessionCompleted.getCorrectAnswers() / answerSessionCompleted.getAllAnswers();
     }
 

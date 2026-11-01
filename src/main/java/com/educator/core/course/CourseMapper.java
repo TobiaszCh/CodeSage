@@ -10,13 +10,14 @@ import org.springframework.stereotype.Component;
 public class CourseMapper {
 
     public CourseDto mapToDtoCourse(Course course) {
-        return new CourseDto(
-                course.getId(),
-                course.getDisplayName(),
-                course.getDescription(),
-                course.getImageUrl(),
-                course.getVisibility()
-        );
+        return CourseDto.builder()
+                .id(course.getId())
+                .displayName(course.getDisplayName())
+                .description(course.getDescription())
+                .imageUrl(course.getImageUrl())
+                .visibility(course.getVisibility())
+                .owner(course.getOwner())
+                .build();
     }
 
     public Course mapToCourse(CourseDto courseDto, User ownerCourse) {

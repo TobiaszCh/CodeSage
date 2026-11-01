@@ -1,6 +1,8 @@
 package com.educator.core.course.dto;
 
 import com.educator.core.course.Visibility;
+import com.educator.core.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,5 +32,14 @@ public class CourseDto {
 
     @NotNull(message = "Kurs musi mieć ustawioną widoczność")
     private Visibility visibility;
+
+    private User owner;
+
+    boolean accessToModifyCourseAndSubjectWithQuestions;
+
+    @JsonIgnore
+    public User getOwner() {
+        return owner;
+    }
 
 }

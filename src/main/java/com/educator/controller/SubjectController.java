@@ -4,7 +4,6 @@ import com.educator.aspect.AccessPolicy;
 import com.educator.aspect.CourseAccess;
 import com.educator.aspect.EntityType;
 import com.educator.core.subject.SubjectService;
-import com.educator.core.subject.dto.SubjectCompletionStatusDto;
 import com.educator.core.subject.dto.SubjectDetailsDto;
 import com.educator.core.subject.dto.SubjectDto;
 import lombok.RequiredArgsConstructor;
@@ -51,18 +50,8 @@ public class SubjectController {
             idExpression = "#courseId",
             accessPolicy = AccessPolicy.LEARN
     )
-    public List<SubjectDto> getSubjectsByCourseId(@PathVariable Long courseId) {
-        return subjectService.getSubjectsByCourseId(courseId);
-    }
-
-    @GetMapping("/correct-answers-at-least-80/{courseId}")
-    @CourseAccess(
-            idEntityType = EntityType.COURSE,
-            idExpression = "#courseId",
-            accessPolicy = AccessPolicy.LEARN
-    )
-    public List<SubjectCompletionStatusDto> getAllNumbersOfCorrectAnswersAtLeast80Percent(@PathVariable Long courseId) {
-        return subjectService.getAllNumbersOfCorrectAnswersAtLeast80Percent(courseId);
+    public List<SubjectDto> getSubjectsWithCompletionStatusByCourseId(@PathVariable Long courseId) {
+        return subjectService.getSubjectsWithCompletionStatusByCourseId(courseId);
     }
 
     @GetMapping("/{id}/course-id")

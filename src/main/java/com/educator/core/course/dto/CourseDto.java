@@ -19,7 +19,7 @@ public class CourseDto {
     private Long id;
 
     @NotBlank(message = "Kurs musi zawierać wartość")
-    @Size(max = 50)
+    @Size(max = 100)
     private String displayName;
 
     @NotBlank(message = "Opis musi zawierać wartość")
@@ -30,7 +30,5 @@ public class CourseDto {
 
     @NotNull(message = "Kurs musi mieć ustawioną widoczność")
     private Visibility visibility;
-
-    boolean accessToModifyCourse;
 
 }

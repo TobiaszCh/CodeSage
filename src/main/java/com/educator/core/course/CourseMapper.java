@@ -1,7 +1,6 @@
 package com.educator.core.course;
 
 import com.educator.core.course.dto.CourseDto;
-import com.educator.core.course.dto.DisplayNameCourseDto;
 import com.educator.core.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -10,14 +9,13 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class CourseMapper {
 
-    public CourseDto mapToDtoCourse(Course course, boolean accessToModifyCourse) {
+    public CourseDto mapToDtoCourse(Course course) {
         return new CourseDto(
                 course.getId(),
                 course.getDisplayName(),
                 course.getDescription(),
                 course.getImageUrl(),
-                course.getVisibility(),
-                accessToModifyCourse
+                course.getVisibility()
         );
     }
 
@@ -29,15 +27,6 @@ public class CourseMapper {
                 .visibility(courseDto.getVisibility())
                 .owner(ownerCourse)
                 .build();
-
-    }
-
-    public DisplayNameCourseDto mapToDtoDisplayNameCourse(Course course, boolean accessToModifyCourse) {
-        return new DisplayNameCourseDto(
-                course.getId(),
-                course.getDisplayName(),
-                accessToModifyCourse
-        );
     }
 
 }

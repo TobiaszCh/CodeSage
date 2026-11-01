@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
@@ -17,7 +17,7 @@ public class AnswerSessionDto {
 
     private int correctAnswers;
 
-    private LocalDate sessionStartDate;
+    private LocalDateTime sessionStartDate;
 
     private StatusAnswerSession statusAnswerSession;
 

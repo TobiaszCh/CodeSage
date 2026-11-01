@@ -28,10 +28,13 @@ public class CourseService {
     private final OutboxEventService outboxEventService;
 
     public CourseDto getCourseById(Long id) {
+        User loggedUser = authService.getLoggedUser();
         Course course = Optional.ofNullable(id)
                 .flatMap(courseRepository::findById)
                 .orElseThrow(() -> new CodeSageRuntimeException("Entity with id: " + id + " doesn't exist"));
-        return courseMapper.mapToDtoCourse(course);
+        CourseDto courseDto = courseMapper.mapToDtoCourse(course);
+        courseDto.setAccessToModifyCourseAndSubjectWithQuestions(canModify(courseDto, loggedUser));
+        return courseDto;
     }
 
     public List<CourseSummaryDto> getAllCourses() {
@@ -83,6 +86,19 @@ public class CourseService {
             throw new CodeSageRuntimeException("Course doesn't have own owner");
         }
         return courseSummaryDto.getOwner().getId().equals(user.getId());
+    }
+
+    private boolean canModify(CourseDto courseDto, User user) {
+        if (courseDto == null) {
+            throw new CodeSageRuntimeException("Course is null");
+        }
+        if (user == null) {
+            throw new CodeSageRuntimeException("User is null");
+        }
+        if (courseDto.getOwner() == null) {
+            throw new CodeSageRuntimeException("Course doesn't have own owner");
+        }
+        return courseDto.getOwner().getId().equals(user.getId());
     }
 
 }

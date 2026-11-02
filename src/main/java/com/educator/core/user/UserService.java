@@ -8,7 +8,7 @@ import com.educator.core.outbox_event.OutboxEventService;
 import com.educator.core.outbox_event.OutboxEventType;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
-import com.educator.core.user.dto.UsernameDto;
+import com.educator.core.user.dto.UserInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,20 +26,13 @@ import java.util.Random;
 public class UserService {
 
     private final UserRepository userRepository;
-
     private final AuthenticationManager manager;
-
     private final UserMapper userMapper;
-
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    private final AuthService authService;
-
     private final Random random = new Random();
-
     private final FirstCourseCreator firstCourseCreator;
-
     private final OutboxEventService outboxEventService;
+    private final AuthService authService;
 
     public void login(LoginDto loginDto) {
         if (loginDto == null) {
@@ -48,7 +41,7 @@ public class UserService {
         loginDto.setUsername(loginDto.getUsername().trim());
         try {
             Authentication authentication = manager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginDto.getUsername(),loginDto.getPassword()));
+                    loginDto.getUsername(), loginDto.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (AuthenticationException ex) {
             throw CodeSageUserException.withUserMessage("Niewłaściwe hasło lub login");
@@ -67,20 +60,20 @@ public class UserService {
         if (userRepository.existsByUsername(registerDto.getUsername())) {
             throw CodeSageUserException.withUserMessage("Taki login już istnieje!");
         }
-        userRepository.save(hashingPassword(registerDto));
+        User user = userMapper.mapToUser(registerDto, Role.USER);
+        user.setPassword(hashingPassword(user.getPassword()));
+        userRepository.save(user);
         firstCourseCreator.createFirstCourse(registerDto.getUsername());
         outboxEventService.createOutboxEvent(registerDto.getUsername(), OutboxEventType.EMAIL);
     }
 
-    private User hashingPassword(RegisterDto registerDto) {
-        User user = userMapper.mapToUser(registerDto, Role.USER);
-        String hashedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(hashedPassword);
-        return user;
+    private String hashingPassword(String password) {
+        return bCryptPasswordEncoder.encode(password);
     }
 
-    public UsernameDto getUsername() {
-        return new UsernameDto(authService.getLoggedUser().getUsername());
+    public UserInfoDto getLoggedUserInfo() {
+        User loggedUser = authService.getLoggedUser();
+        return userMapper.mapToUserInfoDto(loggedUser);
     }
 
     @Transactional
@@ -88,19 +81,22 @@ public class UserService {
         RegisterDto randomUser = new RegisterDto();
         boolean checkUser = true;
         while (checkUser) {
-            int number = random.nextInt(Integer.MAX_VALUE);
-            randomUser.setUsername("User-" + number);
-            randomUser.setPassword("User" + number + ".");
+            int numberToUser = random.nextInt(Integer.MAX_VALUE);
+            int numberToPassword = random.nextInt(Integer.MAX_VALUE);
+            randomUser.setUsername("User-" + numberToUser + "@random.com");
+            randomUser.setPassword("User" + numberToPassword + ".");
             checkUser = userRepository.existsByUsername(randomUser.getUsername());
         }
-        userRepository.save(hashingPassword(randomUser));
+        User user = userMapper.mapToUser(randomUser, Role.DEMO);
+        user.setPassword(hashingPassword(user.getPassword()));
+        userRepository.save(user);
         firstCourseCreator.createFirstCourse(randomUser.getUsername());
         login(LoginDto.builder().username(randomUser.getUsername()).password(randomUser.getPassword()).build());
     }
 
     @Transactional
     public void loginByExternalApi(String email) {
-        if(email == null) {
+        if (email == null) {
             throw new CodeSageRuntimeException("Email is null");
         }
         if (!userRepository.existsByUsername(email)) {

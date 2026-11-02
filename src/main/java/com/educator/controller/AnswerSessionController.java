@@ -15,11 +15,6 @@ import javax.validation.Valid;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/answer-session")
-@CrossOrigin(origins = {
-        "http://localhost:4200",
-        "https://code-sage-front-a970cdb2bc71.herokuapp.com",
-        "https://www.codesage.pl"
-}, allowCredentials = "true")
 public class AnswerSessionController {
 
     private final AnswerSessionService answerSessionService;

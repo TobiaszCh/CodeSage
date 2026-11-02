@@ -13,10 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public final AppUserDetailsService appUserDetailsService;
-
+    private final AppUserDetailsService appUserDetailsService;
     private final OAuth2LoginSuccessHandler auth2LoginSuccessHandler;
-
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
@@ -26,12 +24,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    http.cors().and().csrf().disable().logout().disable()
-            .authorizeRequests()
-            .antMatchers("/", "/login", "/register", "/random-register" ,"/me", "/actuator/**").permitAll()
-            .anyRequest().authenticated()
-            .and().oauth2Login()
-            .successHandler(auth2LoginSuccessHandler);
+        http.cors().and().csrf().disable().logout().disable()
+                .authorizeRequests()
+                .antMatchers("/", "/login", "/register", "/random-register", "/me", "/actuator/**").permitAll()
+                .anyRequest().authenticated()
+                .and().oauth2Login()
+                .successHandler(auth2LoginSuccessHandler);
     }
 
 }

@@ -1,0 +1,16 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="update-role-in-user-column" author="Tobiasz">
+        <sql>
+            UPDATE users
+            SET role = 'DEMO'
+            WHERE username
+            LIKE 'User-%';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

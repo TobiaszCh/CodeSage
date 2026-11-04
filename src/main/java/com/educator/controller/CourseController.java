@@ -2,6 +2,7 @@ package com.educator.controller;
 
 import com.educator.aspect.AccessPolicy;
 import com.educator.aspect.CourseAccess;
+import com.educator.aspect.CourseVisibilityAccess;
 import com.educator.aspect.EntityType;
 import com.educator.core.course.CourseService;
 import com.educator.core.course.dto.CourseDto;
@@ -51,11 +52,13 @@ public class CourseController {
     }
 
     @PostMapping
+    @CourseVisibilityAccess
     public Long createCourse(@Valid @RequestPart CourseDto courseDto, @RequestPart MultipartFile file) {
         return courseService.createCourse(courseDto, file);
     }
 
     @PatchMapping("/{id}")
+    @CourseVisibilityAccess
     @CourseAccess(
             idEntityType = EntityType.COURSE,
             idExpression = "#id",

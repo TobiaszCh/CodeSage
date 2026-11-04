@@ -13,12 +13,12 @@ public class CourseVisibilityAccessAspect {
 
     private final ServiceAccess serviceAccess;
 
-    @Before("@annotation(courseFunctionAccess) && args(*, courseDto,..)")
+    @Before("@annotation(courseVisibilityAccess) && args(*, courseDto,..)")
     public void beforeUpdate(CourseVisibilityAccess courseVisibilityAccess, CourseDto courseDto) {
         serviceAccess.checkVisibility(courseDto);
     }
 
-    @Before("@annotation(courseFunctionAccess) && args(courseDto,..)")
+    @Before("@annotation(courseVisibilityAccess) && args(courseDto,..)")
     public void beforeCreate(CourseVisibilityAccess courseVisibilityAccess, CourseDto courseDto) {
         serviceAccess.checkVisibility(courseDto);
     }

@@ -83,7 +83,7 @@ public class UserService {
         while (checkUser) {
             int numberToUser = random.nextInt(Integer.MAX_VALUE);
             int numberToPassword = random.nextInt(Integer.MAX_VALUE);
-            randomUser.setUsername("User-" + numberToUser + "@random.com");
+            randomUser.setUsername("User-" + numberToUser);
             randomUser.setPassword("User" + numberToPassword + ".");
             checkUser = userRepository.existsByUsername(randomUser.getUsername());
         }

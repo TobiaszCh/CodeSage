@@ -8,7 +8,7 @@ import com.educator.core.outbox_event.OutboxEventService;
 import com.educator.core.outbox_event.OutboxEventType;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
-import com.educator.core.user.dto.UserInfoDto;
+import com.educator.core.user.dto.UserProfileDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -71,9 +71,9 @@ public class UserService {
         return bCryptPasswordEncoder.encode(password);
     }
 
-    public UserInfoDto getLoggedUserInfo() {
+    public UserProfileDto getUserProfile() {
         User loggedUser = authService.getLoggedUser();
-        return userMapper.mapToUserInfoDto(loggedUser);
+        return userMapper.mapToUserDto(loggedUser);
     }
 
     @Transactional

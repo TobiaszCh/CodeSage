@@ -38,25 +38,15 @@ public class SubjectService {
 
     public List<SubjectDto> getSubjectsWithCompletionStatusByCourseId(Long courseId) {
         List<SubjectDto> subjectsDto = subjectRepository.findByCourseIdOrderByIdAsc(courseId);
-
-        List<AnswerSession> answerSessionsCompletedList = answerSessionRepository
-                .findByStatusAnswerSessionAndSubject_Course_IdAndUsersId(
-                        StatusAnswerSession.COMPLETED,
-                        courseId,
-                        authService.getLoggedUser().getId());
-        for (SubjectDto subjectDto: subjectsDto) {
+        List<AnswerSession> answerSessionsCompletedList = answerSessionRepository.findByStatusAnswerSessionAndSubject_Course_IdAndUsersId(StatusAnswerSession.COMPLETED, courseId, authService.getLoggedUser().getId());
+        for (SubjectDto subjectDto : subjectsDto) {
             subjectDto.setSubjectCompletionStatus(getSubjectCompletionStatus(answerSessionsCompletedList, subjectDto.getId()));
         }
         return subjectsDto;
     }
 
     private SubjectCompletionStatus getSubjectCompletionStatus(List<AnswerSession> answerSessionsCompletedList, Long subjectId) {
-        return answerSessionsCompletedList.stream()
-                .filter(result -> calculateCorrectAnswerRatio(result) >= BORDER_FINISHED_SUBJECT
-                        && result.getSubject().getId().equals(subjectId))
-                .max(Comparator.comparing(AnswerSession::getSessionStartDate))
-                .map(result -> result.getCompletionStatus(LocalDate.now()))
-                .orElse(SubjectCompletionStatus.UNCOMPLETED);
+        return answerSessionsCompletedList.stream().filter(result -> calculateCorrectAnswerRatio(result) >= BORDER_FINISHED_SUBJECT && result.getSubject().getId().equals(subjectId)).max(Comparator.comparing(AnswerSession::getSessionStartDate)).map(result -> result.getCompletionStatus(LocalDate.now())).orElse(SubjectCompletionStatus.UNCOMPLETED);
     }
 
     private double calculateCorrectAnswerRatio(AnswerSession answerSessionCompleted) {
@@ -67,19 +57,16 @@ public class SubjectService {
         if (id == null) {
             throw new CodeSageRuntimeException("Id is null");
         }
-        return subjectRepository.findCourseIdBySubjectId(id).orElseThrow(
-                () -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
+        return subjectRepository.findCourseIdBySubjectId(id).orElseThrow(() -> new CodeSageRuntimeException("In this subject courseId doesn't exist"));
     }
 
     public SubjectDto getSubjectById(Long id) {
-        return subjectMapper.mapToDtoSubject(subjectRepository.findById(id).orElseThrow(
-                () -> new CodeSageRuntimeException("This subject doesn't exist")));
+        return subjectMapper.mapToDtoSubject(subjectRepository.findById(id).orElseThrow(() -> new CodeSageRuntimeException("This subject doesn't exist")));
     }
 
     @Transactional
     public Long updateSubjectDetails(Long id, SubjectDetailsDto subjectDetailsDto) {
-        Subject updateSubject = subjectRepository.findById(id).orElseThrow(
-                () -> new CodeSageRuntimeException("This subject doesn't exist"));
+        Subject updateSubject = subjectRepository.findById(id).orElseThrow(() -> new CodeSageRuntimeException("This subject doesn't exist"));
         if (subjectDetailsDto == null) {
             throw new CodeSageRuntimeException("SubjectDetailsDto is null");
         }
@@ -88,4 +75,3 @@ public class SubjectService {
     }
 
 }
-

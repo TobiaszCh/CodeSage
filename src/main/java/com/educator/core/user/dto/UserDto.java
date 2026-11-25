@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
-public class UserProfileDto {
+public class UserDto {
 
     private String username;
 

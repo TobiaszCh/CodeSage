@@ -5,7 +5,7 @@ import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.user.UserService;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
-import com.educator.core.user.dto.UserProfileDto;
+import com.educator.core.user.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,9 +66,9 @@ public class UserController {
         return ResponseEntity.ok(authService.isUserLoggedIn());
     }
 
-    @GetMapping("/profile")
-    public UserProfileDto getUserProfile() {
-        return userService.getUserProfile();
+    @GetMapping
+    public UserDto getUserProfile() {
+        return userService.getUser();
     }
 
     @PostMapping("/random-register")

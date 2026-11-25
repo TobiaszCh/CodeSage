@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().logout().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/login", "/register", "/random-register", "/me", "/actuator/**").permitAll()
+                .antMatchers("/login", "/register", "/random-register", "/me", "/actuator/**").permitAll()
                 .anyRequest().authenticated()
                 .and().oauth2Login()
                 .successHandler(auth2LoginSuccessHandler);

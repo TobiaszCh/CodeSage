@@ -1,7 +1,7 @@
 package com.educator.core.user;
 
 import com.educator.core.user.dto.RegisterDto;
-import com.educator.core.user.dto.UserProfileDto;
+import com.educator.core.user.dto.UserDto;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,8 +15,8 @@ public class UserMapper {
                 .build();
     }
 
-    public UserProfileDto mapToUserDto(User user) {
-        return new UserProfileDto(
+    public UserDto mapToUserDto(User user) {
+        return new UserDto(
                 user.getUsername(),
                 user.getRole(),
                 user.getCreatedAt()

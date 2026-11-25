@@ -8,7 +8,7 @@ import com.educator.core.outbox_event.OutboxEventService;
 import com.educator.core.outbox_event.OutboxEventType;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
-import com.educator.core.user.dto.UserInfoDto;
+import com.educator.core.user.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -71,9 +71,9 @@ public class UserService {
         return bCryptPasswordEncoder.encode(password);
     }
 
-    public UserInfoDto getLoggedUserInfo() {
+    public UserDto getUser() {
         User loggedUser = authService.getLoggedUser();
-        return userMapper.mapToUserInfoDto(loggedUser);
+        return userMapper.mapToUserDto(loggedUser);
     }
 
     @Transactional
@@ -83,7 +83,7 @@ public class UserService {
         while (checkUser) {
             int numberToUser = random.nextInt(Integer.MAX_VALUE);
             int numberToPassword = random.nextInt(Integer.MAX_VALUE);
-            randomUser.setUsername("User-" + numberToUser + "@random.com");
+            randomUser.setUsername("User-" + numberToUser);
             randomUser.setPassword("User" + numberToPassword + ".");
             checkUser = userRepository.existsByUsername(randomUser.getUsername());
         }

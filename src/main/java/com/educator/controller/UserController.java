@@ -5,10 +5,13 @@ import com.educator.core.exception.CodeSageRuntimeException;
 import com.educator.core.user.UserService;
 import com.educator.core.user.dto.LoginDto;
 import com.educator.core.user.dto.RegisterDto;
-import com.educator.core.user.dto.UserInfoDto;
+import com.educator.core.user.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -19,15 +22,9 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = {
-        "http://localhost:4200",
-        "https://code-sage-front-a970cdb2bc71.herokuapp.com",
-        "https://www.codesage.pl"
-}, allowCredentials = "true")
 public class UserController {
 
     private final UserService userService;
-
     private final AuthService authService;
 
     @PostMapping("/login")
@@ -69,9 +66,9 @@ public class UserController {
         return ResponseEntity.ok(authService.isUserLoggedIn());
     }
 
-    @GetMapping("/me/info")
-    public UserInfoDto getLoggedUserInfo() {
-        return userService.getLoggedUserInfo();
+    @GetMapping
+    public UserDto getUserProfile() {
+        return userService.getUser();
     }
 
     @PostMapping("/random-register")
